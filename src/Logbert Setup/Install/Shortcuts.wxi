@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+  File:    Shortcuts.wxs
+  Package: Logbert Setup
+  Project: Logbert
+
+  The MIT License (MIT)
+  
+  Copyright (c) 2015 Couchcoding
+  
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+  
+-->
+
+<Include Id="LgbrtStpShortcuts" xmlns:util = "http://schemas.microsoft.com/wix/UtilExtension">
+
+  <DirectoryRef Id="ProgramMenuProductFolder">
+    <Component Id   = "ApplicationShortcut"
+               Guid = "AFB2A459-0ED0-4BF7-AAA3-7A61BF115012">
+
+      <Shortcut Id               = "LgbrtStartMenuShortcut"
+                Name             = "$(var.ProductName)"
+                Description      = "!(loc.ShortcutDescLgbrt)"
+                Target           = "[INSTALLDIR]Logbert.exe"
+                WorkingDirectory = "INSTALLDIR"
+                Show             = "normal"
+                Advertise        = "no">
+
+        <Icon Id         = "LgbrtExecutableIcon"
+              SourceFile = "$(var.ReleaseDir)\Logbert.exe" />
+
+      </Shortcut>
+
+      <?if $(var.Platform) = x64 ?>
+      <Shortcut Id          = "UninstallShortCut"
+                Name        = "!(loc.ShortcutUninstall)"
+                Descroption = "!(loc.ShortcutDescUninstall)"
+                Target      = "[System64Folder]msiexec.exe"
+                Arguments   = "/x [ProductCode]"/>
+      <?else?>
+      <Shortcut Id          = "UninstallShortCut"
+                Name        = "!(loc.ShortcutUninstall)"
+                Description = "!(loc.ShortcutDescUninstall)"
+                Target      = "[System32Folder]msiexec.exe"
+                Arguments   = "/x [ProductCode]"/>
+      <?endif?>
+
+      <RemoveFolder Id = "ApplicationProgramsFolder"
+                    On = "uninstall"/>
+
+      <RegistryValue Root    = "HKCU"
+                     Key     = "Software\$(var.Manufacturer)\$(var.ProductName)"
+                     Name    = "Installed"
+                     Type    = "integer"
+                     Value   = "1"
+                     KeyPath = "yes"/>
+
+    </Component>
+  </DirectoryRef>
+
+</Include>

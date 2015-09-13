@@ -1,0 +1,473 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EE81C506-55E4-417E-B1D6-09453F89C7CD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Com.Couchcoding.Logbert</RootNamespace>
+    <AssemblyName>Logbert</AssemblyName>
+    <ApplicationIcon>Logbert.ico</ApplicationIcon>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetZone>LocalIntranet</TargetZone>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRules>
+    </CodeAnalysisRules>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Logbert.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MoonSharp.Interpreter, Version=0.9.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\MoonSharp.Interpreter.dll</HintPath>
+    </Reference>
+    <Reference Include="ScintillaNET, Version=3.5.0.0, Culture=neutral, PublicKeyToken=d42c48f11a620156, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\ScintillaNET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\ColorPickerCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ColorPickerCtrl.Designer.cs">
+      <DependentUpon>ColorPickerCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EventLogDetailsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EventLogDetailsControl.Designer.cs">
+      <DependentUpon>EventLogDetailsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OptionPanels\OptionPanelScriptEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OptionPanels\OptionPanelScriptEditor.Designer.cs">
+      <DependentUpon>OptionPanelScriptEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SyslogDetailsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SyslogDetailsControl.Designer.cs">
+      <DependentUpon>SyslogDetailsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Log4NetDetailsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Log4NetDetailsControl.Designer.cs">
+      <DependentUpon>Log4NetDetailsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OptionPanels\OptionPanelBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OptionPanels\OptionPanelFontColor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OptionPanels\OptionPanelFontColor.Designer.cs">
+      <DependentUpon>OptionPanelFontColor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OptionPanels\OptionPanelGeneral.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OptionPanels\OptionPanelGeneral.Designer.cs">
+      <DependentUpon>OptionPanelGeneral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Docking\FrmLogBookmarks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Docking\FrmLogBookmarks.Designer.cs">
+      <DependentUpon>FrmLogBookmarks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Docking\FrmLogDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Docking\FrmLogDocument.Designer.cs">
+      <DependentUpon>FrmLogDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Docking\FrmLogScript.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Docking\FrmLogScript.Designer.cs">
+      <DependentUpon>FrmLogScript.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FrmLogSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FrmLogSearch.Designer.cs">
+      <DependentUpon>FrmLogSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Docking\FrmLogTree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Docking\FrmLogTree.Designer.cs">
+      <DependentUpon>FrmLogTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Docking\FrmLogWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Docking\FrmLogWindow.Designer.cs">
+      <DependentUpon>FrmLogWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Docking\FrmLogDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Docking\FrmLogDetails.Designer.cs">
+      <DependentUpon>FrmLogDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FrmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FrmAbout.Designer.cs">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FrmNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FrmNew.Designer.cs">
+      <DependentUpon>FrmNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FrmOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FrmOptions.Designer.cs">
+      <DependentUpon>FrmOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\BrushCache.cs" />
+    <Compile Include="Helper\Extensions.cs" />
+    <Compile Include="Helper\Logger.cs" />
+    <Compile Include="Helper\LogMessageSelectedEventArgs.cs" />
+    <Compile Include="Helper\MruManager.cs" />
+    <Compile Include="Helper\WaitCursor.cs" />
+    <Compile Include="Helper\DelayedCallback.cs" />
+    <Compile Include="Helper\ThreadAttachedDelayedCallback.cs" />
+    <Compile Include="Helper\Win32.cs" />
+    <Compile Include="Interfaces\IBookmarkObserver.cs" />
+    <Compile Include="Interfaces\IBookmarkProvider.cs" />
+    <Compile Include="Interfaces\IDelayedCallbackHandler.cs" />
+    <Compile Include="Interfaces\ILogContainer.cs" />
+    <Compile Include="Interfaces\ILogFilterHandler.cs" />
+    <Compile Include="Interfaces\ILogFilterProvider.cs" />
+    <Compile Include="Interfaces\ILogHandler.cs" />
+    <Compile Include="Interfaces\ILogPresenter.cs" />
+    <Compile Include="Interfaces\ILogProvider.cs" />
+    <Compile Include="Interfaces\ILogSettingsCtrl.cs" />
+    <Compile Include="Interfaces\IOptionPanel.cs" />
+    <Compile Include="Interfaces\ISearchable.cs" />
+    <Compile Include="Logging\Filter\LogFilter.cs" />
+    <Compile Include="Logging\Filter\LogFilterLevel.cs" />
+    <Compile Include="Logging\Filter\LogFilterLogger.cs" />
+    <Compile Include="Logging\LogLevel.cs" />
+    <Compile Include="Logging\LogMessageEventlog.cs" />
+    <Compile Include="Logging\LogMessageLog4Net.cs" />
+    <Compile Include="Logging\LogMessageSyslog.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Receiver\EventlogReceiver\EventlogReceiver.cs" />
+    <Compile Include="Receiver\EventlogReceiver\EventlogReceiverSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Receiver\EventlogReceiver\EventlogReceiverSettings.Designer.cs">
+      <DependentUpon>EventlogReceiverSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Receiver\NLogFileReceiver\NLogFileReceiver.cs" />
+    <Compile Include="Receiver\NLogFileReceiver\NLogFileReceiverSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Receiver\NLogFileReceiver\NLogFileReceiverSettings.Designer.cs">
+      <DependentUpon>NLogFileReceiverSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Receiver\NLogUdpReceiver\NLogUdpReceiver.cs" />
+    <Compile Include="Receiver\NLogUdpReceiver\NLogUdpReceiverSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Receiver\NLogUdpReceiver\NLogUdpReceiverSettings.Designer.cs">
+      <DependentUpon>NLogUdpReceiverSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Receiver\SyslogFileReceiver\SyslogFileReceiver.cs" />
+    <Compile Include="Receiver\SyslogFileReceiver\SyslogFileReceiverSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Receiver\SyslogFileReceiver\SyslogFileReceiverSettings.Designer.cs">
+      <DependentUpon>SyslogFileReceiverSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Receiver\Log4NetFileReceiver\Log4NetFileReceiver.cs" />
+    <Compile Include="Receiver\Log4NetFileReceiver\Log4NetFileReceiverSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Receiver\Log4NetFileReceiver\Log4NetFileReceiverSettings.Designer.cs">
+      <DependentUpon>Log4NetFileReceiverSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Receiver\NLogTcpReceiver\NLogTcpReceiver.cs" />
+    <Compile Include="Receiver\NLogTcpReceiver\NLogTcpReceiverSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Receiver\NLogTcpReceiver\NLogTcpReceiverSettings.Designer.cs">
+      <DependentUpon>NLogTcpReceiverSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Receiver\Log4NetUdpReceiver\Log4NetUdpReceiver.cs" />
+    <Compile Include="Receiver\Log4NetUdpReceiver\Log4NetUdpReceiverSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Receiver\Log4NetUdpReceiver\Log4NetUdpReceiverSettings.Designer.cs">
+      <DependentUpon>Log4NetUdpReceiverSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Receiver\ReceiverBase.cs" />
+    <Compile Include="Receiver\SyslogUdpReceiver\SyslogUdpReceiverSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Receiver\SyslogUdpReceiver\SyslogUdpReceiverSettings.Designer.cs">
+      <DependentUpon>SyslogUdpReceiverSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Receiver\SyslogUdpReceiver\SyslogUdpReceiver.cs" />
+    <Compile Include="Receiver\ValidationResult.cs" />
+    <EmbeddedResource Include="Controls\ColorPickerCtrl.resx">
+      <DependentUpon>ColorPickerCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EventLogDetailsControl.resx">
+      <DependentUpon>EventLogDetailsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\OptionPanels\OptionPanelScriptEditor.resx">
+      <DependentUpon>OptionPanelScriptEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SyslogDetailsControl.resx">
+      <DependentUpon>SyslogDetailsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Log4NetDetailsControl.resx">
+      <DependentUpon>Log4NetDetailsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\OptionPanels\OptionPanelFontColor.resx">
+      <DependentUpon>OptionPanelFontColor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\OptionPanels\OptionPanelGeneral.resx">
+      <DependentUpon>OptionPanelGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Docking\FrmLogBookmarks.resx">
+      <DependentUpon>FrmLogBookmarks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Docking\FrmLogDocument.resx">
+      <DependentUpon>FrmLogDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Docking\FrmLogScript.resx">
+      <DependentUpon>FrmLogScript.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FrmLogSearch.resx">
+      <DependentUpon>FrmLogSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Docking\FrmLogTree.resx">
+      <DependentUpon>FrmLogTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Docking\FrmLogWindow.resx">
+      <DependentUpon>FrmLogWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Docking\FrmLogDetails.resx">
+      <DependentUpon>FrmLogDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FrmAbout.resx">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FrmNew.resx">
+      <DependentUpon>FrmNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FrmOptions.resx">
+      <DependentUpon>FrmOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Receiver\EventlogReceiver\EventlogReceiverSettings.resx">
+      <DependentUpon>EventlogReceiverSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Receiver\NLogFileReceiver\NLogFileReceiverSettings.resx">
+      <DependentUpon>NLogFileReceiverSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Receiver\NLogUdpReceiver\NLogUdpReceiverSettings.resx">
+      <DependentUpon>NLogUdpReceiverSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Receiver\SyslogFileReceiver\SyslogFileReceiverSettings.resx">
+      <DependentUpon>SyslogFileReceiverSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Receiver\Log4NetFileReceiver\Log4NetFileReceiverSettings.resx">
+      <DependentUpon>Log4NetFileReceiverSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Receiver\NLogTcpReceiver\NLogTcpReceiverSettings.resx">
+      <DependentUpon>NLogTcpReceiverSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Receiver\Log4NetUdpReceiver\Log4NetUdpReceiverSettings.resx">
+      <DependentUpon>Log4NetUdpReceiverSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Receiver\SyslogUdpReceiver\SyslogUdpReceiverSettings.resx">
+      <DependentUpon>SyslogUdpReceiverSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <Compile Include="Logging\LogMessage.cs" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BaseApplicationManifest Include="Properties\app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lines_Text_code_16xMD.png" />
+    <None Include="Resources\DebugStop.png" />
+    <None Include="Resources\WordWrap_67741.png" />
+    <None Include="Resources\Clearwindowcontent_6304.png" />
+    <None Include="Resources\Symbols_Stop_16xLG.png" />
+    <None Include="Resources\arrow_run_16xLG.png" />
+    <None Include="Resources\Redo_16x.png" />
+    <None Include="Resources\Undo_16x.png" />
+    <None Include="Resources\Paste_6520.png" />
+    <None Include="Resources\Cut_6523.png" />
+    <None Include="Resources\folder_Open_16xLG.png" />
+    <None Include="Resources\Bookmark_6986.png" />
+    <None Include="Resources\eyedropper_16xLG.png" />
+    <None Include="Resources\clock_16xLG.png" />
+    <None Include="Resources\Find_5650.png" />
+    <None Include="Resources\FindSymbol_6263.png" />
+    <None Include="Resources\refresh_16xLG.png" />
+    <None Include="Resources\font_color.png" />
+    <None Include="Resources\filter_16xLG.png" />
+    <None Include="Resources\save_as.png" />
+    <None Include="Resources\Bookmark_5776.png" />
+    <None Include="Resources\BookmarkPrevious_2391.png" />
+    <None Include="Resources\BookmarkNext_2389.png" />
+    <None Include="Resources\BookmarkClear_2381.png" />
+    <None Include="Resources\bookmark_002_16xMD.png" />
+    <None Include="Resources\NoBookmark.png" />
+    <None Include="Resources\zoom_16xLG.png" />
+    <None Include="Resources\ZoomOut_16xLG.png" />
+    <None Include="Resources\Copy_6524.png" />
+    <None Include="Resources\WordWrap_6774.png" />
+    <None Include="Resources\debug.png" />
+    <None Include="Resources\error.png" />
+    <None Include="Resources\fatal.png" />
+    <None Include="Resources\info.png" />
+    <None Include="Resources\trace.png" />
+    <None Include="Resources\warn.png" />
+    <None Include="Resources\StatusAnnotations_Play_16xLG.png" />
+    <None Include="Resources\move_to_top.png" />
+    <None Include="Resources\move_to_bottom.png" />
+    <None Include="Resources\to_bottom.png" />
+    <None Include="Resources\save_16xLG.png" />
+    <None Include="Resources\action_Cancel_16xLG.png" />
+    <None Include="Resources\LoggerTree.png" />
+    <None Include="Resources\MesageDetails.png" />
+    <None Include="Resources\properties_16xLG.png" />
+    <None Include="Resources\StatusAnnotations_Information_16xLG.png" />
+    <None Include="Resources\Logbert Start Screen.png" />
+    <Content Include="Libraries\MoonSharp.Interpreter.dll" />
+    <Content Include="Libraries\ScintillaNET.dll" />
+    <Content Include="Logbert.ico" />
+    <None Include="Resources\logbert.about.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\GuiLibrary\GuiLibrary.csproj">
+      <Project>{0d9d135f-9d7a-4d90-8810-903450fd4245}</Project>
+      <Name>GuiLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WinFormsUI\WinFormsUI.csproj">
+      <Project>{c75532c4-765b-418e-b09b-46d36b2abdb1}</Project>
+      <Name>WinFormsUI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

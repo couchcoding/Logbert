@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+  File:    Product.wxs
+  Package: Logbert Setup
+  Project: Logbert
+
+  The MIT License (MIT)
+  
+  Copyright (c) 2015 Couchcoding
+  
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+
+-->
+
+<Wix xmlns      = "http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util = "http://schemas.microsoft.com/wix/UtilExtension">
+
+  <?include Includes\GlobalDefines.wxi ?>
+
+  <Product Id           = "*"
+           Name         = "$(var.ProductName)"
+           Language     = "!(loc.LanguageId)"
+           Codepage     = "0"
+           Version      = "!(bind.FileVersion.Id_LgbrtExe)"
+           Manufacturer = "$(var.Manufacturer)"
+           UpgradeCode  = "$(var.UpgradeCode)">
+
+    <Package Id                = "*"
+             InstallerVersion  = "300"
+             Compressed        = "yes"
+             Description       = "!(loc.PackageDescription)"
+             InstallPrivileges = "elevated"
+             Keywords          = "!(loc.PackageKeywords)"
+             Comments          = "!(loc.PackageComments)"
+             Languages         = "!(loc.LanguageId)"
+             SummaryCodepage   = "!(loc.Codepage)"
+             Manufacturer      = "$(var.Manufacturer)" />
+
+    <WixVariable Id="WixUIBannerBmp" Value="Bitmaps\bannrbmp.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="Bitmaps\dlgbmp.bmp" />
+
+    <!-- Always perform a major update, because the user 
+         should always have the latest version installed. -->
+    <MajorUpgrade AllowDowngrades = "yes" />
+
+    <Media Id               = "1"
+           Cabinet          = "Lgbrt.cab"
+           EmbedCab         = "yes"
+           CompressionLevel = "high" />
+
+    <?include Includes\ArpProperties.wxi ?>
+
+    <Condition Message="!(loc.ConditionInvalidOS)">
+      <![CDATA[(VersionNT > 501) OR ((VersionNT = 501) AND (ServicePackLevel >= 2))]]>
+    </Condition>
+
+    <PropertyRef Id="NETFRAMEWORK35"/>
+    <Condition Message="!(loc.ConditionNoDotNet35)">
+      <![CDATA[Installed OR NETFRAMEWORK35]]>
+    </Condition>
+
+    <Property Id="INSTALLDIR">
+      <RegistrySearch Id    = "PreviousInstallLocationRegistrySearch"
+                      Root  = "HKCU"
+                      Key   = "Software\$(var.Manufacturer)\$(var.ProductName)"
+                      Name  = "InstallLocation"
+                      Type  = "raw"
+                      Win64 = "$(var.Win64)" />
+    </Property>
+
+    <?include Install\Files.wxi ?>
+
+    <AdminExecuteSequence />
+    <InstallExecuteSequence>
+      <AppSearch Sequence="1" />
+      <LaunchConditions After="AppSearch" />
+    </InstallExecuteSequence>
+
+    <Property Id    = "WIXUI_INSTALLDIR"
+              Value = "INSTALLDIR" />
+
+    <UIRef Id="CstmWixUI_InstallDir" />
+
+  </Product>
+</Wix>

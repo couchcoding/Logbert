@@ -1,0 +1,316 @@
+﻿#region Copyright © 2015 Couchcoding
+
+// File:    FrmLogBookmarks.cs
+// Package: Logbert
+// Project: Logbert
+// 
+// The MIT License (MIT)
+// 
+// Copyright (c) 2015 Couchcoding
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+#endregion
+
+using System.Drawing;
+using System.Windows.Forms;
+
+using Com.Couchcoding.Logbert.Helper;
+using Com.Couchcoding.Logbert.Interfaces;
+using Com.Couchcoding.Logbert.Logging;
+
+using WeifenLuo.WinFormsUI.Docking;
+
+namespace Com.Couchcoding.Logbert.Dialogs.Docking
+{
+  /// <summary>
+  /// Implements a <see cref="DockContent"/> to display and manage bookmarked <see cref="LogMessage"/>s.
+  /// </summary>
+  public partial class FrmLogBookmarks : DockContent, ILogPresenter, IBookmarkObserver
+  {
+    #region Private Fields
+
+    /// <summary>
+    /// Holds the <see cref="IBookmarkProvider"/> instance that provides bookmarked <see cref="LogMessage"/>s.
+    /// </summary>
+    private readonly IBookmarkProvider mBookmarkProvider;
+
+    /// <summary>
+    /// The <see cref="Image"/> to use for bookmarks.
+    /// </summary>
+    private static readonly Image mBookmarkImage = Properties.Resources.bookmark_002_16xMD;
+
+    #endregion
+
+    #region Private Methods
+
+    /// <summary>
+    /// Handles the Click event of the remove bookmark <see cref="ToolStripButton"/>.
+    /// </summary>
+    private void TsbRemoveBookmarkClick(object sender, System.EventArgs e)
+    {
+      if (mBookmarkProvider != null && dgvBookmarks.SelectedRows.Count > 0)
+      {
+        mBookmarkProvider.RemoveBookmark(dgvBookmarks.SelectedRows[0].Tag as LogMessage);
+      }
+    }
+
+    /// <summary>
+    /// Handles the DoubleClick event of the bookmark <see cref="DataGridView"/>.
+    /// </summary>
+    private void DgvBookmarksCellDoubleClick(object sender, DataGridViewCellEventArgs e)
+    {
+      if (e.RowIndex >= dgvBookmarks.RowCount || e.RowIndex < 0)
+      {
+        return;
+      }
+
+      LogMessage selectedMessage = dgvBookmarks.Rows[e.RowIndex].Tag as LogMessage;
+
+      if (selectedMessage != null && mBookmarkProvider != null)
+      {
+        mBookmarkProvider.SelectLogMessage(selectedMessage);
+      }
+    }
+
+    /// <summary>
+    /// Handles the SelectionChanged event of the bookmark <see cref="DataGridView"/>.
+    /// </summary>
+    private void DgvBookmarksSelectionChanged(object sender, System.EventArgs e)
+    {
+      tsbRemoveBookmark.Enabled   = dgvBookmarks.SelectedRows.Count > 0;
+      tsbNextBookmark.Enabled     = dgvBookmarks.SelectedRows.Count > 0 && !dgvBookmarks.Rows[dgvBookmarks.RowCount - 1].Selected;
+      tsbPreviousBookmark.Enabled = dgvBookmarks.SelectedRows.Count > 0 && !dgvBookmarks.Rows[0].Selected;
+    }
+
+    /// <summary>
+    /// Handles the Click event of the goto previous bookmark <see cref="ToolStripItem"/>.
+    /// </summary>
+    private void TsbPreviousBookmarkClick(object sender, System.EventArgs e)
+    {
+      if (dgvBookmarks.SelectedRows.Count > 0 && dgvBookmarks.SelectedRows[0].Index != 0)
+      {
+        int newSelIndex = dgvBookmarks.SelectedRows[0].Index - 1;
+
+        // Select the message within the bookmark window.
+        dgvBookmarks.Rows[newSelIndex].Selected = true;
+
+        // Select the message within the log window.
+        LogMessage message =  dgvBookmarks.Rows[newSelIndex].Tag as LogMessage;
+        
+        if (message != null && mBookmarkProvider != null)
+        {
+          mBookmarkProvider.SelectLogMessage(message);
+        }
+      }
+    }
+
+    /// <summary>
+    /// Handles the Click event of the goto next bookmark <see cref="ToolStripItem"/>.
+    /// </summary>
+    private void TsbNextBookmarkClick(object sender, System.EventArgs e)
+    {
+      if (dgvBookmarks.SelectedRows.Count > 0 && dgvBookmarks.SelectedRows[0].Index != dgvBookmarks.Rows.Count - 1)
+      {
+        int newSelIndex = dgvBookmarks.SelectedRows[0].Index + 1;
+
+        // Select the message within the bookmark window.
+        dgvBookmarks.Rows[newSelIndex].Selected = true;
+
+        // Select the message within the log window.
+        LogMessage message =  dgvBookmarks.Rows[newSelIndex].Tag as LogMessage;
+
+        if (message != null && mBookmarkProvider != null)
+        {
+          mBookmarkProvider.SelectLogMessage(message);
+        }
+      }
+    }
+
+    /// <summary>
+    /// Clean up any resources being used.
+    /// </summary>
+    /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+    protected override void Dispose(bool disposing)
+    {
+      if (disposing && (components != null))
+      {
+        components.Dispose();
+      }
+
+      if (mBookmarkProvider != null)
+      {
+        mBookmarkProvider.RegisterBookmarkObserver(this);
+      }
+
+      base.Dispose(disposing);
+    }
+
+    /// <summary>
+    /// Raises the <see cref="E:System.Windows.Forms.Control.VisibleChanged"/> event.
+    /// </summary>
+    /// <param name="e">The <see cref="T:System.EventArgs"/> that contains the event data. </param>
+    protected override void OnVisibleChanged(System.EventArgs e)
+    {
+      base.OnVisibleChanged(e);
+
+      if (mBookmarkProvider != null)
+      {
+        SelectLogMessage(mBookmarkProvider.SelectedMessage);
+      }
+    }
+
+    #endregion
+
+    #region Public Methods
+
+    /// <summary>
+    /// Raises the BookmarksChanged event of the bookmark <see cref="IBookmarkProvider"/>.
+    /// </summary>
+    public void BookmarksChanged()
+    {
+      if (mBookmarkProvider != null)
+      {
+        LogMessage selectedMessage = dgvBookmarks.SelectedRows.Count > 0
+          ? dgvBookmarks.SelectedRows[0].Tag as LogMessage
+          : null;
+
+        dgvBookmarks.SuspendDrawing();
+
+        try
+        {
+          dgvBookmarks.Rows.Clear();
+
+          foreach (LogMessage message in mBookmarkProvider.Bookmarks)
+          {
+            int rowIndex = dgvBookmarks.Rows.Add(
+                mBookmarkImage
+              , message.Index
+              , message.Message);
+
+            dgvBookmarks.Rows[rowIndex].Tag = message;
+
+            if (Equals(selectedMessage, message))
+            {
+              dgvBookmarks.Rows[rowIndex].Selected = true;
+            }
+          }
+        }
+        finally
+        {
+          dgvBookmarks.ResumeDrawing();
+        }
+        
+        SelectLogMessage(mBookmarkProvider.SelectedMessage);
+      }
+    }
+
+    /// <summary>
+    /// Updates the visible <see cref="LogMessage"/>s.
+    /// </summary>
+    /// <param name="messages">The list of <see cref="LogMessage"/>s to display.</param>
+    /// <param name="delta">The count of new <see cref="LogMessage"/>s.</param>
+    public void LogMessagesChanged(System.Collections.Generic.List<LogMessage> messages, int delta = -1)
+    {
+      // Nothing to do here.
+    }
+
+    /// <summary>
+    /// Selects the <see cref="LogMessage"/> on the given <paramref name="index"/>.
+    /// </summary>
+    /// <param name="index">The index of the <see cref="LogMessage"/> to select.</param>
+    /// <returns><c>True</c> if the <see cref="LogMessage"/> of the given <paramref name="index"/> was selected successfully, otherwise <c>false</c>.</returns>
+    public bool SelectLogMessage(int index)
+    {
+      // Nothing to do here.
+      return true;
+    }
+
+    /// <summary>
+    /// Selects the given <paramref name="message"/>.
+    /// </summary>
+    /// <param name="message">The <see cref="LogMessage"/> o select</param>
+    /// <returns><c>True</c> if the given <paramref name="message"/> was selected successfully, otherwise <c>false</c>.</returns>
+    public bool SelectLogMessage(LogMessage message)
+    {
+      if (message == null || mBookmarkProvider == null)
+      {
+        return false;
+      }
+
+      tsbNextBookmark.Enabled = dgvBookmarks.SelectedRows.Count > 0 && 
+                                   !dgvBookmarks.Rows[dgvBookmarks.RowCount - 1].Selected;
+
+      tsbPreviousBookmark.Enabled = dgvBookmarks.SelectedRows.Count > 0 && 
+                                   !dgvBookmarks.Rows[0].Selected;
+
+      return true;
+    }
+
+    /// <summary>
+    /// Clears all shown <see cref="LogMessage"/>s.
+    /// </summary>
+    public void ClearAll()
+    {
+      mBookmarkProvider.Bookmarks.Clear();
+      BookmarksChanged();
+    }
+
+    /// <summary>
+    /// Increases the size of the <see cref="ILogPresenter"/> content.
+    /// </summary>
+    /// <returns><c>True</c> if further increasing is possible, otherwise <c>false</c>.</returns>
+    public bool ZoomIn()
+    {
+      return false;
+    }
+
+    /// <summary>
+    /// Decreases the size of the <see cref="ILogPresenter"/> content.
+    /// </summary>
+    /// <returns><c>True</c> if further decreasing is possible, otherwise <c>false</c>.</returns>
+    public bool ZoomOut()
+    {
+      return false;
+    }
+
+    #endregion
+
+    #region Constructor
+
+    /// <summary>
+    /// Creates a new instance of the <see cref="FrmLogBookmarks"/> window.
+    /// </summary>
+    /// <param name="bookmarkProvider">The <see cref="IBookmarkProvider"/> instance that provides bookmarked <see cref="LogMessage"/>s.</param>
+    public FrmLogBookmarks(IBookmarkProvider bookmarkProvider)
+    {
+      mBookmarkProvider = bookmarkProvider;
+
+      if (mBookmarkProvider != null)
+      {
+        // Register this instance as observer.
+        mBookmarkProvider.RegisterBookmarkObserver(this);
+      }
+
+      InitializeComponent();
+    }
+
+    #endregion
+  }
+}
