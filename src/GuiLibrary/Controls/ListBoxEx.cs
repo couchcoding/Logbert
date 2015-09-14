@@ -320,7 +320,7 @@ namespace Com.Couchcoding.GuiLibrary.Controls
 
       int index = IndexFromPoint(e.Location);
 
-      if (e.Y > GetItemRectangle(index).Bottom)
+      if (index >= 0 && e.Y > GetItemRectangle(index).Bottom)
       {
         index = -1;
       }
