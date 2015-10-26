@@ -152,6 +152,12 @@
     <Compile Include="Dialogs\Docking\FrmLogDocument.Designer.cs">
       <DependentUpon>FrmLogDocument.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\Docking\FrmLogFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Docking\FrmLogFilter.Designer.cs">
+      <DependentUpon>FrmLogFilter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\Docking\FrmLogScript.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +228,7 @@
     <Compile Include="Interfaces\IOptionPanel.cs" />
     <Compile Include="Interfaces\ISearchable.cs" />
     <Compile Include="Logging\Filter\LogFilter.cs" />
+    <Compile Include="Logging\Filter\LogFilterColumn.cs" />
     <Compile Include="Logging\Filter\LogFilterLevel.cs" />
     <Compile Include="Logging\Filter\LogFilterLogger.cs" />
     <Compile Include="Logging\LogLevel.cs" />
@@ -326,6 +333,9 @@
     <EmbeddedResource Include="Dialogs\Docking\FrmLogDocument.resx">
       <DependentUpon>FrmLogDocument.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Docking\FrmLogFilter.resx">
+      <DependentUpon>FrmLogFilter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\Docking\FrmLogScript.resx">
       <DependentUpon>FrmLogScript.cs</DependentUpon>
     </EmbeddedResource>
@@ -399,6 +409,8 @@
     <BaseApplicationManifest Include="Properties\app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\remove_filter.png" />
+    <None Include="Resources\add_filter.png" />
     <None Include="Resources\lines_Text_code_16xMD.png" />
     <None Include="Resources\DebugStop.png" />
     <None Include="Resources\WordWrap_67741.png" />

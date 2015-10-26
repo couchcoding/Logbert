@@ -29,6 +29,7 @@
 #endregion
 
 using System;
+using System.Windows.Forms;
 
 using Com.Couchcoding.Logbert.Helper;
 using Com.Couchcoding.Logbert.Properties;

@@ -31,6 +31,7 @@
 using Com.Couchcoding.Logbert.Properties;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using System.Xml;
 
 using Com.Couchcoding.Logbert.Helper;

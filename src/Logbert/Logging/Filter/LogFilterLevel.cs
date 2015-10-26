@@ -33,7 +33,7 @@ namespace Com.Couchcoding.Logbert.Logging.Filter
   /// <summary>
   /// Implements a simple <see cref="LogLevel"/> comparing <see cref="LogFilter"/> for <see cref="LogMessage"/>s.
   /// </summary>
-  public class LogFilterLevel : LogFilter
+  public sealed class LogFilterLevel : LogFilter
   {
     #region Public Properties
 

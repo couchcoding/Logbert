@@ -1,6 +1,6 @@
 ﻿#region Copyright © 2015 Couchcoding
 
-// File:    LogFilterLogger.cs
+// File:    LogFilterColumn.cs
 // Package: Logbert
 // Project: Logbert
 // 
@@ -28,24 +28,26 @@
 
 #endregion
 
+using System.Text.RegularExpressions;
+
 namespace Com.Couchcoding.Logbert.Logging.Filter
 {
   /// <summary>
-  /// Implements a simple <see cref="LogLevel"/> comparing <see cref="LogFilter"/>s logger value for <see cref="LogMessage"/>s.
+  /// Implements a <see cref="LogLevel"/> to filter <see cref="LogMessage"/>s with a defined value. 
   /// </summary>
-  public sealed class LogFilterLogger : LogFilter
+  public sealed class LogFilterColumn : LogFilter
   {
     #region Private Fields
 
     /// <summary>
-    /// Holds the path of the logger to filter.
+    /// Holds the index of the column to match.
     /// </summary>
-    private readonly string mFilterPath;
+    private readonly int mColumnIndex;
 
     /// <summary>
-    /// Holds the value if only the start, or the entire value should be compared.
+    /// Holds the value the column should have to match.
     /// </summary>
-    private readonly bool mRecursive;
+    private readonly Regex mColumnMatchValueRegEx;
 
     #endregion
 
@@ -54,18 +56,14 @@ namespace Com.Couchcoding.Logbert.Logging.Filter
     /// <summary>
     /// Determines whether the given <paramref name="value"/> matches the filter, or not.
     /// </summary>
-    /// <param name="value">The value that may be match the filter.</param>
+    /// <param name="value">The <see cref="LogMessage"/> that may be match the filter.</param>
     /// <returns><c>True</c> if the given <paramref name="value"/> matches the filter, otherwise <c>false</c>.</returns>
     public override bool Match(LogMessage value)
     {
-      if (value == null)
-      {
-        return false;
-      }
+      object columnValue = value.GetValueForColumn(mColumnIndex);
 
-      return mRecursive 
-        ? value.Logger.StartsWith(mFilterPath) 
-        : Equals(value.Logger, mFilterPath);
+      return columnValue != null && 
+        mColumnMatchValueRegEx.IsMatch(columnValue.ToString());
     }
 
     #endregion
@@ -73,14 +71,14 @@ namespace Com.Couchcoding.Logbert.Logging.Filter
     #region Constructor
 
     /// <summary>
-    /// Creates a new instance of the <see cref="LogFilterLogger"/>.
+    /// Creates a new instance of a <see cref="LogFilterLevel"/>.
     /// </summary>
-    /// <param name="filterPath">The path of the logger to filter.</param>
-    /// <param name="recursive">Determines whether the entire string, or only the start should be compared.</param>
-    public LogFilterLogger(string filterPath, bool recursive)
+    /// <param name="columnIndex">The index of the column to match.</param>
+    /// <param name="matchRegex">The string for the column match <see cref="Regex"/>.</param>
+    public LogFilterColumn(int columnIndex, string matchRegex)
     {
-      mFilterPath = filterPath;
-      mRecursive  = recursive;
+      mColumnIndex           = columnIndex;
+      mColumnMatchValueRegEx = new Regex(matchRegex ?? ".*");
     }
 
     #endregion

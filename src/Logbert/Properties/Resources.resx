@@ -130,8 +130,14 @@
   <data name="Paste_6520" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Paste_6520.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="strEventLogReceiverNoMachineName" xml:space="preserve">
-    <value>No machine name to listen on is set.</value>
+  <data name="BookmarkNext_2389" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BookmarkNext_2389.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DebugStop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DebugStop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="strDocumentStatusRunning" xml:space="preserve">
+    <value>Status: Running</value>
   </data>
   <data name="strEventLogReceiverNoCategory" xml:space="preserve">
     <value>None</value>
@@ -139,32 +145,41 @@
   <data name="strSyslogFileReceiverFilePattern" xml:space="preserve">
     <value>All Files (*.*)|*.*|Syslog Files (*.log)|*.log</value>
   </data>
+  <data name="strEventLogReceiverNoLogNameAvailable" xml:space="preserve">
+    <value>No event log name available to listen for.</value>
+  </data>
   <data name="strOptionPanelPleaseWait" xml:space="preserve">
     <value>Please wait...</value>
   </data>
   <data name="save_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="strLoggerRoot" xml:space="preserve">
-    <value>Logger Root</value>
-  </data>
-  <data name="strDocumentMessageCount" xml:space="preserve">
-    <value>{0} Messages</value>
-  </data>
   <data name="strErrorLoadingScript" xml:space="preserve">
     <value>Error loading script: {0}</value>
+  </data>
+  <data name="Bookmark_6986" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bookmark_6986.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="strNlogTcpReceiverNetworkIPAddress" xml:space="preserve">
+    <value>IP Address:{0}{1}{2}</value>
   </data>
   <data name="strSaveLogErrorOccured" xml:space="preserve">
     <value>An error occured while writing the logged messages to the file: {0}</value>
   </data>
-  <data name="strLuaEditorErrorExecutingScript" xml:space="preserve">
-    <value>Error executing script: {0}{1}</value>
+  <data name="strNlogTcpReceiverNetworkSpeed" xml:space="preserve">
+    <value>Speed:{0}{0}{1} MBit/s{2}</value>
+  </data>
+  <data name="strNLogFileReceiverFilePattern" xml:space="preserve">
+    <value>All Files (*.*)|*.*|NLog Files (*.log)|*.log</value>
   </data>
   <data name="strEventLogReceiverNoUsername" xml:space="preserve">
     <value>N/A</value>
   </data>
   <data name="NoBookmark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NoBookmark.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="strNLogUdpReceiverNetworkIPAddress" xml:space="preserve">
+    <value>IP Address:{0}{1}{2}</value>
   </data>
   <data name="strDefaultLuaFilename" xml:space="preserve">
     <value>Logbert Script.lua</value>
@@ -175,14 +190,29 @@
   <data name="strSaveLogDefaultName" xml:space="preserve">
     <value>unknown.txt</value>
   </data>
+  <data name="lines_Text_code_16xMD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lines_Text_code_16xMD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="strNLogUdpReceiverNetworkSpeed" xml:space="preserve">
+    <value>Speed:{0}{0}{1} MBit/s{2}</value>
+  </data>
   <data name="BookmarkClear_2381" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BookmarkClear_2381.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="strNlogTcpReceiverNetworkDescription" xml:space="preserve">
+    <value>Description:{0}{1}{2}</value>
+  </data>
+  <data name="strMruFileCouldNotBeFound" xml:space="preserve">
+    <value>The file {0} could not be found anymore. Do you want to remove it from the recently used file list?</value>
   </data>
   <data name="strErrorSavingScript" xml:space="preserve">
     <value>Error saving script: {0}</value>
   </data>
   <data name="strSaveLuaFilter" xml:space="preserve">
     <value>All Files (*.*)|*.*|Lua scripts (*.lua)|*.lua</value>
+  </data>
+  <data name="arrow_run_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow_run_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="debug" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\debug.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -201,6 +231,9 @@
   </data>
   <data name="Cut_6523" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cut_6523.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="strNlogTcpReceiverNoNetworkInterfaceAvailable" xml:space="preserve">
+    <value>No network interface available to listen on.</value>
   </data>
   <data name="StatusAnnotations_Information_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\StatusAnnotations_Information_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,14 +259,11 @@
   <data name="LoggerTree" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LoggerTree.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="strOpenLuaFilter" xml:space="preserve">
-    <value>All Files (*.*)|*.*|Lua scripts (*.lua)|*.lua</value>
-  </data>
-  <data name="info" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\info.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="strClearMruList" xml:space="preserve">
     <value>&amp;Clear Items</value>
+  </data>
+  <data name="strNLogUdpReceiverNoNetworkInterfaceAvailable" xml:space="preserve">
+    <value>No network interface available to listen on.</value>
   </data>
   <data name="strSyslogFileReceiverFileDoesNotExist" xml:space="preserve">
     <value>The given log file does not exist. Please select an existing one.</value>
@@ -244,8 +274,8 @@
   <data name="clock_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\clock_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="warn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\warn.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="strNLogFileReceiverFileDoesNotExist" xml:space="preserve">
+    <value>The given log file does not exist. Please select an existing one.</value>
   </data>
   <data name="strLog4NetFileReceiverFilePattern" xml:space="preserve">
     <value>All Files (*.*)|*.*|Log4Net Files (*.log)|*.log</value>
@@ -259,18 +289,12 @@
   <data name="properties_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\properties_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="strNlogTcpReceiverNoNetworkInterfaceAvailable" xml:space="preserve">
-    <value>No network interface available to listen on.</value>
-  </data>
   <data name="strOpenLogFileError" xml:space="preserve">
     <value>The file "{0}" could not be open as a log file. 
 Maybe the data the file contains is not yet supported by Logbert.</value>
   </data>
-  <data name="strNlogTcpReceiverNetworkSpeed" xml:space="preserve">
-    <value>Speed:{0}{0}{1} MBit/s{2}</value>
-  </data>
-  <data name="bookmark_002_16xMD" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bookmark_002_16xMD.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="strDocumentMessageCount" xml:space="preserve">
+    <value>{0} Messages</value>
   </data>
   <data name="action_Cancel_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\action_Cancel_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -278,8 +302,8 @@ Maybe the data the file contains is not yet supported by Logbert.</value>
   <data name="strLog4NetUdpReceiverNetworkSpeed" xml:space="preserve">
     <value>Speed:{0}{0}{1} MBit/s{2}</value>
   </data>
-  <data name="strNlogTcpReceiverNetworkDescription" xml:space="preserve">
-    <value>Description:{0}{1}{2}</value>
+  <data name="strOptionPanelFontColorName" xml:space="preserve">
+    <value>Font and Color</value>
   </data>
   <data name="strFileLoadPattern" xml:space="preserve">
     <value>All Files (*.*)|*.*|General Log Files (*.log)|*.log</value>
@@ -302,20 +326,23 @@ Maybe the data the file contains is not yet supported by Logbert.</value>
   <data name="strLoggerDetailsCtrlOffset" xml:space="preserve">
     <value> (Offset: {0} Milliseconds)</value>
   </data>
-  <data name="trace" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\trace.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="strAboutDlgVersion" xml:space="preserve">
     <value>Version: {0}</value>
   </data>
   <data name="strSyslogReceiverNoNetworkInterfaceAvailable" xml:space="preserve">
     <value>No network interface available to listen on.</value>
   </data>
-  <data name="strMruFileCouldNotBeFound" xml:space="preserve">
-    <value>The file {0} could not be found anymore. Do you want to remove it from the recently used file list?</value>
+  <data name="bookmark_002_16xMD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bookmark_002_16xMD.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="filter_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\filter_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="strOptionPanelScriptEditor" xml:space="preserve">
+    <value>Script Editor</value>
+  </data>
+  <data name="strNLogUdpReceiverNetworkDescription" xml:space="preserve">
+    <value>Description:{0}{1}{2}</value>
   </data>
   <data name="BookmarkPrevious_2391" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BookmarkPrevious_2391.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -323,8 +350,8 @@ Maybe the data the file contains is not yet supported by Logbert.</value>
   <data name="Clearwindowcontent_6304" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Clearwindowcontent_6304.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="strNlogTcpReceiverNetworkIPAddress" xml:space="preserve">
-    <value>IP Address:{0}{1}{2}</value>
+  <data name="move_to_top" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\move_to_top.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="strLog4NetUdpReceiverNoNetworkInterfaceAvailable" xml:space="preserve">
     <value>No network interface available to listen on.</value>
@@ -347,8 +374,8 @@ Maybe the data the file contains is not yet supported by Logbert.</value>
   <data name="ZoomOut_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ZoomOut_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="arrow_run_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrow_run_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="warn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\warn.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Copy_6524" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Copy_6524.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -359,67 +386,46 @@ Maybe the data the file contains is not yet supported by Logbert.</value>
   <data name="strLog4NetFileReceiverFileDoesNotExist" xml:space="preserve">
     <value>The given log file does not exist. Please select an existing one.</value>
   </data>
-  <data name="strOptionPanelFontColorName" xml:space="preserve">
-    <value>Font and Color</value>
-  </data>
   <data name="strValidationResultUnkownError" xml:space="preserve">
     <value>Unkown Error</value>
   </data>
-  <data name="strDocumentStatusRunning" xml:space="preserve">
-    <value>Status: Running</value>
-  </data>
-  <data name="strSaveLogToCSVFilePattern" xml:space="preserve">
-    <value>All Files (*.*)|*.*|General CSV Files (*.csv)|*.csv</value>
-  </data>
-  <data name="to_bottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\to_bottom.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="move_to_top" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\move_to_top.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BookmarkNext_2389" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BookmarkNext_2389.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Find_5650" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Find_5650.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Bookmark_6986" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Bookmark_6986.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="font_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\font_color.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="strEventLogReceiverNoLogNameAvailable" xml:space="preserve">
-    <value>No event log name available to listen for.</value>
+  <data name="strLoggerRoot" xml:space="preserve">
+    <value>Logger Root</value>
   </data>
   <data name="FindSymbol_6263" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FindSymbol_6263.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DebugStop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DebugStop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="to_bottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\to_bottom.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="lines_Text_code_16xMD" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lines_Text_code_16xMD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="info" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\info.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="strOptionPanelScriptEditor" xml:space="preserve">
-    <value>Script Editor</value>
+  <data name="strLuaEditorErrorExecutingScript" xml:space="preserve">
+    <value>Error executing script: {0}{1}</value>
   </data>
-  <data name="strNLogUdpReceiverNetworkDescription" xml:space="preserve">
-    <value>Description:{0}{1}{2}</value>
+  <data name="strEventLogReceiverNoMachineName" xml:space="preserve">
+    <value>No machine name to listen on is set.</value>
   </data>
-  <data name="strNLogUdpReceiverNetworkIPAddress" xml:space="preserve">
-    <value>IP Address:{0}{1}{2}</value>
+  <data name="Find_5650" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Find_5650.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="strNLogUdpReceiverNetworkSpeed" xml:space="preserve">
-    <value>Speed:{0}{0}{1} MBit/s{2}</value>
+  <data name="trace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\trace.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="strNLogUdpReceiverNoNetworkInterfaceAvailable" xml:space="preserve">
-    <value>No network interface available to listen on.</value>
+  <data name="font_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\font_color.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="strNLogFileReceiverFileDoesNotExist" xml:space="preserve">
-    <value>The given log file does not exist. Please select an existing one.</value>
+  <data name="strSaveLogToCSVFilePattern" xml:space="preserve">
+    <value>All Files (*.*)|*.*|General CSV Files (*.csv)|*.csv</value>
   </data>
-  <data name="strNLogFileReceiverFilePattern" xml:space="preserve">
-    <value>All Files (*.*)|*.*|NLog Files (*.log)|*.log</value>
+  <data name="strOpenLuaFilter" xml:space="preserve">
+    <value>All Files (*.*)|*.*|Lua scripts (*.lua)|*.lua</value>
+  </data>
+  <data name="add_filter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\add_filter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="remove_filter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\remove_filter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

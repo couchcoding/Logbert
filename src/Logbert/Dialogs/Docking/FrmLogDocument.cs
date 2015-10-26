@@ -74,6 +74,11 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     private readonly DockContent mBookmarks;
 
     /// <summary>
+    /// The <see cref="DockContent"/> that shows filter settings.
+    /// </summary>
+    private readonly DockContent mFilter;
+
+    /// <summary>
     /// The <see cref="DockContent"/> for scripting.
     /// </summary>
     private readonly DockContent mLogScript;
@@ -246,6 +251,13 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
             mBookmarks.Show(
                 LogDockPanel
               , DockState.DockBottom);
+          }
+
+          if (mFilter != null)
+          {
+            mFilter.Show(
+                LogDockPanel
+               , DockState.DockBottom);
           }
 
           if (mMessageDetails != null)
@@ -498,6 +510,27 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     }
 
     /// <summary>
+    /// Handles the Click event of the show gilter <see cref="ToolStripButton"/>.
+    /// <para>
+    /// Shows or hides the filter window.
+    /// </para>
+    /// </summary>
+    private void TsbShowFilterClick(object sender, EventArgs e)
+    {
+      if (mFilter != null)
+      {
+        if (tsbShowFilter.Checked)
+        {
+          mFilter.Show(LogDockPanel);
+        }
+        else
+        {
+          mFilter.Hide();
+        }
+      }
+    }
+
+    /// <summary>
     /// Handles the Click event of the start, stop <see cref="ToolStripButton"/>.
     /// <para>
     /// Starts or stops the life logging.
@@ -605,6 +638,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       ((ILogPresenter)mLogWindow).ClearAll();
       ((ILogPresenter)mMessageDetails).ClearAll();
       ((ILogPresenter)mBookmarks).ClearAll();
+      ((ILogPresenter)mFilter).ClearAll();
       ((ILogPresenter)mLogScript).ClearAll();
 
       // Force an update of the UI.
@@ -643,6 +677,11 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       if (mBookmarks != null)
       {
         ((ILogPresenter)mBookmarks).SelectLogMessage(e.Message);
+      }
+
+      if (mFilter != null)
+      {
+        ((ILogPresenter)mFilter).SelectLogMessage(e.Message);
       }
 
       tsbToggleBookmark.Enabled = e.Message != null;
@@ -993,6 +1032,13 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       mBookmarks.VisibleChanged += (sender, e) =>
       {
         tsbShowBookmarks.Checked = !mBookmarks.IsHidden;
+      };
+
+      mFilter = new FrmLogFilter((ILogFilterHandler)mLogWindow);
+
+      mFilter.VisibleChanged += (sender, e) =>
+      {
+        tsbShowFilter.Checked = !mFilter.IsHidden;
       };
 
       ((FrmLogWindow)mLogWindow).OnLogMessageSelected += OnLogMessageSelected;

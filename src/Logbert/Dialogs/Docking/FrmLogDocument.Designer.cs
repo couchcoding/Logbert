@@ -57,6 +57,7 @@
       this.cmsSaveMessages = new System.Windows.Forms.ContextMenu();
       this.cmsSaveMessagesRaw = new System.Windows.Forms.MenuItem();
       this.cmsSaveMessagesCsv = new System.Windows.Forms.MenuItem();
+      this.tsbShowFilter = new System.Windows.Forms.ToolStripButton();
       ((System.ComponentModel.ISupportInitialize)(this.stbStatus)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.stbMessageCount)).BeginInit();
       this.tsMessages.SuspendLayout();
@@ -127,6 +128,7 @@
             this.tsbShowMessageDetails,
             this.tsbShowLoggerTree,
             this.tsbShowBookmarks,
+            this.tsbShowFilter,
             this.toolStripSeparator1,
             this.tsbTimeShift,
             this.txtTimeShift,
@@ -458,6 +460,17 @@
       this.cmsSaveMessagesCsv.Text = "Save as &CSV...";
       this.cmsSaveMessagesCsv.Click += new System.EventHandler(this.CmsSaveMessagesCsvClick);
       // 
+      // tsbShowFilter
+      // 
+      this.tsbShowFilter.CheckOnClick = true;
+      this.tsbShowFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this.tsbShowFilter.Image = global::Com.Couchcoding.Logbert.Properties.Resources.filter_16xLG;
+      this.tsbShowFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tsbShowFilter.Name = "tsbShowFilter";
+      this.tsbShowFilter.Size = new System.Drawing.Size(23, 23);
+      this.tsbShowFilter.Text = "Filter";
+      this.tsbShowFilter.Click += new System.EventHandler(this.TsbShowFilterClick);
+      // 
       // FrmLogDocument
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -524,5 +537,6 @@
     private System.Windows.Forms.ToolStripButton tsbToggleBookmark;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     private WeifenLuo.WinFormsUI.Docking.VS2012LightTheme VS2012LightTheme;
+    private System.Windows.Forms.ToolStripButton tsbShowFilter;
   }
 }

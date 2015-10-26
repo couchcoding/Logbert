@@ -73,6 +73,16 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_filter {
+            get {
+                object obj = ResourceManager.GetObject("add_filter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_run_16xLG {
             get {
                 object obj = ResourceManager.GetObject("arrow_run_16xLG", resourceCulture);
@@ -406,6 +416,16 @@ namespace Com.Couchcoding.Logbert.Properties {
         internal static System.Drawing.Bitmap refresh_16xLG {
             get {
                 object obj = ResourceManager.GetObject("refresh_16xLG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap remove_filter {
+            get {
+                object obj = ResourceManager.GetObject("remove_filter", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

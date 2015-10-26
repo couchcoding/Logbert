@@ -44,6 +44,20 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
   /// </summary>
   public partial class FrmLogBookmarks : DockContent, ILogPresenter, IBookmarkObserver
   {
+    #region Private Consts
+
+    /// <summary>
+    /// Defines the minimum font size (em) for the <see cref="LogMessage"/> list.
+    /// </summary>
+    private const int MIN_ZOOM_LEVEL = 6;
+
+    /// <summary>
+    /// Defines the maximum font size (em) for the <see cref="LogMessage"/> list.
+    /// </summary>
+    private const int MAX_ZOOM_LEVEL = 60;
+
+    #endregion
+
     #region Private Fields
 
     /// <summary>
@@ -141,6 +155,28 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
           mBookmarkProvider.SelectLogMessage(message);
         }
       }
+    }
+
+    /// <summary>
+    /// Handles the Click event of the zoom in <see cref="ToolStripItem"/>.
+    /// </summary>
+    private void TsbZoomInClick(object sender, System.EventArgs e)
+    {
+      bool futherZoomInPossible = ZoomIn();
+
+      tsbZoomIn.Enabled  = futherZoomInPossible;
+      tsbZoomOut.Enabled = true;
+    }
+
+    /// <summary>
+    /// Handles the Click event of the zoom out <see cref="ToolStripItem"/>.
+    /// </summary>
+    private void TsbZoomOutClick(object sender, System.EventArgs e)
+    {
+      bool futherZoomOuPossible = ZoomOut();
+
+      tsbZoomOut.Enabled  = futherZoomOuPossible;
+      tsbZoomIn.Enabled = true;
     }
 
     /// <summary>
@@ -278,6 +314,24 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// <returns><c>True</c> if further increasing is possible, otherwise <c>false</c>.</returns>
     public bool ZoomIn()
     {
+      if (dgvBookmarks.Font.Size < MAX_ZOOM_LEVEL)
+      {
+        try
+        {
+          dgvBookmarks.SuspendDrawing();
+
+          dgvBookmarks.Font = new Font(
+              Font.FontFamily
+            , dgvBookmarks.Font.Size + 1);
+
+          return dgvBookmarks.Font.Size < MAX_ZOOM_LEVEL;
+        }
+        finally
+        {
+          dgvBookmarks.ResumeDrawing();
+        }
+      }
+
       return false;
     }
 
@@ -287,6 +341,24 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// <returns><c>True</c> if further decreasing is possible, otherwise <c>false</c>.</returns>
     public bool ZoomOut()
     {
+      if (dgvBookmarks.Font.Size > MIN_ZOOM_LEVEL)
+      {
+        try
+        {
+          dgvBookmarks.SuspendDrawing();
+
+          dgvBookmarks.Font = new Font(
+              Font.FontFamily
+            , dgvBookmarks.Font.Size - 1);
+
+          return dgvBookmarks.Font.Size > MIN_ZOOM_LEVEL;
+        }
+        finally
+        {
+          dgvBookmarks.ResumeDrawing();
+        }
+      }
+
       return false;
     }
 

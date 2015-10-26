@@ -25,6 +25,9 @@
       this.clmImage = new System.Windows.Forms.DataGridViewImageColumn();
       this.clmRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.clmMessage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+      this.tsbZoomIn = new System.Windows.Forms.ToolStripButton();
+      this.tsbZoomOut = new System.Windows.Forms.ToolStripButton();
       this.toolStrip1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgvBookmarks)).BeginInit();
       this.SuspendLayout();
@@ -36,7 +39,10 @@
             this.tsbRemoveBookmark,
             this.toolStripSeparator1,
             this.tsbPreviousBookmark,
-            this.tsbNextBookmark});
+            this.tsbNextBookmark,
+            this.toolStripSeparator2,
+            this.tsbZoomIn,
+            this.tsbZoomOut});
       this.toolStrip1.Location = new System.Drawing.Point(0, 0);
       this.toolStrip1.Name = "toolStrip1";
       this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -136,6 +142,31 @@
       this.clmMessage.Name = "clmMessage";
       this.clmMessage.ReadOnly = true;
       // 
+      // toolStripSeparator2
+      // 
+      this.toolStripSeparator2.Name = "toolStripSeparator2";
+      this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+      // 
+      // tsbZoomIn
+      // 
+      this.tsbZoomIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this.tsbZoomIn.Image = global::Com.Couchcoding.Logbert.Properties.Resources.zoom_16xLG;
+      this.tsbZoomIn.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tsbZoomIn.Name = "tsbZoomIn";
+      this.tsbZoomIn.Size = new System.Drawing.Size(23, 22);
+      this.tsbZoomIn.Text = "Zoom In";
+      this.tsbZoomIn.Click += new System.EventHandler(this.TsbZoomInClick);
+      // 
+      // tsbZoomOut
+      // 
+      this.tsbZoomOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this.tsbZoomOut.Image = global::Com.Couchcoding.Logbert.Properties.Resources.ZoomOut_16xLG;
+      this.tsbZoomOut.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tsbZoomOut.Name = "tsbZoomOut";
+      this.tsbZoomOut.Size = new System.Drawing.Size(23, 22);
+      this.tsbZoomOut.Text = "Zoom Out";
+      this.tsbZoomOut.Click += new System.EventHandler(this.TsbZoomOutClick);
+      // 
       // FrmLogBookmarks
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -173,5 +204,8 @@
     private System.Windows.Forms.DataGridViewImageColumn clmImage;
     private System.Windows.Forms.DataGridViewTextBoxColumn clmRow;
     private System.Windows.Forms.DataGridViewTextBoxColumn clmMessage;
+    private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+    private System.Windows.Forms.ToolStripButton tsbZoomIn;
+    private System.Windows.Forms.ToolStripButton tsbZoomOut;
   }
 }
