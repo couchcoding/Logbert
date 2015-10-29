@@ -38,6 +38,7 @@ using Com.Couchcoding.Logbert.Logging;
 using WeifenLuo.WinFormsUI.Docking;
 using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Logging.Filter;
+using System;
 
 namespace Com.Couchcoding.Logbert.Dialogs.Docking
 {
@@ -63,9 +64,14 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     #region Private Fields
 
     /// <summary>
-    /// Te <see cref="ILogFilterHandler"/> that handles changed filter settings.
+    /// The <see cref="ILogFilterHandler"/> that handles changed filter settings.
     /// </summary>
     private readonly ILogFilterHandler mLogFilterHandler;
+
+    /// <summary>
+    /// The <see cref="ILogProvider"/> instance to filter for.
+    /// </summary>
+    private readonly ILogProvider mLogProvider;
 
     /// <summary>
     /// The one and only <see cref="List{T}"/> of <see cref="LogFilter"/>s of this <see cref="ILogFilterProvider"/>.
@@ -133,7 +139,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// <summary>
     /// Handles the Click event of the zoom in <see cref="ToolStripItem"/>.
     /// </summary>
-    private void TsbZoomInClick(object sender, System.EventArgs e)
+    private void TsbZoomInClick(object sender, EventArgs e)
     {
       bool futherZoomInPossible = ZoomIn();
 
@@ -144,26 +150,32 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// <summary>
     /// Handles the Click event of the zoom out <see cref="ToolStripItem"/>.
     /// </summary>
-    private void TsbZoomOutClick(object sender, System.EventArgs e)
+    private void TsbZoomOutClick(object sender, EventArgs e)
     {
       bool futherZoomOuPossible = ZoomOut();
 
-      tsbZoomOut.Enabled  = futherZoomOuPossible;
-      tsbZoomIn.Enabled = true;
+      tsbZoomOut.Enabled = futherZoomOuPossible;
+      tsbZoomIn.Enabled  = true;
     }
 
     /// <summary>
     /// Handles the Click event of the add filter <see cref="ToolStripItem"/>.
     /// </summary>
-    private void TsbAddFilterClick(object sender, System.EventArgs e)
+    private void TsbAddFilterClick(object sender, EventArgs e)
     {
-
+      using (FrmAddEditFilter addEditFilterDlg = new FrmAddEditFilter(mLogProvider, null))
+      {
+        if (addEditFilterDlg.ShowDialog(this) == DialogResult.OK)
+        {
+          // TODO (CC): Add the new filter.
+        }
+      }
     }
 
     /// <summary>
     /// Handles the Click event of the remove filter <see cref="ToolStripItem"/>.
     /// </summary>
-    private void TsbRemoveFilterClick(object sender, System.EventArgs e)
+    private void TsbRemoveFilterClick(object sender, EventArgs e)
     {
 
     }
@@ -171,7 +183,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// <summary>
     /// Handles the SelectionChanged event of the filter <see cref="DataGridView"/>.
     /// </summary>
-    private void DgvFilterSelectionChanged(object sender, System.EventArgs e)
+    private void DgvFilterSelectionChanged(object sender, EventArgs e)
     {
 
     }
@@ -292,11 +304,13 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// <summary>
     /// Initializes a new instance of the <see cref="FrmLogFilter"/>.
     /// </summary>
+    /// <param name="logProvider">The <see cref=ILogProvider"/> instance to filter for.</param>
     /// <param name="filterHandler">The <see cref="ILogFilterHandler"/> that handles changed filter settings.</param>
-    public FrmLogFilter(ILogFilterHandler filterHandler)
+    public FrmLogFilter(ILogProvider logProvider, ILogFilterHandler filterHandler)
     {
       InitializeComponent();
 
+      mLogProvider      = logProvider;
       mLogFilterHandler = filterHandler;
       Font              = SystemFonts.MessageBoxFont;
 

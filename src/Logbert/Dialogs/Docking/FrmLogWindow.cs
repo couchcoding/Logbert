@@ -255,7 +255,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       {
         foreach (LogFilter filter in mLogFilterToApply)
         {
-          if (!filter.Match(message))
+          if (filter.IsActive && !filter.Match(message))
           {
             return true;
           }

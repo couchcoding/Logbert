@@ -164,6 +164,12 @@
     <Compile Include="Dialogs\Docking\FrmLogScript.Designer.cs">
       <DependentUpon>FrmLogScript.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\FrmAddEditFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FrmAddEditFilter.Designer.cs">
+      <DependentUpon>FrmAddEditFilter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\FrmLogSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -339,6 +345,9 @@
     <EmbeddedResource Include="Dialogs\Docking\FrmLogScript.resx">
       <DependentUpon>FrmLogScript.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FrmAddEditFilter.resx">
+      <DependentUpon>FrmAddEditFilter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FrmLogSearch.resx">
       <DependentUpon>FrmLogSearch.cs</DependentUpon>
     </EmbeddedResource>
@@ -409,6 +418,7 @@
     <BaseApplicationManifest Include="Properties\app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\edit_filter.png" />
     <None Include="Resources\remove_filter.png" />
     <None Include="Resources\add_filter.png" />
     <None Include="Resources\lines_Text_code_16xMD.png" />

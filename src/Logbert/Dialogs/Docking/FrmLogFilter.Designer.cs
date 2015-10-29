@@ -18,6 +18,7 @@
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogFilter));
       this.tsFilter = new Com.Couchcoding.GuiLibrary.Controls.ToolStripEx();
       this.tsbAddFilter = new System.Windows.Forms.ToolStripButton();
+      this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
       this.tsbRemoveFilter = new System.Windows.Forms.ToolStripButton();
       this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
       this.tsbZoomIn = new System.Windows.Forms.ToolStripButton();
@@ -26,7 +27,7 @@
       this.clmImage = new System.Windows.Forms.DataGridViewImageColumn();
       this.clmActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
       this.clmColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.clmFilter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.clmExpression = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.tsFilter.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgvFilter)).BeginInit();
       this.SuspendLayout();
@@ -36,6 +37,7 @@
       this.tsFilter.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
       this.tsFilter.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbAddFilter,
+            this.toolStripButton1,
             this.tsbRemoveFilter,
             this.toolStripSeparator2,
             this.tsbZoomIn,
@@ -56,6 +58,16 @@
       this.tsbAddFilter.Size = new System.Drawing.Size(23, 22);
       this.tsbAddFilter.Text = "Add Filter";
       this.tsbAddFilter.Click += new System.EventHandler(this.TsbAddFilterClick);
+      // 
+      // toolStripButton1
+      // 
+      this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this.toolStripButton1.Enabled = false;
+      this.toolStripButton1.Image = global::Com.Couchcoding.Logbert.Properties.Resources.edit_filter;
+      this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.toolStripButton1.Name = "toolStripButton1";
+      this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+      this.toolStripButton1.Text = "Edit Filter";
       // 
       // tsbRemoveFilter
       // 
@@ -105,7 +117,7 @@
             this.clmImage,
             this.clmActive,
             this.clmColumn,
-            this.clmFilter});
+            this.clmExpression});
       this.dgvFilter.Dock = System.Windows.Forms.DockStyle.Fill;
       this.dgvFilter.Location = new System.Drawing.Point(0, 25);
       this.dgvFilter.MultiSelect = false;
@@ -150,14 +162,14 @@
       this.clmColumn.Name = "clmColumn";
       this.clmColumn.ReadOnly = true;
       // 
-      // clmFilter
+      // clmExpression
       // 
-      this.clmFilter.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.clmFilter.FillWeight = 70F;
-      this.clmFilter.HeaderText = "Filter";
-      this.clmFilter.MinimumWidth = 40;
-      this.clmFilter.Name = "clmFilter";
-      this.clmFilter.ReadOnly = true;
+      this.clmExpression.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.clmExpression.FillWeight = 70F;
+      this.clmExpression.HeaderText = "Expression";
+      this.clmExpression.MinimumWidth = 40;
+      this.clmExpression.Name = "clmExpression";
+      this.clmExpression.ReadOnly = true;
       // 
       // FrmLogFilter
       // 
@@ -194,9 +206,10 @@
     private System.Windows.Forms.ToolStripButton tsbZoomIn;
     private System.Windows.Forms.ToolStripButton tsbZoomOut;
     private System.Windows.Forms.DataGridView dgvFilter;
+    private System.Windows.Forms.ToolStripButton toolStripButton1;
     private System.Windows.Forms.DataGridViewImageColumn clmImage;
     private System.Windows.Forms.DataGridViewCheckBoxColumn clmActive;
     private System.Windows.Forms.DataGridViewTextBoxColumn clmColumn;
-    private System.Windows.Forms.DataGridViewTextBoxColumn clmFilter;
+    private System.Windows.Forms.DataGridViewTextBoxColumn clmExpression;
   }
 }

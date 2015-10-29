@@ -39,6 +39,8 @@ namespace Com.Couchcoding.Logbert.Logging.Filter
   {
     #region Private Fields
 
+    private bool mIsActive;
+
     /// <summary>
     /// Holds the index of the column to match.
     /// </summary>
@@ -51,6 +53,43 @@ namespace Com.Couchcoding.Logbert.Logging.Filter
 
     #endregion
 
+    #region Public Properties
+
+    /// <summary>
+    /// Determines whether the <see cref=LogFilter"/> is active, or not.
+    /// </summary>
+    public override bool IsActive
+    {
+      get
+      {
+        return mIsActive;
+      }
+    }
+
+    /// <summary>
+    /// Gets the column index to filter in.
+    /// </summary>
+    public int ColumnIndex
+    {
+      get
+      {
+        return mColumnIndex;
+      }
+    }
+
+    /// <summary>
+    /// Gets the value the column should have to match.
+    /// </summary>
+    public string ColumnMatchValueRegEx
+    {
+      get
+      {
+        return mColumnMatchValueRegEx.ToString();
+      }
+    }
+
+    #endregion
+
     #region Public Methods
 
     /// <summary>
@@ -60,6 +99,11 @@ namespace Com.Couchcoding.Logbert.Logging.Filter
     /// <returns><c>True</c> if the given <paramref name="value"/> matches the filter, otherwise <c>false</c>.</returns>
     public override bool Match(LogMessage value)
     {
+      if (value == null)
+      {
+        return false;
+      }
+
       object columnValue = value.GetValueForColumn(mColumnIndex);
 
       return columnValue != null && 
@@ -77,6 +121,7 @@ namespace Com.Couchcoding.Logbert.Logging.Filter
     /// <param name="matchRegex">The string for the column match <see cref="Regex"/>.</param>
     public LogFilterColumn(int columnIndex, string matchRegex)
     {
+      mIsActive              = true;
       mColumnIndex           = columnIndex;
       mColumnMatchValueRegEx = new Regex(matchRegex ?? ".*");
     }

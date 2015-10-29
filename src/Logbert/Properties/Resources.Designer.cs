@@ -213,6 +213,16 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap edit_filter {
+            get {
+                object obj = ResourceManager.GetObject("edit_filter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap error {
             get {
                 object obj = ResourceManager.GetObject("error", resourceCulture);
@@ -602,6 +612,15 @@ namespace Com.Couchcoding.Logbert.Properties {
         internal static string strFileLoadPattern {
             get {
                 return ResourceManager.GetString("strFileLoadPattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Filter.
+        /// </summary>
+        internal static string strFilterDlgEditFilter {
+            get {
+                return ResourceManager.GetString("strFilterDlgEditFilter", resourceCulture);
             }
         }
         

@@ -49,6 +49,21 @@ namespace Com.Couchcoding.Logbert.Logging.Filter
 
     #endregion
 
+    #region Public Properties
+
+    /// <summary>
+    /// Determines whether the <see cref=LogFilter"/> is active, or not.
+    /// </summary>
+    public override bool IsActive
+    {
+      get
+      {
+        return true;
+      }
+    }
+
+    #endregion
+
     #region Public Methods
 
     /// <summary>

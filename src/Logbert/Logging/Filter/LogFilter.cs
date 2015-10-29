@@ -35,6 +35,18 @@ namespace Com.Couchcoding.Logbert.Logging.Filter
   /// </summary>
   public abstract class LogFilter
   {
+    #region Public Properties
+
+    /// <summary>
+    /// Determines whether the <see cref=LogFilter"/> is active, or not.
+    /// </summary>
+    public abstract bool IsActive
+    {
+      get;
+    }
+
+    #endregion
+
     #region Public Methods
 
     /// <summary>

@@ -1034,7 +1034,9 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         tsbShowBookmarks.Checked = !mBookmarks.IsHidden;
       };
 
-      mFilter = new FrmLogFilter((ILogFilterHandler)mLogWindow);
+      mFilter = new FrmLogFilter(
+          logProvider
+        , (ILogFilterHandler)mLogWindow);
 
       mFilter.VisibleChanged += (sender, e) =>
       {
