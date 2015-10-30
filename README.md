@@ -20,9 +20,6 @@ Logbert is an advanced log message viewer for log4net, log4j and others.
   * Trigger function if a new log message is reveied or a bookmark is changed
 
 ### Planned Features
-* Advanced filters
-  * Regular expression based
-  * Column value based
 * Customizable log receiver
 * Directory based receiving (load multiple log files as one)
 
