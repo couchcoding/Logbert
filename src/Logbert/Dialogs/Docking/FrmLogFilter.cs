@@ -78,6 +78,11 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// </summary>
     private readonly IList<LogFilter> mLogFilter = new List<LogFilter>();
 
+    /// <summary>
+    /// The <see cref="Image"/> to use for <see cref=LogFilter"/>s.
+    /// </summary>
+    private static readonly Image mFilterImage = Properties.Resources.filter_16xLG;
+
     #endregion
 
     #region Public Properties
@@ -137,6 +142,46 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     #region Private Methods
 
     /// <summary>
+    /// Update the <see cref="DataGridView"/> of <see cref=LogFilter"/>s.
+    /// </summary>
+    private void UpdateLogFilters()
+    {
+      if (mLogFilter != null)
+      {
+        LogFilter selectedFilter = dgvFilter.SelectedRows.Count > 0
+          ? dgvFilter.SelectedRows[0].Tag as LogFilter
+          : null;
+
+        dgvFilter.SuspendDrawing();
+
+        try
+        {
+          dgvFilter.Rows.Clear();
+
+          foreach (LogFilterColumn filter in mLogFilter)
+          {
+            int rowIndex = dgvFilter.Rows.Add(
+                mFilterImage
+              , filter.IsActive
+              , mLogProvider.Columns[filter.ColumnIndex - 1]
+              , filter.ColumnMatchValueRegEx);
+
+            dgvFilter.Rows[rowIndex].Tag = filter;
+
+            if (Equals(selectedFilter, filter))
+            {
+              dgvFilter.Rows[rowIndex].Selected = true;
+            }
+          }
+        }
+        finally
+        {
+          dgvFilter.ResumeDrawing();
+        }
+      }
+    }
+
+    /// <summary>
     /// Handles the Click event of the zoom in <see cref="ToolStripItem"/>.
     /// </summary>
     private void TsbZoomInClick(object sender, EventArgs e)
@@ -167,7 +212,51 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       {
         if (addEditFilterDlg.ShowDialog(this) == DialogResult.OK)
         {
-          // TODO (CC): Add the new filter.
+          LogFilterColumn newLogFilter = new LogFilterColumn(
+              addEditFilterDlg.IsFilterActive
+            , addEditFilterDlg.ColumnIndex
+            , addEditFilterDlg.ExpressionRegex);
+
+          mLogFilter.Add(newLogFilter);
+
+          // Update the data grid.
+          UpdateLogFilters();
+
+          // Inform the filter handler about the changed filters.
+          mLogFilterHandler.FilterChanged();
+        }
+      }
+    }
+
+    /// <summary>
+    /// Handles the Click event of the edit filter <see cref="ToolStripItem"/>.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void TsbEditFilterClick(object sender, EventArgs e)
+    {
+      if (dgvFilter.SelectedRows.Count > 0)
+      {
+        LogFilterColumn filterToEdit = dgvFilter.SelectedRows[0].Tag as LogFilterColumn;
+
+        if (filterToEdit != null)
+        {
+          using (FrmAddEditFilter addEditFilterDlg = new FrmAddEditFilter(mLogProvider, filterToEdit))
+          {
+            if (addEditFilterDlg.ShowDialog(this) == DialogResult.OK)
+            {
+              filterToEdit.Update(
+                  addEditFilterDlg.IsFilterActive
+                , addEditFilterDlg.ColumnIndex
+                , addEditFilterDlg.ExpressionRegex);
+
+              // Update the data grid.
+              UpdateLogFilters();
+
+              // Inform the filter handler about the changed filters.
+              mLogFilterHandler.FilterChanged();
+            }
+          }
         }
       }
     }
@@ -177,7 +266,17 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// </summary>
     private void TsbRemoveFilterClick(object sender, EventArgs e)
     {
+      if (dgvFilter.SelectedRows.Count > 0)
+      {
+        // Remove the filter from the collction.
+        mLogFilter.Remove(dgvFilter.SelectedRows[0].Tag as LogFilter);
 
+        // Update the data grid.
+        UpdateLogFilters();
+
+        // Inform the filter handler about the changed filters.
+        mLogFilterHandler.FilterChanged();
+      }
     }
 
     /// <summary>
@@ -185,7 +284,10 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// </summary>
     private void DgvFilterSelectionChanged(object sender, EventArgs e)
     {
+      bool atLeastOneItemSelected = dgvFilter.SelectedRows.Count > 0;
 
+      tsbRemoveFilter.Enabled = atLeastOneItemSelected;
+      tsbEditFilter.Enabled   = atLeastOneItemSelected;
     }
 
     /// <summary>
@@ -193,9 +295,48 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// </summary>
     private void DgvFilterCellCoubleClick(object sender, DataGridViewCellEventArgs e)
     {
-      if (e.RowIndex >= dgvFilter.RowCount || e.RowIndex < 0)
+      if (e.RowIndex >= dgvFilter.RowCount || e.RowIndex < 0 || e.ColumnIndex == 1)
       {
         return;
+      }
+
+      // Double click means editing!
+      tsbEditFilter.PerformClick();
+    }
+
+    /// <summary>
+    /// Handles the CellValueChanged event of the filter <see cref=DataGridView"/>.
+    /// </summary>
+    private void DgvFilterCellValueChanged(object sender, DataGridViewCellEventArgs e)
+    {
+      if (e.RowIndex >= 0 && e.ColumnIndex == 1)
+      {
+        LogFilterColumn filterToEdit = dgvFilter.Rows[e.RowIndex].Tag as LogFilterColumn;
+
+        if (filterToEdit != null)
+        {
+          filterToEdit.Update(
+              (bool)dgvFilter.Rows[e.RowIndex].Cells[e.ColumnIndex].Value
+            , filterToEdit.ColumnIndex
+            , filterToEdit.ColumnMatchValueRegEx);
+
+          // Update the data grid.
+          UpdateLogFilters();
+
+          // Inform the filter handler about the changed filters.
+          mLogFilterHandler.FilterChanged();
+        }
+      }
+    }
+
+    /// <summary>
+    /// Handles the CurrentCellDirtyStateChanged event of the filter <see cref=DataGridView"/>.
+    /// </summary>
+    private void DgvFilterCurrentCellDirtyStateChanged(object sender, EventArgs e)
+    {
+      if (dgvFilter.IsCurrentCellDirty)
+      {
+        dgvFilter.CommitEdit(DataGridViewDataErrorContexts.Commit);
       }
     }
 

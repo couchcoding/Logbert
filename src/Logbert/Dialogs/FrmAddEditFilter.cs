@@ -62,6 +62,39 @@ namespace Com.Couchcoding.Logbert.Dialogs
       }
     }
 
+    /// <summary>
+    /// Gets the selected active state of the <see cref="LogFilter"/>.
+    /// </summary>
+    public bool IsFilterActive
+    {
+      get
+      {
+        return chkFilterIsActive.Checked;
+      }
+    }
+
+    /// <summary>
+    /// Gets the selected column index of the <see cref=LogFilter"/>.
+    /// </summary>
+    public int ColumnIndex
+    {
+      get
+      {
+        return cmbColumnToFilter.SelectedIndex + 1;
+      }
+    }
+
+    /// <summary>
+    /// Gets the entered regular expression of the <see cref=LogFilter"/>.
+    /// </summary>
+    public string ExpressionRegex
+    {
+      get
+      {
+        return txtExpressionToFilterFor.Text;
+      }
+    }
+
     #endregion
 
     #region Constructor
@@ -94,7 +127,7 @@ namespace Com.Couchcoding.Logbert.Dialogs
       if (filterToEdit != null)
       {
         chkFilterIsActive.Checked       = filterToEdit.IsActive;
-        cmbColumnToFilter.SelectedIndex = filterToEdit.ColumnIndex;
+        cmbColumnToFilter.SelectedIndex = filterToEdit.ColumnIndex - 1;
         txtExpressionToFilterFor.Text   = filterToEdit.ColumnMatchValueRegEx;
       }
     }

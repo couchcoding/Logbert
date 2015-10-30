@@ -38,7 +38,7 @@ namespace Com.Couchcoding.Logbert.Logging.Filter
     #region Public Properties
 
     /// <summary>
-    /// Determines whether the <see cref=LogFilter"/> is active, or not.
+    /// Gets or sets whether the <see cref=LogFilter"/> is active, or not.
     /// </summary>
     public abstract bool IsActive
     {

@@ -39,17 +39,20 @@ namespace Com.Couchcoding.Logbert.Logging.Filter
   {
     #region Private Fields
 
+    /// <summary>
+    /// Hold the active state of the <see cref="LogFilterColumn"/>.
+    /// </summary>
     private bool mIsActive;
 
     /// <summary>
     /// Holds the index of the column to match.
     /// </summary>
-    private readonly int mColumnIndex;
+    private int mColumnIndex;
 
     /// <summary>
     /// Holds the value the column should have to match.
     /// </summary>
-    private readonly Regex mColumnMatchValueRegEx;
+    private Regex mColumnMatchValueRegEx;
 
     #endregion
 
@@ -110,6 +113,19 @@ namespace Com.Couchcoding.Logbert.Logging.Filter
         mColumnMatchValueRegEx.IsMatch(columnValue.ToString());
     }
 
+    /// <summary>
+    /// Update the <see cref=LogFilterColumn"/> with the specified parameters.
+    /// </summary>
+    /// <param name="isActive">The new active state of the <see cref=LogFilterColumn"/>.</param>
+    /// <param name="columnIndex">The new column index of the <see cref=LogFilterColumn"/>.</param>
+    /// <param name="expression">The new regular expression of the <see cref=LogFilterColumn"/>.</param>
+    public void Update(bool isActive, int columnIndex, string expression)
+    {
+      mIsActive              = isActive;
+      mColumnIndex           = columnIndex;
+      mColumnMatchValueRegEx = new Regex(expression);
+    }
+
     #endregion
 
     #region Constructor
@@ -117,11 +133,12 @@ namespace Com.Couchcoding.Logbert.Logging.Filter
     /// <summary>
     /// Creates a new instance of a <see cref="LogFilterLevel"/>.
     /// </summary>
+    /// <param name="isActive">The active state of the <see cref=LogFilterColumn"/>.</param>
     /// <param name="columnIndex">The index of the column to match.</param>
     /// <param name="matchRegex">The string for the column match <see cref="Regex"/>.</param>
-    public LogFilterColumn(int columnIndex, string matchRegex)
+    public LogFilterColumn(bool isActive, int columnIndex, string matchRegex)
     {
-      mIsActive              = true;
+      mIsActive              = isActive;
       mColumnIndex           = columnIndex;
       mColumnMatchValueRegEx = new Regex(matchRegex ?? ".*");
     }

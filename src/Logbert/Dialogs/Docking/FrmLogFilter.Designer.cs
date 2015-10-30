@@ -18,7 +18,7 @@
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogFilter));
       this.tsFilter = new Com.Couchcoding.GuiLibrary.Controls.ToolStripEx();
       this.tsbAddFilter = new System.Windows.Forms.ToolStripButton();
-      this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+      this.tsbEditFilter = new System.Windows.Forms.ToolStripButton();
       this.tsbRemoveFilter = new System.Windows.Forms.ToolStripButton();
       this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
       this.tsbZoomIn = new System.Windows.Forms.ToolStripButton();
@@ -37,7 +37,7 @@
       this.tsFilter.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
       this.tsFilter.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbAddFilter,
-            this.toolStripButton1,
+            this.tsbEditFilter,
             this.tsbRemoveFilter,
             this.toolStripSeparator2,
             this.tsbZoomIn,
@@ -59,15 +59,16 @@
       this.tsbAddFilter.Text = "Add Filter";
       this.tsbAddFilter.Click += new System.EventHandler(this.TsbAddFilterClick);
       // 
-      // toolStripButton1
+      // tsbEditFilter
       // 
-      this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.toolStripButton1.Enabled = false;
-      this.toolStripButton1.Image = global::Com.Couchcoding.Logbert.Properties.Resources.edit_filter;
-      this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.toolStripButton1.Name = "toolStripButton1";
-      this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-      this.toolStripButton1.Text = "Edit Filter";
+      this.tsbEditFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this.tsbEditFilter.Enabled = false;
+      this.tsbEditFilter.Image = global::Com.Couchcoding.Logbert.Properties.Resources.edit_filter;
+      this.tsbEditFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tsbEditFilter.Name = "tsbEditFilter";
+      this.tsbEditFilter.Size = new System.Drawing.Size(23, 22);
+      this.tsbEditFilter.Text = "Edit Filter";
+      this.tsbEditFilter.Click += new System.EventHandler(this.TsbEditFilterClick);
       // 
       // tsbRemoveFilter
       // 
@@ -119,10 +120,10 @@
             this.clmColumn,
             this.clmExpression});
       this.dgvFilter.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.dgvFilter.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
       this.dgvFilter.Location = new System.Drawing.Point(0, 25);
       this.dgvFilter.MultiSelect = false;
       this.dgvFilter.Name = "dgvFilter";
-      this.dgvFilter.ReadOnly = true;
       this.dgvFilter.RowHeadersVisible = false;
       this.dgvFilter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgvFilter.ShowCellErrors = false;
@@ -132,6 +133,8 @@
       this.dgvFilter.Size = new System.Drawing.Size(464, 256);
       this.dgvFilter.TabIndex = 2;
       this.dgvFilter.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvFilterCellCoubleClick);
+      this.dgvFilter.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvFilterCellValueChanged);
+      this.dgvFilter.CurrentCellDirtyStateChanged += new System.EventHandler(this.DgvFilterCurrentCellDirtyStateChanged);
       this.dgvFilter.SelectionChanged += new System.EventHandler(this.DgvFilterSelectionChanged);
       // 
       // clmImage
@@ -146,12 +149,11 @@
       // clmActive
       // 
       this.clmActive.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+      this.clmActive.FlatStyle = System.Windows.Forms.FlatStyle.System;
       this.clmActive.HeaderText = "Active";
       this.clmActive.MinimumWidth = 50;
       this.clmActive.Name = "clmActive";
-      this.clmActive.ReadOnly = true;
       this.clmActive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      this.clmActive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
       this.clmActive.Width = 50;
       // 
       // clmColumn
@@ -206,7 +208,7 @@
     private System.Windows.Forms.ToolStripButton tsbZoomIn;
     private System.Windows.Forms.ToolStripButton tsbZoomOut;
     private System.Windows.Forms.DataGridView dgvFilter;
-    private System.Windows.Forms.ToolStripButton toolStripButton1;
+    private System.Windows.Forms.ToolStripButton tsbEditFilter;
     private System.Windows.Forms.DataGridViewImageColumn clmImage;
     private System.Windows.Forms.DataGridViewCheckBoxColumn clmActive;
     private System.Windows.Forms.DataGridViewTextBoxColumn clmColumn;
