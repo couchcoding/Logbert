@@ -13,11 +13,12 @@ Logbert is an advanced log message viewer for log4net, log4j and others.
 * Wildcard and regular expression based search
 * Optional timeshift in milliseconds for synchronization
 * Export log messages to a file as received or as CSV
+* Create regular expression based filters
 * Embedded LUA script engine
   * Create or remove bookmarks
   * Show a message
   * Access received log messages
-  * Trigger function if a new log message is reveied or a bookmark is changed
+  * Trigger function if a new log message is received or a bookmark is changed
 
 ### Planned Features
 * Customizable log receiver
