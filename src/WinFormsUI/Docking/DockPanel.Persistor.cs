@@ -591,7 +591,11 @@ namespace WeifenLuo.WinFormsUI.Docking
                         }
                     }
 
-                    dockPanel.DockWindows[dockWindows[index].DockState].BringToFront();
+                    if (index != -1)
+                    {
+                        dockPanel.DockWindows[dockWindows[index].DockState].BringToFront();
+                    }
+
                     prevMaxDockWindowZOrder = maxDockWindowZOrder;
                 }
 

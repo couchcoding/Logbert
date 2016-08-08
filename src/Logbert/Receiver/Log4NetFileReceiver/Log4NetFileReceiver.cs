@@ -31,6 +31,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Forms;
 
 using Com.Couchcoding.Logbert.Interfaces;
 
@@ -429,6 +430,24 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetFileReceiver
         return !string.IsNullOrEmpty(firstLine) 
             && firstLine.Contains("<log4j:event");
       }
+    }
+
+    /// <summary>
+    /// Saves the current docking layout of the <see cref="ReceiverBase"/> instance.
+    /// </summary>
+    /// <param name="layout">The layout as string to save.</param>
+    public override void SaveLayout(string layout)
+    {
+      Properties.Settings.Default.DockLayoutLog4NetFileReceiver = layout ?? string.Empty;
+    }
+
+    /// <summary>
+    /// Loads the docking layout of the <see cref="ReceiverBase"/> instance.
+    /// </summary>
+    /// <returns>The restored layout, or <c>null</c> if none exists.</returns>
+    public override string LoadLayout()
+    {
+      return Properties.Settings.Default.DockLayoutLog4NetFileReceiver;
     }
 
     #endregion

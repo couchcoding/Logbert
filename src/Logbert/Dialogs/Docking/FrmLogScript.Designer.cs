@@ -17,7 +17,7 @@
     {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogScript));
       this.scintilla = new ScintillaNET.Scintilla();
-      this.tsCuCommands = new System.Windows.Forms.ToolStrip();
+      this.tsCuCommands = new Com.Couchcoding.GuiLibrary.Controls.ToolStripEx();
       this.tsbLoadScript = new System.Windows.Forms.ToolStripButton();
       this.tsbSaveScript = new System.Windows.Forms.ToolStripButton();
       this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -35,7 +35,7 @@
       this.tsbZoomOut = new System.Windows.Forms.ToolStripButton();
       this.splitContainer1 = new System.Windows.Forms.SplitContainer();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-      this.tsOutput = new System.Windows.Forms.ToolStrip();
+      this.tsOutput = new Com.Couchcoding.GuiLibrary.Controls.ToolStripEx();
       this.tsbOutputClear = new System.Windows.Forms.ToolStripButton();
       this.tsbOutputWordWrap = new System.Windows.Forms.ToolStripButton();
       this.bgPanel = new Com.Couchcoding.GuiLibrary.Controls.InfoPanel();
@@ -66,10 +66,9 @@
       this.scintilla.Size = new System.Drawing.Size(624, 312);
       this.scintilla.TabIndex = 1;
       this.scintilla.TabWidth = 2;
-      this.scintilla.UseTabs = false;
       this.scintilla.CharAdded += new System.EventHandler<ScintillaNET.CharAddedEventArgs>(this.ScintillaCharAdded);
       this.scintilla.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.ScintillaUpdateUi);
-      this.scintilla.Zoomed += new System.EventHandler<System.EventArgs>(this.ScintillaZoomed);
+      this.scintilla.ZoomChanged += new System.EventHandler<System.EventArgs>(this.ScintillaZoomChanged);
       this.scintilla.TextChanged += new System.EventHandler(this.ScintillaTextChanged);
       // 
       // tsCuCommands
@@ -373,7 +372,7 @@
     #endregion
 
     private ScintillaNET.Scintilla scintilla;
-    private System.Windows.Forms.ToolStrip tsCuCommands;
+    private Com.Couchcoding.GuiLibrary.Controls.ToolStripEx tsCuCommands;
     private System.Windows.Forms.ToolStripButton tsbLoadScript;
     private System.Windows.Forms.ToolStripButton tsbSaveScript;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
@@ -388,7 +387,7 @@
     private System.Windows.Forms.ToolStripButton tsbStop;
     private System.Windows.Forms.SplitContainer splitContainer1;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-    private System.Windows.Forms.ToolStrip tsOutput;
+    private Com.Couchcoding.GuiLibrary.Controls.ToolStripEx tsOutput;
     private System.Windows.Forms.ToolStripButton tsbOutputClear;
     private System.Windows.Forms.ToolStripButton tsbOutputWordWrap;
     private GuiLibrary.Controls.InfoPanel bgPanel;

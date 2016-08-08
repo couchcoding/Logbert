@@ -42,7 +42,7 @@ namespace Com.Couchcoding.Logbert.Helper
 	/// </summary>
 	public class ThreadAttachedDelayedCallback : DelayedCallback, IDelayedCallbackHandler
 	{
-		#region Privtae Fields
+		#region Private Fields
 
 		/// <summary>
 		/// GUI Thread Id 
@@ -77,34 +77,6 @@ namespace Com.Couchcoding.Logbert.Helper
 
 		#endregion
 
-		#region Constructor
-
-		/// <summary>
-		/// Member Initialising Constructor.
-		/// </summary>
-		/// <param name="delay">Delay to wait for</param>
-		/// <param name="enabled">Enabled or not</param>
-		public ThreadAttachedDelayedCallback(TimeSpan delay, bool enabled)
-		{
-			// Constructor is called from (what is treated as) the Main thread, grab its Thread Id
-			mMainThreadId = GetCurrentThreadId();
-
-			Init(this
-        , delay
-        , enabled);
-		}
-
-		/// <summary>
-		/// Member Initialising Constructor.
-		/// </summary>
-		/// <param name="delay">Delay to wait for</param>
-		public ThreadAttachedDelayedCallback(TimeSpan delay) : this(delay, true)
-		{
-
-		}
-
-		#endregion
-
 		#region Public Methods
 
 		/// <summary>
@@ -133,6 +105,34 @@ namespace Com.Couchcoding.Logbert.Helper
           mCllbackThreadId
         , mMainThreadId
         , false);
+		}
+
+		#endregion
+
+    #region Constructor
+
+		/// <summary>
+		/// Member Initialising Constructor.
+		/// </summary>
+		/// <param name="delay">Delay to wait for</param>
+		/// <param name="enabled">Enabled or not</param>
+		public ThreadAttachedDelayedCallback(TimeSpan delay, bool enabled)
+		{
+			// Constructor is called from (what is treated as) the Main thread, grab its Thread Id
+			mMainThreadId = GetCurrentThreadId();
+
+			Init(this
+        , delay
+        , enabled);
+		}
+
+		/// <summary>
+		/// Member Initialising Constructor.
+		/// </summary>
+		/// <param name="delay">Delay to wait for</param>
+		public ThreadAttachedDelayedCallback(TimeSpan delay) : this(delay, true)
+		{
+
 		}
 
 		#endregion

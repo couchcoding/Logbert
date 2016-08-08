@@ -29,6 +29,8 @@
 #endregion
 
 using System.Collections.Generic;
+using System.Windows.Forms;
+
 using Com.Couchcoding.Logbert.Logging;
 
 namespace Com.Couchcoding.Logbert.Interfaces
@@ -43,7 +45,7 @@ namespace Com.Couchcoding.Logbert.Interfaces
     /// <summary>
     /// Gets the received <see cref="LogMessage"/>s.
     /// </summary>
-    IEnumerable<LogMessage> LogMessages
+    List<LogMessage> LogMessages
     {
       get;
     }
@@ -74,6 +76,16 @@ namespace Com.Couchcoding.Logbert.Interfaces
     /// </summary>
     /// <param name="newTimerInterval">The new value for the UI update time.</param>
     void UpdateTimerInterval(int newTimerInterval);
+
+    /// <summary>
+    /// Updates the information display in the <see cref="StatusBar"/>.
+    /// </summary>
+    void UpdateStatusBarInformation();
+
+    /// <summary>
+    /// Clear all received logging data.
+    /// </summary>
+    void ClearAll();
 
     #endregion
   }

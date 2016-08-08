@@ -29,10 +29,10 @@
     private void InitializeComponent()
     {
       this.grpSettings = new Com.Couchcoding.GuiLibrary.Controls.GroupBoxEx();
+      this.pnlOptionPanel = new System.Windows.Forms.Panel();
       this.lstSettings = new Com.Couchcoding.GuiLibrary.Controls.ListBoxEx();
       this.btnCancel = new System.Windows.Forms.Button();
       this.btnOk = new System.Windows.Forms.Button();
-      this.pnlOptionPanel = new System.Windows.Forms.Panel();
       this.grpSettings.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -52,6 +52,16 @@
       this.grpSettings.TabStop = false;
       this.grpSettings.Text = "Settings";
       this.grpSettings.VisibleChanged += new System.EventHandler(this.PnlOptionPanelVisibleChanged);
+      // 
+      // pnlOptionPanel
+      // 
+      this.pnlOptionPanel.AutoScroll = true;
+      this.pnlOptionPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.pnlOptionPanel.Location = new System.Drawing.Point(0, 36);
+      this.pnlOptionPanel.Name = "pnlOptionPanel";
+      this.pnlOptionPanel.Size = new System.Drawing.Size(442, 288);
+      this.pnlOptionPanel.TabIndex = 0;
+      this.pnlOptionPanel.VisibleChanged += new System.EventHandler(this.PnlOptionPanelVisibleChanged);
       // 
       // lstSettings
       // 
@@ -90,16 +100,6 @@
       this.btnOk.TabIndex = 2;
       this.btnOk.Text = "OK";
       this.btnOk.UseVisualStyleBackColor = true;
-      // 
-      // pnlOptionPanel
-      // 
-      this.pnlOptionPanel.AutoScroll = true;
-      this.pnlOptionPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.pnlOptionPanel.Location = new System.Drawing.Point(0, 36);
-      this.pnlOptionPanel.Name = "pnlOptionPanel";
-      this.pnlOptionPanel.Size = new System.Drawing.Size(442, 288);
-      this.pnlOptionPanel.TabIndex = 0;
-      this.pnlOptionPanel.VisibleChanged += new System.EventHandler(this.PnlOptionPanelVisibleChanged);
       // 
       // FrmOptions
       // 

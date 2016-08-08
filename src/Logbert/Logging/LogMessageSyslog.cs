@@ -32,9 +32,11 @@ using System;
 using System.Text.RegularExpressions;
 
 using System.Globalization;
+using System.Windows.Forms;
 
 using Com.Couchcoding.Logbert.Helper;
 using Com.Couchcoding.Logbert.Properties;
+using Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver;
 
 using MoonSharp.Interpreter;
 
@@ -223,7 +225,7 @@ namespace Com.Couchcoding.Logbert.Logging
     /// Parses the given <paramref name="data"/> for possible log message parts.
     /// </summary>
     /// <param name="data">The data string to parse.</param>
-    /// <returns>A new dictionary with message parts, or <c>null</c> on error.</returns>
+    /// <returns><c>True</c> on success, otherwise <c>false</c>.</returns>
     private bool ParseData(string data)
     {
       if (string.IsNullOrEmpty(data))

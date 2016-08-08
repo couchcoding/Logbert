@@ -28,7 +28,6 @@
 
 #endregion
 
-using System.ComponentModel;
 using System.Windows.Forms;
 
 using Com.Couchcoding.GuiLibrary.Dialogs;
@@ -36,6 +35,7 @@ using Com.Couchcoding.Logbert.Helper;
 using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Properties;
 using Com.Couchcoding.Logbert.Receiver;
+using Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver;
 using Com.Couchcoding.Logbert.Receiver.Log4NetUdpReceiver;
 using Com.Couchcoding.Logbert.Receiver.Log4NetFileReceiver;
 using Com.Couchcoding.Logbert.Receiver.NlogTcpReceiver;
@@ -126,12 +126,13 @@ namespace Com.Couchcoding.Logbert.Dialogs
     }
 
     /// <summary>
-    /// Raises the <see cref="E:System.Windows.Forms.Form.Closing"/> event.
+    /// Validates the dialog inputs before the dialog is closed.
     /// </summary>
-    /// <param name="e">A <see cref="T:System.ComponentModel.CancelEventArgs"/> that contains the event data. </param>
-    protected override void OnClosing(CancelEventArgs e)
+    /// <param name="dlgResult">The current active <see cref="DialogResult"/>.</param>
+    /// <returns><c>True</c> if all input is valid; otherwise <c>false</c>.</returns>
+    protected override bool ValidateDialog(DialogResult dlgResult)
     {
-      if (DialogResult == DialogResult.OK)
+      if (dlgResult == DialogResult.OK)
       {
         ILogSettingsCtrl oldSettingsCtrl = grpSettings.Controls.Count > 0 
           ? grpSettings.Controls[0] as ILogSettingsCtrl
@@ -150,12 +151,12 @@ namespace Com.Couchcoding.Logbert.Dialogs
               , MessageBoxButtons.OK
               , MessageBoxIcon.Error);
 
-            e.Cancel = true;
+            return false;
           }
         }
       }
 
-      base.OnClosing(e);
+      return true;
     }
 
     #endregion
@@ -180,6 +181,8 @@ namespace Com.Couchcoding.Logbert.Dialogs
       lstLogger.Items.Add(new SyslogFileReceiver());
       lstLogger.AddSeperator();
       lstLogger.Items.Add(new EventlogReceiver());
+      lstLogger.AddSeperator();
+      lstLogger.Items.Add(new CustomFileReceiver());
 
       lstLogger.SelectedIndex = 0;
     }

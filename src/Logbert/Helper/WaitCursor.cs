@@ -74,7 +74,7 @@ namespace Com.Couchcoding.Logbert.Helper
 	/// </summary>
 	public class WaitCursor : ThreadAttachedDelayedCallback
 	{
-		#region Member Variables
+		#region Private Fields
 
     /// <summary>
     /// Remember old cursor.

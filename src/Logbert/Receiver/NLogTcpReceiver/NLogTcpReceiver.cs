@@ -35,6 +35,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 
 using Com.Couchcoding.Logbert.Interfaces;
 
@@ -172,6 +173,30 @@ namespace Com.Couchcoding.Logbert.Receiver.NlogTcpReceiver
       get
       {
         return new Log4NetDetailsControl();
+      }
+    }
+
+	  /// <summary>
+	  /// Gets or sets the active state if the <see cref="ILogProvider"/>.
+	  /// </summary>
+	  public override bool IsActive
+    {
+      get
+      {
+        return base.IsActive;
+      }
+      set
+      {
+        base.IsActive = value;
+
+        if (!mIsActive)
+        {
+          Shutdown();
+        }
+        else
+        {
+          Initialize(mLogHandler);
+        }
       }
     }
 
@@ -341,6 +366,24 @@ namespace Com.Couchcoding.Logbert.Receiver.NlogTcpReceiver
     public override void Clear()
     {
       mLogNumber = 0;
+    }
+
+    /// <summary>
+    /// Saves the current docking layout of the <see cref="ReceiverBase"/> instance.
+    /// </summary>
+    /// <param name="layout">The layout as string to save.</param>
+    public override void SaveLayout(string layout)
+    {
+      Properties.Settings.Default.DockLayoutNLogTcpReceiver = layout ?? string.Empty;
+    }
+
+    /// <summary>
+    /// Loads the docking layout of the <see cref="ReceiverBase"/> instance.
+    /// </summary>
+    /// <returns>The restored layout, or <c>null</c> if none exists.</returns>
+    public override string LoadLayout()
+    {
+      return Properties.Settings.Default.DockLayoutNLogTcpReceiver;
     }
 
     #endregion

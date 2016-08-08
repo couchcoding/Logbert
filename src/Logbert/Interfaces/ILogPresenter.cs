@@ -38,6 +38,18 @@ namespace Com.Couchcoding.Logbert.Interfaces
   /// </summary>
   public interface ILogPresenter
   {
+    #region Interface Properties
+
+    /// <summary>
+    /// Gets the count of currently displayed <see cref=LogMessage"/>s.
+    /// </summary>
+    int DisplayedLogMessagesCount
+    {
+      get;
+    }
+
+    #endregion
+
     #region Interface Methods
 
     /// <summary>

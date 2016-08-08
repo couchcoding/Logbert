@@ -32,6 +32,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using Com.Couchcoding.Logbert.Helper;
+using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Properties;
 
 namespace Com.Couchcoding.Logbert.Controls.OptionPanels
@@ -123,6 +124,7 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
       txtTimestampFormat.Text         = Settings.Default.TimestampFormat;
       chkAutoFollow.Checked           = Settings.Default.LogWndAutoScrollOnLastMessageSelect;
       chkAllowOnlyOneInstance.Checked = Settings.Default.FrmMainAllowOnlyOneInstance;
+      nudMaxLogMessages.Value         = Settings.Default.MaxLogMessages;
     }
 
     /// <summary>
@@ -136,6 +138,7 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
         Settings.Default.TimestampFormat                     = txtTimestampFormat.Text;
         Settings.Default.LogWndAutoScrollOnLastMessageSelect = chkAutoFollow.Checked;
         Settings.Default.FrmMainAllowOnlyOneInstance         = chkAllowOnlyOneInstance.Checked;
+        Settings.Default.MaxLogMessages                      = (int)nudMaxLogMessages.Value;
 
         Settings.Default.SaveSettings();
       }
@@ -151,6 +154,9 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
     public OptionPanelGeneral()
     {
       InitializeComponent();
+
+      nudMaxLogMessages.Minimum = 0;
+      nudMaxLogMessages.Maximum = int.MaxValue;
     }
 
     #endregion

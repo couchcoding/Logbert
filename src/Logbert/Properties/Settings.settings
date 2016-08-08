@@ -48,7 +48,7 @@
       <Value Profile="(Default)">Microsoft Sans Serif</Value>
     </Setting>
     <Setting Name="LogMessagesFontSize" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">8.25</Value>
+      <Value Profile="(Default)">9</Value>
     </Setting>
     <Setting Name="FrmFindSearchValue" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)" />
@@ -259,6 +259,48 @@
     </Setting>
     <Setting Name="PnlNLogFileSettingsStartFromBeginning" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="PnlCustomFileSettingsFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlCustomFileSettingsStartFromBeginning" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="PnlCustomFileSettingsColumnizer" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="MaxLogMessages" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1000000</Value>
+    </Setting>
+    <Setting Name="DockLayoutCustomReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DockLayoutEventlogReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DockLayoutLog4NetFileReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DockLayoutLog4NetUdpReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DockLayoutNLogFileReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DockLayoutNLogTcpReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DockLayoutNLogUdpReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DockLayoutSyslogFileReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DockLayoutSyslogUdpReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ColumnizerRepository" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">columnizer.xml</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -75,7 +75,7 @@
     <StartupObject>Logbert.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MoonSharp.Interpreter, Version=0.9.8.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="MoonSharp.Interpreter, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libraries\MoonSharp.Interpreter.dll</HintPath>
     </Reference>
@@ -170,6 +170,18 @@
     <Compile Include="Dialogs\FrmAddEditFilter.Designer.cs">
       <DependentUpon>FrmAddEditFilter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\FrmColumnizer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FrmColumnizer.Designer.cs">
+      <DependentUpon>FrmColumnizer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FrmColumnizerTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FrmColumnizerTest.Designer.cs">
+      <DependentUpon>FrmColumnizerTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\FrmLogSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +226,7 @@
     </Compile>
     <Compile Include="Helper\BrushCache.cs" />
     <Compile Include="Helper\Extensions.cs" />
+    <Compile Include="Helper\FlatColorTable.cs" />
     <Compile Include="Helper\Logger.cs" />
     <Compile Include="Helper\LogMessageSelectedEventArgs.cs" />
     <Compile Include="Helper\MruManager.cs" />
@@ -238,6 +251,7 @@
     <Compile Include="Logging\Filter\LogFilterLevel.cs" />
     <Compile Include="Logging\Filter\LogFilterLogger.cs" />
     <Compile Include="Logging\LogLevel.cs" />
+    <Compile Include="Logging\LogMessageCustom.cs" />
     <Compile Include="Logging\LogMessageEventlog.cs" />
     <Compile Include="Logging\LogMessageLog4Net.cs" />
     <Compile Include="Logging\LogMessageSyslog.cs" />
@@ -254,6 +268,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Receiver\CustomReceiver\Columnizer.cs" />
+    <Compile Include="Receiver\CustomReceiver\CustomFileReceiver\CustomFileReceiver.cs" />
+    <Compile Include="Receiver\CustomReceiver\CustomFileReceiver\CustomFileReceiverSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Receiver\CustomReceiver\CustomFileReceiver\CustomFileReceiverSettings.Designer.cs">
+      <DependentUpon>CustomFileReceiverSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Receiver\CustomReceiver\LogColumn.cs" />
     <Compile Include="Receiver\EventlogReceiver\EventlogReceiver.cs" />
     <Compile Include="Receiver\EventlogReceiver\EventlogReceiverSettings.cs">
       <SubType>UserControl</SubType>
@@ -348,6 +371,12 @@
     <EmbeddedResource Include="Dialogs\FrmAddEditFilter.resx">
       <DependentUpon>FrmAddEditFilter.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FrmColumnizer.resx">
+      <DependentUpon>FrmColumnizer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FrmColumnizerTest.resx">
+      <DependentUpon>FrmColumnizerTest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FrmLogSearch.resx">
       <DependentUpon>FrmLogSearch.cs</DependentUpon>
     </EmbeddedResource>
@@ -377,6 +406,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Receiver\CustomReceiver\CustomFileReceiver\CustomFileReceiverSettings.resx">
+      <DependentUpon>CustomFileReceiverSettings.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Receiver\EventlogReceiver\EventlogReceiverSettings.resx">
       <DependentUpon>EventlogReceiverSettings.cs</DependentUpon>
@@ -418,6 +451,12 @@
     <BaseApplicationManifest Include="Properties\app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\arrow_Down_16xLG.png" />
+    <None Include="Resources\arrow_Up_16xLG.png" />
+    <None Include="Resources\RunTests_8790.png" />
+    <None Include="Resources\Remove_16xMD.png" />
+    <None Include="Resources\PencilAngled_16xMD_color.png" />
+    <None Include="Resources\action_add_16xMD.png" />
     <None Include="Resources\edit_filter.png" />
     <None Include="Resources\remove_filter.png" />
     <None Include="Resources\add_filter.png" />

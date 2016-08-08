@@ -152,6 +152,21 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
     #endregion
 
+    #region Public Properties
+
+    /// <summary>
+    /// Gets the count of currently displayed <see cref="LogMessage"/>s.
+    /// </summary>
+    public int DisplayedLogMessagesCount
+    {
+      get
+      {
+        return 0;
+      }
+    }
+
+    #endregion
+
     #region Private Methods
 
     /// <summary>
@@ -258,6 +273,17 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       tsbPaste.Enabled      = Clipboard.ContainsText() && scintilla.Focused && !scintilla.ReadOnly && !mLuaScriptRunning;
       tsbStart.Enabled      = textAvailable;
       tsbStop.Enabled       = mLuaScriptRunning;
+    }
+
+    /// <summary>
+    /// Handles the Zoom event of the <see cref="Scintilla"/> <see cref="Script"/> editor.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void ScintillaZoomChanged(object sender, EventArgs e)
+    {
+      tsbZoomIn.Enabled  = scintilla.Zoom < MAX_ZOOM_LEVEL;
+      tsbZoomOut.Enabled = scintilla.Zoom > MIN_ZOOM_LEVEL;
     }
 
     /// <summary>
@@ -396,10 +422,8 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       scintilla.SetProperty("fold",         "1");
       scintilla.SetProperty("fold.compact", "1");
 
-      // Initial call the text changed to enable line numbering.
-      ScintillaTextChanged(
-          this
-        , EventArgs.Empty);
+      // Set the default content to the editor.
+      scintilla.Text = Resources.strLuaEditorDefaultContent;
     }
 
     /// <summary>
@@ -504,6 +528,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       mLuaScript = new Script();
 
       mLuaScript.Globals["Debug"]         = (Action<string>)LuaVmDebugPrint;
+      mLuaScript.Globals["Clear"]         = (Action)LuaVmClear;
       mLuaScript.Globals["MsgBox"]        = (Action<string>)LuaVmMsgBox;
       mLuaScript.Globals["SetBookmark"]   = (Func<int, bool>)LuaVmSetBookmark;
       mLuaScript.Globals["DelBookmark"]   = (Func<int, bool>)LuaVmDelBookmark;
@@ -673,15 +698,6 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     private void TsbStartClick(object sender, EventArgs e)
     {
       StartLuaScript();
-    }
-
-    /// <summary>
-    /// Handles the Zoom event of the <see cref="Scintilla"/> <see cref="Script"/> editor.
-    /// </summary>
-    private void ScintillaZoomed(object sender, EventArgs e)
-    {
-      tsbZoomIn.Enabled  = scintilla.Zoom < MAX_ZOOM_LEVEL;
-      tsbZoomOut.Enabled = scintilla.Zoom > MIN_ZOOM_LEVEL;
     }
 
     private void StartLuaScript()
@@ -861,7 +877,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         return;
       }
 
-      txtOutput.AppendText(message);
+      txtOutput.AppendText(message.TrimEnd() + Environment.NewLine);
     }
 
     /// <summary>
@@ -873,7 +889,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       {
         return;
       }
-
+      
       InitializeScintilaCtrl();
     }
 
@@ -966,12 +982,9 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
           msgBookmarks[bkmrkIndx + 1] = mBookmarkProvider.Bookmarks[bkmrkIndx].ToLuaTable(mLuaScript);
         }
 
-        if (msgBookmarks.Length > 0)
-        {
-          mLuaScript.Call(
-              mLuaScript.Globals["OnBookmarksChanged"]
-            , msgBookmarks);
-        }
+        mLuaScript.Call(
+            mLuaScript.Globals["OnBookmarksChanged"]
+          , msgBookmarks);
       }
     }
 
@@ -1074,6 +1087,20 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
           , DateTime.Now.ToString("HH:mm:ss:fff")
           , value.TrimEnd()
           , Environment.NewLine));
+      }
+    }
+
+    private void LuaVmClear()
+    {
+      if (InvokeRequired)
+      {
+        Invoke(new Action(LuaVmClear));
+        return;
+      }
+
+      if (mLogContainer != null)
+      {
+        mLogContainer.ClearAll();
       }
     }
 

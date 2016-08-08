@@ -49,6 +49,21 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
     #endregion
 
+    #region Public Properties
+
+    /// <summary>
+    /// Gets the count of currently displayed <see cref=LogMessage"/>s.
+    /// </summary>
+    public int DisplayedLogMessagesCount
+    {
+      get
+      {
+        return 0;
+      }
+    }
+
+    #endregion
+
     #region Public Methods
 
     /// <summary>

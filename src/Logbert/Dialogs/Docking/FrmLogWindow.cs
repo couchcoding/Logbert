@@ -118,6 +118,17 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     #region Public Properties
 
     /// <summary>
+    /// Gets the count of currently displayed <see cref="LogMessage"/>s.
+    /// </summary>
+    public int DisplayedLogMessagesCount
+    {
+      get
+      {
+        return dtgLogMessages.RowCount;
+      }
+    }
+
+    /// <summary>
     /// Gets the <see cref="List{LogMessage}"/>´of bookmarked <see cref="LogMessage"/>s.
     /// </summary>
     public List<LogMessage> Bookmarks
@@ -703,7 +714,9 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       {
         dtgLogMessages.SelectionChanged -= DtgLogMessagesSelectionChanged;
 
-        UpdateInternalList(messages);
+        // Convert the list to an array to fix 
+        // accessing it while the enumeration is changed.
+        UpdateInternalList(messages.ToArray());
       }
       finally
       {
@@ -793,6 +806,17 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// </summary>
     public void ClearAll()
     {
+      dtgLogMessages.SuspendDrawing();
+
+      try
+      {
+        dtgLogMessages.Rows.Clear();
+      }
+      finally
+      {
+        dtgLogMessages.ResumeDrawing();
+      }
+
       // Nothing to do here.
     }
 
@@ -919,7 +943,9 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
           // Clear all existing datasets.
           dtgLogMessages.Rows.Clear();
 
-          UpdateInternalList(mLogcontainer.LogMessages);
+        // Convert the list to an array to fix 
+        // accessing it while the enumeration is changed.
+          UpdateInternalList(mLogcontainer.LogMessages.ToArray());
 
           // Try to select the previous selected log message again.
           SelectLogMessage(selectedMessage);
@@ -931,6 +957,11 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       }
 
       dtgLogMessages.Refresh();
+
+      if (mLogcontainer != null)
+      {
+        mLogcontainer.UpdateStatusBarInformation();
+      }
     }
 
     /// <summary>

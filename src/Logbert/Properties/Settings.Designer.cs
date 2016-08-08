@@ -205,7 +205,7 @@ namespace Com.Couchcoding.Logbert.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("8.25")]
+        [global::System.Configuration.DefaultSettingValueAttribute("9")]
         public float LogMessagesFontSize {
             get {
                 return ((float)(this["LogMessagesFontSize"]));
@@ -1050,6 +1050,171 @@ namespace Com.Couchcoding.Logbert.Properties {
             }
             set {
                 this["PnlNLogFileSettingsStartFromBeginning"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PnlCustomFileSettingsFile {
+            get {
+                return ((string)(this["PnlCustomFileSettingsFile"]));
+            }
+            set {
+                this["PnlCustomFileSettingsFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool PnlCustomFileSettingsStartFromBeginning {
+            get {
+                return ((bool)(this["PnlCustomFileSettingsStartFromBeginning"]));
+            }
+            set {
+                this["PnlCustomFileSettingsStartFromBeginning"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PnlCustomFileSettingsColumnizer {
+            get {
+                return ((string)(this["PnlCustomFileSettingsColumnizer"]));
+            }
+            set {
+                this["PnlCustomFileSettingsColumnizer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000000")]
+        public int MaxLogMessages {
+            get {
+                return ((int)(this["MaxLogMessages"]));
+            }
+            set {
+                this["MaxLogMessages"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DockLayoutCustomReceiver {
+            get {
+                return ((string)(this["DockLayoutCustomReceiver"]));
+            }
+            set {
+                this["DockLayoutCustomReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DockLayoutEventlogReceiver {
+            get {
+                return ((string)(this["DockLayoutEventlogReceiver"]));
+            }
+            set {
+                this["DockLayoutEventlogReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DockLayoutLog4NetFileReceiver {
+            get {
+                return ((string)(this["DockLayoutLog4NetFileReceiver"]));
+            }
+            set {
+                this["DockLayoutLog4NetFileReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DockLayoutLog4NetUdpReceiver {
+            get {
+                return ((string)(this["DockLayoutLog4NetUdpReceiver"]));
+            }
+            set {
+                this["DockLayoutLog4NetUdpReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DockLayoutNLogFileReceiver {
+            get {
+                return ((string)(this["DockLayoutNLogFileReceiver"]));
+            }
+            set {
+                this["DockLayoutNLogFileReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DockLayoutNLogTcpReceiver {
+            get {
+                return ((string)(this["DockLayoutNLogTcpReceiver"]));
+            }
+            set {
+                this["DockLayoutNLogTcpReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DockLayoutNLogUdpReceiver {
+            get {
+                return ((string)(this["DockLayoutNLogUdpReceiver"]));
+            }
+            set {
+                this["DockLayoutNLogUdpReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DockLayoutSyslogFileReceiver {
+            get {
+                return ((string)(this["DockLayoutSyslogFileReceiver"]));
+            }
+            set {
+                this["DockLayoutSyslogFileReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DockLayoutSyslogUdpReceiver {
+            get {
+                return ((string)(this["DockLayoutSyslogUdpReceiver"]));
+            }
+            set {
+                this["DockLayoutSyslogUdpReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("columnizer.xml")]
+        public string ColumnizerRepository {
+            get {
+                return ((string)(this["ColumnizerRepository"]));
             }
         }
     }

@@ -324,6 +324,17 @@ namespace Com.Couchcoding.GuiLibrary.Dialogs
     #region Private Methods
 
     /// <summary>
+    /// Validates the dialog inputs before the dialog is closed.
+    /// </summary>
+    /// <param name="dlgResult">The current active <see cref="DialogResult"/>.</param>
+    /// <returns><c>True</c> if all input is valid; otherwise <c>false</c>.</returns>
+    protected virtual bool ValidateDialog(DialogResult dlgResult)
+    {
+      // By default everything is valid.
+      return true;
+    }
+
+    /// <summary>
     /// Recalculates the Padding depending on the DPI setings.
     /// </summary>
     protected void RecalculatePadding()
@@ -472,6 +483,24 @@ namespace Com.Couchcoding.GuiLibrary.Dialogs
 
       // Draw the dialog as a default dialog.
       DrawDialogBackground(e.Graphics);
+    }
+
+    /// <summary>
+    /// Raises the <see cref="E:System.Windows.Forms.Form.Closing"/> event.
+    /// </summary>
+    /// <param name="e">A <see cref="T:System.ComponentModel.CancelEventArgs"/> that contains the event data. </param>
+    protected override void OnClosing(CancelEventArgs e)
+    {
+      // Prevent the dialog from closing if at least one dialog input is invalid.
+      e.Cancel = !ValidateDialog(DialogResult);
+
+      base.OnClosing(e);
+
+      if (Owner != null)
+      {
+        // Focus the owning window.
+        Owner.Activate();
+      }
     }
 
     #endregion

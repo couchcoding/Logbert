@@ -62,6 +62,7 @@
     <Compile Include="Controls\ColorDropDown.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\CustomToolStripSystemRenderer.cs" />
     <Compile Include="Controls\DataGridViewEx.cs">
       <SubType>Component</SubType>
     </Compile>

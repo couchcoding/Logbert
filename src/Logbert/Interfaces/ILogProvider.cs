@@ -29,6 +29,7 @@
 #endregion
 
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 using Com.Couchcoding.Logbert.Logging;
 
@@ -145,7 +146,7 @@ namespace Com.Couchcoding.Logbert.Interfaces
     /// <summary>
     /// Intizializes the <see cref="ILogProvider"/>.
     /// </summary>
-    /// <param name="logHandler">The <see cref="ILogHandler"/> that may handle incomming <see cref="LogMessage"/>s.</param>
+    /// <param name="logHandler">The <see cref="ILogHandler"/> that may handle incoming <see cref="LogMessage"/>s.</param>
     void Initialize(ILogHandler logHandler);
 
     /// <summary>
@@ -168,6 +169,18 @@ namespace Com.Couchcoding.Logbert.Interfaces
     /// </summary>
     /// <returns>The header used for the CSV file export.</returns>
     string GetCsvHeader();
+
+    /// <summary>
+    /// Saves the current docking layout of the <see cref="ILogProvider"/> implementation.
+    /// </summary>
+    /// <param name="layout">The layout as string to save.</param>
+    void SaveLayout(string layout);
+
+    /// <summary>
+    /// Loads the docking layout of the <see cref="ILogProvider"/> implementation.
+    /// </summary>
+    /// <returns>The restored layout, or <c>null</c> if none exists.</returns>
+    string LoadLayout();
 
     #endregion
   }

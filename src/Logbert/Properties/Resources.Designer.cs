@@ -63,6 +63,16 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap action_add_16xMD {
+            get {
+                object obj = ResourceManager.GetObject("action_add_16xMD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap action_Cancel_16xLG {
             get {
                 object obj = ResourceManager.GetObject("action_Cancel_16xLG", resourceCulture);
@@ -83,9 +93,29 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_Down_16xLG {
+            get {
+                object obj = ResourceManager.GetObject("arrow_Down_16xLG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_run_16xLG {
             get {
                 object obj = ResourceManager.GetObject("arrow_run_16xLG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrow_Up_16xLG {
+            get {
+                object obj = ResourceManager.GetObject("arrow_Up_16xLG", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -403,6 +433,16 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap PencilAngled_16xMD_color {
+            get {
+                object obj = ResourceManager.GetObject("PencilAngled_16xMD_color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap properties_16xLG {
             get {
                 object obj = ResourceManager.GetObject("properties_16xLG", resourceCulture);
@@ -433,9 +473,29 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Remove_16xMD {
+            get {
+                object obj = ResourceManager.GetObject("Remove_16xMD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap remove_filter {
             get {
                 object obj = ResourceManager.GetObject("remove_filter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RunTests_8790 {
+            get {
+                object obj = ResourceManager.GetObject("RunTests_8790", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -499,11 +559,92 @@ namespace Com.Couchcoding.Logbert.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All Files (*.*)|*.*.
+        /// </summary>
+        internal static string strAllFilesPattern {
+            get {
+                return ResourceManager.GetString("strAllFilesPattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Clear Items.
         /// </summary>
         internal static string strClearMruList {
             get {
                 return ResourceManager.GetString("strClearMruList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (.*).
+        /// </summary>
+        internal static string strColumnizerColumnDefaultExpresssion {
+            get {
+                return ResourceManager.GetString("strColumnizerColumnDefaultExpresssion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Column.
+        /// </summary>
+        internal static string strColumnizerColumnDefaultName {
+            get {
+                return ResourceManager.GetString("strColumnizerColumnDefaultName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please add at least one columnizer with a name and an expression..
+        /// </summary>
+        internal static string strColumnizerConfigurationAddAtLeastOneRow {
+            get {
+                return ResourceManager.GetString("strColumnizerConfigurationAddAtLeastOneRow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a name and an expression for each configure column..
+        /// </summary>
+        internal static string strColumnizerConfigurationEnterColumnNameAndExpression {
+            get {
+                return ResourceManager.GetString("strColumnizerConfigurationEnterColumnNameAndExpression", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a name for the columnizer..
+        /// </summary>
+        internal static string strColumnizerConfigurationPleaseEnterName {
+            get {
+                return ResourceManager.GetString("strColumnizerConfigurationPleaseEnterName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Columnizer.
+        /// </summary>
+        internal static string strColumnizerDefaultName {
+            get {
+                return ResourceManager.GetString("strColumnizerDefaultName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The given log file does not exist. Please select an existing one..
+        /// </summary>
+        internal static string strCustomFileReceiverFileDoesNotExist {
+            get {
+                return ResourceManager.GetString("strCustomFileReceiverFileDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No columnizer is selected. Please choose an existing, or create a new one..
+        /// </summary>
+        internal static string strCustomFileReceiverNoColumnizerSelected {
+            get {
+                return ResourceManager.GetString("strCustomFileReceiverNoColumnizerSelected", resourceCulture);
             }
         }
         
@@ -517,7 +658,16 @@ namespace Com.Couchcoding.Logbert.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} Messages.
+        ///   Looks up a localized string similar to all.
+        /// </summary>
+        internal static string strDocumentMessageAllDisplayed {
+            get {
+                return ResourceManager.GetString("strDocumentMessageAllDisplayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Messages ({1} displayed).
         /// </summary>
         internal static string strDocumentMessageCount {
             get {
@@ -693,6 +843,30 @@ namespace Com.Couchcoding.Logbert.Properties {
         internal static string strLoggerRoot {
             get {
                 return ResourceManager.GetString("strLoggerRoot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --[[
+        ///
+        ///Logbert Lua script interface
+        ///
+        ///There are some callback and calling functions you may use in this scripting window.
+        ///All provided Lua methods are available. So be careful what you are doing!
+        ///
+        ///Callback Functions:
+        ///
+        ///  - OnMessagesReceived
+        ///    This function is called if at least one message is received and displayed in the log window.
+        ///    It provides all new received log messages as a Lua table as parameter.
+        ///
+        ///    OnMessagesReceived = function (msgs)
+        ///      for k, v in pairs(msgs) do
+        ///        ... [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string strLuaEditorDefaultContent {
+            get {
+                return ResourceManager.GetString("strLuaEditorDefaultContent", resourceCulture);
             }
         }
         

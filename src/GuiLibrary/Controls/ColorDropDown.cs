@@ -237,6 +237,8 @@ namespace Com.Couchcoding.GuiLibrary.Controls
       {
         ((ColorInfo)Items[Items.Count - 1]).Color = color;
       }
+
+      Invalidate();
     }
 
     #endregion

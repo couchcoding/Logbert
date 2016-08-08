@@ -99,9 +99,9 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     private readonly ReaderWriterLockSlim mLogMessageLock = new ReaderWriterLockSlim();
 
     /// <summary>
-    /// Holds the count of logged <see cref="LogMessage"/>s.
+    /// Holds the index of the last logged <see cref="LogMessage"/>.
     /// </summary>
-    private long mLogMessageCount;
+    private int mLastLogMessageIndex = 0;
 
     /// <summary>
     /// The global timeshift value to set for all <see cref="LogMessage"/>s.
@@ -115,7 +115,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// <summary>
     /// Gets the received <see cref="LogMessage"/>s.
     /// </summary>
-    public IEnumerable<LogMessage> LogMessages
+    public List<LogMessage> LogMessages
     {
       get
       {
@@ -220,6 +220,53 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     #region Private Methods
 
     /// <summary>
+    /// Initializes the default docking layout.
+    /// </summary>
+    private void InitializeDefaultLayout()
+    {
+      mLogWindow.Show(
+          LogDockPanel
+        , DockState.Document);
+
+      mLogScript.Show(
+          LogDockPanel
+        , DockState.Document);
+
+      if (mMessageDetails != null)
+      {
+        mMessageDetails.Show(
+            LogDockPanel
+          , DockState.DockBottom);
+      }
+
+      if (mBookmarks != null)
+      {
+        mBookmarks.Show(
+            LogDockPanel
+          , DockState.DockBottom);
+      }
+
+      if (mFilter != null)
+      {
+        mFilter.Show(
+            LogDockPanel
+            , DockState.DockBottom);
+      }
+
+      if (mMessageDetails != null)
+      {
+        mMessageDetails.Activate();
+      }
+          
+      if (mLoggerTree != null)
+      {
+        mLoggerTree.Show(
+            LogDockPanel
+          , DockState.DockRight);
+      }
+    }
+
+    /// <summary>
     /// Raises the <see cref="E:System.Windows.Forms.Form.Load"/> event.
     /// </summary>
     /// <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data. </param>
@@ -231,57 +278,44 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       {
         try
         {
-          mLogWindow.Show(
-              LogDockPanel
-            , DockState.Document);
-
-          mLogScript.Show(
-              LogDockPanel
-            , DockState.Document);
-
-          if (mMessageDetails != null)
+          if (mLogProvider != null && ModifierKeys != Keys.Shift)
           {
-            mMessageDetails.Show(
-                LogDockPanel
-              , DockState.DockBottom);
+            string previousLayout = mLogProvider.LoadLayout();
+
+            if (!string.IsNullOrEmpty(previousLayout))
+            {
+              using (MemoryStream memStream = new MemoryStream(Encoding.UTF8.GetBytes(previousLayout)))
+              {
+                LogDockPanel.LoadFromXml(
+                    memStream
+                  , GetContentFromPersistString);
+              }
+            }
+            else
+            {
+              InitializeDefaultLayout();
+            }
+          }
+          else
+          {
+            InitializeDefaultLayout();
           }
 
-          if (mBookmarks != null)
-          {
-            mBookmarks.Show(
-                LogDockPanel
-              , DockState.DockBottom);
-          }
-
-          if (mFilter != null)
-          {
-            mFilter.Show(
-                LogDockPanel
-               , DockState.DockBottom);
-          }
-
-          if (mMessageDetails != null)
-          {
-            mMessageDetails.Activate();
-          }
-          
-          if (mLoggerTree != null)
-          {
-            mLoggerTree.Show(
-                LogDockPanel
-              , DockState.DockRight);
-          }
+          tsbShowMessageDetails.Checked = mMessageDetails != null && !mMessageDetails.IsHidden;
+          tsbShowLoggerTree.Checked     = mLoggerTree     != null && !mLoggerTree.IsHidden; 
+          tsbShowBookmarks.Checked      = mBookmarks      != null && !mBookmarks.IsHidden;
+          tsbShowFilter.Checked         = mFilter         != null && !mFilter.IsHidden;
 
           if (mLogProvider != null)
           {
             mLogProvider.Initialize(this);
 
-            tsbShowTrace.Available = (mLogProvider.SupportedLevels & LogLevel.Trace) != 0;
-            tsbShowDebug.Available = (mLogProvider.SupportedLevels & LogLevel.Debug) != 0;
-            tsbShowInfo.Available  = (mLogProvider.SupportedLevels & LogLevel.Info) != 0;
+            tsbShowTrace.Available = (mLogProvider.SupportedLevels & LogLevel.Trace)   != 0;
+            tsbShowDebug.Available = (mLogProvider.SupportedLevels & LogLevel.Debug)   != 0;
+            tsbShowInfo.Available  = (mLogProvider.SupportedLevels & LogLevel.Info)    != 0;
             tsbShowWarn.Available  = (mLogProvider.SupportedLevels & LogLevel.Warning) != 0;
-            tsbShowError.Available = (mLogProvider.SupportedLevels & LogLevel.Error) != 0;
-            tsbShowFatal.Available = (mLogProvider.SupportedLevels & LogLevel.Fatal) != 0;
+            tsbShowError.Available = (mLogProvider.SupportedLevels & LogLevel.Error)   != 0;
+            tsbShowFatal.Available = (mLogProvider.SupportedLevels & LogLevel.Fatal)   != 0;
 
             if (mLogProvider.SupportedLevels == LogLevel.None)
             {
@@ -310,17 +344,38 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     }
 
     /// <summary>
-    /// Raises the <see cref="E:System.Windows.Forms.Form.Closing"/> event.
+    /// Gets the docking window that matche sthe specified <paramref name="persistString"/> value.
     /// </summary>
-    /// <param name="e">A <see cref="T:System.ComponentModel.CancelEventArgs"/> that contains the event data. </param>
-    protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+    /// <param name="persistString">The full type name of the docking window to restor.</param>
+    /// <returns>The <see cref="IDockContent"/> instance to restore, or <c>null</c> if not found.</returns>
+    private IDockContent GetContentFromPersistString(string persistString)
     {
-      if (mLogProvider != null)
+      switch (persistString)
       {
-        mLogProvider.Shutdown();
+        case "Com.Couchcoding.Logbert.Dialogs.Docking.FrmLogWindow":
+          return mLogWindow;
+
+        case "Com.Couchcoding.Logbert.Dialogs.Docking.FrmLogScript":
+          return mLogScript;
+
+        case "Com.Couchcoding.Logbert.Dialogs.Docking.FrmMessageDetails":
+          return mMessageDetails;
+
+        case "Com.Couchcoding.Logbert.Dialogs.Docking.FrmLogBookmarks":
+          return mBookmarks;
+
+        case "Com.Couchcoding.Logbert.Dialogs.Docking.FrmLogFilter":
+          return mFilter;
+
+        case "Com.Couchcoding.Logbert.Dialogs.Docking.FrmLogTree":
+          return mLoggerTree;
       }
 
-      base.OnClosing(e);
+      Logger.Warn(
+          "Unable to restore docking layout for windows type: {0}"
+        , persistString);
+
+      return null;
     }
 
     /// <summary>
@@ -337,7 +392,9 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         {
           mLogMessageLock.EnterReadLock();
 
-          mLogMessageCount = mLogMessages.Count;
+          mLastLogMessageIndex = mLogMessages.Count > 0 
+            ? mLogMessages[mLogMessages.Count - 1].Index
+            : 0;
 
           // Use a copy of the original list to prevent multiple reader locks.
           logMessageCopy   = new List<LogMessage>(mLogMessages.ToArray());
@@ -365,7 +422,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// <summary>
     /// Updates the information display in the <see cref="StatusBar"/>.
     /// </summary>
-    private void UpdateStatusBarInformation()
+    public void UpdateStatusBarInformation()
     {
       if (InvokeRequired)
       {
@@ -373,13 +430,50 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         return;
       }
 
+      string dspCount = ((ILogPresenter)mLogWindow).DisplayedLogMessagesCount == mLogMessages.Count
+        ? Resources.strDocumentMessageAllDisplayed
+        : ((ILogPresenter)mLogWindow).DisplayedLogMessagesCount.ToString();
+
       stbMessageCount.Text = string.Format(
           Resources.strDocumentMessageCount
-        , mLogMessages.Count);
+        , mLogMessages.Count
+        , dspCount);
 
       stbStatus.Text = mLogProvider != null && mLogProvider.IsActive
         ? Resources.strDocumentStatusRunning
         : Resources.strDocumentStatusStopped;
+    }
+
+    /// <summary>
+    /// Clear all received logging data.
+    /// </summary>
+    public void ClearAll()
+    {
+      mLogMessageLock.EnterWriteLock();
+
+      try
+      {
+        mLogMessages.Clear();
+      }
+      finally
+      {
+        mLogMessageLock.ExitWriteLock();
+      }
+
+      if (mLogProvider != null)
+      {
+        mLogProvider.Clear();
+      }
+
+      ((ILogPresenter)mLoggerTree).ClearAll();
+      ((ILogPresenter)mLogWindow).ClearAll();
+      ((ILogPresenter)mMessageDetails).ClearAll();
+      ((ILogPresenter)mBookmarks).ClearAll();
+      ((ILogPresenter)mFilter).ClearAll();
+      ((ILogPresenter)mLogScript).ClearAll();
+
+      // Force an update of the UI.
+      TmrUpdateTick(this, EventArgs.Empty);
     }
 
     /// <summary>
@@ -398,8 +492,9 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       if (mLogProvider != null)
       {
         tsbClearMessages.PerformClick();
-
+        
         mLogProvider.Shutdown();
+        mLastLogMessageIndex = 0;
         mLogProvider.Initialize(this);
       }
     }
@@ -443,7 +538,10 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// </summary>
     private void TsbGotoLastMessageClick(object sender, EventArgs e)
     {
-      ((ILogPresenter)mLogWindow).SelectLogMessage((int)mLogMessageCount);
+      if (mLogMessages.Count > 0)
+      {
+        ((ILogPresenter)mLogWindow).SelectLogMessage(mLogMessages[mLogMessages.Count - 1]);
+      }
     }
 
     /// <summary>
@@ -598,13 +696,13 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// </summary>
     private void TmrUpdateTick(object sender, EventArgs e)
     {
-      if (mLogMessages.Count != mLogMessageCount)
+      if (mLogMessages.Count > 0 && mLogMessages[mLogMessages.Count -1].Index != mLastLogMessageIndex)
       {
         tmrUpdate.Stop();
 
         try
         {
-          LogMessagesChanged((int)(mLogMessages.Count - mLogMessageCount));
+          LogMessagesChanged(mLogMessages.Count - mLastLogMessageIndex);
         }
         finally
         {
@@ -618,31 +716,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// </summary>
     private void TsbClearMessagesClick(object sender, EventArgs e)
     {
-      mLogMessageLock.EnterWriteLock();
-
-      try
-      {
-        mLogMessages.Clear();
-      }
-      finally
-      {
-        mLogMessageLock.ExitWriteLock();
-      }
-
-      if (mLogProvider != null)
-      {
-        mLogProvider.Clear();
-      }
-
-      ((ILogPresenter)mLoggerTree).ClearAll();
-      ((ILogPresenter)mLogWindow).ClearAll();
-      ((ILogPresenter)mMessageDetails).ClearAll();
-      ((ILogPresenter)mBookmarks).ClearAll();
-      ((ILogPresenter)mFilter).ClearAll();
-      ((ILogPresenter)mLogScript).ClearAll();
-
-      // Force an update of the UI.
-      TmrUpdateTick(this, EventArgs.Empty);
+      ClearAll();
     }
 
     /// <summary>
@@ -803,9 +877,43 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
     protected override void Dispose(bool disposing)
     {
-      if (disposing && (components != null))
+      if (disposing && components != null)
       {
         components.Dispose();
+      }
+
+      if (mLogProvider != null)
+      {
+        // Shutdown the logger functionality.
+        mLogProvider.Shutdown();
+
+        try
+        {
+          // Save the current docking layout.
+          using (MemoryStream memStream = new MemoryStream())
+          {
+            LogDockPanel.SaveAsXml(
+                memStream
+              , Encoding.UTF8);
+
+            memStream.Flush();
+
+            memStream.Seek(
+                0
+              , SeekOrigin.Begin);
+
+            if (memStream.Length > 0)
+            {
+              mLogProvider.SaveLayout(Encoding.UTF8.GetString(memStream.ToArray()));
+            }
+          }
+        }
+        catch (Exception ex)
+        {
+          Logger.Error(
+              "An error occured while saving the current docking layout: {0}"
+            , ex.Message);
+        }
       }
 
       if (tmrUpdate != null && tmrUpdate.Enabled)
@@ -922,6 +1030,14 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       try
       {
         mLogMessages.AddRange(logMsgs);
+
+        if (Settings.Default.MaxLogMessages > 0 && mLogMessages.Count > Settings.Default.MaxLogMessages)
+        {
+          // Remove from the first posotion on.
+          mLogMessages.RemoveRange(
+              0
+            , mLogMessages.Count - Settings.Default.MaxLogMessages);
+        }
       }
       finally
       {
@@ -940,6 +1056,14 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       try
       {
         mLogMessages.Add(logMsg);
+
+        if (Settings.Default.MaxLogMessages > 0 && mLogMessages.Count > Settings.Default.MaxLogMessages)
+        {
+          // Remove from the first posotion on.
+          mLogMessages.RemoveRange(
+              0
+            , mLogMessages.Count - Settings.Default.MaxLogMessages);
+        }
       }
       finally
       {
@@ -991,7 +1115,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
           : string.Empty;
 
       mLogWindow = new FrmLogWindow(
-          logProvider
+          mLogProvider
         , this);
 
       if (mLogProvider != null)
@@ -1012,7 +1136,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
           mLoggerTree = new FrmLogTree((ILogFilterHandler)mLogWindow);
           mLoggerTree.VisibleChanged += (sender, e) => 
           { 
-            tsbShowLoggerTree.Checked = !mLoggerTree.IsHidden; 
+            tsbShowLoggerTree.Checked = !mLoggerTree.IsHidden;
           };
         }
 

@@ -49,6 +49,7 @@
       this.tsbShowMessageDetails = new System.Windows.Forms.ToolStripButton();
       this.tsbShowLoggerTree = new System.Windows.Forms.ToolStripButton();
       this.tsbShowBookmarks = new System.Windows.Forms.ToolStripButton();
+      this.tsbShowFilter = new System.Windows.Forms.ToolStripButton();
       this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
       this.tsbTimeShift = new System.Windows.Forms.ToolStripButton();
       this.txtTimeShift = new System.Windows.Forms.ToolStripTextBox();
@@ -57,7 +58,6 @@
       this.cmsSaveMessages = new System.Windows.Forms.ContextMenu();
       this.cmsSaveMessagesRaw = new System.Windows.Forms.MenuItem();
       this.cmsSaveMessagesCsv = new System.Windows.Forms.MenuItem();
-      this.tsbShowFilter = new System.Windows.Forms.ToolStripButton();
       ((System.ComponentModel.ISupportInitialize)(this.stbStatus)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.stbMessageCount)).BeginInit();
       this.tsMessages.SuspendLayout();
@@ -83,6 +83,7 @@
             this.stbMessageCount});
       this.stBar.ShowPanels = true;
       this.stBar.Size = new System.Drawing.Size(784, 22);
+      this.stBar.SizingGrip = false;
       this.stBar.TabIndex = 2;
       // 
       // stbStatus
@@ -94,9 +95,11 @@
       // 
       // stbMessageCount
       // 
+      this.stbMessageCount.AutoSize = System.Windows.Forms.StatusBarPanelAutoSize.Contents;
       this.stbMessageCount.Name = "stbMessageCount";
       this.stbMessageCount.Text = "0 Messages";
       this.stbMessageCount.ToolTipText = "Count of received Messages";
+      this.stbMessageCount.Width = 75;
       // 
       // tsMessages
       // 
@@ -408,6 +411,17 @@
       this.tsbShowBookmarks.Text = "Bookmarks";
       this.tsbShowBookmarks.Click += new System.EventHandler(this.TsbShowBookmarksClick);
       // 
+      // tsbShowFilter
+      // 
+      this.tsbShowFilter.CheckOnClick = true;
+      this.tsbShowFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this.tsbShowFilter.Image = global::Com.Couchcoding.Logbert.Properties.Resources.filter_16xLG;
+      this.tsbShowFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tsbShowFilter.Name = "tsbShowFilter";
+      this.tsbShowFilter.Size = new System.Drawing.Size(23, 23);
+      this.tsbShowFilter.Text = "Filter";
+      this.tsbShowFilter.Click += new System.EventHandler(this.TsbShowFilterClick);
+      // 
       // toolStripSeparator1
       // 
       this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -459,17 +473,6 @@
       this.cmsSaveMessagesCsv.Index = 1;
       this.cmsSaveMessagesCsv.Text = "Save as &CSV...";
       this.cmsSaveMessagesCsv.Click += new System.EventHandler(this.CmsSaveMessagesCsvClick);
-      // 
-      // tsbShowFilter
-      // 
-      this.tsbShowFilter.CheckOnClick = true;
-      this.tsbShowFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.tsbShowFilter.Image = global::Com.Couchcoding.Logbert.Properties.Resources.filter_16xLG;
-      this.tsbShowFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.tsbShowFilter.Name = "tsbShowFilter";
-      this.tsbShowFilter.Size = new System.Drawing.Size(23, 23);
-      this.tsbShowFilter.Text = "Filter";
-      this.tsbShowFilter.Click += new System.EventHandler(this.TsbShowFilterClick);
       // 
       // FrmLogDocument
       // 

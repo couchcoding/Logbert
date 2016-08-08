@@ -88,6 +88,17 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     #region Public Properties
 
     /// <summary>
+    /// Gets the count of currently displayed <see cref=LogMessage"/>s.
+    /// </summary>
+    public int DisplayedLogMessagesCount
+    {
+      get
+      {
+        return 0;
+      }
+    }
+
+    /// <summary>
     /// Gets all defines <see cref="LogFilter"/> to apply.
     /// </summary>
     public IList<LogFilter> Filter

@@ -206,6 +206,11 @@ namespace Logbert
     {
       if (Disposing)
       {
+        if (e.Content != null && e.Content.DockHandler != null)
+        {
+          e.Content.DockHandler.Close();
+        }
+
         return;
       }
 

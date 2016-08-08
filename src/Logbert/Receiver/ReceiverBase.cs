@@ -92,7 +92,7 @@ namespace Com.Couchcoding.Logbert.Receiver
     }
 
     /// <summary>
-    /// Gets the settings <see cref="Control"/> of the <see cref="ILogProvider"/>.
+    /// Gets the settings <see cref="ILogSettingsCtrl"/> of the <see cref="ILogProvider"/>.
     /// </summary>
     public abstract ILogSettingsCtrl Settings
     {
@@ -168,7 +168,7 @@ namespace Com.Couchcoding.Logbert.Receiver
     }
 
     /// <summary>
-    /// Get the <see cref="Control"/> to display details about a selected <see cref="LogMessage"/>.
+    /// Get the <see cref="ILogPresenter"/> to display details about a selected <see cref="LogMessage"/>.
     /// </summary>
     public virtual ILogPresenter DetailsControl
     {
@@ -185,7 +185,7 @@ namespace Com.Couchcoding.Logbert.Receiver
     /// <summary>
     /// Intizializes the <see cref="ILogProvider"/>.
     /// </summary>
-    /// <param name="logHandler">The <see cref="ILogHandler"/> that may handle incomming <see cref="Log.oldLogMessage"/>s.</param>
+    /// <param name="logHandler">The <see cref="ILogHandler"/> that may handle incomming <see cref="LogMessage"/>s.</param>
     public virtual void Initialize(ILogHandler logHandler)
     {
       mLogHandler = logHandler;
@@ -238,6 +238,18 @@ namespace Com.Couchcoding.Logbert.Receiver
     {
       return false;
     }
+
+    /// <summary>
+    /// Saves the current docking layout of the <see cref="ReceiverBase"/> instance.
+    /// </summary>
+    /// <param name="layout">The layout as string to save.</param>
+    public abstract void SaveLayout(string layout);
+
+    /// <summary>
+    /// Loads the docking layout of the <see cref="ReceiverBase"/> instance.
+    /// </summary>
+    /// <returns>The restored layout, or <c>null</c> if none exists.</returns>
+    public abstract string LoadLayout();
 
     #endregion
   }

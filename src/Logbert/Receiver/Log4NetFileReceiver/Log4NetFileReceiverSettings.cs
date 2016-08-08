@@ -137,7 +137,7 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetFileReceiver
     public Log4NetFileReceiverSettings()
     {
       InitializeComponent();
-          }
+    }
 
     #endregion
   }

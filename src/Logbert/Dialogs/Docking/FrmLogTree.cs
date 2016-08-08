@@ -101,6 +101,17 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     #region Public Properties
 
     /// <summary>
+    /// Gets the count of currently displayed <see cref=LogMessage"/>s.
+    /// </summary>
+    public int DisplayedLogMessagesCount
+    {
+      get
+      {
+        return 0;
+      }
+    }
+
+    /// <summary>
     /// Retrieves the current font for this control. This will be the font used by default for painting and text in the control. 
     /// </summary>
     [Localizable(true)]

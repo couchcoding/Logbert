@@ -73,6 +73,17 @@ namespace Com.Couchcoding.Logbert.Controls
     #region Public Properties
 
     /// <summary>
+    /// Gets the count of currently displayed <see cref=LogMessage"/>s.
+    /// </summary>
+    public int DisplayedLogMessagesCount
+    {
+      get
+      {
+        return 0;
+      }
+    }
+
+    /// <summary>
     /// Gets or sets the font of the text displayed by the control.
     /// </summary>
     /// <returns>The <see cref="T:System.Drawing.Font"/> to apply to the text displayed by the control. The default is the value of the <see cref="P:System.Windows.Forms.Control.DefaultFont"/> property.</returns>

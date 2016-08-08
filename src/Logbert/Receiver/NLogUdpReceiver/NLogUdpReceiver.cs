@@ -33,6 +33,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Windows.Forms;
 
 using Com.Couchcoding.Logbert.Interfaces;
 
@@ -211,6 +212,30 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
       }
     }
 
+	  /// <summary>
+	  /// Gets or sets the active state if the <see cref="ILogProvider"/>.
+	  /// </summary>
+	  public override bool IsActive
+    {
+      get
+      {
+        return base.IsActive;
+      }
+      set
+      {
+        base.IsActive = value;
+
+        if (!mIsActive)
+        {
+          Shutdown();
+        }
+        else
+        {
+          Initialize(mLogHandler);
+        }
+      }
+    }
+
     #endregion
 
     #region Private Methods
@@ -338,6 +363,24 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
     public override void Clear()
     {
       mLogNumber = 0;
+    }
+
+    /// <summary>
+    /// Saves the current docking layout of the <see cref="ReceiverBase"/> instance.
+    /// </summary>
+    /// <param name="layout">The layout as string to save.</param>
+    public override void SaveLayout(string layout)
+    {
+      Properties.Settings.Default.DockLayoutNLogUdpReceiver = layout ?? string.Empty;
+    }
+
+    /// <summary>
+    /// Loads the docking layout of the <see cref="ReceiverBase"/> instance.
+    /// </summary>
+    /// <returns>The restored layout, or <c>null</c> if none exists.</returns>
+    public override string LoadLayout()
+    {
+      return Properties.Settings.Default.DockLayoutNLogUdpReceiver;
     }
 
     #endregion

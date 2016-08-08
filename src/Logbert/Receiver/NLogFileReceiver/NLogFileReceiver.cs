@@ -431,6 +431,24 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogFileReceiver
       }
     }
 
+    /// <summary>
+    /// Saves the current docking layout of the <see cref="ReceiverBase"/> instance.
+    /// </summary>
+    /// <param name="layout">The layout as string to save.</param>
+    public override void SaveLayout(string layout)
+    {
+      Properties.Settings.Default.DockLayoutNLogFileReceiver = layout ?? string.Empty;
+    }
+
+    /// <summary>
+    /// Loads the docking layout of the <see cref="ReceiverBase"/> instance.
+    /// </summary>
+    /// <returns>The restored layout, or <c>null</c> if none exists.</returns>
+    public override string LoadLayout()
+    {
+      return Properties.Settings.Default.DockLayoutNLogFileReceiver;
+    }
+
     #endregion
 
     #region Constructor

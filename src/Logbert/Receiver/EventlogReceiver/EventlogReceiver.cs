@@ -34,8 +34,10 @@ using System.Collections.Generic;
 using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Logging;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 using Com.Couchcoding.Logbert.Controls;
+using Com.Couchcoding.Logbert.Helper;
 
 namespace Com.Couchcoding.Logbert.Receiver.EventlogReceiver
 {
@@ -197,7 +199,7 @@ namespace Com.Couchcoding.Logbert.Receiver.EventlogReceiver
     /// </summary>
     private void EventLogEntryWritten(object sender, EntryWrittenEventArgs e)
     {
-      if (string.IsNullOrEmpty(mSourceName) || Equals(e.Entry.Source, mSourceName))
+      if (mIsActive && (string.IsNullOrEmpty(mSourceName) || Equals(e.Entry.Source, mSourceName)))
       {
         LogMessage newLogMsg = new LogMessageEventlog(
             e.Entry
@@ -279,6 +281,24 @@ namespace Com.Couchcoding.Logbert.Receiver.EventlogReceiver
     public override void Clear()
     {
       mLogNumber = 0;
+    }
+
+    /// <summary>
+    /// Saves the current docking layout of the <see cref="ReceiverBase"/> instance.
+    /// </summary>
+    /// <param name="layout">The layout as string to save.</param>
+    public override void SaveLayout(string layout)
+    {
+      Properties.Settings.Default.DockLayoutEventlogReceiver = layout ?? string.Empty;
+    }
+
+    /// <summary>
+    /// Loads the docking layout of the <see cref="ReceiverBase"/> instance.
+    /// </summary>
+    /// <returns>The restored layout, or <c>null</c> if none exists.</returns>
+    public override string LoadLayout()
+    {
+      return Properties.Settings.Default.DockLayoutEventlogReceiver;
     }
 
     #endregion

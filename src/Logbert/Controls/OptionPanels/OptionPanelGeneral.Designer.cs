@@ -71,7 +71,10 @@
       this.mnuTimestamp_backslash = new System.Windows.Forms.MenuItem();
       this.chkAutoFollow = new System.Windows.Forms.CheckBox();
       this.chkAllowOnlyOneInstance = new System.Windows.Forms.CheckBox();
+      this.lblMaxLogMessages = new System.Windows.Forms.Label();
+      this.nudMaxLogMessages = new System.Windows.Forms.NumericUpDown();
       ((System.ComponentModel.ISupportInitialize)(this.nudUpdateRate)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.nudMaxLogMessages)).BeginInit();
       this.SuspendLayout();
       // 
       // lblUpdateRate
@@ -450,10 +453,41 @@
       this.chkAllowOnlyOneInstance.Text = "Allow only one instance of the application.";
       this.chkAllowOnlyOneInstance.UseVisualStyleBackColor = true;
       // 
+      // lblMaxLogMessages
+      // 
+      this.lblMaxLogMessages.AutoSize = true;
+      this.lblMaxLogMessages.FlatStyle = System.Windows.Forms.FlatStyle.System;
+      this.lblMaxLogMessages.Location = new System.Drawing.Point(3, 204);
+      this.lblMaxLogMessages.Name = "lblMaxLogMessages";
+      this.lblMaxLogMessages.Size = new System.Drawing.Size(204, 13);
+      this.lblMaxLogMessages.TabIndex = 7;
+      this.lblMaxLogMessages.Text = "Maximum log messages for each receiver:";
+      // 
+      // nudMaxLogMessages
+      // 
+      this.nudMaxLogMessages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.nudMaxLogMessages.Location = new System.Drawing.Point(3, 220);
+      this.nudMaxLogMessages.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+      this.nudMaxLogMessages.Name = "nudMaxLogMessages";
+      this.nudMaxLogMessages.Size = new System.Drawing.Size(474, 20);
+      this.nudMaxLogMessages.TabIndex = 8;
+      this.nudMaxLogMessages.Value = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+      // 
       // OptionPanelGeneral
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.Controls.Add(this.nudMaxLogMessages);
+      this.Controls.Add(this.lblMaxLogMessages);
       this.Controls.Add(this.chkAllowOnlyOneInstance);
       this.Controls.Add(this.chkAutoFollow);
       this.Controls.Add(this.txtTimestampFormat);
@@ -465,6 +499,7 @@
       this.Name = "OptionPanelGeneral";
       this.Size = new System.Drawing.Size(480, 320);
       ((System.ComponentModel.ISupportInitialize)(this.nudUpdateRate)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.nudMaxLogMessages)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -515,5 +550,7 @@
     private System.Windows.Forms.MenuItem mnuTimestampPreset4;
     private System.Windows.Forms.CheckBox chkAutoFollow;
     private System.Windows.Forms.CheckBox chkAllowOnlyOneInstance;
+    private System.Windows.Forms.Label lblMaxLogMessages;
+    private System.Windows.Forms.NumericUpDown nudMaxLogMessages;
   }
 }
