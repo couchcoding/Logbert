@@ -30,7 +30,6 @@
 
 using System.Collections.Generic;
 using System.IO;
-using System.Windows.Forms;
 
 using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Logging;
@@ -225,48 +224,61 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
         , SeekOrigin.Begin);
 
       string line;
-      string dataToParse = string.Empty;
 
       List<LogMessage> messages = new List<LogMessage>();
 
       while ((line = mFileReader.ReadLine()) != null)
       {
-        dataToParse += line;
+        //LogMessageCustom cstmLgMsg = new LogMessageCustom(line, mLogNumber + 1);
 
-      //  int log4NetEndTag = dataToParse.IndexOf(
-      //      LOG4NET_LOGMSG_END
-      //    , StringComparison.Ordinal);
+        //foreach (LogColumn column in mColumnizer.Columns)
+        //{
+        //  Regex tmpRgx = new Regex(
+        //      column.Expression
+        //    , RegexOptions.Singleline);
 
-      //  if (log4NetEndTag > 0)
-      //  {
-      //    LogMessage newLogMsg;
+        //  Match tmpMtc = tmpRgx.Match(line);
 
-      //    try
-      //    {
-      //      newLogMsg = new LogMessageLog4Net(
-      //          dataToParse
-      //        , ++mLogNumber);
-      //    }
-      //    catch (Exception ex)
-      //    {
-      //      Logger.Warn(ex.Message);
-      //      continue;
-      //    }
+        //  if (!tmpMtc.Success)
+        //  {
+        //    break;
+        //  }
+        //}        
 
-      //    messages.Add(newLogMsg);
+        //  int log4NetEndTag = dataToParse.IndexOf(
+        //      LOG4NET_LOGMSG_END
+        //    , StringComparison.Ordinal);
 
-      //    dataToParse = dataToParse.Substring(
-      //        log4NetEndTag
-      //      , dataToParse.Length - (log4NetEndTag + LOG4NET_LOGMSG_END.Length));
-      //  }
-      }
+        //  if (log4NetEndTag > 0)
+        //  {
+        //    LogMessage newLogMsg;
 
-      //mLastFileOffset = mFileReader.BaseStream.Position;
+        //    try
+        //    {
+        //      newLogMsg = new LogMessageLog4Net(
+        //          dataToParse
+        //        , ++mLogNumber);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //      Logger.Warn(ex.Message);
+        //      continue;
+        //    }
 
-      //if (mLogHandler != null)
-      //{
-      //  mLogHandler.HandleMessage(messages.ToArray());
-      //}
+        //    messages.Add(newLogMsg);
+
+        //    dataToParse = dataToParse.Substring(
+        //        log4NetEndTag
+        //      , dataToParse.Length - (log4NetEndTag + LOG4NET_LOGMSG_END.Length));
+        //  }
+        }
+
+        //mLastFileOffset = mFileReader.BaseStream.Position;
+
+        //if (mLogHandler != null)
+        //{
+        //  mLogHandler.HandleMessage(messages.ToArray());
+        //}
     }
 
     #endregion

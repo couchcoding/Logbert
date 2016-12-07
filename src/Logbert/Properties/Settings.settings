@@ -302,5 +302,11 @@
     <Setting Name="ColumnizerRepository" Type="System.String" Scope="Application">
       <Value Profile="(Default)">columnizer.xml</Value>
     </Setting>
+    <Setting Name="EnableColorMap" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ColorMapAnnotation" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">48</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

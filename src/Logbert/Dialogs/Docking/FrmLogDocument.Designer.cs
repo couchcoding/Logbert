@@ -18,10 +18,6 @@
       this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogDocument));
       this.LogDockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-      this.VS2012LightTheme = new WeifenLuo.WinFormsUI.Docking.VS2012LightTheme();
-      this.stBar = new System.Windows.Forms.StatusBar();
-      this.stbStatus = new System.Windows.Forms.StatusBarPanel();
-      this.stbMessageCount = new System.Windows.Forms.StatusBarPanel();
       this.tsMessages = new Com.Couchcoding.GuiLibrary.Controls.ToolStripEx();
       this.tslLogLevel = new System.Windows.Forms.ToolStripLabel();
       this.tsbShowTrace = new System.Windows.Forms.ToolStripButton();
@@ -44,7 +40,9 @@
       this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
       this.tsbReload = new System.Windows.Forms.ToolStripButton();
       this.tsbClearMessages = new System.Windows.Forms.ToolStripButton();
-      this.tsbSaveMessages = new System.Windows.Forms.ToolStripButton();
+      this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+      this.cmsSaveMessagesRaw = new System.Windows.Forms.ToolStripMenuItem();
+      this.cmsSaveMessagesCsv = new System.Windows.Forms.ToolStripMenuItem();
       this.tsSeperatorWindows = new System.Windows.Forms.ToolStripSeparator();
       this.tsbShowMessageDetails = new System.Windows.Forms.ToolStripButton();
       this.tsbShowLoggerTree = new System.Windows.Forms.ToolStripButton();
@@ -55,12 +53,11 @@
       this.txtTimeShift = new System.Windows.Forms.ToolStripTextBox();
       this.tslTimeShift = new System.Windows.Forms.ToolStripLabel();
       this.tmrUpdate = new System.Windows.Forms.Timer(this.components);
-      this.cmsSaveMessages = new System.Windows.Forms.ContextMenu();
-      this.cmsSaveMessagesRaw = new System.Windows.Forms.MenuItem();
-      this.cmsSaveMessagesCsv = new System.Windows.Forms.MenuItem();
-      ((System.ComponentModel.ISupportInitialize)(this.stbStatus)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.stbMessageCount)).BeginInit();
+      this.stBar = new System.Windows.Forms.StatusStrip();
+      this.stbStatus = new System.Windows.Forms.ToolStripStatusLabel();
+      this.stbMessageCount = new System.Windows.Forms.ToolStripStatusLabel();
       this.tsMessages.SuspendLayout();
+      this.stBar.SuspendLayout();
       this.SuspendLayout();
       // 
       // LogDockPanel
@@ -69,37 +66,9 @@
       this.LogDockPanel.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingWindow;
       this.LogDockPanel.Location = new System.Drawing.Point(0, 26);
       this.LogDockPanel.Name = "LogDockPanel";
-      this.LogDockPanel.Size = new System.Drawing.Size(784, 513);
+      this.LogDockPanel.Size = new System.Drawing.Size(784, 511);
       this.LogDockPanel.SupportDeeplyNestedContent = true;
       this.LogDockPanel.TabIndex = 1;
-      this.LogDockPanel.Theme = this.VS2012LightTheme;
-      // 
-      // stBar
-      // 
-      this.stBar.Location = new System.Drawing.Point(0, 539);
-      this.stBar.Name = "stBar";
-      this.stBar.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
-            this.stbStatus,
-            this.stbMessageCount});
-      this.stBar.ShowPanels = true;
-      this.stBar.Size = new System.Drawing.Size(784, 22);
-      this.stBar.SizingGrip = false;
-      this.stBar.TabIndex = 2;
-      // 
-      // stbStatus
-      // 
-      this.stbStatus.AutoSize = System.Windows.Forms.StatusBarPanelAutoSize.Contents;
-      this.stbStatus.Name = "stbStatus";
-      this.stbStatus.Text = "Status: Running";
-      this.stbStatus.Width = 95;
-      // 
-      // stbMessageCount
-      // 
-      this.stbMessageCount.AutoSize = System.Windows.Forms.StatusBarPanelAutoSize.Contents;
-      this.stbMessageCount.Name = "stbMessageCount";
-      this.stbMessageCount.Text = "0 Messages";
-      this.stbMessageCount.ToolTipText = "Count of received Messages";
-      this.stbMessageCount.Width = 75;
       // 
       // tsMessages
       // 
@@ -126,7 +95,7 @@
             this.toolStripSeparator4,
             this.tsbReload,
             this.tsbClearMessages,
-            this.tsbSaveMessages,
+            this.toolStripDropDownButton1,
             this.tsSeperatorWindows,
             this.tsbShowMessageDetails,
             this.tsbShowLoggerTree,
@@ -355,17 +324,31 @@
       this.tsbClearMessages.Text = "Clear Messages";
       this.tsbClearMessages.Click += new System.EventHandler(this.TsbClearMessagesClick);
       // 
-      // tsbSaveMessages
+      // toolStripDropDownButton1
       // 
-      this.tsbSaveMessages.AutoSize = false;
-      this.tsbSaveMessages.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.tsbSaveMessages.Image = global::Com.Couchcoding.Logbert.Properties.Resources.save_as;
-      this.tsbSaveMessages.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-      this.tsbSaveMessages.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.tsbSaveMessages.Name = "tsbSaveMessages";
-      this.tsbSaveMessages.Size = new System.Drawing.Size(32, 22);
-      this.tsbSaveMessages.Text = "Save Messages";
-      this.tsbSaveMessages.Click += new System.EventHandler(this.TsbSaveMessagesClick);
+      this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsSaveMessagesRaw,
+            this.cmsSaveMessagesCsv});
+      this.toolStripDropDownButton1.Image = global::Com.Couchcoding.Logbert.Properties.Resources.save_16xLG;
+      this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+      this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 23);
+      this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+      // 
+      // cmsSaveMessagesRaw
+      // 
+      this.cmsSaveMessagesRaw.Name = "cmsSaveMessagesRaw";
+      this.cmsSaveMessagesRaw.Size = new System.Drawing.Size(158, 22);
+      this.cmsSaveMessagesRaw.Text = "Save &Raw data...";
+      this.cmsSaveMessagesRaw.Click += new System.EventHandler(this.CmsSaveMessagesTextClick);
+      // 
+      // cmsSaveMessagesCsv
+      // 
+      this.cmsSaveMessagesCsv.Name = "cmsSaveMessagesCsv";
+      this.cmsSaveMessagesCsv.Size = new System.Drawing.Size(158, 22);
+      this.cmsSaveMessagesCsv.Text = "Save as &CSV...";
+      this.cmsSaveMessagesCsv.Click += new System.EventHandler(this.CmsSaveMessagesCsvClick);
       // 
       // tsSeperatorWindows
       // 
@@ -456,23 +439,34 @@
       this.tslTimeShift.Size = new System.Drawing.Size(73, 23);
       this.tslTimeShift.Text = "Milliseconds";
       // 
-      // cmsSaveMessages
+      // stBar
       // 
-      this.cmsSaveMessages.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.cmsSaveMessagesRaw,
-            this.cmsSaveMessagesCsv});
+      this.stBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stbStatus,
+            this.stbMessageCount});
+      this.stBar.Location = new System.Drawing.Point(0, 537);
+      this.stBar.Name = "stBar";
+      this.stBar.Size = new System.Drawing.Size(784, 24);
+      this.stBar.SizingGrip = false;
+      this.stBar.TabIndex = 3;
+      this.stBar.Text = "statusStrip1";
       // 
-      // cmsSaveMessagesRaw
+      // stbStatus
       // 
-      this.cmsSaveMessagesRaw.Index = 0;
-      this.cmsSaveMessagesRaw.Text = "Save &Raw data...";
-      this.cmsSaveMessagesRaw.Click += new System.EventHandler(this.CmsSaveMessagesTextClick);
+      this.stbStatus.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+      this.stbStatus.ForeColor = System.Drawing.Color.White;
+      this.stbStatus.Name = "stbStatus";
+      this.stbStatus.Size = new System.Drawing.Size(94, 19);
+      this.stbStatus.Text = "Status: Running";
       // 
-      // cmsSaveMessagesCsv
+      // stbMessageCount
       // 
-      this.cmsSaveMessagesCsv.Index = 1;
-      this.cmsSaveMessagesCsv.Text = "Save as &CSV...";
-      this.cmsSaveMessagesCsv.Click += new System.EventHandler(this.CmsSaveMessagesCsvClick);
+      this.stbMessageCount.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+      this.stbMessageCount.ForeColor = System.Drawing.Color.White;
+      this.stbMessageCount.Name = "stbMessageCount";
+      this.stbMessageCount.Size = new System.Drawing.Size(71, 19);
+      this.stbMessageCount.Text = "0 Messages";
+      this.stbMessageCount.ToolTipText = "Count of received Messages";
       // 
       // FrmLogDocument
       // 
@@ -480,8 +474,8 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(784, 561);
       this.Controls.Add(this.LogDockPanel);
-      this.Controls.Add(this.tsMessages);
       this.Controls.Add(this.stBar);
+      this.Controls.Add(this.tsMessages);
       this.DockAreas = ((WeifenLuo.WinFormsUI.Docking.DockAreas)((WeifenLuo.WinFormsUI.Docking.DockAreas.Float | WeifenLuo.WinFormsUI.Docking.DockAreas.Document)));
       this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -489,10 +483,10 @@
       this.ShowHint = WeifenLuo.WinFormsUI.Docking.DockState.Document;
       this.TabText = "Log Document";
       this.Text = "Log Document";
-      ((System.ComponentModel.ISupportInitialize)(this.stbStatus)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.stbMessageCount)).EndInit();
       this.tsMessages.ResumeLayout(false);
       this.tsMessages.PerformLayout();
+      this.stBar.ResumeLayout(false);
+      this.stBar.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -501,7 +495,6 @@
     #endregion
 
     private WeifenLuo.WinFormsUI.Docking.DockPanel LogDockPanel;
-    private System.Windows.Forms.StatusBar stBar;
     private Com.Couchcoding.GuiLibrary.Controls.ToolStripEx tsMessages;
     private System.Windows.Forms.ToolStripButton tsbShowDebug;
     private System.Windows.Forms.ToolStripButton tsbShowInfo;
@@ -520,18 +513,12 @@
     private System.Windows.Forms.ToolStripButton tsbZoomIn;
     private System.Windows.Forms.ToolStripButton tsbZoomOut;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-    private System.Windows.Forms.ToolStripButton tsbSaveMessages;
     private System.Windows.Forms.ToolStripButton tsbClearMessages;
-    private System.Windows.Forms.StatusBarPanel stbMessageCount;
     private System.Windows.Forms.ToolStripSeparator tsSeperatorWindows;
     private System.Windows.Forms.ToolStripButton tsbShowMessageDetails;
     private System.Windows.Forms.ToolStripButton tsbShowLoggerTree;
-    private System.Windows.Forms.StatusBarPanel stbStatus;
     private System.Windows.Forms.ToolStripButton tsbShowBookmarks;
     private System.Windows.Forms.Timer tmrUpdate;
-    private System.Windows.Forms.ContextMenu cmsSaveMessages;
-    private System.Windows.Forms.MenuItem cmsSaveMessagesRaw;
-    private System.Windows.Forms.MenuItem cmsSaveMessagesCsv;
     private System.Windows.Forms.ToolStripButton tsbReload;
     private System.Windows.Forms.ToolStripButton tsbTimeShift;
     private System.Windows.Forms.ToolStripTextBox txtTimeShift;
@@ -539,7 +526,12 @@
     private System.Windows.Forms.ToolStripLabel tslTimeShift;
     private System.Windows.Forms.ToolStripButton tsbToggleBookmark;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-    private WeifenLuo.WinFormsUI.Docking.VS2012LightTheme VS2012LightTheme;
     private System.Windows.Forms.ToolStripButton tsbShowFilter;
+    private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+    private System.Windows.Forms.ToolStripMenuItem cmsSaveMessagesRaw;
+    private System.Windows.Forms.ToolStripMenuItem cmsSaveMessagesCsv;
+    private System.Windows.Forms.StatusStrip stBar;
+    private System.Windows.Forms.ToolStripStatusLabel stbStatus;
+    private System.Windows.Forms.ToolStripStatusLabel stbMessageCount;
   }
 }

@@ -37,11 +37,12 @@
                Guid    = "482ED365-2D32-48D9-800A-D43E14065738"
                KeyPath = "yes">
 
-      <File Id="Id_LgbrtExe"                      Source="$(var.ReleaseDir)\Logbert.exe"   />
-      <File Id="Id_GuiLibraryDll"                 Source="$(var.ReleaseDir)\GuiLibrary.dll"   />
-      <File Id="Id_MoonSharpInterpreterDll"       Source="$(var.ReleaseDir)\MoonSharp.Interpreter.dll"    />
-      <File Id="Id_ScintillaNETDll"               Source="$(var.ReleaseDir)\ScintillaNET.dll" />
-      <File Id="Id_WeifenLuoWinFormsUIDockingDll" Source="$(var.ReleaseDir)\WeifenLuo.WinFormsUI.Docking.dll" />
+      <File Id="Id_LgbrtExe"                                 Source="$(var.ReleaseDir)\Logbert.exe"   />
+      <File Id="Id_GuiLibraryDll"                            Source="$(var.ReleaseDir)\GuiLibrary.dll"   />
+      <File Id="Id_MoonSharpInterpreterDll"                  Source="$(var.ReleaseDir)\MoonSharp.Interpreter.dll"    />
+      <File Id="Id_ScintillaNETDll"                          Source="$(var.ReleaseDir)\ScintillaNET.dll" />
+      <File Id="Id_WeifenLuoWinFormsUIDockingDll"            Source="$(var.ReleaseDir)\WeifenLuo.WinFormsUI.Docking.dll" />
+      <File Id="Id_WeifenLuoWinFormsUIDockingThemeVS2013Dll" Source="$(var.ReleaseDir)\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll" />
 
       <!-- Create a registry key that contains the last used installation 
            directory for further update installations. -->

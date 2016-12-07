@@ -182,9 +182,9 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// <param name="isChecked">Determines whether the new <see cref="MenuItem"/> is initial checked, or not.</param>
     /// <param name="tag">The object reference to the referenced <see cref="DataGridViewColumnHeaderCell"/>.</param>
     /// <returns>A <see cref="MenuItem"/> for the column selection <see cref="ContextMenu"/>.</returns>
-    private MenuItem CreateColumnSelectItem(string name, bool isChecked, object tag)
+    private ToolStripMenuItem CreateColumnSelectItem(string name, bool isChecked, object tag)
     {
-      MenuItem chkMnuItem = new MenuItem(name);
+      ToolStripMenuItem chkMnuItem = new ToolStripMenuItem(name);
       chkMnuItem.Checked  = isChecked;
       chkMnuItem.Tag      = tag;
 
@@ -194,38 +194,32 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     }
 
     /// <summary>
-    /// Handles the Popup event of the select columns <see cref="ContextMenu"/>.
-    /// </summary>
-    private void CmColumnsPopup(object sender, EventArgs e)
-    {
-      cmColumns.MenuItems.Clear();
-
-      foreach (DataGridViewColumn column in dtgLogMessages.Columns)
-      {
-        DataGridViewColumnHeaderCell headerCell = column.HeaderCell;
-
-        if (headerCell != null && headerCell.OwningColumn != null)
-        {
-          if (headerCell.OwningColumn.Index == 0)
-          {
-            continue;
-          }
-
-          cmColumns.MenuItems.Add(CreateColumnSelectItem(
-              headerCell.OwningColumn.HeaderText
-            , headerCell.OwningColumn.Visible
-            , headerCell));
-        }
-      }
-    }
-
-    /// <summary>
     /// Handles the Column Header Mouse Click event of the <see cref="DataGridView"/>.
     /// </summary>
     private void DtgLogMessagesColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
     {
       if (e.Button == MouseButtons.Right)
       {
+        cmColumns.Items.Clear();
+
+        foreach (DataGridViewColumn column in dtgLogMessages.Columns)
+        {
+          DataGridViewColumnHeaderCell headerCell = column.HeaderCell;
+
+          if (headerCell != null && headerCell.OwningColumn != null)
+          {
+            if (headerCell.OwningColumn.Index == 0)
+            {
+              continue;
+            }
+
+            cmColumns.Items.Add(CreateColumnSelectItem(
+                headerCell.OwningColumn.HeaderText
+              , headerCell.OwningColumn.Visible
+              , headerCell));
+          }
+        }
+
         cmColumns.Show(
             this
           , PointToClient(Cursor.Position));
@@ -237,7 +231,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// </summary>
     private void MnuColumnItemClicked(object sender, EventArgs e)
     {
-      MenuItem senderItem = sender as MenuItem;
+      ToolStripMenuItem senderItem = sender as ToolStripMenuItem;
 
       if (senderItem != null)
       {
@@ -306,6 +300,9 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         }
 
         dtgLogMessages.RowCount = mFilteredLogMessages.Count;
+
+        // Update the color map.
+        colorMap1.UpdateColorMap(mFilteredLogMessages);
       }
       finally
       {
@@ -609,6 +606,35 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         }
       }
 
+      // Hide the color map control.
+      SuspendLayout();
+
+      try
+      {
+        if (Settings.Default.EnableColorMap)
+        {
+          tableLayoutPanel1.SetColumnSpan(dtgLogMessages, 1);
+          colorMap1.Visible = true;
+
+          colorMap1.UpdateColorMap(mFilteredLogMessages);
+        }
+        else
+        {
+          colorMap1.Visible = false;
+          tableLayoutPanel1.SetColumnSpan(dtgLogMessages, 2);
+        }
+      }
+      finally
+      {
+        ResumeLayout(true);
+      }
+
+      if (e.SettingName.Equals("ColorMapAnnotation"))
+      {
+        // Force a redraw of the color map control.
+        colorMap1.UpdateColorMap(mFilteredLogMessages);
+      }
+
       dtgLogMessages.Refresh();
     }
 
@@ -627,6 +653,14 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       Settings.Default.SettingChanging -= DefaultSettingChanging;
 
       base.Dispose(disposing);
+    }
+
+    protected override void OnResize(EventArgs e)
+    {
+      base.OnResize(e);
+
+      // Force a redraw of the color map.
+      colorMap1.UpdateColorMap(mFilteredLogMessages);
     }
 
     #endregion
@@ -817,7 +851,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         dtgLogMessages.ResumeDrawing();
       }
 
-      // Nothing to do here.
+      colorMap1.ClearAll();
     }
 
     /// <summary>
@@ -943,8 +977,8 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
           // Clear all existing datasets.
           dtgLogMessages.Rows.Clear();
 
-        // Convert the list to an array to fix 
-        // accessing it while the enumeration is changed.
+          // Convert the list to an array to fix 
+          // accessing it while the enumeration is changed.
           UpdateInternalList(mLogcontainer.LogMessages.ToArray());
 
           // Try to select the previous selected log message again.
@@ -1002,12 +1036,14 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// <param name="searchAllDocuments">Determines whether in all open <see cref="ISearchable"/>s should be searched, or not.</param>
     public void SearchLogMessage(string pattern, bool searchForward = true, bool searchAllDocuments = false)
     {
-      if (dtgLogMessages.SelectedRows.Count == 0)
+      if (dtgLogMessages.RowCount == 0)
       {
         return;
       }
 
-      int currentMessageIndex = dtgLogMessages.SelectedRows[0].Index + 1;
+      int currentMessageIndex = dtgLogMessages.SelectedRows.Count == 0 
+        ? 0 
+        : dtgLogMessages.SelectedRows[0].Index + 1;
 
       Regex rgxToSeachFor = new Regex(pattern,
         Settings.Default.FrmFindSearchMatchCase 
@@ -1073,6 +1109,15 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       mBookmarks    = new List<LogMessage>();
       InitializeColumns(logProvider);
 
+      if (!logProvider.HasLoggerTree)
+      {
+        // Remove the synchronize tree menu item if no tree is available.
+        cmLogMessage.Items.Remove(cmsSynchronizeTree);
+      }
+
+      ThemeManager.CurrentApplicationTheme.ApplyTo(cmColumns);
+      ThemeManager.CurrentApplicationTheme.ApplyTo(cmLogMessage);
+
       if (!string.IsNullOrEmpty(Settings.Default.LogMessagesFontName))
       {
         try
@@ -1098,10 +1143,74 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         }
       }
 
+      if (Settings.Default.EnableColorMap)
+      {
+        tableLayoutPanel1.SetColumnSpan(dtgLogMessages, 1);
+        colorMap1.Visible = true;
+      }
+      else
+      {
+        colorMap1.Visible = false;
+        tableLayoutPanel1.SetColumnSpan(dtgLogMessages, 2);
+      }
+
       // Listening for settings changes.
       Settings.Default.SettingChanging += DefaultSettingChanging;
     }
 
     #endregion
+
+    private void dtgLogMessages_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+    {
+      if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+      {
+        cmLogMessage.Show(
+            this
+          , PointToClient(Cursor.Position));
+      }
+    }
+
+    private void dtgLogMessages_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+    {
+      if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+      {
+        dtgLogMessages.Rows[e.RowIndex].Selected = true;
+      }
+    }
+
+    private void copyToClipboardToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      IDataObject clipboardData = dtgLogMessages.GetClipboardContent();
+
+      if (clipboardData != null)
+      {
+        Clipboard.SetDataObject(clipboardData);
+      }
+    }
+
+    private void synchronizeTreeToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      LogMessage selectedMessage = mFilteredLogMessages[dtgLogMessages.SelectedRows[0].Index] as LogMessage;
+
+      if (selectedMessage != null)
+      {
+        mLogcontainer.SynchronizeTree(selectedMessage);
+      } 
+    }
+
+    private void CmsToggleBookmarkClick(object sender, EventArgs e)
+    {
+      LogMessage selectedMessage = mFilteredLogMessages[dtgLogMessages.SelectedRows[0].Index] as LogMessage;
+
+        // Toggle the bookmark state.
+        if (mBookmarks.Contains(selectedMessage))
+        {
+          RemoveBookmark(selectedMessage);
+        }
+        else
+        {
+          AddBookmark(selectedMessage);
+        }
+    }
   }
 }

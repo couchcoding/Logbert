@@ -15,8 +15,19 @@
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
+      System.Windows.Forms.ToolStripSeparator cmsLuaEditSeperator1;
+      System.Windows.Forms.ToolStripSeparator cmsLuaEditSeperator2;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogScript));
       this.scintilla = new ScintillaNET.Scintilla();
+      this.cmsLuaEdit = new System.Windows.Forms.ContextMenuStrip(this.components);
+      this.cmsLuaEditUndo = new System.Windows.Forms.ToolStripMenuItem();
+      this.cmsLuaEditRedo = new System.Windows.Forms.ToolStripMenuItem();
+      this.cmsLuaEditCut = new System.Windows.Forms.ToolStripMenuItem();
+      this.cmsLuaEditCopy = new System.Windows.Forms.ToolStripMenuItem();
+      this.cmsLuaEditPaste = new System.Windows.Forms.ToolStripMenuItem();
+      this.cmsLuaEditDelete = new System.Windows.Forms.ToolStripMenuItem();
+      this.cmsLuaEditSelectAll = new System.Windows.Forms.ToolStripMenuItem();
       this.tsCuCommands = new Com.Couchcoding.GuiLibrary.Controls.ToolStripEx();
       this.tsbLoadScript = new System.Windows.Forms.ToolStripButton();
       this.tsbSaveScript = new System.Windows.Forms.ToolStripButton();
@@ -40,6 +51,9 @@
       this.tsbOutputWordWrap = new System.Windows.Forms.ToolStripButton();
       this.bgPanel = new Com.Couchcoding.GuiLibrary.Controls.InfoPanel();
       this.txtOutput = new System.Windows.Forms.TextBox();
+      cmsLuaEditSeperator1 = new System.Windows.Forms.ToolStripSeparator();
+      cmsLuaEditSeperator2 = new System.Windows.Forms.ToolStripSeparator();
+      this.cmsLuaEdit.SuspendLayout();
       this.tsCuCommands.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
       this.splitContainer1.Panel1.SuspendLayout();
@@ -50,6 +64,16 @@
       this.bgPanel.SuspendLayout();
       this.SuspendLayout();
       // 
+      // cmsLuaEditSeperator1
+      // 
+      cmsLuaEditSeperator1.Name = "cmsLuaEditSeperator1";
+      cmsLuaEditSeperator1.Size = new System.Drawing.Size(149, 6);
+      // 
+      // cmsLuaEditSeperator2
+      // 
+      cmsLuaEditSeperator2.Name = "cmsLuaEditSeperator2";
+      cmsLuaEditSeperator2.Size = new System.Drawing.Size(149, 6);
+      // 
       // scintilla
       // 
       this.scintilla.AutoCIgnoreCase = true;
@@ -57,6 +81,7 @@
       this.scintilla.BorderStyle = System.Windows.Forms.BorderStyle.None;
       this.scintilla.CaretLineBackColorAlpha = 64;
       this.scintilla.CaretLineVisible = true;
+      this.scintilla.ContextMenuStrip = this.cmsLuaEdit;
       this.scintilla.Dock = System.Windows.Forms.DockStyle.Fill;
       this.scintilla.IndentWidth = 2;
       this.scintilla.Lexer = ScintillaNET.Lexer.Lua;
@@ -70,6 +95,71 @@
       this.scintilla.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.ScintillaUpdateUi);
       this.scintilla.ZoomChanged += new System.EventHandler<System.EventArgs>(this.ScintillaZoomChanged);
       this.scintilla.TextChanged += new System.EventHandler(this.ScintillaTextChanged);
+      // 
+      // cmsLuaEdit
+      // 
+      this.cmsLuaEdit.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsLuaEditUndo,
+            this.cmsLuaEditRedo,
+            cmsLuaEditSeperator1,
+            this.cmsLuaEditCut,
+            this.cmsLuaEditCopy,
+            this.cmsLuaEditPaste,
+            this.cmsLuaEditDelete,
+            cmsLuaEditSeperator2,
+            this.cmsLuaEditSelectAll});
+      this.cmsLuaEdit.Name = "cmsLuaEdit";
+      this.cmsLuaEdit.Size = new System.Drawing.Size(153, 192);
+      this.cmsLuaEdit.Opening += new System.ComponentModel.CancelEventHandler(this.CmsLuaEditOpening);
+      // 
+      // cmsLuaEditUndo
+      // 
+      this.cmsLuaEditUndo.Name = "cmsLuaEditUndo";
+      this.cmsLuaEditUndo.Size = new System.Drawing.Size(152, 22);
+      this.cmsLuaEditUndo.Text = "Undo";
+      this.cmsLuaEditUndo.Click += new System.EventHandler(this.TsbUndoClick);
+      // 
+      // cmsLuaEditRedo
+      // 
+      this.cmsLuaEditRedo.Name = "cmsLuaEditRedo";
+      this.cmsLuaEditRedo.Size = new System.Drawing.Size(152, 22);
+      this.cmsLuaEditRedo.Text = "Redo";
+      this.cmsLuaEditRedo.Click += new System.EventHandler(this.TsbRedoClick);
+      // 
+      // cmsLuaEditCut
+      // 
+      this.cmsLuaEditCut.Name = "cmsLuaEditCut";
+      this.cmsLuaEditCut.Size = new System.Drawing.Size(152, 22);
+      this.cmsLuaEditCut.Text = "Cut";
+      this.cmsLuaEditCut.Click += new System.EventHandler(this.TsbCutClick);
+      // 
+      // cmsLuaEditCopy
+      // 
+      this.cmsLuaEditCopy.Name = "cmsLuaEditCopy";
+      this.cmsLuaEditCopy.Size = new System.Drawing.Size(152, 22);
+      this.cmsLuaEditCopy.Text = "Copy";
+      this.cmsLuaEditCopy.Click += new System.EventHandler(this.TsbCopyClick);
+      // 
+      // cmsLuaEditPaste
+      // 
+      this.cmsLuaEditPaste.Name = "cmsLuaEditPaste";
+      this.cmsLuaEditPaste.Size = new System.Drawing.Size(152, 22);
+      this.cmsLuaEditPaste.Text = "Paste";
+      this.cmsLuaEditPaste.Click += new System.EventHandler(this.TsbPasteClick);
+      // 
+      // cmsLuaEditDelete
+      // 
+      this.cmsLuaEditDelete.Name = "cmsLuaEditDelete";
+      this.cmsLuaEditDelete.Size = new System.Drawing.Size(152, 22);
+      this.cmsLuaEditDelete.Text = "Delete";
+      this.cmsLuaEditDelete.Click += new System.EventHandler(this.TsbDeleteClick);
+      // 
+      // cmsLuaEditSelectAll
+      // 
+      this.cmsLuaEditSelectAll.Name = "cmsLuaEditSelectAll";
+      this.cmsLuaEditSelectAll.Size = new System.Drawing.Size(152, 22);
+      this.cmsLuaEditSelectAll.Text = "Select All";
+      this.cmsLuaEditSelectAll.Click += new System.EventHandler(this.TsbSelectAllClick);
       // 
       // tsCuCommands
       // 
@@ -352,6 +442,7 @@
       this.ShowHint = WeifenLuo.WinFormsUI.Docking.DockState.Document;
       this.TabText = "Script";
       this.Text = "Script";
+      this.cmsLuaEdit.ResumeLayout(false);
       this.tsCuCommands.ResumeLayout(false);
       this.tsCuCommands.PerformLayout();
       this.splitContainer1.Panel1.ResumeLayout(false);
@@ -395,5 +486,13 @@
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     private System.Windows.Forms.ToolStripButton tsbZoomIn;
     private System.Windows.Forms.ToolStripButton tsbZoomOut;
+    private System.Windows.Forms.ContextMenuStrip cmsLuaEdit;
+    private System.Windows.Forms.ToolStripMenuItem cmsLuaEditUndo;
+    private System.Windows.Forms.ToolStripMenuItem cmsLuaEditRedo;
+    private System.Windows.Forms.ToolStripMenuItem cmsLuaEditCut;
+    private System.Windows.Forms.ToolStripMenuItem cmsLuaEditCopy;
+    private System.Windows.Forms.ToolStripMenuItem cmsLuaEditPaste;
+    private System.Windows.Forms.ToolStripMenuItem cmsLuaEditDelete;
+    private System.Windows.Forms.ToolStripMenuItem cmsLuaEditSelectAll;
   }
 }

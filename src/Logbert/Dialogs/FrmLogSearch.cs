@@ -37,6 +37,8 @@ using System.Text.RegularExpressions;
 
 using Com.Couchcoding.Logbert.Interfaces;
 using System.Collections.Specialized;
+using System.Drawing;
+using System.ComponentModel;
 
 namespace Com.Couchcoding.Logbert.Dialogs
 {
@@ -57,6 +59,39 @@ namespace Com.Couchcoding.Logbert.Dialogs
     #region Private Fields
 
     private readonly ISearchable mSearchable;
+
+    #endregion
+
+    #region Public Properties
+
+    /// <summary>
+    /// Gets or sets the font of the text displayed by the control.
+    /// </summary>
+    /// <returns>The <see cref="T:System.Drawing.Font"/> to apply to the text displayed by the control. The default is the value of the <see cref="P:System.Windows.Forms.Control.DefaultFont"/> property.</returns>
+    [AmbientValue(null)]
+    [Localizable(true)]
+    public sealed override Font Font
+    {
+      get
+      {
+        return base.Font;
+      }
+      set
+      {
+        base.Font = value;
+      }
+    }
+
+    /// <summary>
+    /// Gets the current selected search value.
+    /// </summary>
+    public string CurrentSearchValue
+    {
+      get
+      {
+        return cmbFindWhat.Text;
+      }
+    }
 
     #endregion
 
@@ -90,8 +125,6 @@ namespace Com.Couchcoding.Logbert.Dialogs
       cmbRegexWildcard.SelectedIndex = Settings.Default.FrmFindSearchUseWildcard 
         ? 1  // Wildcard
         : 0; // Regular Expression (.NET)
-
-      cmbFindWhat.Items.AddRange(GetLastUsedSearchValues());
     }
 
     /// <summary>
@@ -182,46 +215,6 @@ namespace Com.Couchcoding.Logbert.Dialogs
     }
 
     /// <summary>
-    /// Performs a search for the given string value.
-    /// </summary>
-    /// <param name="searchString">The value to search for.</param>
-    /// <param name="previous">Determines whether the previous value should be searched, ot the next one.</param>
-    private void PerformSearch(string searchString, bool previous = false)
-    {
-      if (string.IsNullOrEmpty(searchString) || mSearchable == null)
-      {
-        // Nothing to search for.
-        return;
-      }
-
-      if (Settings.Default.FrmFindSearchUseWildcard)
-      {
-        searchString = searchString.ToRegex();
-      }
-
-      if (!Settings.Default.FrmFindSearchUseWildcard
-      &&  !Settings.Default.FrmFindSearchUseRegex)
-      {
-        searchString = string.Format(
-            "{1}{0}{1}"
-          , Regex.Escape(searchString)
-          , Settings.Default.FrmFindSearchMatchWholeWord 
-            ? "\\b" 
-            : string.Empty);
-      }
-
-      using (new WaitCursor(Cursors.Default, Settings.Default.WaitCursorTimeout))
-      {
-        mSearchable.SearchLogMessage(
-            searchString
-          , !previous
-          , cmbLookIn.SelectedIndex == 1);
-
-        RebuildSearchValuesList();
-      }
-    }
-
-    /// <summary>
     /// Rebuilds the list of last used search values.
     /// </summary>
     private void RebuildSearchValuesList()
@@ -298,6 +291,50 @@ namespace Com.Couchcoding.Logbert.Dialogs
 
     #endregion
 
+    #region Public Methods
+
+    /// <summary>
+    /// Performs a search for the given string value.
+    /// </summary>
+    /// <param name="searchString">The value to search for.</param>
+    /// <param name="previous">Determines whether the previous value should be searched, ot the next one.</param>
+    internal void PerformSearch(string searchString, bool previous = false)
+    {
+      if (string.IsNullOrEmpty(searchString) || mSearchable == null)
+      {
+        // Nothing to search for.
+        return;
+      }
+
+      if (Settings.Default.FrmFindSearchUseWildcard)
+      {
+        searchString = searchString.ToRegex();
+      }
+
+      if (!Settings.Default.FrmFindSearchUseWildcard
+      &&  !Settings.Default.FrmFindSearchUseRegex)
+      {
+        searchString = string.Format(
+            "{1}{0}{1}"
+          , Regex.Escape(searchString)
+          , Settings.Default.FrmFindSearchMatchWholeWord 
+            ? "\\b" 
+            : string.Empty);
+      }
+
+      using (new WaitCursor(Cursors.Default, Settings.Default.WaitCursorTimeout))
+      {
+        mSearchable.SearchLogMessage(
+            searchString
+          , !previous
+          , cmbLookIn.SelectedIndex == 1);
+
+        RebuildSearchValuesList();
+      }
+    }
+
+    #endregion
+
     #region Constructor
 
     /// <summary>
@@ -307,8 +344,13 @@ namespace Com.Couchcoding.Logbert.Dialogs
     {
       InitializeComponent();
 
+      AutoScaleMode = AutoScaleMode.Dpi;
+      Font          = SystemFonts.MessageBoxFont;
+
       mSearchable             = searchable;
       cmbLookIn.SelectedIndex = 0;
+
+      cmbFindWhat.Items.AddRange(GetLastUsedSearchValues());
     }
 
     #endregion

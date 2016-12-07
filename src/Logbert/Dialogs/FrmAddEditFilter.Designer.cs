@@ -35,6 +35,8 @@
       this.cmbColumnToFilter = new System.Windows.Forms.ComboBox();
       this.lblExpressionToFilterFor = new System.Windows.Forms.Label();
       this.txtExpressionToFilterFor = new System.Windows.Forms.TextBox();
+      this.lblOperator = new System.Windows.Forms.Label();
+      this.cmbOperator = new System.Windows.Forms.ComboBox();
       this.SuspendLayout();
       // 
       // btnCancel
@@ -45,7 +47,7 @@
       this.btnCancel.Location = new System.Drawing.Point(381, 251);
       this.btnCancel.Name = "btnCancel";
       this.btnCancel.Size = new System.Drawing.Size(75, 23);
-      this.btnCancel.TabIndex = 3;
+      this.btnCancel.TabIndex = 8;
       this.btnCancel.Text = "Cancel";
       this.btnCancel.UseVisualStyleBackColor = true;
       // 
@@ -57,7 +59,7 @@
       this.btnOk.Location = new System.Drawing.Point(300, 251);
       this.btnOk.Name = "btnOk";
       this.btnOk.Size = new System.Drawing.Size(75, 23);
-      this.btnOk.TabIndex = 2;
+      this.btnOk.TabIndex = 7;
       this.btnOk.Text = "OK";
       this.btnOk.UseVisualStyleBackColor = true;
       // 
@@ -70,7 +72,7 @@
       this.chkFilterIsActive.Location = new System.Drawing.Point(8, 68);
       this.chkFilterIsActive.Name = "chkFilterIsActive";
       this.chkFilterIsActive.Size = new System.Drawing.Size(103, 20);
-      this.chkFilterIsActive.TabIndex = 4;
+      this.chkFilterIsActive.TabIndex = 0;
       this.chkFilterIsActive.Text = "Filter is &active";
       this.chkFilterIsActive.UseVisualStyleBackColor = true;
       // 
@@ -81,7 +83,7 @@
       this.lblColumnToFilter.Location = new System.Drawing.Point(8, 97);
       this.lblColumnToFilter.Name = "lblColumnToFilter";
       this.lblColumnToFilter.Size = new System.Drawing.Size(94, 15);
-      this.lblColumnToFilter.TabIndex = 5;
+      this.lblColumnToFilter.TabIndex = 1;
       this.lblColumnToFilter.Text = "&Column to filter:";
       // 
       // cmbColumnToFilter
@@ -93,8 +95,8 @@
       this.cmbColumnToFilter.FormattingEnabled = true;
       this.cmbColumnToFilter.Location = new System.Drawing.Point(8, 115);
       this.cmbColumnToFilter.Name = "cmbColumnToFilter";
-      this.cmbColumnToFilter.Size = new System.Drawing.Size(448, 23);
-      this.cmbColumnToFilter.TabIndex = 6;
+      this.cmbColumnToFilter.Size = new System.Drawing.Size(333, 23);
+      this.cmbColumnToFilter.TabIndex = 3;
       // 
       // lblExpressionToFilterFor
       // 
@@ -103,7 +105,7 @@
       this.lblExpressionToFilterFor.Location = new System.Drawing.Point(8, 147);
       this.lblExpressionToFilterFor.Name = "lblExpressionToFilterFor";
       this.lblExpressionToFilterFor.Size = new System.Drawing.Size(124, 15);
-      this.lblExpressionToFilterFor.TabIndex = 7;
+      this.lblExpressionToFilterFor.TabIndex = 5;
       this.lblExpressionToFilterFor.Text = "&Expression to filter for:";
       // 
       // txtExpressionToFilterFor
@@ -113,7 +115,32 @@
       this.txtExpressionToFilterFor.Location = new System.Drawing.Point(8, 165);
       this.txtExpressionToFilterFor.Name = "txtExpressionToFilterFor";
       this.txtExpressionToFilterFor.Size = new System.Drawing.Size(448, 23);
-      this.txtExpressionToFilterFor.TabIndex = 8;
+      this.txtExpressionToFilterFor.TabIndex = 6;
+      // 
+      // lblOperator
+      // 
+      this.lblOperator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+      this.lblOperator.AutoSize = true;
+      this.lblOperator.FlatStyle = System.Windows.Forms.FlatStyle.System;
+      this.lblOperator.Location = new System.Drawing.Point(344, 97);
+      this.lblOperator.Name = "lblOperator";
+      this.lblOperator.Size = new System.Drawing.Size(57, 15);
+      this.lblOperator.TabIndex = 2;
+      this.lblOperator.Text = "&Operator:";
+      // 
+      // cmbOperator
+      // 
+      this.cmbOperator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+      this.cmbOperator.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.cmbOperator.FlatStyle = System.Windows.Forms.FlatStyle.System;
+      this.cmbOperator.FormattingEnabled = true;
+      this.cmbOperator.Items.AddRange(new object[] {
+            "Match",
+            "Not match"});
+      this.cmbOperator.Location = new System.Drawing.Point(347, 115);
+      this.cmbOperator.Name = "cmbOperator";
+      this.cmbOperator.Size = new System.Drawing.Size(109, 23);
+      this.cmbOperator.TabIndex = 4;
       // 
       // FrmAddEditFilter
       // 
@@ -122,6 +149,8 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = this.btnCancel;
       this.ClientSize = new System.Drawing.Size(464, 282);
+      this.Controls.Add(this.cmbOperator);
+      this.Controls.Add(this.lblOperator);
       this.Controls.Add(this.txtExpressionToFilterFor);
       this.Controls.Add(this.lblExpressionToFilterFor);
       this.Controls.Add(this.cmbColumnToFilter);
@@ -149,5 +178,7 @@
     private System.Windows.Forms.ComboBox cmbColumnToFilter;
     private System.Windows.Forms.Label lblExpressionToFilterFor;
     private System.Windows.Forms.TextBox txtExpressionToFilterFor;
+    private System.Windows.Forms.Label lblOperator;
+    private System.Windows.Forms.ComboBox cmbOperator;
   }
 }

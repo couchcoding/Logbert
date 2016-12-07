@@ -193,7 +193,7 @@
       this.AcceptButton = this.btnFindNext;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(304, 281);
+      this.ClientSize = new System.Drawing.Size(304, 282);
       this.Controls.Add(this.btnFindPrevious);
       this.Controls.Add(this.btnFindNext);
       this.Controls.Add(this.grpOptions);
@@ -205,6 +205,8 @@
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MinimumSize = new System.Drawing.Size(216, 320);
       this.Name = "FrmLogSearch";
+      this.ShowInTaskbar = false;
+      this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
       this.Text = "Find Message";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmLogSearchFormClosing);
       this.Load += new System.EventHandler(this.FrmLogSearchLoad);

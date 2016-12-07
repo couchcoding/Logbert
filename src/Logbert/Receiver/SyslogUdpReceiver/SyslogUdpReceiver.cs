@@ -250,6 +250,17 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
       }
     }
 
+    /// <summary>
+    /// Gets the path seperator for the logger tree.
+    /// </summary>
+    public override string LoggerTreePathSeperator
+    {
+      get
+      {
+        return "\t";
+      }
+    }
+
     #endregion
 
     #region Private Methods

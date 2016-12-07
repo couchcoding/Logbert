@@ -170,6 +170,23 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     #region Private Methods
 
     /// <summary>
+    /// Handles the Opening event of the <see cref="ContextMenuStrip"/>.
+    /// </summary>
+    private void CmsLuaEditOpening(object sender, CancelEventArgs e)
+    {
+      bool textSelected  = !string.IsNullOrEmpty(scintilla.SelectedText);
+      bool textAvailable = !string.IsNullOrEmpty(scintilla.Text) && !mLuaScriptRunning;
+
+      cmsLuaEditUndo.Enabled      = !mLuaScriptRunning && scintilla.CanUndo;
+      cmsLuaEditRedo.Enabled      = !mLuaScriptRunning && scintilla.CanRedo;
+      cmsLuaEditCut.Enabled       = textSelected && !mLuaScriptRunning;
+      cmsLuaEditCopy.Enabled      = textSelected;
+      cmsLuaEditPaste.Enabled     = Clipboard.ContainsText() && scintilla.Focused && !scintilla.ReadOnly && !mLuaScriptRunning;
+      cmsLuaEditDelete.Enabled    = textSelected;
+      cmsLuaEditSelectAll.Enabled = textAvailable;
+    }
+
+    /// <summary>
     /// Handles the Click event of the zoom in <see cref="ToolStripButton"/>.
     /// </summary>
     private void TsbZoomInClick(object sender, EventArgs e)
@@ -200,17 +217,15 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       // i.e. nnn VS nn, or nnnn VS nn, etc...
       var lineNumberCharLength = scintilla.Lines.Count.ToString().Length;
 
-      if (lineNumberCharLength == mMaxLineNumberCharLength)
+      if (lineNumberCharLength != mMaxLineNumberCharLength)
       {
-        return;
+        // Calculate the width required to display the last line number and include some padding for good measure.
+        scintilla.Margins[0].Width = scintilla.TextWidth(
+            Style.LineNumber
+          , new string('9', lineNumberCharLength + 1)) + EDITOR_PADDING;
+
+        mMaxLineNumberCharLength = lineNumberCharLength;
       }
-
-      // Calculate the width required to display the last line number and include some padding for good measure.
-      scintilla.Margins[0].Width = scintilla.TextWidth(
-          Style.LineNumber
-        , new string('9', lineNumberCharLength + 1)) + EDITOR_PADDING;
-
-      mMaxLineNumberCharLength = lineNumberCharLength;
     }
 
     /// <summary>
@@ -698,6 +713,29 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     private void TsbStartClick(object sender, EventArgs e)
     {
       StartLuaScript();
+    }
+
+    /// <summary>
+    /// Handles the Click event of the delete <see cref="ToolStripMenuItem"/>.
+    /// </summary>
+    private void TsbDeleteClick(object sender, EventArgs e)
+    {
+      if (!string.IsNullOrEmpty(scintilla.SelectedText))
+      {
+        scintilla.DeleteRange(
+            scintilla.SelectionStart
+          , scintilla.SelectedText.Length);
+      }
+    }
+
+    /// <summary>
+    /// Handles the Click event of the select all <see cref="ToolStripMenuItem"/>.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void TsbSelectAllClick(object sender, EventArgs e)
+    {
+      scintilla.SelectAll();
     }
 
     private void StartLuaScript()
@@ -1197,7 +1235,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     #endregion
 
     #region Constructor
-
+    
     /// <summary>
     /// Creates a new instance of the <see cref="FrmLogScript"/> window.
     /// </summary>
@@ -1207,6 +1245,14 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     {
       InitializeComponent();
 
+      // Apply the current application theme to the control.
+      ThemeManager.CurrentApplicationTheme.ApplyTo(tsCuCommands);
+      ThemeManager.CurrentApplicationTheme.ApplyTo(tsOutput);
+      ThemeManager.CurrentApplicationTheme.ApplyTo(cmsLuaEdit);
+
+      DockHandler.CloseButton        = false;
+      DockHandler.CloseButtonVisible = false;
+      
       mLogContainer     = logContainer;
       mBookmarkProvider = bookmarkProvider;
 
@@ -1218,6 +1264,9 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       // Intialize the edit control.
       InitializeScintilaCtrl();
 
+      // Prevent the undo of the initial text.
+      scintilla.EmptyUndoBuffer();
+      
       // Listening for settings changes.
       Settings.Default.SettingChanging += DefaultSettingChanging;
     }

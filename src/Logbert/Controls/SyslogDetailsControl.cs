@@ -451,6 +451,9 @@ namespace Com.Couchcoding.Logbert.Controls
     {
       InitializeComponent();
 
+      // Apply the current application theme to the control.
+      ThemeManager.CurrentApplicationTheme.ApplyTo(logDetailToolStrip);
+
       mBoldCaptionFont = new Font(
           Font
         , FontStyle.Bold);

@@ -85,6 +85,17 @@ namespace Com.Couchcoding.Logbert.Dialogs
     }
 
     /// <summary>
+    /// Gets the selected operator index of the <see cref=LogFilter"/>.
+    /// </summary>
+    public int OperatorIndex
+    {
+      get
+      {
+        return cmbOperator.SelectedIndex;
+      }
+    }
+
+    /// <summary>
     /// Gets the entered regular expression of the <see cref=LogFilter"/>.
     /// </summary>
     public string ExpressionRegex
@@ -124,10 +135,13 @@ namespace Com.Couchcoding.Logbert.Dialogs
         }
       }
 
+      cmbOperator.SelectedIndex = 0;
+
       if (filterToEdit != null)
       {
         chkFilterIsActive.Checked       = filterToEdit.IsActive;
         cmbColumnToFilter.SelectedIndex = filterToEdit.ColumnIndex - 1;
+        cmbOperator.SelectedIndex       = filterToEdit.OperatorIndex;
         txtExpressionToFilterFor.Text   = filterToEdit.ColumnMatchValueRegEx;
       }
     }

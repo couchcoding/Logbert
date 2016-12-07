@@ -178,6 +178,17 @@ namespace Com.Couchcoding.Logbert.Receiver
       }
     }
 
+    /// <summary>
+    /// Gets the path seperator for the logger tree.
+    /// </summary>
+    public virtual string LoggerTreePathSeperator
+    {
+      get
+      {
+        return ".";
+      }
+    }
+
     #endregion
 
     #region Public Methods

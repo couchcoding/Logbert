@@ -32,7 +32,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Interfaces;
+using Com.Couchcoding.Logbert.Logging;
 using Com.Couchcoding.Logbert.Properties;
 
 namespace Com.Couchcoding.Logbert.Controls.OptionPanels
@@ -90,7 +90,7 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
     /// </summary>
     private void MnuTimestampClick(object sender, System.EventArgs e)
     {
-      MenuItem mnuCtrl = sender as MenuItem;
+      ToolStripMenuItem mnuCtrl = sender as ToolStripMenuItem;
 
       if (mnuCtrl != null && mnuCtrl.Tag != null)
       {
@@ -103,12 +103,25 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
     /// </summary>
     private void MnuTimestampPresetClick(object sender, System.EventArgs e)
     {
-      MenuItem mnuCtrl = sender as MenuItem;
+      ToolStripMenuItem mnuCtrl = sender as ToolStripMenuItem;
 
       if (mnuCtrl != null && mnuCtrl.Tag != null)
       {
         txtTimestampFormat.Text = mnuCtrl.Tag.ToString();
       }
+    }
+
+    /// <summary>
+    /// Handles the CheckedChanged event of the enable color map <see cref="CheckBox"/>.
+    /// </summary>
+    private void ChkEnableColorMapCheckedChanged(object sender, System.EventArgs e)
+    {
+      chkAnnotateTrace.Enabled   = chkEnableColorMap.Checked;
+      chkAnnotateDebug.Enabled   = chkEnableColorMap.Checked;
+      chkAnnotateInfo.Enabled    = chkEnableColorMap.Checked;
+      chkAnnotateWarning.Enabled = chkEnableColorMap.Checked;
+      chkAnnotateError.Enabled   = chkEnableColorMap.Checked;
+      chkAnnotateFatal.Enabled   = chkEnableColorMap.Checked;
     }
 
     #endregion
@@ -125,6 +138,14 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
       chkAutoFollow.Checked           = Settings.Default.LogWndAutoScrollOnLastMessageSelect;
       chkAllowOnlyOneInstance.Checked = Settings.Default.FrmMainAllowOnlyOneInstance;
       nudMaxLogMessages.Value         = Settings.Default.MaxLogMessages;
+      chkEnableColorMap.Checked       = Settings.Default.EnableColorMap;
+
+      chkAnnotateTrace.Checked        = ((LogLevel)Settings.Default.ColorMapAnnotation & LogLevel.Trace)   == LogLevel.Trace;
+      chkAnnotateDebug.Checked        = ((LogLevel)Settings.Default.ColorMapAnnotation & LogLevel.Debug)   == LogLevel.Debug;
+      chkAnnotateInfo.Checked         = ((LogLevel)Settings.Default.ColorMapAnnotation & LogLevel.Info)    == LogLevel.Info;
+      chkAnnotateWarning.Checked      = ((LogLevel)Settings.Default.ColorMapAnnotation & LogLevel.Warning) == LogLevel.Warning;
+      chkAnnotateError.Checked        = ((LogLevel)Settings.Default.ColorMapAnnotation & LogLevel.Error)   == LogLevel.Error;
+      chkAnnotateFatal.Checked        = ((LogLevel)Settings.Default.ColorMapAnnotation & LogLevel.Fatal)   == LogLevel.Fatal;
     }
 
     /// <summary>
@@ -139,6 +160,15 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
         Settings.Default.LogWndAutoScrollOnLastMessageSelect = chkAutoFollow.Checked;
         Settings.Default.FrmMainAllowOnlyOneInstance         = chkAllowOnlyOneInstance.Checked;
         Settings.Default.MaxLogMessages                      = (int)nudMaxLogMessages.Value;
+        Settings.Default.EnableColorMap                      = chkEnableColorMap.Checked;
+
+        Settings.Default.ColorMapAnnotation = 0;
+        Settings.Default.ColorMapAnnotation |= chkAnnotateTrace.Checked   ? (int)LogLevel.Trace   : 0;
+        Settings.Default.ColorMapAnnotation |= chkAnnotateDebug.Checked   ? (int)LogLevel.Debug   : 0;
+        Settings.Default.ColorMapAnnotation |= chkAnnotateInfo.Checked    ? (int)LogLevel.Info    : 0;
+        Settings.Default.ColorMapAnnotation |= chkAnnotateWarning.Checked ? (int)LogLevel.Warning : 0;
+        Settings.Default.ColorMapAnnotation |= chkAnnotateError.Checked   ? (int)LogLevel.Error   : 0;
+        Settings.Default.ColorMapAnnotation |= chkAnnotateFatal.Checked   ? (int)LogLevel.Fatal   : 0;
 
         Settings.Default.SaveSettings();
       }
@@ -154,6 +184,8 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
     public OptionPanelGeneral()
     {
       InitializeComponent();
+
+      ThemeManager.CurrentApplicationTheme.ApplyTo(mnuTimestamp);
 
       nudMaxLogMessages.Minimum = 0;
       nudMaxLogMessages.Maximum = int.MaxValue;

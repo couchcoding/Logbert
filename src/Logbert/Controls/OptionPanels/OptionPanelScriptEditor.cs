@@ -36,6 +36,7 @@ using System.Globalization;
 using System.Windows.Forms;
 
 using Com.Couchcoding.Logbert.Helper;
+using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Properties;
 
 namespace Com.Couchcoding.Logbert.Controls.OptionPanels
@@ -188,7 +189,7 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
     {
       get
       {
-        return Resources.lines_Text_code_16xMD;
+        return Resources.Script_16x;
       }
     }
 

@@ -397,7 +397,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
             : 0;
 
           // Use a copy of the original list to prevent multiple reader locks.
-          logMessageCopy   = new List<LogMessage>(mLogMessages.ToArray());
+          logMessageCopy = new List<LogMessage>(mLogMessages.ToArray());
         }
         finally
         {
@@ -465,15 +465,35 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         mLogProvider.Clear();
       }
 
-      ((ILogPresenter)mLoggerTree).ClearAll();
+      if (mLoggerTree != null)
+      {
+        ((ILogPresenter)mLoggerTree).ClearAll();
+      }
+
+      if (mMessageDetails != null)
+      {
+        ((ILogPresenter)mMessageDetails).ClearAll();
+      }
+
       ((ILogPresenter)mLogWindow).ClearAll();
-      ((ILogPresenter)mMessageDetails).ClearAll();
       ((ILogPresenter)mBookmarks).ClearAll();
       ((ILogPresenter)mFilter).ClearAll();
       ((ILogPresenter)mLogScript).ClearAll();
 
       // Force an update of the UI.
       TmrUpdateTick(this, EventArgs.Empty);
+    }
+
+    /// <summary>
+    /// Synchronizes the tree to the specified <see cref="LogMessage"/>.
+    /// </summary>
+    /// <param name="message">The <see cref="LogMessage"/> to synchronize the tree with.</param>
+    public void SynchronizeTree(LogMessage message)
+    {
+      if (mLoggerTree != null)
+      {
+        ((FrmLogTree)mLoggerTree).SynchronizeTree(message);
+      }
     }
 
     /// <summary>
@@ -717,25 +737,6 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     private void TsbClearMessagesClick(object sender, EventArgs e)
     {
       ClearAll();
-    }
-
-    /// <summary>
-    /// Handles the Click event of the save message <see cref="ToolStripButton"/>.
-    /// </summary>
-    private void TsbSaveMessagesClick(object sender, EventArgs e)
-    {
-      tsbSaveMessages.Checked = true;
-
-      try
-      {
-        cmsSaveMessages.Show(this, new Point(
-            tsbSaveMessages.Bounds.Left
-          , tsbSaveMessages.Bounds.Bottom));
-      }
-      finally
-      {
-        tsbSaveMessages.Checked = false;
-      }
     }
 
     /// <summary>
@@ -1029,6 +1030,12 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
       try
       {
+        foreach (LogMessage logMsg in logMsgs)
+        {
+          // Always set the current timeshift value.
+          logMsg.TimeShiftOffset = mTimeShiftValue;
+        }
+
         mLogMessages.AddRange(logMsgs);
 
         if (Settings.Default.MaxLogMessages > 0 && mLogMessages.Count > Settings.Default.MaxLogMessages)
@@ -1055,6 +1062,9 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
       try
       {
+        // Always set the current timeshift value.
+        logMsg.TimeShiftOffset = mTimeShiftValue;
+
         mLogMessages.Add(logMsg);
 
         if (Settings.Default.MaxLogMessages > 0 && mLogMessages.Count > Settings.Default.MaxLogMessages)
@@ -1133,7 +1143,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
         if (mLogProvider.HasLoggerTree)
         {
-          mLoggerTree = new FrmLogTree((ILogFilterHandler)mLogWindow);
+          mLoggerTree = new FrmLogTree((ILogFilterHandler)mLogWindow, logProvider.LoggerTreePathSeperator);
           mLoggerTree.VisibleChanged += (sender, e) => 
           { 
             tsbShowLoggerTree.Checked = !mLoggerTree.IsHidden;
@@ -1168,6 +1178,11 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       };
 
       ((FrmLogWindow)mLogWindow).OnLogMessageSelected += OnLogMessageSelected;
+
+      LogDockPanel.Theme = ThemeManager.CurrentApplicationTheme;
+
+      ThemeManager.CurrentApplicationTheme.ApplyTo(tsMessages);
+      ThemeManager.CurrentApplicationTheme.ApplyTo(stBar);
     }
 
     #endregion

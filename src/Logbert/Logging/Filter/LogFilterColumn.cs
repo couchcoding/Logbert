@@ -50,6 +50,11 @@ namespace Com.Couchcoding.Logbert.Logging.Filter
     private int mColumnIndex;
 
     /// <summary>
+    /// Holds the index of the select operator.
+    /// </summary>
+    private int mOperatorIndex;
+
+    /// <summary>
     /// Holds the value the column should have to match.
     /// </summary>
     private Regex mColumnMatchValueRegEx;
@@ -77,6 +82,17 @@ namespace Com.Couchcoding.Logbert.Logging.Filter
       get
       {
         return mColumnIndex;
+      }
+    }
+
+    /// <summary>
+    /// Gets the index of the choosed operator.
+    /// </summary>
+    public int OperatorIndex
+    {
+      get
+      {
+        return mOperatorIndex;
       }
     }
 
@@ -109,8 +125,14 @@ namespace Com.Couchcoding.Logbert.Logging.Filter
 
       object columnValue = value.GetValueForColumn(mColumnIndex);
 
-      return columnValue != null && 
-        mColumnMatchValueRegEx.IsMatch(columnValue.ToString());
+      if (columnValue != null)
+      {
+        return OperatorIndex == 0
+          ?  mColumnMatchValueRegEx.IsMatch(columnValue.ToString())
+          : !mColumnMatchValueRegEx.IsMatch(columnValue.ToString());
+      }
+
+      return false;
     }
 
     /// <summary>
@@ -118,11 +140,13 @@ namespace Com.Couchcoding.Logbert.Logging.Filter
     /// </summary>
     /// <param name="isActive">The new active state of the <see cref=LogFilterColumn"/>.</param>
     /// <param name="columnIndex">The new column index of the <see cref=LogFilterColumn"/>.</param>
+    /// <param name="operatorIndex">The new operator index of thr <see cref="LogFilterColumn"/>.</param>
     /// <param name="expression">The new regular expression of the <see cref=LogFilterColumn"/>.</param>
-    public void Update(bool isActive, int columnIndex, string expression)
+    public void Update(bool isActive, int columnIndex, int operatorIndex, string expression)
     {
       mIsActive              = isActive;
       mColumnIndex           = columnIndex;
+      mOperatorIndex         = operatorIndex;
       mColumnMatchValueRegEx = new Regex(expression);
     }
 
@@ -135,11 +159,13 @@ namespace Com.Couchcoding.Logbert.Logging.Filter
     /// </summary>
     /// <param name="isActive">The active state of the <see cref=LogFilterColumn"/>.</param>
     /// <param name="columnIndex">The index of the column to match.</param>
+    /// <param name="operatorIndex">The operator index of thr <see cref="LogFilterColumn"/>.</param>
     /// <param name="matchRegex">The string for the column match <see cref="Regex"/>.</param>
-    public LogFilterColumn(bool isActive, int columnIndex, string matchRegex)
+    public LogFilterColumn(bool isActive, int columnIndex, int operatorIndex, string matchRegex)
     {
       mIsActive              = isActive;
       mColumnIndex           = columnIndex;
+      mOperatorIndex         = operatorIndex;
       mColumnMatchValueRegEx = new Regex(matchRegex ?? ".*");
     }
 

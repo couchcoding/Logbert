@@ -17,30 +17,30 @@ namespace Logbert
         /// </summary>
         private void InitializeComponent()
         {
-      this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
       this.timeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.levelColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.loggerColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.threadColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.msgColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-      this.mnuMain = new System.Windows.Forms.MainMenu(this.components);
-      this.mnuMainFile = new System.Windows.Forms.MenuItem();
-      this.mnuMainFileNewLogger = new System.Windows.Forms.MenuItem();
-      this.mnuMainFileOpenLogFile = new System.Windows.Forms.MenuItem();
-      this.menuItem2 = new System.Windows.Forms.MenuItem();
-      this.mnuMainFileRecentFiles = new System.Windows.Forms.MenuItem();
-      this.menuItem16 = new System.Windows.Forms.MenuItem();
-      this.mnuMainFileExit = new System.Windows.Forms.MenuItem();
-      this.mnuMainEdit = new System.Windows.Forms.MenuItem();
-      this.mnuMainEditFind = new System.Windows.Forms.MenuItem();
-      this.mnuMainEditFindNext = new System.Windows.Forms.MenuItem();
-      this.mnuMainExtras = new System.Windows.Forms.MenuItem();
-      this.mnuMainExtrasOptions = new System.Windows.Forms.MenuItem();
-      this.mnuMainHelp = new System.Windows.Forms.MenuItem();
-      this.mnuMainHelpAbout = new System.Windows.Forms.MenuItem();
       this.mainDockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-      this.VS2012LightTheme = new WeifenLuo.WinFormsUI.Docking.VS2012LightTheme();
+      this.mnuMain = new Com.Couchcoding.GuiLibrary.Controls.MenuStripEx();
+      this.mnuMainFile = new System.Windows.Forms.ToolStripMenuItem();
+      this.mnuMainFileNewLogger = new System.Windows.Forms.ToolStripMenuItem();
+      this.mnuMainFileOpelLogFile = new System.Windows.Forms.ToolStripMenuItem();
+      this.mnuMainFileSeperator1 = new System.Windows.Forms.ToolStripSeparator();
+      this.mnuMainFileRecentFiles = new System.Windows.Forms.ToolStripMenuItem();
+      this.mnuMainFileSeperator2 = new System.Windows.Forms.ToolStripSeparator();
+      this.mnuMainFileCloseAll = new System.Windows.Forms.ToolStripMenuItem();
+      this.mnuMainFileExit = new System.Windows.Forms.ToolStripMenuItem();
+      this.mnuMainEdit = new System.Windows.Forms.ToolStripMenuItem();
+      this.mnuMainEditFind = new System.Windows.Forms.ToolStripMenuItem();
+      this.mnuMainEditFindNext = new System.Windows.Forms.ToolStripMenuItem();
+      this.mnuMainExtras = new System.Windows.Forms.ToolStripMenuItem();
+      this.mnuMainExtrasOptions = new System.Windows.Forms.ToolStripMenuItem();
+      this.mnuMainHelp = new System.Windows.Forms.ToolStripMenuItem();
+      this.mnuMainAbout = new System.Windows.Forms.ToolStripMenuItem();
+      this.mnuMain.SuspendLayout();
       this.SuspendLayout();
       // 
       // timeColumnHeader
@@ -68,113 +68,6 @@ namespace Logbert
       this.msgColumnHeader.Text = "Message";
       this.msgColumnHeader.Width = 751;
       // 
-      // mnuMain
-      // 
-      this.mnuMain.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.mnuMainFile,
-            this.mnuMainEdit,
-            this.mnuMainExtras,
-            this.mnuMainHelp});
-      // 
-      // mnuMainFile
-      // 
-      this.mnuMainFile.Index = 0;
-      this.mnuMainFile.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.mnuMainFileNewLogger,
-            this.mnuMainFileOpenLogFile,
-            this.menuItem2,
-            this.mnuMainFileRecentFiles,
-            this.menuItem16,
-            this.mnuMainFileExit});
-      this.mnuMainFile.Text = "&File";
-      // 
-      // mnuMainFileNewLogger
-      // 
-      this.mnuMainFileNewLogger.Index = 0;
-      this.mnuMainFileNewLogger.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
-      this.mnuMainFileNewLogger.Text = "&New Logger...";
-      this.mnuMainFileNewLogger.Click += new System.EventHandler(this.MnuMainFileNewLoggerClick);
-      // 
-      // mnuMainFileOpenLogFile
-      // 
-      this.mnuMainFileOpenLogFile.Index = 1;
-      this.mnuMainFileOpenLogFile.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
-      this.mnuMainFileOpenLogFile.Text = "&Open Log File...";
-      this.mnuMainFileOpenLogFile.Click += new System.EventHandler(this.MnuMainFileOpenLogFileClick);
-      // 
-      // menuItem2
-      // 
-      this.menuItem2.Index = 2;
-      this.menuItem2.Text = "-";
-      // 
-      // mnuMainFileRecentFiles
-      // 
-      this.mnuMainFileRecentFiles.Enabled = false;
-      this.mnuMainFileRecentFiles.Index = 3;
-      this.mnuMainFileRecentFiles.Text = "Recent &Files";
-      // 
-      // menuItem16
-      // 
-      this.menuItem16.Index = 4;
-      this.menuItem16.Text = "-";
-      // 
-      // mnuMainFileExit
-      // 
-      this.mnuMainFileExit.Index = 5;
-      this.mnuMainFileExit.Shortcut = System.Windows.Forms.Shortcut.AltF4;
-      this.mnuMainFileExit.Text = "&Exit";
-      this.mnuMainFileExit.Click += new System.EventHandler(this.MnuMainFileExitClick);
-      // 
-      // mnuMainEdit
-      // 
-      this.mnuMainEdit.Index = 1;
-      this.mnuMainEdit.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.mnuMainEditFind,
-            this.mnuMainEditFindNext});
-      this.mnuMainEdit.Text = "&Edit";
-      // 
-      // mnuMainEditFind
-      // 
-      this.mnuMainEditFind.Enabled = false;
-      this.mnuMainEditFind.Index = 0;
-      this.mnuMainEditFind.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
-      this.mnuMainEditFind.Text = "&Find...";
-      this.mnuMainEditFind.Click += new System.EventHandler(this.MnuMainEditFindClick);
-      // 
-      // mnuMainEditFindNext
-      // 
-      this.mnuMainEditFindNext.Enabled = false;
-      this.mnuMainEditFindNext.Index = 1;
-      this.mnuMainEditFindNext.Shortcut = System.Windows.Forms.Shortcut.F3;
-      this.mnuMainEditFindNext.Text = "Find &next";
-      // 
-      // mnuMainExtras
-      // 
-      this.mnuMainExtras.Index = 2;
-      this.mnuMainExtras.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.mnuMainExtrasOptions});
-      this.mnuMainExtras.Text = "&Extras";
-      // 
-      // mnuMainExtrasOptions
-      // 
-      this.mnuMainExtrasOptions.Index = 0;
-      this.mnuMainExtrasOptions.Shortcut = System.Windows.Forms.Shortcut.F10;
-      this.mnuMainExtrasOptions.Text = "&Options...";
-      this.mnuMainExtrasOptions.Click += new System.EventHandler(this.mnuMainExtrasOptions_Click);
-      // 
-      // mnuMainHelp
-      // 
-      this.mnuMainHelp.Index = 3;
-      this.mnuMainHelp.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.mnuMainHelpAbout});
-      this.mnuMainHelp.Text = "&Help";
-      // 
-      // mnuMainHelpAbout
-      // 
-      this.mnuMainHelpAbout.Index = 0;
-      this.mnuMainHelpAbout.Text = "&About...";
-      this.mnuMainHelpAbout.Click += new System.EventHandler(this.MnuMainHelpAboutClick);
-      // 
       // mainDockPanel
       // 
       this.mainDockPanel.AllowDrop = true;
@@ -182,15 +75,153 @@ namespace Logbert
       this.mainDockPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
       this.mainDockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
       this.mainDockPanel.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingWindow;
-      this.mainDockPanel.Location = new System.Drawing.Point(0, 0);
+      this.mainDockPanel.Location = new System.Drawing.Point(0, 24);
       this.mainDockPanel.Name = "mainDockPanel";
-      this.mainDockPanel.Size = new System.Drawing.Size(1008, 666);
+      this.mainDockPanel.Size = new System.Drawing.Size(1008, 642);
       this.mainDockPanel.TabIndex = 0;
-      this.mainDockPanel.Theme = this.VS2012LightTheme;
       this.mainDockPanel.ContentAdded += new System.EventHandler<WeifenLuo.WinFormsUI.Docking.DockContentEventArgs>(this.MainDockPanelContentAdded);
       this.mainDockPanel.ContentRemoved += new System.EventHandler<WeifenLuo.WinFormsUI.Docking.DockContentEventArgs>(this.MainDockPanelContentRemoved);
       this.mainDockPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
       this.mainDockPanel.DragOver += new System.Windows.Forms.DragEventHandler(this.MainForm_DragOver);
+      // 
+      // mnuMain
+      // 
+      this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuMainFile,
+            this.mnuMainEdit,
+            this.mnuMainExtras,
+            this.mnuMainHelp});
+      this.mnuMain.Location = new System.Drawing.Point(0, 0);
+      this.mnuMain.Name = "mnuMain";
+      this.mnuMain.Size = new System.Drawing.Size(1008, 24);
+      this.mnuMain.TabIndex = 1;
+      this.mnuMain.Text = "Main Menu";
+      // 
+      // mnuMainFile
+      // 
+      this.mnuMainFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuMainFileNewLogger,
+            this.mnuMainFileOpelLogFile,
+            this.mnuMainFileSeperator1,
+            this.mnuMainFileRecentFiles,
+            this.mnuMainFileSeperator2,
+            this.mnuMainFileCloseAll,
+            this.mnuMainFileExit});
+      this.mnuMainFile.Name = "mnuMainFile";
+      this.mnuMainFile.Size = new System.Drawing.Size(37, 20);
+      this.mnuMainFile.Text = "&File";
+      this.mnuMainFile.DropDownOpening += new System.EventHandler(this.MnuMainFileOpening);
+      // 
+      // mnuMainFileNewLogger
+      // 
+      this.mnuMainFileNewLogger.Image = global::Com.Couchcoding.Logbert.Properties.Resources.mnuMainNewLogger;
+      this.mnuMainFileNewLogger.Name = "mnuMainFileNewLogger";
+      this.mnuMainFileNewLogger.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+      this.mnuMainFileNewLogger.Size = new System.Drawing.Size(199, 22);
+      this.mnuMainFileNewLogger.Text = "&New Logger...";
+      this.mnuMainFileNewLogger.Click += new System.EventHandler(this.MnuMainFileNewLoggerClick);
+      // 
+      // mnuMainFileOpelLogFile
+      // 
+      this.mnuMainFileOpelLogFile.Image = global::Com.Couchcoding.Logbert.Properties.Resources.mnuMainOpen;
+      this.mnuMainFileOpelLogFile.Name = "mnuMainFileOpelLogFile";
+      this.mnuMainFileOpelLogFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+      this.mnuMainFileOpelLogFile.Size = new System.Drawing.Size(199, 22);
+      this.mnuMainFileOpelLogFile.Text = "&Open Log File...";
+      this.mnuMainFileOpelLogFile.Click += new System.EventHandler(this.MnuMainFileOpenLogFileClick);
+      // 
+      // mnuMainFileSeperator1
+      // 
+      this.mnuMainFileSeperator1.Name = "mnuMainFileSeperator1";
+      this.mnuMainFileSeperator1.Size = new System.Drawing.Size(196, 6);
+      // 
+      // mnuMainFileRecentFiles
+      // 
+      this.mnuMainFileRecentFiles.Enabled = false;
+      this.mnuMainFileRecentFiles.Name = "mnuMainFileRecentFiles";
+      this.mnuMainFileRecentFiles.Size = new System.Drawing.Size(199, 22);
+      this.mnuMainFileRecentFiles.Text = "Recent &Files";
+      // 
+      // mnuMainFileSeperator2
+      // 
+      this.mnuMainFileSeperator2.Name = "mnuMainFileSeperator2";
+      this.mnuMainFileSeperator2.Size = new System.Drawing.Size(196, 6);
+      // 
+      // mnuMainFileCloseAll
+      // 
+      this.mnuMainFileCloseAll.Enabled = false;
+      this.mnuMainFileCloseAll.Image = global::Com.Couchcoding.Logbert.Properties.Resources.mnuMainCloseAll;
+      this.mnuMainFileCloseAll.Name = "mnuMainFileCloseAll";
+      this.mnuMainFileCloseAll.Size = new System.Drawing.Size(199, 22);
+      this.mnuMainFileCloseAll.Text = "&Close All";
+      this.mnuMainFileCloseAll.Click += new System.EventHandler(this.MnuMainFileCloseAllClick);
+      // 
+      // mnuMainFileExit
+      // 
+      this.mnuMainFileExit.Name = "mnuMainFileExit";
+      this.mnuMainFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+      this.mnuMainFileExit.Size = new System.Drawing.Size(199, 22);
+      this.mnuMainFileExit.Text = "&Exit";
+      this.mnuMainFileExit.Click += new System.EventHandler(this.MnuMainFileExitClick);
+      // 
+      // mnuMainEdit
+      // 
+      this.mnuMainEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuMainEditFind,
+            this.mnuMainEditFindNext});
+      this.mnuMainEdit.Name = "mnuMainEdit";
+      this.mnuMainEdit.Size = new System.Drawing.Size(39, 20);
+      this.mnuMainEdit.Text = "&Edit";
+      // 
+      // mnuMainEditFind
+      // 
+      this.mnuMainEditFind.Image = global::Com.Couchcoding.Logbert.Properties.Resources.mnuMainFind;
+      this.mnuMainEditFind.Name = "mnuMainEditFind";
+      this.mnuMainEditFind.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+      this.mnuMainEditFind.Size = new System.Drawing.Size(146, 22);
+      this.mnuMainEditFind.Text = "&Find...";
+      this.mnuMainEditFind.Click += new System.EventHandler(this.MnuMainEditFindClick);
+      // 
+      // mnuMainEditFindNext
+      // 
+      this.mnuMainEditFindNext.Name = "mnuMainEditFindNext";
+      this.mnuMainEditFindNext.ShortcutKeys = System.Windows.Forms.Keys.F3;
+      this.mnuMainEditFindNext.Size = new System.Drawing.Size(146, 22);
+      this.mnuMainEditFindNext.Text = "Find &next";
+      this.mnuMainEditFindNext.Click += new System.EventHandler(this.MnuMainEditFindNextClick);
+      // 
+      // mnuMainExtras
+      // 
+      this.mnuMainExtras.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuMainExtrasOptions});
+      this.mnuMainExtras.Name = "mnuMainExtras";
+      this.mnuMainExtras.Size = new System.Drawing.Size(49, 20);
+      this.mnuMainExtras.Text = "&Extras";
+      // 
+      // mnuMainExtrasOptions
+      // 
+      this.mnuMainExtrasOptions.Image = global::Com.Couchcoding.Logbert.Properties.Resources.mnuMainSettings;
+      this.mnuMainExtrasOptions.Name = "mnuMainExtrasOptions";
+      this.mnuMainExtrasOptions.ShortcutKeys = System.Windows.Forms.Keys.F10;
+      this.mnuMainExtrasOptions.Size = new System.Drawing.Size(150, 22);
+      this.mnuMainExtrasOptions.Text = "&Options...";
+      this.mnuMainExtrasOptions.Click += new System.EventHandler(this.mnuMainExtrasOptions_Click);
+      // 
+      // mnuMainHelp
+      // 
+      this.mnuMainHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuMainAbout});
+      this.mnuMainHelp.Name = "mnuMainHelp";
+      this.mnuMainHelp.Size = new System.Drawing.Size(44, 20);
+      this.mnuMainHelp.Text = "&Help";
+      // 
+      // mnuMainAbout
+      // 
+      this.mnuMainAbout.Image = global::Com.Couchcoding.Logbert.Properties.Resources.mnuMainAbout;
+      this.mnuMainAbout.Name = "mnuMainAbout";
+      this.mnuMainAbout.Size = new System.Drawing.Size(116, 22);
+      this.mnuMainAbout.Text = "&About...";
+      this.mnuMainAbout.Click += new System.EventHandler(this.MnuMainHelpAboutClick);
       // 
       // MainForm
       // 
@@ -199,15 +230,19 @@ namespace Logbert
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
       this.ClientSize = new System.Drawing.Size(1008, 666);
       this.Controls.Add(this.mainDockPanel);
+      this.Controls.Add(this.mnuMain);
       this.DoubleBuffered = true;
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-      this.Menu = this.mnuMain;
+      this.MainMenuStrip = this.mnuMain;
       this.Name = "MainForm";
       this.Text = "Logbert";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
       this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
       this.DragOver += new System.Windows.Forms.DragEventHandler(this.MainForm_DragOver);
+      this.mnuMain.ResumeLayout(false);
+      this.mnuMain.PerformLayout();
       this.ResumeLayout(false);
+      this.PerformLayout();
 
         }
 
@@ -218,23 +253,23 @@ namespace Logbert
         private System.Windows.Forms.ColumnHeader loggerColumnHeader;
         private System.Windows.Forms.ColumnHeader threadColumnHeader;
         private System.Windows.Forms.ColumnHeader msgColumnHeader;
-        private MainMenu mnuMain;
-        private MenuItem mnuMainFile;
-        private MenuItem mnuMainFileExit;
-        private MenuItem mnuMainExtras;
-        private MenuItem mnuMainExtrasOptions;
-        private MenuItem mnuMainHelp;
-        private MenuItem mnuMainHelpAbout;
-        private MenuItem mnuMainFileNewLogger;
-        private MenuItem mnuMainFileOpenLogFile;
-        private MenuItem menuItem16;
         private WeifenLuo.WinFormsUI.Docking.DockPanel mainDockPanel;
-        private MenuItem mnuMainEdit;
-        private MenuItem mnuMainEditFind;
-        private MenuItem mnuMainEditFindNext;
-        private MenuItem menuItem2;
-        private MenuItem mnuMainFileRecentFiles;
-        private WeifenLuo.WinFormsUI.Docking.VS2012LightTheme VS2012LightTheme;
-    }
+    private Com.Couchcoding.GuiLibrary.Controls.MenuStripEx mnuMain;
+    private ToolStripMenuItem mnuMainFile;
+    private ToolStripMenuItem mnuMainFileNewLogger;
+    private ToolStripMenuItem mnuMainFileOpelLogFile;
+    private ToolStripSeparator mnuMainFileSeperator1;
+    private ToolStripMenuItem mnuMainFileRecentFiles;
+    private ToolStripSeparator mnuMainFileSeperator2;
+    private ToolStripMenuItem mnuMainFileExit;
+    private ToolStripMenuItem mnuMainEdit;
+    private ToolStripMenuItem mnuMainExtras;
+    private ToolStripMenuItem mnuMainHelp;
+    private ToolStripMenuItem mnuMainEditFind;
+    private ToolStripMenuItem mnuMainEditFindNext;
+    private ToolStripMenuItem mnuMainExtrasOptions;
+    private ToolStripMenuItem mnuMainAbout;
+    private ToolStripMenuItem mnuMainFileCloseAll;
+  }
 }
 

@@ -48,6 +48,7 @@ using System.IO.Pipes;
 using System.Text;
 
 using Com.Couchcoding.Logbert.Receiver;
+using System.Collections.Specialized;
 
 namespace Logbert
 {
@@ -182,6 +183,10 @@ namespace Logbert
       {
         if (!mFindWindow.Visible)
         {
+          mFindWindow.Location = new Point(
+              Location.X + 100
+            , Location.Y + 100);
+
           mFindWindow.Show(this);
         }
 
@@ -194,7 +199,8 @@ namespace Logbert
     /// </summary>
     private void MainDockPanelContentAdded(object sender, DockContentEventArgs e)
     {
-      mnuMainEditFind.Enabled = true;
+      mnuMainEditFind.Enabled     = true;
+      mnuMainEditFindNext.Enabled = true;
 
       UpdateUiElements();
     }
@@ -216,17 +222,18 @@ namespace Logbert
 
       if (mainDockPanel != null)
       {
-        mnuMainEditFind.Enabled = mainDockPanel.DocumentsCount > 0;
+        mnuMainEditFind.Enabled     = mainDockPanel.DocumentsCount > 0;
+        mnuMainEditFindNext.Enabled = mnuMainEditFind.Enabled;
 
-        if (mainDockPanel.DocumentsCount == 0
-        &&  mFindWindow.Visible)
+        if (mainDockPanel.DocumentsCount == 0 &&  mFindWindow.Visible)
         {
           mFindWindow.Hide();
         }
       }
       else
       {
-        mnuMainEditFind.Enabled = false;
+        mnuMainEditFind.Enabled     = false;
+        mnuMainEditFindNext.Enabled = false;
       }
 
       UpdateUiElements();
@@ -241,6 +248,8 @@ namespace Logbert
       mnuMainEditFindNext.Enabled = mnuMainEditFind.Enabled 
         && Settings.Default.FrmFindSearchValue != null 
         && !string.IsNullOrEmpty(Settings.Default.FrmFindSearchValue[0]);
+
+      mnuMainEditFindNext.Enabled = mnuMainEditFind.Enabled;
     }
 
     /// <summary>
@@ -290,31 +299,33 @@ namespace Logbert
 
     private void RebuildMruList()
     {
-      mnuMainFileRecentFiles.MenuItems.Clear();
+      mnuMainFileRecentFiles.DropDownItems.Clear();
       mnuMainFileRecentFiles.Enabled = false;
 
       for (int mruFileIndex = MruManager.MruFiles.Count - 1; mruFileIndex >= 0; --mruFileIndex)
       {
-        MenuItem newMruItem = new MenuItem(string.Format(
+        ToolStripMenuItem newMruItem = new ToolStripMenuItem(string.Format(
             "&{0} {1}"
           , MruManager.MruFiles.Count - mruFileIndex
           , MruManager.MruFiles[mruFileIndex].ToShortPath(SystemFonts.MenuFont))
+          , null
           , OnMruFileClick);
 
         newMruItem.Tag = MruManager.MruFiles[mruFileIndex];
 
-        mnuMainFileRecentFiles.MenuItems.Add(newMruItem);
+        mnuMainFileRecentFiles.DropDownItems.Add(newMruItem);
       }
 
-      if (mnuMainFileRecentFiles.MenuItems.Count > 0)
+      if (mnuMainFileRecentFiles.DropDownItems.Count > 0)
       {
         mnuMainFileRecentFiles.Enabled = true;
 
         // Add a seperator and clear item to the MRU list.
-        mnuMainFileRecentFiles.MenuItems.Add(new MenuItem("-"));
+        mnuMainFileRecentFiles.DropDownItems.Add(new ToolStripSeparator());
 
-        mnuMainFileRecentFiles.MenuItems.Add(new MenuItem(
+        mnuMainFileRecentFiles.DropDownItems.Add(new ToolStripMenuItem(
             Resources.strClearMruList
+          , null
           , OnMruClearItems));
       }
     }
@@ -327,7 +338,7 @@ namespace Logbert
 
     private void OnMruFileClick(object sender, EventArgs e)
     {
-      string logFileToLoad = ((MenuItem)sender).Tag as string;
+      string logFileToLoad = ((ToolStripMenuItem)sender).Tag as string;
 
       if (!File.Exists(logFileToLoad))
       {
@@ -433,9 +444,9 @@ namespace Logbert
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
     protected override void Dispose(bool disposing)
     {
-      if (disposing && (this.components != null))
+      if (disposing && components != null)
       {
-        this.components.Dispose();
+        components.Dispose();
       }
 
       if (mPipedStream != null)
@@ -597,6 +608,32 @@ namespace Logbert
       }
     }
 
+    private void MnuMainEditFindNextClick(object sender, EventArgs e)
+    {
+      mFindWindow.PerformSearch(mFindWindow.CurrentSearchValue);
+    }
+
+    /// <summary>
+    /// Handles the DropDownOpening event of the file <see cref="ToolStripMenuItem"/>.
+    /// </summary>
+    private void MnuMainFileOpening(object sender, EventArgs e)
+    {
+       mnuMainFileCloseAll.Enabled = mainDockPanel.DocumentsCount > 0;
+    }
+
+    /// <summary>
+    /// Handles the Click event of the close all <see cref="ToolStripMenuItem"/>.
+    /// </summary>
+    private void MnuMainFileCloseAllClick(object sender, EventArgs e)
+    {
+      IDockContent[] openDocuments = mainDockPanel.DocumentsToArray();
+
+      for (int i = openDocuments.Length - 1; i >= 0; --i)
+      {
+        openDocuments[i].DockHandler.Close();
+      }
+    }
+
     #endregion
 
     #region Public Methods
@@ -687,6 +724,13 @@ namespace Logbert
     public MainForm(string logFileToLoad)
     {
       InitializeComponent();
+
+      mainDockPanel.Theme = ThemeManager.CurrentApplicationTheme;
+      mainDockPanel.Theme.ApplyTo(mnuMain);
+
+      mainDockPanel.BackgroundImage = Resources.Logbert_Start_Screen;
+      mainDockPanel.BackColor       = SystemColors.Control;
+      mainDockPanel.DockBackColor   = SystemColors.Control;
 
       // Ensure we're using the systems default dialog font for the main view.
       Font = SystemFonts.MessageBoxFont;

@@ -15,19 +15,21 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogBookmarks));
       this.toolStrip1 = new Com.Couchcoding.GuiLibrary.Controls.ToolStripEx();
       this.tsbRemoveBookmark = new System.Windows.Forms.ToolStripButton();
       this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
       this.tsbPreviousBookmark = new System.Windows.Forms.ToolStripButton();
       this.tsbNextBookmark = new System.Windows.Forms.ToolStripButton();
+      this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+      this.tsbZoomIn = new System.Windows.Forms.ToolStripButton();
+      this.tsbZoomOut = new System.Windows.Forms.ToolStripButton();
       this.dgvBookmarks = new System.Windows.Forms.DataGridView();
       this.clmImage = new System.Windows.Forms.DataGridViewImageColumn();
       this.clmRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.clmMessage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-      this.tsbZoomIn = new System.Windows.Forms.ToolStripButton();
-      this.tsbZoomOut = new System.Windows.Forms.ToolStripButton();
       this.toolStrip1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgvBookmarks)).BeginInit();
       this.SuspendLayout();
@@ -56,6 +58,7 @@
       this.tsbRemoveBookmark.Enabled = false;
       this.tsbRemoveBookmark.Image = global::Com.Couchcoding.Logbert.Properties.Resources.BookmarkClear_2381;
       this.tsbRemoveBookmark.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tsbRemoveBookmark.Margin = new System.Windows.Forms.Padding(1, 1, 0, 2);
       this.tsbRemoveBookmark.Name = "tsbRemoveBookmark";
       this.tsbRemoveBookmark.Size = new System.Drawing.Size(23, 22);
       this.tsbRemoveBookmark.Text = "Remove Bookmark";
@@ -88,6 +91,31 @@
       this.tsbNextBookmark.Text = "Next Bookmark";
       this.tsbNextBookmark.Click += new System.EventHandler(this.TsbNextBookmarkClick);
       // 
+      // toolStripSeparator2
+      // 
+      this.toolStripSeparator2.Name = "toolStripSeparator2";
+      this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+      // 
+      // tsbZoomIn
+      // 
+      this.tsbZoomIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this.tsbZoomIn.Image = global::Com.Couchcoding.Logbert.Properties.Resources.zoom_16xLG;
+      this.tsbZoomIn.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tsbZoomIn.Name = "tsbZoomIn";
+      this.tsbZoomIn.Size = new System.Drawing.Size(23, 22);
+      this.tsbZoomIn.Text = "Zoom In";
+      this.tsbZoomIn.Click += new System.EventHandler(this.TsbZoomInClick);
+      // 
+      // tsbZoomOut
+      // 
+      this.tsbZoomOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this.tsbZoomOut.Image = global::Com.Couchcoding.Logbert.Properties.Resources.ZoomOut_16xLG;
+      this.tsbZoomOut.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tsbZoomOut.Name = "tsbZoomOut";
+      this.tsbZoomOut.Size = new System.Drawing.Size(23, 22);
+      this.tsbZoomOut.Text = "Zoom Out";
+      this.tsbZoomOut.Click += new System.EventHandler(this.TsbZoomOutClick);
+      // 
       // dgvBookmarks
       // 
       this.dgvBookmarks.AllowUserToAddRows = false;
@@ -95,11 +123,27 @@
       this.dgvBookmarks.AllowUserToResizeRows = false;
       this.dgvBookmarks.BackgroundColor = System.Drawing.SystemColors.Window;
       this.dgvBookmarks.BorderStyle = System.Windows.Forms.BorderStyle.None;
+      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgvBookmarks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dgvBookmarks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dgvBookmarks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmImage,
             this.clmRow,
             this.clmMessage});
+      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+      dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+      dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+      this.dgvBookmarks.DefaultCellStyle = dataGridViewCellStyle2;
       this.dgvBookmarks.Dock = System.Windows.Forms.DockStyle.Fill;
       this.dgvBookmarks.Location = new System.Drawing.Point(0, 25);
       this.dgvBookmarks.MultiSelect = false;
@@ -141,31 +185,6 @@
       this.clmMessage.MinimumWidth = 40;
       this.clmMessage.Name = "clmMessage";
       this.clmMessage.ReadOnly = true;
-      // 
-      // toolStripSeparator2
-      // 
-      this.toolStripSeparator2.Name = "toolStripSeparator2";
-      this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-      // 
-      // tsbZoomIn
-      // 
-      this.tsbZoomIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.tsbZoomIn.Image = global::Com.Couchcoding.Logbert.Properties.Resources.zoom_16xLG;
-      this.tsbZoomIn.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.tsbZoomIn.Name = "tsbZoomIn";
-      this.tsbZoomIn.Size = new System.Drawing.Size(23, 22);
-      this.tsbZoomIn.Text = "Zoom In";
-      this.tsbZoomIn.Click += new System.EventHandler(this.TsbZoomInClick);
-      // 
-      // tsbZoomOut
-      // 
-      this.tsbZoomOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.tsbZoomOut.Image = global::Com.Couchcoding.Logbert.Properties.Resources.ZoomOut_16xLG;
-      this.tsbZoomOut.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.tsbZoomOut.Name = "tsbZoomOut";
-      this.tsbZoomOut.Size = new System.Drawing.Size(23, 22);
-      this.tsbZoomOut.Text = "Zoom Out";
-      this.tsbZoomOut.Click += new System.EventHandler(this.TsbZoomOutClick);
       // 
       // FrmLogBookmarks
       // 

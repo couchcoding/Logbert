@@ -393,6 +393,66 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mnuMainAbout {
+            get {
+                object obj = ResourceManager.GetObject("mnuMainAbout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mnuMainCloseAll {
+            get {
+                object obj = ResourceManager.GetObject("mnuMainCloseAll", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mnuMainFind {
+            get {
+                object obj = ResourceManager.GetObject("mnuMainFind", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mnuMainNewLogger {
+            get {
+                object obj = ResourceManager.GetObject("mnuMainNewLogger", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mnuMainOpen {
+            get {
+                object obj = ResourceManager.GetObject("mnuMainOpen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mnuMainSettings {
+            get {
+                object obj = ResourceManager.GetObject("mnuMainSettings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap move_to_bottom {
             get {
                 object obj = ResourceManager.GetObject("move_to_bottom", resourceCulture);
@@ -523,6 +583,16 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Script_16x {
+            get {
+                object obj = ResourceManager.GetObject("Script_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap StatusAnnotations_Information_16xLG {
             get {
                 object obj = ResourceManager.GetObject("StatusAnnotations_Information_16xLG", resourceCulture);
@@ -541,7 +611,7 @@ namespace Com.Couchcoding.Logbert.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copyright 2015 Couchcoding. All Right Reserved..
+        ///   Looks up a localized string similar to Copyright 2016 Couchcoding. All Right Reserved..
         /// </summary>
         internal static string strAboutDlgCopyright {
             get {
@@ -771,6 +841,24 @@ namespace Com.Couchcoding.Logbert.Properties {
         internal static string strFilterDlgEditFilter {
             get {
                 return ResourceManager.GetString("strFilterDlgEditFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ).
+        /// </summary>
+        internal static string strFilterNotMatchEndTag {
+            get {
+                return ResourceManager.GetString("strFilterNotMatchEndTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NOT (.
+        /// </summary>
+        internal static string strFilterNotMatchStartTag {
+            get {
+                return ResourceManager.GetString("strFilterNotMatchStartTag", resourceCulture);
             }
         }
         
@@ -1147,6 +1235,16 @@ namespace Com.Couchcoding.Logbert.Properties {
         internal static System.Drawing.Bitmap Symbols_Stop_16xLG {
             get {
                 object obj = ResourceManager.GetObject("Symbols_Stop_16xLG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sync_16 {
+            get {
+                object obj = ResourceManager.GetObject("sync_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

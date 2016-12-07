@@ -396,6 +396,9 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       }
 
       InitializeComponent();
+
+      // Apply the current application theme to the control.
+      ThemeManager.CurrentApplicationTheme.ApplyTo(toolStrip1);
     }
 
     #endregion

@@ -39,6 +39,7 @@ using WeifenLuo.WinFormsUI.Docking;
 using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Logging.Filter;
 using System;
+using Com.Couchcoding.Logbert.Properties;
 
 namespace Com.Couchcoding.Logbert.Dialogs.Docking
 {
@@ -175,7 +176,11 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
                 mFilterImage
               , filter.IsActive
               , mLogProvider.Columns[filter.ColumnIndex - 1]
-              , filter.ColumnMatchValueRegEx);
+              , string.Format("{0}{1}{2}", filter.OperatorIndex == 1 
+                ? Resources.strFilterNotMatchStartTag 
+                : string.Empty, filter.ColumnMatchValueRegEx, filter.OperatorIndex == 1 
+                ? Resources.strFilterNotMatchEndTag 
+                : string.Empty));
 
             dgvFilter.Rows[rowIndex].Tag = filter;
 
@@ -226,6 +231,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
           LogFilterColumn newLogFilter = new LogFilterColumn(
               addEditFilterDlg.IsFilterActive
             , addEditFilterDlg.ColumnIndex
+            , addEditFilterDlg.OperatorIndex
             , addEditFilterDlg.ExpressionRegex);
 
           mLogFilter.Add(newLogFilter);
@@ -259,6 +265,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
               filterToEdit.Update(
                   addEditFilterDlg.IsFilterActive
                 , addEditFilterDlg.ColumnIndex
+                , addEditFilterDlg.OperatorIndex
                 , addEditFilterDlg.ExpressionRegex);
 
               // Update the data grid.
@@ -329,6 +336,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
           filterToEdit.Update(
               (bool)dgvFilter.Rows[e.RowIndex].Cells[e.ColumnIndex].Value
             , filterToEdit.ColumnIndex
+            , filterToEdit.OperatorIndex
             , filterToEdit.ColumnMatchValueRegEx);
 
           // Update the data grid.
@@ -461,6 +469,9 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     public FrmLogFilter(ILogProvider logProvider, ILogFilterHandler filterHandler)
     {
       InitializeComponent();
+
+      // Apply the current application theme to the control.
+      ThemeManager.CurrentApplicationTheme.ApplyTo(tsFilter);
 
       mLogProvider      = logProvider;
       mLogFilterHandler = filterHandler;

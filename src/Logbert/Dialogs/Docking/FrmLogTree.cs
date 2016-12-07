@@ -53,11 +53,6 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     #region Private Consts
 
     /// <summary>
-    /// Defines the seperator string if a logger path.
-    /// </summary>
-    private const string LOGGER_PATH_SEPERATOR = ".";
-
-    /// <summary>
     /// The WM_PRINT message is sent to a window to request that it draw itself in the specified device context, most commonly in a printer device context.
     /// </summary>
     private const int PRF_CLIENT = 0x4;
@@ -383,7 +378,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
           PopulateTreeView(
               tvLoggerTree
             , Properties.Resources.strLoggerRoot
-              + LOGGER_PATH_SEPERATOR
+              + tvLoggerTree.PathSeparator
               + message.Logger);
         }
       }
@@ -420,6 +415,47 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     public void ClearAll()
     {
       tvLoggerTree.Nodes.Clear();
+    }
+
+    /// <summary>
+    /// Synchronizes the tree to the specified <see cref="LogMessage"/>.
+    /// </summary>
+    /// <param name="message">The <see cref="LogMessage"/> to synchronize the tree with.</param>
+    public void SynchronizeTree(LogMessage message)
+    {
+      if (message != null && !string.IsNullOrEmpty(message.Logger))
+      {
+        TreeNode syncNode = GetNodeByFullPath(tvLoggerTree.Nodes[0], string.Format(
+            "{0}{1}{2}"
+          , Properties.Resources.strLoggerRoot
+          , tvLoggerTree.PathSeparator
+          , message.Logger));
+
+        if (syncNode != null)
+        {
+          tvLoggerTree.SelectedNode = syncNode;
+        }
+      }
+    }
+
+    private TreeNode GetNodeByFullPath(TreeNode startNode, string fullPath)
+    {
+      if (startNode.FullPath.Equals(fullPath))
+      {
+        return startNode;
+      }
+
+      foreach (TreeNode childNode in startNode.Nodes)
+      {
+        TreeNode node = GetNodeByFullPath(childNode, fullPath);
+
+        if (node != null)
+        {
+          return node;
+        }
+      }
+
+      return null;
     }
 
     /// <summary>
@@ -484,13 +520,17 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// Creates a new instance of the <see cref="FrmLogTree"/> window.
     /// </summary>
     /// <param name="filterHandler">The <see cref="ILogFilterHandler"/> that handles changed filter settings.</param>
-    public FrmLogTree(ILogFilterHandler filterHandler)
+    /// <param name="loggerPathSeperator">The path seperator for <see cref="LogMessage"/>s to build the tree from.</param>
+    public FrmLogTree(ILogFilterHandler filterHandler, string loggerPathSeperator)
     {
       SetStyle(ControlStyles.AllPaintingInWmPaint,  true);
       SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
       SetStyle(ControlStyles.UserPaint,             true);
 
       InitializeComponent();
+
+      // Apply the current application theme to the control.
+      ThemeManager.CurrentApplicationTheme.ApplyTo(tsLoggerTree);
 
       mLogFilterHandler = filterHandler;
       Font              = SystemFonts.MessageBoxFont;
@@ -501,7 +541,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         filterHandler.RegisterFilterProvider(this);
       }
 
-      tvLoggerTree.PathSeparator = LOGGER_PATH_SEPERATOR;
+      tvLoggerTree.PathSeparator = loggerPathSeperator;
     }
 
     #endregion

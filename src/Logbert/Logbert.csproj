@@ -93,8 +93,21 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking.ThemeVS2015">
+      <HintPath>Libraries\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ColorMap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ColorMap.Designer.cs">
+      <DependentUpon>ColorMap.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ColorPickerCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -230,6 +243,7 @@
     <Compile Include="Helper\Logger.cs" />
     <Compile Include="Helper\LogMessageSelectedEventArgs.cs" />
     <Compile Include="Helper\MruManager.cs" />
+    <Compile Include="Helper\ThemeManager.cs" />
     <Compile Include="Helper\WaitCursor.cs" />
     <Compile Include="Helper\DelayedCallback.cs" />
     <Compile Include="Helper\ThreadAttachedDelayedCallback.cs" />
@@ -335,6 +349,9 @@
     </Compile>
     <Compile Include="Receiver\SyslogUdpReceiver\SyslogUdpReceiver.cs" />
     <Compile Include="Receiver\ValidationResult.cs" />
+    <EmbeddedResource Include="Controls\ColorMap.resx">
+      <DependentUpon>ColorMap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ColorPickerCtrl.resx">
       <DependentUpon>ColorPickerCtrl.cs</DependentUpon>
     </EmbeddedResource>
@@ -451,6 +468,14 @@
     <BaseApplicationManifest Include="Properties\app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Script_16x.png" />
+    <None Include="Resources\mnuMainAbout.png" />
+    <None Include="Resources\mnuMainSettings.png" />
+    <None Include="Resources\mnuMainFind.png" />
+    <None Include="Resources\mnuMainOpen.png" />
+    <None Include="Resources\mnuMainNewLogger.png" />
+    <None Include="Resources\mnuMainCloseAll.png" />
+    <None Include="Resources\sync_16.png" />
     <None Include="Resources\arrow_Down_16xLG.png" />
     <None Include="Resources\arrow_Up_16xLG.png" />
     <None Include="Resources\RunTests_8790.png" />
@@ -509,6 +534,8 @@
     <None Include="Resources\Logbert Start Screen.png" />
     <Content Include="Libraries\MoonSharp.Interpreter.dll" />
     <Content Include="Libraries\ScintillaNET.dll" />
+    <Content Include="Libraries\WeifenLuo.WinFormsUI.Docking.dll" />
+    <Content Include="Libraries\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll" />
     <Content Include="Logbert.ico" />
     <None Include="Resources\logbert.about.png" />
   </ItemGroup>
@@ -517,10 +544,6 @@
     <ProjectReference Include="..\GuiLibrary\GuiLibrary.csproj">
       <Project>{0d9d135f-9d7a-4d90-8810-903450fd4245}</Project>
       <Name>GuiLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WinFormsUI\WinFormsUI.csproj">
-      <Project>{c75532c4-765b-418e-b09b-46d36b2abdb1}</Project>
-      <Name>WinFormsUI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -139,6 +139,14 @@ namespace Com.Couchcoding.Logbert.Interfaces
       get;
     }
 
+    /// <summary>
+    /// Gets the path seperator for the logger tree.
+    /// </summary>
+    string LoggerTreePathSeperator
+    {
+      get;
+    }
+
     #endregion
 
     #region Interface Methods

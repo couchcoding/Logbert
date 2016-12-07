@@ -207,6 +207,17 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
       }
     }
 
+    /// <summary>
+    /// Gets the path seperator for the logger tree.
+    /// </summary>
+    public override string LoggerTreePathSeperator
+    {
+      get
+      {
+        return "\t";
+      }
+    }
+
     #endregion
 
     #region Private Methods
@@ -274,6 +285,11 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
 
       while ((line = mFileReader.ReadLine()) != null)
       {
+        if (string.IsNullOrEmpty(line))
+        {
+          continue;
+        }
+
         messages.Add(new LogMessageSyslog(
             line
           , ++mLogNumber));

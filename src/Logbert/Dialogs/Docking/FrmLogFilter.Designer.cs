@@ -15,6 +15,8 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogFilter));
       this.tsFilter = new Com.Couchcoding.GuiLibrary.Controls.ToolStripEx();
       this.tsbAddFilter = new System.Windows.Forms.ToolStripButton();
@@ -54,6 +56,7 @@
       this.tsbAddFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.tsbAddFilter.Image = global::Com.Couchcoding.Logbert.Properties.Resources.add_filter;
       this.tsbAddFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tsbAddFilter.Margin = new System.Windows.Forms.Padding(1, 1, 0, 2);
       this.tsbAddFilter.Name = "tsbAddFilter";
       this.tsbAddFilter.Size = new System.Drawing.Size(23, 22);
       this.tsbAddFilter.Text = "Add Filter";
@@ -113,12 +116,28 @@
       this.dgvFilter.AllowUserToResizeRows = false;
       this.dgvFilter.BackgroundColor = System.Drawing.SystemColors.Window;
       this.dgvFilter.BorderStyle = System.Windows.Forms.BorderStyle.None;
+      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgvFilter.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dgvFilter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dgvFilter.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmImage,
             this.clmActive,
             this.clmColumn,
             this.clmExpression});
+      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+      dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+      dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+      this.dgvFilter.DefaultCellStyle = dataGridViewCellStyle2;
       this.dgvFilter.Dock = System.Windows.Forms.DockStyle.Fill;
       this.dgvFilter.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
       this.dgvFilter.Location = new System.Drawing.Point(0, 25);

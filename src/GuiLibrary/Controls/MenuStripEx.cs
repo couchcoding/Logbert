@@ -1,12 +1,12 @@
 ﻿#region Copyright © 2015 Couchcoding
 
-// File:    ILogContainer.cs
-// Package: Logbert
+// File:    MenuStripEx.cs
+// Package: GuiLibrary
 // Project: Logbert
 // 
 // The MIT License (MIT)
 // 
-// Copyright (c) 2015 Couchcoding
+// Copyright (c) 2016 Couchcoding
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,69 +28,50 @@
 
 #endregion
 
-using System.Collections.Generic;
+using System;
+using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Logging;
-
-namespace Com.Couchcoding.Logbert.Interfaces
+namespace Com.Couchcoding.GuiLibrary.Controls
 {
   /// <summary>
-  /// Interface for all <see cref="LogMessage"/> container.
+  /// Implements an enhanced <see cref="MenuStrip"/> control with enabled click through.
   /// </summary>
-  public interface ILogContainer
+  public sealed class MenuStripEx : MenuStrip
   {
-    #region Interface Properties
+    #region Private Consts
 
     /// <summary>
-    /// Gets the received <see cref="LogMessage"/>s.
+    /// Sent when the cursor is in an inactive window and the user presses a mouse button.
     /// </summary>
-    List<LogMessage> LogMessages
-    {
-      get;
-    }
+    private const uint WM_MOUSEACTIVATE = 0x21;
 
     /// <summary>
-    /// Gets or sets the tail state.
+    /// Sent when the cursor is in an inactive window and the user presses a mouse button.
     /// </summary>
-    bool TailEnabled
-    {
-      get;
-      set;
-    }
+    private const uint MA_ACTIVATE = 0x1;
 
     /// <summary>
-    /// Gets the timeshift value for the displayed <see cref="LogMessage"/>s.
+    /// Sent when the cursor is in an inactive window and the user presses a mouse button.
     /// </summary>
-    int TimeShiftValue
-    {
-      get;
-    }
+    private const uint MA_ACTIVATEANDEAT = 0x2;
 
     #endregion
 
-    #region Interface Methods
+    #region Overridden Methods
 
     /// <summary>
-    /// Synchronizes the tree to the specified <see cref="LogMessage"/>.
+    /// Processes Windows messages.
     /// </summary>
-    /// <param name="message">The <see cref="LogMessage"/> to synchronize the tree with.</param>
-    void SynchronizeTree(LogMessage message);
+    /// <param name="m">The Windows <see cref="T:System.Windows.Forms.Message"/> to process.</param>
+    protected override void WndProc(ref Message m)
+    {
+      base.WndProc(ref m);
 
-    /// <summary>
-    /// Update the value of the UI update timer interval.
-    /// </summary>
-    /// <param name="newTimerInterval">The new value for the UI update time.</param>
-    void UpdateTimerInterval(int newTimerInterval);
-
-    /// <summary>
-    /// Updates the information display in the <see cref="StatusBar"/>.
-    /// </summary>
-    void UpdateStatusBarInformation();
-
-    /// <summary>
-    /// Clear all received logging data.
-    /// </summary>
-    void ClearAll();
+      if (m.Msg == WM_MOUSEACTIVATE && m.Result == (IntPtr)MA_ACTIVATEANDEAT)
+      {
+        m.Result = (IntPtr)MA_ACTIVATE;
+      }
+    }
 
     #endregion
   }

@@ -153,7 +153,7 @@ namespace Com.Couchcoding.Logbert.Helper
     public static string GetLoggerPath(this TreeNode node)
     {
       return node.FullPath.Replace(
-          Properties.Resources.strLoggerRoot + "."
+          Properties.Resources.strLoggerRoot + node.TreeView.PathSeparator
         , string.Empty);
     }
 

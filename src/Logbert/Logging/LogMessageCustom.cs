@@ -30,6 +30,7 @@
 
 using System;
 using System.Windows.Forms;
+using Com.Couchcoding.Logbert.Receiver.CustomReceiver;
 
 namespace Com.Couchcoding.Logbert.Logging
 {
@@ -38,6 +39,12 @@ namespace Com.Couchcoding.Logbert.Logging
   /// </summary>
   public sealed class LogMessageCustom : LogMessage
   {
+    #region Private Fields
+
+    private readonly Columnizer mColumnizer;
+
+    #endregion
+
     #region Public Properties
 
     /// <summary>
@@ -116,7 +123,8 @@ namespace Com.Couchcoding.Logbert.Logging
     /// </summary>
     /// <param name="rawData">The data <see cref="Array"/> the new <see cref="LogMessageCustom"/> represents.</param>
     /// <param name="index">The index of the <see cref="LogMessage"/>.</param>
-    public LogMessageCustom(string rawData, int index) : base(rawData, index)
+    /// <param name="columns">The <see cref="Columnizer"/> to use for parsing.</param>
+    public LogMessageCustom(string rawData, int index, Columnizer columns) : base(rawData, index)
     {
       if (!ParseData(rawData))
       {

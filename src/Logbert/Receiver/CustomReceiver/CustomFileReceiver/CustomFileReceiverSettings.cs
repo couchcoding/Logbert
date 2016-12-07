@@ -223,6 +223,11 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
         , Application.ProductName
         , Settings.Default.ColumnizerRepository);
 
+      if (!Directory.Exists(Path.GetDirectoryName(columnizerRepository)))
+      {
+        Directory.CreateDirectory(Path.GetDirectoryName(columnizerRepository));
+      }
+
       if (columnizerToSerialize == null || columnizerToSerialize.Count == 0)
       {
         if (File.Exists(columnizerRepository))

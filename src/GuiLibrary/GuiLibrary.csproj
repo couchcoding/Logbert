@@ -81,6 +81,9 @@
     <Compile Include="Controls\ListViewEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\MenuStripEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\PictureBoxEx.cs">
       <SubType>Component</SubType>
     </Compile>
