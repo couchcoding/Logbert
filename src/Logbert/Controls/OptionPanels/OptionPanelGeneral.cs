@@ -32,6 +32,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using Com.Couchcoding.Logbert.Helper;
+using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Logging;
 using Com.Couchcoding.Logbert.Properties;
 

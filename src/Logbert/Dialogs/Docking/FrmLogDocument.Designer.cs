@@ -48,6 +48,7 @@
       this.tsbShowLoggerTree = new System.Windows.Forms.ToolStripButton();
       this.tsbShowBookmarks = new System.Windows.Forms.ToolStripButton();
       this.tsbShowFilter = new System.Windows.Forms.ToolStripButton();
+      this.tsbShowStatistic = new System.Windows.Forms.ToolStripButton();
       this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
       this.tsbTimeShift = new System.Windows.Forms.ToolStripButton();
       this.txtTimeShift = new System.Windows.Forms.ToolStripTextBox();
@@ -101,6 +102,7 @@
             this.tsbShowLoggerTree,
             this.tsbShowBookmarks,
             this.tsbShowFilter,
+            this.tsbShowStatistic,
             this.toolStripSeparator1,
             this.tsbTimeShift,
             this.txtTimeShift,
@@ -405,6 +407,17 @@
       this.tsbShowFilter.Text = "Filter";
       this.tsbShowFilter.Click += new System.EventHandler(this.TsbShowFilterClick);
       // 
+      // tsbShowStatistic
+      // 
+      this.tsbShowStatistic.CheckOnClick = true;
+      this.tsbShowStatistic.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this.tsbShowStatistic.Image = global::Com.Couchcoding.Logbert.Properties.Resources.FrmLogStatistic;
+      this.tsbShowStatistic.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tsbShowStatistic.Name = "tsbShowStatistic";
+      this.tsbShowStatistic.Size = new System.Drawing.Size(23, 23);
+      this.tsbShowStatistic.Text = "Statistic";
+      this.tsbShowStatistic.Click += new System.EventHandler(this.TsbShowStatisticClick);
+      // 
       // toolStripSeparator1
       // 
       this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -533,5 +546,6 @@
     private System.Windows.Forms.StatusStrip stBar;
     private System.Windows.Forms.ToolStripStatusLabel stbStatus;
     private System.Windows.Forms.ToolStripStatusLabel stbMessageCount;
+    private System.Windows.Forms.ToolStripButton tsbShowStatistic;
   }
 }

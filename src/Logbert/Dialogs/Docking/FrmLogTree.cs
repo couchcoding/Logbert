@@ -53,16 +53,6 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     #region Private Consts
 
     /// <summary>
-    /// The WM_PRINT message is sent to a window to request that it draw itself in the specified device context, most commonly in a printer device context.
-    /// </summary>
-    private const int PRF_CLIENT = 0x4;
-
-    /// <summary>
-    /// The WM_PRINTCLIENT message is sent to a window to request that it draw its client area in the specified device context, most commonly in a printer device context.
-    /// </summary>
-    private const int WM_PRINTCLIENT = 0x318;
-
-    /// <summary>
     /// Defines the minimum font size (em) for the <see cref="LogMessage"/> list.
     /// </summary>
     private const int MIN_ZOOM_LEVEL = 6;
@@ -96,7 +86,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     #region Public Properties
 
     /// <summary>
-    /// Gets the count of currently displayed <see cref=LogMessage"/>s.
+    /// Gets the count of currently displayed <see cref="LogMessage"/>s.
     /// </summary>
     public int DisplayedLogMessagesCount
     {
@@ -281,27 +271,6 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
       tsbZoomIn.Enabled  = true;
       tsbZoomOut.Enabled = futherZoomOutPossible;
-    }
-
-    /// <summary>
-    /// Raises the <see cref="E:System.Windows.Forms.Control.Paint"/> event.
-    /// </summary>
-    /// <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs"/> that contains the event data.</param>
-    protected override void OnPaint(PaintEventArgs e)
-    {
-      if (GetStyle(ControlStyles.UserPaint))
-      {
-        Message m = new Message();
-        m.HWnd    = Handle;
-        m.Msg     = WM_PRINTCLIENT;
-        m.WParam  = e.Graphics.GetHdc();
-        m.LParam  = (IntPtr)PRF_CLIENT;
-
-        DefWndProc(ref m);
-        e.Graphics.ReleaseHdc(m.WParam);
-      }
-
-      base.OnPaint(e);
     }
 
     /// <summary> 
@@ -523,10 +492,6 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// <param name="loggerPathSeperator">The path seperator for <see cref="LogMessage"/>s to build the tree from.</param>
     public FrmLogTree(ILogFilterHandler filterHandler, string loggerPathSeperator)
     {
-      SetStyle(ControlStyles.AllPaintingInWmPaint,  true);
-      SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-      SetStyle(ControlStyles.UserPaint,             true);
-
       InitializeComponent();
 
       // Apply the current application theme to the control.

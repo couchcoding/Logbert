@@ -32,11 +32,9 @@ using System;
 using System.Text.RegularExpressions;
 
 using System.Globalization;
-using System.Windows.Forms;
 
 using Com.Couchcoding.Logbert.Helper;
 using Com.Couchcoding.Logbert.Properties;
-using Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver;
 
 using MoonSharp.Interpreter;
 

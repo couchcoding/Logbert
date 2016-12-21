@@ -24,7 +24,7 @@
       this.cmsSynchronizeTree = new System.Windows.Forms.ToolStripMenuItem();
       this.cmdcopytoclipboard = new System.Windows.Forms.ToolStripMenuItem();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-      this.colorMap1 = new Com.Couchcoding.Logbert.Controls.ColorMap(this);
+      this.colorMap1 = new Com.Couchcoding.Logbert.Controls.ColorMap((Interfaces.ILogPresenter)this);
       this.cmsSeperator = new System.Windows.Forms.ToolStripSeparator();
       this.cmsToggleBookmark = new System.Windows.Forms.ToolStripMenuItem();
       ((System.ComponentModel.ISupportInitialize)(this.dtgLogMessages)).BeginInit();

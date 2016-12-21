@@ -118,32 +118,32 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="refresh_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WordWrap_67741" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WordWrap_67741.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="error" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\error.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="strNlogTcpReceiverNetworkDescription" xml:space="preserve">
     <value>Description:{0}{1}{2}</value>
   </data>
-  <data name="folder_Open_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\folder_Open_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Clearwindowcontent_6304" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Clearwindowcontent_6304.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="properties_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\properties_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="strLuaEditorErrorExecutingScript" xml:space="preserve">
+    <value>Error executing script: {0}{1}</value>
   </data>
-  <data name="refresh_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refresh_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PencilAngled_16xMD_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PencilAngled_16xMD_color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bookmark_002_16xMD" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bookmark_002_16xMD.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="strColumnizerColumnDefaultName" xml:space="preserve">
+    <value>New Column</value>
   </data>
   <data name="DebugStop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DebugStop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="strNLogUdpReceiverNetworkSpeed" xml:space="preserve">
-    <value>Speed:{0}{0}{1} MBit/s{2}</value>
+  <data name="strDocumentStatusRunning" xml:space="preserve">
+    <value>Status: Running</value>
   </data>
   <data name="strEventLogReceiverNoCategory" xml:space="preserve">
     <value>None</value>
@@ -154,26 +154,23 @@
   <data name="strDocumentMessageAllDisplayed" xml:space="preserve">
     <value>all</value>
   </data>
-  <data name="BookmarkNext_2389" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BookmarkNext_2389.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="strOptionPanelPleaseWait" xml:space="preserve">
     <value>Please wait...</value>
+  </data>
+  <data name="save_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\save_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="strErrorLoadingScript" xml:space="preserve">
     <value>Error loading script: {0}</value>
   </data>
-  <data name="StatusAnnotations_Play_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\StatusAnnotations_Play_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Bookmark_6986" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bookmark_6986.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="strLog4NetUdpReceiverNetworkSpeed" xml:space="preserve">
-    <value>Speed:{0}{0}{1} MBit/s{2}</value>
+  <data name="action_add_16xMD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\action_add_16xMD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="strColumnizerColumnDefaultName" xml:space="preserve">
-    <value>New Column</value>
-  </data>
-  <data name="arrow_Up_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrow_Up_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="strLog4NetUdpReceiverNetworkIPAddress" xml:space="preserve">
+    <value>IP Address:{0}{1}{2}</value>
   </data>
   <data name="strNlogTcpReceiverNetworkIPAddress" xml:space="preserve">
     <value>IP Address:{0}{1}{2}</value>
@@ -193,26 +190,26 @@
   <data name="NoBookmark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NoBookmark.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Bookmark_6986" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Bookmark_6986.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Cut_6523" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Cut_6523.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="strDefaultLuaFilename" xml:space="preserve">
     <value>Logbert Script.lua</value>
   </data>
-  <data name="strSaveLogDefaultName" xml:space="preserve">
-    <value>unknown.txt</value>
+  <data name="StatusAnnotations_Play_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\StatusAnnotations_Play_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Script_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Script_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lines_Text_code_16xMD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lines_Text_code_16xMD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="strCustomFileReceiverFileDoesNotExist" xml:space="preserve">
     <value>The given log file does not exist. Please select an existing one.</value>
   </data>
-  <data name="save_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\save_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mnuMainCloseAll" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mnuMainCloseAll.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="strLog4NetFileReceiverFilePattern" xml:space="preserve">
-    <value>All Files (*.*)|*.*|Log4Net Files (*.log)|*.log</value>
+  <data name="BookmarkClear_2381" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BookmarkClear_2381.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="edit_filter" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit_filter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -220,59 +217,74 @@
   <data name="strErrorSavingScript" xml:space="preserve">
     <value>Error saving script: {0}</value>
   </data>
-  <data name="strDocumentStatusRunning" xml:space="preserve">
-    <value>Status: Running</value>
+  <data name="RunTests_8790" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RunTests_8790.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="strSaveLuaFilter" xml:space="preserve">
     <value>All Files (*.*)|*.*|Lua scripts (*.lua)|*.lua</value>
   </data>
+  <data name="PencilAngled_16xMD_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PencilAngled_16xMD_color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="strSaveLogToTextFilePattern" xml:space="preserve">
     <value>All Files (*.*)|*.*|General Text Files (*.txt)|*.txt</value>
   </data>
-  <data name="ZoomOut_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ZoomOut_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Redo_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Redo_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="strLoggerDetailsCtrlOffset" xml:space="preserve">
+    <value> (Offset: {0} Milliseconds)</value>
+  </data>
+  <data name="MesageDetails" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MesageDetails.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WordWrap_6774" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WordWrap_6774.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="add_filter" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add_filter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="strSyslogReceiverNoNetworkInterfaceAvailable" xml:space="preserve">
-    <value>No network interface available to listen on.</value>
+  <data name="eyedropper_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eyedropper_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Logbert_Start_Screen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Logbert Start Screen.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="strFilterDlgEditFilter" xml:space="preserve">
-    <value>Edit Filter</value>
-  </data>
-  <data name="eyedropper_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\eyedropper_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="strNlogTcpReceiverNoNetworkInterfaceAvailable" xml:space="preserve">
-    <value>No network interface available to listen on.</value>
-  </data>
-  <data name="strLog4NetUdpReceiverNetworkDescription" xml:space="preserve">
-    <value>Description:{0}{1}{2}</value>
-  </data>
-  <data name="strAboutDlgCopyright" xml:space="preserve">
-    <value>Copyright 2016 Couchcoding. All Right Reserved.</value>
-  </data>
-  <data name="strLog4NetUdpReceiverNetworkIPAddress" xml:space="preserve">
-    <value>IP Address:{0}{1}{2}</value>
-  </data>
-  <data name="Symbols_Stop_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Symbols_Stop_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="strSyslogReceiverInvalidIpAddress" xml:space="preserve">
-    <value>The given IP address is invalid.</value>
+  <data name="Cut_6523" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cut_6523.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="strColumnizerConfigurationPleaseEnterName" xml:space="preserve">
     <value>Please enter a name for the columnizer.</value>
   </data>
+  <data name="strNlogTcpReceiverNoNetworkInterfaceAvailable" xml:space="preserve">
+    <value>No network interface available to listen on.</value>
+  </data>
+  <data name="StatusAnnotations_Information_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\StatusAnnotations_Information_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Undo_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Undo_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="strAboutDlgCopyright" xml:space="preserve">
+    <value>Copyright 2016 Couchcoding. All Right Reserved.</value>
+  </data>
+  <data name="folder_Open_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\folder_Open_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bookmark_5776" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bookmark_5776.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="strSyslogReceiverInvalidIpAddress" xml:space="preserve">
+    <value>The given IP address is invalid.</value>
+  </data>
+  <data name="zoom_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zoom_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="LoggerTree" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LoggerTree.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="strOpenLuaFilter" xml:space="preserve">
-    <value>All Files (*.*)|*.*|Lua scripts (*.lua)|*.lua</value>
+  <data name="bookmark_002_16xMD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bookmark_002_16xMD.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="info" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\info.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -286,36 +298,48 @@
   <data name="remove_filter" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\remove_filter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FindSymbol_6263" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FindSymbol_6263.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BookmarkNext_2389" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BookmarkNext_2389.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="warn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\warn.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="strSaveLogToCSVFilePattern" xml:space="preserve">
     <value>All Files (*.*)|*.*|General CSV Files (*.csv)|*.csv</value>
   </data>
-  <data name="strErrorOpeningSystemBrowser" xml:space="preserve">
-    <value>An error occured while trying to open your webbrowser ({0}).</value>
+  <data name="strNLogUdpReceiverNetworkSpeed" xml:space="preserve">
+    <value>Speed:{0}{0}{1} MBit/s{2}</value>
   </data>
   <data name="save_as" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save_as.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BookmarkClear_2381" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BookmarkClear_2381.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="strSyslogReceiverNoNetworkInterfaceAvailable" xml:space="preserve">
+    <value>No network interface available to listen on.</value>
   </data>
-  <data name="StatusAnnotations_Information_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\StatusAnnotations_Information_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MesageDetails" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MesageDetails.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="properties_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\properties_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="strOpenLogFileError" xml:space="preserve">
     <value>The file "{0}" could not be open as a log file. 
 Maybe the data the file contains is not yet supported by Logbert.</value>
+  </data>
+  <data name="strLog4NetUdpReceiverNetworkDescription" xml:space="preserve">
+    <value>Description:{0}{1}{2}</value>
   </data>
   <data name="strDocumentMessageCount" xml:space="preserve">
     <value>{0} Messages ({1} displayed)</value>
   </data>
   <data name="to_bottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\to_bottom.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="arrow_Down_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow_Down_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="action_Cancel_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\action_Cancel_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="strLog4NetUdpReceiverNetworkSpeed" xml:space="preserve">
+    <value>Speed:{0}{0}{1} MBit/s{2}</value>
   </data>
   <data name="strOptionPanelFontColorName" xml:space="preserve">
     <value>Font and Color</value>
@@ -326,14 +350,14 @@ Maybe the data the file contains is not yet supported by Logbert.</value>
   <data name="fatal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fatal.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="move_to_bottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\move_to_bottom.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ZoomOut_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ZoomOut_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="strNewLoggerPanelText" xml:space="preserve">
     <value>{0} Settings</value>
   </data>
-  <data name="strColumnizerDefaultName" xml:space="preserve">
-    <value>New Columnizer</value>
+  <data name="mnuMainOpen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mnuMainOpen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="strOptionPanelFontColorCustomColor" xml:space="preserve">
     <value>Custom</value>
@@ -497,11 +521,14 @@ OnBookmarksChanged = function (msgs)
 
 end</value>
   </data>
-  <data name="strLog4NetUdpReceiverNoNetworkInterfaceAvailable" xml:space="preserve">
-    <value>No network interface available to listen on.</value>
+  <data name="strSaveLogDefaultName" xml:space="preserve">
+    <value>unknown.txt</value>
   </data>
-  <data name="strLoggerDetailsCtrlOffset" xml:space="preserve">
-    <value> (Offset: {0} Milliseconds)</value>
+  <data name="move_to_bottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\move_to_bottom.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clock_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clock_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="strColumnizerConfigurationEnterColumnNameAndExpression" xml:space="preserve">
     <value>Please enter a name and an expression for each configure column.</value>
@@ -515,6 +542,9 @@ end</value>
   <data name="strMruFileCouldNotBeFound" xml:space="preserve">
     <value>The file {0} could not be found anymore. Do you want to remove it from the recently used file list?</value>
   </data>
+  <data name="filter_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\filter_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="strOptionPanelScriptEditor" xml:space="preserve">
     <value>Script Editor</value>
   </data>
@@ -524,29 +554,23 @@ end</value>
   <data name="strFilterNotMatchStartTag" xml:space="preserve">
     <value>NOT (</value>
   </data>
-  <data name="BookmarkPrevious_2391" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BookmarkPrevious_2391.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="strFilterNotMatchEndTag" xml:space="preserve">
     <value>)</value>
   </data>
   <data name="debug" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\debug.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Remove_16xMD" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Remove_16xMD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="strLog4NetFileReceiverFilePattern" xml:space="preserve">
+    <value>All Files (*.*)|*.*|Log4Net Files (*.log)|*.log</value>
   </data>
-  <data name="action_Cancel_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\action_Cancel_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="strLog4NetUdpReceiverNoNetworkInterfaceAvailable" xml:space="preserve">
+    <value>No network interface available to listen on.</value>
   </data>
-  <data name="Undo_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Undo_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mnuMainAbout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mnuMainAbout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="strDocumentStatusStopped" xml:space="preserve">
     <value>Status: Stopped</value>
-  </data>
-  <data name="Redo_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Redo_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="strNLogFileReceiverFileDoesNotExist" xml:space="preserve">
     <value>The given log file does not exist. Please select an existing one.</value>
@@ -557,17 +581,20 @@ end</value>
   <data name="strNLogUdpReceiverNoNetworkInterfaceAvailable" xml:space="preserve">
     <value>No network interface available to listen on.</value>
   </data>
-  <data name="Bookmark_5776" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Bookmark_5776.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="arrow_Up_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow_Up_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="strLog4NetFileReceiverFileDoesNotExist" xml:space="preserve">
-    <value>The given log file does not exist. Please select an existing one.</value>
+  <data name="strColumnizerDefaultName" xml:space="preserve">
+    <value>New Columnizer</value>
   </data>
-  <data name="warn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\warn.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Symbols_Stop_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Symbols_Stop_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="strEventLogReceiverNoLogNameAvailable" xml:space="preserve">
-    <value>No event log name available to listen for.</value>
+  <data name="arrow_run_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow_run_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Copy_6524" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Copy_6524.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="move_to_top" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\move_to_top.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -575,29 +602,32 @@ end</value>
   <data name="Paste_6520" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Paste_6520.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="arrow_run_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrow_run_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="strFilterDlgEditFilter" xml:space="preserve">
+    <value>Edit Filter</value>
   </data>
   <data name="strCustomFileReceiverNoColumnizerSelected" xml:space="preserve">
     <value>No columnizer is selected. Please choose an existing, or create a new one.</value>
   </data>
-  <data name="zoom_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\zoom_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="strLog4NetFileReceiverFileDoesNotExist" xml:space="preserve">
+    <value>The given log file does not exist. Please select an existing one.</value>
   </data>
-  <data name="Clearwindowcontent_6304" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Clearwindowcontent_6304.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Remove_16xMD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Remove_16xMD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="WordWrap_67741" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WordWrap_67741.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BookmarkPrevious_2391" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BookmarkPrevious_2391.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="strLoggerRoot" xml:space="preserve">
     <value>Logger Root</value>
   </data>
-  <data name="Copy_6524" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Copy_6524.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="logbert_about" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logbert.about.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="action_add_16xMD" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\action_add_16xMD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mnuMainNewLogger" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mnuMainNewLogger.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sync_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sync_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="strColumnizerColumnDefaultExpresssion" xml:space="preserve">
     <value>(.*)</value>
@@ -605,67 +635,43 @@ end</value>
   <data name="strNLogUdpReceiverNetworkIPAddress" xml:space="preserve">
     <value>IP Address:{0}{1}{2}</value>
   </data>
-  <data name="font_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\font_color.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="strColumnizerConfigurationAddAtLeastOneRow" xml:space="preserve">
+    <value>Please add at least one columnizer with a name and an expression.</value>
   </data>
-  <data name="WordWrap_6774" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WordWrap_6774.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="strErrorOpeningSystemBrowser" xml:space="preserve">
+    <value>An error occured while trying to open your webbrowser ({0}).</value>
   </data>
-  <data name="strLuaEditorErrorExecutingScript" xml:space="preserve">
-    <value>Error executing script: {0}{1}</value>
+  <data name="strOpenLuaFilter" xml:space="preserve">
+    <value>All Files (*.*)|*.*|Lua scripts (*.lua)|*.lua</value>
   </data>
   <data name="strEventLogReceiverNoMachineName" xml:space="preserve">
     <value>No machine name to listen on is set.</value>
   </data>
-  <data name="RunTests_8790" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RunTests_8790.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="clock_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\clock_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Find_5650" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Find_5650.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="trace" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\trace.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="filter_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\filter_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mnuMainSettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mnuMainSettings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="strColumnizerConfigurationAddAtLeastOneRow" xml:space="preserve">
-    <value>Please add at least one columnizer with a name and an expression.</value>
+  <data name="font_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\font_color.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Find_5650" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Find_5650.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="strEventLogReceiverNoLogNameAvailable" xml:space="preserve">
+    <value>No event log name available to listen for.</value>
   </data>
-  <data name="lines_Text_code_16xMD" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lines_Text_code_16xMD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="FindSymbol_6263" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FindSymbol_6263.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logbert_about" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logbert.about.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="arrow_Down_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrow_Down_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sync_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sync_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mnuMainAbout" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mnuMainAbout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mnuMainCloseAll" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mnuMainCloseAll.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="FrmLogStatistic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmLogStatistic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mnuMainFind" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mnuMainFind.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mnuMainNewLogger" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mnuMainNewLogger.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mnuMainOpen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mnuMainOpen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mnuMainSettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mnuMainSettings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Script_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Script_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="FrmStatisticShowLegend" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmStatisticShowLegend.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

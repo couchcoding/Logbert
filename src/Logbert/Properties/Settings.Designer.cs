@@ -1241,5 +1241,17 @@ namespace Com.Couchcoding.Logbert.Properties {
                 this["ColorMapAnnotation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FrmLogStatisticShowLegend {
+            get {
+                return ((bool)(this["FrmLogStatisticShowLegend"]));
+            }
+            set {
+                this["FrmLogStatisticShowLegend"] = value;
+            }
+        }
     }
 }

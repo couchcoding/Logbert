@@ -77,13 +77,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// <summary>
     /// Gets the count of currently displayed <see cref=LogMessage"/>s.
     /// </summary>
-    public int DisplayedLogMessagesCount
-    {
-      get
-      {
-        return 0;
-      }
-    }
+    public int DisplayedLogMessagesCount => 0;
 
     #endregion
 
@@ -389,11 +383,8 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     {
       mBookmarkProvider = bookmarkProvider;
 
-      if (mBookmarkProvider != null)
-      {
-        // Register this instance as observer.
-        mBookmarkProvider.RegisterBookmarkObserver(this);
-      }
+      // Register this instance as observer.
+      mBookmarkProvider?.RegisterBookmarkObserver(this);
 
       InitializeComponent();
 

@@ -181,8 +181,11 @@ namespace Com.Couchcoding.Logbert.Dialogs
       lstLogger.Items.Add(new SyslogFileReceiver());
       lstLogger.AddSeperator();
       lstLogger.Items.Add(new EventlogReceiver());
+
+#if DEBUG
       lstLogger.AddSeperator();
       lstLogger.Items.Add(new CustomFileReceiver());
+#endif
 
       lstLogger.SelectedIndex = 0;
     }

@@ -74,6 +74,11 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     private readonly DockContent mBookmarks;
 
     /// <summary>
+    /// The <see cref="DockContent"/> that shows statistic data.
+    /// </summary>
+    private readonly DockContent mLogStatistic;
+
+    /// <summary>
     /// The <see cref="DockContent"/> that shows filter settings.
     /// </summary>
     private readonly DockContent mFilter;
@@ -157,6 +162,11 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       {
         LogLevel currentLevel = LogLevel.None;
 
+        if (tsbShowTrace.Checked)
+        {
+          currentLevel |= LogLevel.Trace;
+        }
+
         if (tsbShowDebug.Checked)
         {
           currentLevel |= LogLevel.Debug;
@@ -224,46 +234,15 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// </summary>
     private void InitializeDefaultLayout()
     {
-      mLogWindow.Show(
-          LogDockPanel
-        , DockState.Document);
+      mLogWindow?.Show(LogDockPanel,      DockState.Document);
+      mLogScript?.Show(LogDockPanel,      DockState.Document);
+      mMessageDetails?.Show(LogDockPanel, DockState.DockBottom);
+      mBookmarks?.Show(LogDockPanel,      DockState.DockBottom);
+      mFilter?.Show(LogDockPanel,         DockState.DockBottom);
+      mLogStatistic?.Show(LogDockPanel,      DockState.DockBottom);
+      mLoggerTree?.Show(LogDockPanel,     DockState.DockRight);
 
-      mLogScript.Show(
-          LogDockPanel
-        , DockState.Document);
-
-      if (mMessageDetails != null)
-      {
-        mMessageDetails.Show(
-            LogDockPanel
-          , DockState.DockBottom);
-      }
-
-      if (mBookmarks != null)
-      {
-        mBookmarks.Show(
-            LogDockPanel
-          , DockState.DockBottom);
-      }
-
-      if (mFilter != null)
-      {
-        mFilter.Show(
-            LogDockPanel
-            , DockState.DockBottom);
-      }
-
-      if (mMessageDetails != null)
-      {
-        mMessageDetails.Activate();
-      }
-          
-      if (mLoggerTree != null)
-      {
-        mLoggerTree.Show(
-            LogDockPanel
-          , DockState.DockRight);
-      }
+      mMessageDetails?.Activate();
     }
 
     /// <summary>
@@ -305,6 +284,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
           tsbShowLoggerTree.Checked     = mLoggerTree     != null && !mLoggerTree.IsHidden; 
           tsbShowBookmarks.Checked      = mBookmarks      != null && !mBookmarks.IsHidden;
           tsbShowFilter.Checked         = mFilter         != null && !mFilter.IsHidden;
+          tsbShowStatistic.Checked      = mLogStatistic   != null && !mLogStatistic.IsHidden;
 
           if (mLogProvider != null)
           {
@@ -369,6 +349,9 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
         case "Com.Couchcoding.Logbert.Dialogs.Docking.FrmLogTree":
           return mLoggerTree;
+
+        case "Com.Couchcoding.Logbert.Dialogs.Docking.FrmLogStatistic":
+          return mLogStatistic;
       }
 
       Logger.Warn(
@@ -405,9 +388,10 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         }
 
         // Update the log presenter windows.
-        ((ILogPresenter)mLogWindow).LogMessagesChanged(logMessageCopy,  delta);
-        ((ILogPresenter)mLoggerTree).LogMessagesChanged(logMessageCopy, delta);
-        ((ILogPresenter)mLogScript).LogMessagesChanged(logMessageCopy,  delta);
+        ((ILogPresenter)mLogWindow).LogMessagesChanged(logMessageCopy,    delta);
+        ((ILogPresenter)mLoggerTree).LogMessagesChanged(logMessageCopy,   delta);
+        ((ILogPresenter)mLogScript).LogMessagesChanged(logMessageCopy,    delta);
+        ((ILogPresenter)mLogStatistic).LogMessagesChanged(logMessageCopy, delta);
       }
 
       if (tsbTraceLastMessage.Checked && mLogMessages.Count > 0)
@@ -479,6 +463,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       ((ILogPresenter)mBookmarks).ClearAll();
       ((ILogPresenter)mFilter).ClearAll();
       ((ILogPresenter)mLogScript).ClearAll();
+      ((ILogPresenter)mLogStatistic).ClearAll();
 
       // Force an update of the UI.
       TmrUpdateTick(this, EventArgs.Empty);
@@ -628,7 +613,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     }
 
     /// <summary>
-    /// Handles the Click event of the show gilter <see cref="ToolStripButton"/>.
+    /// Handles the Click event of the show filter <see cref="ToolStripButton"/>.
     /// <para>
     /// Shows or hides the filter window.
     /// </para>
@@ -644,6 +629,27 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         else
         {
           mFilter.Hide();
+        }
+      }
+    }
+
+    /// <summary>
+    /// Handles the Click event of the show statistic <see cref="ToolStripButton"/>.
+    /// <para>
+    /// Shows or hides the statistic window.
+    /// </para>
+    /// </summary>
+    private void TsbShowStatisticClick(object sender, EventArgs e)
+    {
+      if (mLogStatistic != null)
+      {
+        if (tsbShowStatistic.Checked)
+        {
+          mLogStatistic.Show(LogDockPanel);
+        }
+        else
+        {
+          mLogStatistic.Hide();
         }
       }
     }
@@ -1162,6 +1168,12 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
       mLogScript = new FrmLogScript((IBookmarkProvider)mLogWindow, this);
       mBookmarks = new FrmLogBookmarks((IBookmarkProvider)mLogWindow);
+      mLogStatistic = new FrmLogStatistic(mLogProvider);
+
+      mLogStatistic.VisibleChanged += (sender, e) =>
+      {
+        tsbShowStatistic.Checked = !mLogStatistic.IsHidden;
+      };
 
       mBookmarks.VisibleChanged += (sender, e) =>
       {

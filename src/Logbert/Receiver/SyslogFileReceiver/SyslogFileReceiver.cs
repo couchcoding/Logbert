@@ -196,16 +196,7 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
     /// <summary>
     /// Gets the supported <see cref="LogLevel"/>s of the <see cref="ILogProvider"/>.
     /// </summary>
-    public override LogLevel SupportedLevels
-    {
-      get
-      {
-        return LogLevel.Debug   | 
-               LogLevel.Info    | 
-               LogLevel.Warning | 
-               LogLevel.Error;
-      }
-    }
+    public override LogLevel SupportedLevels => LogLevel.All;
 
     /// <summary>
     /// Gets the path seperator for the logger tree.

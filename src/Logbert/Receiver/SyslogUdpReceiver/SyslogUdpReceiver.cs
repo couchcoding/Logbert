@@ -193,16 +193,7 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
     /// <summary>
     /// Gets the supported <see cref="LogLevel"/>s of the <see cref="ILogProvider"/>.
     /// </summary>
-    public override LogLevel SupportedLevels
-    {
-      get
-      {
-        return LogLevel.Debug   | 
-               LogLevel.Info    | 
-               LogLevel.Warning | 
-               LogLevel.Error;
-      }
-    }
+    public override LogLevel SupportedLevels => LogLevel.All;
 
     /// <summary>
     /// Determines whether this <see cref="ILogProvider"/> supports reloading of the content, ot not.

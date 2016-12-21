@@ -281,12 +281,8 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       try
       {
         dtgLogMessages.SuspendLayout();
-        
-        if (mFilteredLogMessages != null)
-        {
-          mFilteredLogMessages.Clear();
-        }
 
+        mFilteredLogMessages?.Clear();
         mFilteredLogMessages = new List<LogMessage>();
 
         foreach (LogMessage message in messages)
@@ -571,8 +567,6 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// <summary>
     /// Handles the SettingChanging event of the <see cref="Application"/>.
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
     private void DefaultSettingChanging(object sender, System.Configuration.SettingChangingEventArgs e)
     {
       if (!string.IsNullOrEmpty(Settings.Default.LogMessagesFontName))

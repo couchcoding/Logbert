@@ -308,5 +308,8 @@
     <Setting Name="ColorMapAnnotation" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">48</Value>
     </Setting>
+    <Setting Name="FrmLogStatisticShowLegend" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

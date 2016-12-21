@@ -37,6 +37,7 @@ using Com.Couchcoding.Logbert.Helper;
 using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Logging;
 using Com.Couchcoding.Logbert.Properties;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace Com.Couchcoding.Logbert.Controls
 {
