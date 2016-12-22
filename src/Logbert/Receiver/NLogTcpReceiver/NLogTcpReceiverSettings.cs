@@ -37,6 +37,7 @@ using Com.Couchcoding.Logbert.Properties;
 using System.Net.Sockets;
 
 using Com.Couchcoding.Logbert.Helper;
+using System.Net;
 
 namespace Com.Couchcoding.Logbert.Receiver.NlogTcpReceiver
 {
@@ -262,7 +263,9 @@ namespace Com.Couchcoding.Logbert.Receiver.NlogTcpReceiver
                 Settings.Default.SaveSettings();
               }
 
-              return null;
+              return new NlogTcpReceiver(
+                  (int)nudPort.Value
+                , new IPEndPoint(ipAddress.Address, (int)nudPort.Value));
             }
           }
         }
