@@ -290,6 +290,7 @@ namespace Com.Couchcoding.Logbert.Receiver.EventlogReceiver
     public override void SaveLayout(string layout)
     {
       Properties.Settings.Default.DockLayoutEventlogReceiver = layout ?? string.Empty;
+      Properties.Settings.Default.SaveSettings();
     }
 
     /// <summary>

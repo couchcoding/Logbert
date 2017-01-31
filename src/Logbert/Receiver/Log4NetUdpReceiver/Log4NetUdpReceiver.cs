@@ -372,6 +372,7 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
     public override void SaveLayout(string layout)
     {
       Properties.Settings.Default.DockLayoutLog4NetUdpReceiver = layout ?? string.Empty;
+      Properties.Settings.Default.SaveSettings();
     }
 
     /// <summary>

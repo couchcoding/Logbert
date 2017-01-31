@@ -375,6 +375,7 @@ namespace Com.Couchcoding.Logbert.Receiver.NlogTcpReceiver
     public override void SaveLayout(string layout)
     {
       Properties.Settings.Default.DockLayoutNLogTcpReceiver = layout ?? string.Empty;
+      Properties.Settings.Default.SaveSettings();
     }
 
     /// <summary>

@@ -412,6 +412,7 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
     public override void SaveLayout(string layout)
     {
       Properties.Settings.Default.DockLayoutSyslogUdpReceiver = layout ?? string.Empty;
+      Properties.Settings.Default.SaveSettings();
     }
 
     /// <summary>

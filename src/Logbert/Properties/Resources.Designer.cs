@@ -988,6 +988,15 @@ namespace Com.Couchcoding.Logbert.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Logbert Homepage could not be opened. Please open your browser and navigate to &quot;{0}&quot;..
+        /// </summary>
+        internal static string strMainUnableToOpenUri {
+            get {
+                return ResourceManager.GetString("strMainUnableToOpenUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The file {0} could not be found anymore. Do you want to remove it from the recently used file list?.
         /// </summary>
         internal static string strMruFileCouldNotBeFound {

@@ -48,12 +48,17 @@ using System.IO.Pipes;
 using System.Text;
 
 using Com.Couchcoding.Logbert.Receiver;
-using System.Collections.Specialized;
 
 namespace Logbert
 {
   public partial class MainForm : Form, ISearchable
   {
+    #region Private Consts
+
+    private const string LOGBERT_HOMEPAGE_URI = @"https://github.com/couchcoding/Logbert/";
+
+    #endregion
+
     #region Private Fields
 
     /// <summary>
@@ -97,6 +102,41 @@ namespace Logbert
     #endregion
 
     #region Private Methods
+
+    private void MnuMainHomepageClick(object sender, EventArgs e)
+    {
+      try
+      {
+        System.Diagnostics.Process.Start(LOGBERT_HOMEPAGE_URI);
+      }
+      catch (Exception ex1)
+      {
+        // System.ComponentModel.Win32Exception is a known exception that occurs when Firefox is default browser.  
+        // It actually opens the browser but STILL throws this exception so we can just ignore it.  If not this exception,
+        // then attempt to open the URL in IE instead.
+        if (ex1.GetType().ToString() != "System.ComponentModel.Win32Exception")
+        {
+          // Sometimes throws exception so we have to just ignore.
+          // This is a common .NET issue that no one online really has a great reason for so now we just need to try to open the URL using IE if we can.
+          try
+          {
+            System.Diagnostics.ProcessStartInfo startInfo = 
+              new System.Diagnostics.ProcessStartInfo("IExplore.exe", LOGBERT_HOMEPAGE_URI);
+
+            System.Diagnostics.Process.Start(startInfo);
+          }
+          catch
+          {
+            MessageBox.Show(
+                this
+              , string.Format(Resources.strMainUnableToOpenUri, LOGBERT_HOMEPAGE_URI)
+              , Application.ProductName
+              , MessageBoxButtons.OK
+              , MessageBoxIcon.Error);
+          }
+        }
+      }
+    }
 
     private void MnuMainHelpAboutClick(object sender, EventArgs e)
     {
@@ -212,11 +252,6 @@ namespace Logbert
     {
       if (Disposing)
       {
-        if (e.Content != null && e.Content.DockHandler != null)
-        {
-          e.Content.DockHandler.Close();
-        }
-
         return;
       }
 

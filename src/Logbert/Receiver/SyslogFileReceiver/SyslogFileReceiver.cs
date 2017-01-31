@@ -428,6 +428,7 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
     public override void SaveLayout(string layout)
     {
       Properties.Settings.Default.DockLayoutSyslogFileReceiver = layout ?? string.Empty;
+      Properties.Settings.Default.SaveSettings();
     }
 
     /// <summary>

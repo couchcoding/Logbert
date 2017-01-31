@@ -30,7 +30,8 @@
 
 using System.Collections.Generic;
 using System.IO;
-
+using System.Windows.Forms;
+using Com.Couchcoding.Logbert.Helper;
 using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Logging;
 
@@ -393,6 +394,7 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
     public override void SaveLayout(string layout)
     {
       Properties.Settings.Default.DockLayoutCustomReceiver = layout ?? string.Empty;
+      Properties.Settings.Default.SaveSettings();
     }
 
     /// <summary>

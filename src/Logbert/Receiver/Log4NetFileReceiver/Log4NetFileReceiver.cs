@@ -439,6 +439,7 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetFileReceiver
     public override void SaveLayout(string layout)
     {
       Properties.Settings.Default.DockLayoutLog4NetFileReceiver = layout ?? string.Empty;
+      Properties.Settings.Default.SaveSettings();
     }
 
     /// <summary>

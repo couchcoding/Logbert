@@ -39,7 +39,9 @@ namespace Logbert
       this.mnuMainExtras = new System.Windows.Forms.ToolStripMenuItem();
       this.mnuMainExtrasOptions = new System.Windows.Forms.ToolStripMenuItem();
       this.mnuMainHelp = new System.Windows.Forms.ToolStripMenuItem();
+      this.mnuMainHomepage = new System.Windows.Forms.ToolStripMenuItem();
       this.mnuMainAbout = new System.Windows.Forms.ToolStripMenuItem();
+      this.mnuMainAboutSeperator1 = new System.Windows.Forms.ToolStripSeparator();
       this.mnuMain.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -210,18 +212,32 @@ namespace Logbert
       // mnuMainHelp
       // 
       this.mnuMainHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuMainHomepage,
+            this.mnuMainAboutSeperator1,
             this.mnuMainAbout});
       this.mnuMainHelp.Name = "mnuMainHelp";
       this.mnuMainHelp.Size = new System.Drawing.Size(44, 20);
       this.mnuMainHelp.Text = "&Help";
       // 
+      // mnuMainHomepage
+      // 
+      this.mnuMainHomepage.Name = "mnuMainHomepage";
+      this.mnuMainHomepage.Size = new System.Drawing.Size(177, 22);
+      this.mnuMainHomepage.Text = "Logbert &Homepage";
+      this.mnuMainHomepage.Click += new System.EventHandler(this.MnuMainHomepageClick);
+      // 
       // mnuMainAbout
       // 
       this.mnuMainAbout.Image = global::Com.Couchcoding.Logbert.Properties.Resources.mnuMainAbout;
       this.mnuMainAbout.Name = "mnuMainAbout";
-      this.mnuMainAbout.Size = new System.Drawing.Size(116, 22);
+      this.mnuMainAbout.Size = new System.Drawing.Size(177, 22);
       this.mnuMainAbout.Text = "&About...";
       this.mnuMainAbout.Click += new System.EventHandler(this.MnuMainHelpAboutClick);
+      // 
+      // mnuMainAboutSeperator1
+      // 
+      this.mnuMainAboutSeperator1.Name = "mnuMainAboutSeperator1";
+      this.mnuMainAboutSeperator1.Size = new System.Drawing.Size(174, 6);
       // 
       // MainForm
       // 
@@ -270,6 +286,8 @@ namespace Logbert
     private ToolStripMenuItem mnuMainExtrasOptions;
     private ToolStripMenuItem mnuMainAbout;
     private ToolStripMenuItem mnuMainFileCloseAll;
+    private ToolStripMenuItem mnuMainHomepage;
+    private ToolStripSeparator mnuMainAboutSeperator1;
   }
 }
 

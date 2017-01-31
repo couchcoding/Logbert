@@ -438,6 +438,7 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogFileReceiver
     public override void SaveLayout(string layout)
     {
       Properties.Settings.Default.DockLayoutNLogFileReceiver = layout ?? string.Empty;
+      Properties.Settings.Default.SaveSettings();
     }
 
     /// <summary>
