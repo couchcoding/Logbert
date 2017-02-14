@@ -305,6 +305,20 @@
     <Compile Include="Receiver\EventlogReceiver\EventlogReceiverSettings.Designer.cs">
       <DependentUpon>EventlogReceiverSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Receiver\NLogDirReceiver\NLogDirReceiver.cs" />
+    <Compile Include="Receiver\NLogDirReceiver\NLogDirReceiverSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Receiver\NLogDirReceiver\NLogDirReceiverSettings.Designer.cs">
+      <DependentUpon>NLogDirReceiverSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Receiver\Log4NetDirReceiver\Log4NetDirReceiver.cs" />
+    <Compile Include="Receiver\Log4NetDirReceiver\Log4NetDirReceiverSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Receiver\Log4NetDirReceiver\Log4NetDirReceiverSettings.Designer.cs">
+      <DependentUpon>Log4NetDirReceiverSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Receiver\NLogFileReceiver\NLogFileReceiver.cs" />
     <Compile Include="Receiver\NLogFileReceiver\NLogFileReceiverSettings.cs">
       <SubType>UserControl</SubType>
@@ -440,6 +454,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Receiver\EventlogReceiver\EventlogReceiverSettings.resx">
       <DependentUpon>EventlogReceiverSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Receiver\NLogDirReceiver\NLogDirReceiverSettings.resx">
+      <DependentUpon>NLogDirReceiverSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Receiver\Log4NetDirReceiver\Log4NetDirReceiverSettings.resx">
+      <DependentUpon>Log4NetDirReceiverSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Receiver\NLogFileReceiver\NLogFileReceiverSettings.resx">
       <DependentUpon>NLogFileReceiverSettings.cs</DependentUpon>

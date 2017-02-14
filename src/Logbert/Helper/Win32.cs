@@ -66,6 +66,18 @@ namespace Com.Couchcoding.Logbert.Helper
     [DllImport("user32.dll")]
     public static extern IntPtr SetForegroundWindow(IntPtr hWnd);
 
+    /// <summary>
+    /// Compares two Unicode strings. Digits in the strings are considered as numerical content rather than text. This test is not case-sensitive.
+    /// </summary>
+    /// <param name="psz1">A pointer to the first null-terminated string to be compared.</param>
+    /// <param name="psz2">A pointer to the second null-terminated string to be compared.</param>
+    /// <returns><list type="bullet">
+    /// <item><description>Returns zero if the strings are identical.</description></item>
+    /// <item><description>Returns 1 if the string pointed to by psz1 has a greater value than that pointed to by psz2.</description></item>
+    /// <item><description>Returns -1 if the string pointed to by psz1 has a lesser value than that pointed to by psz2.</description></item></list></returns>
+    [DllImport("shlwapi.dll", CharSet = CharSet.Unicode)]
+    public static extern int StrCmpLogicalW(string psz1, string psz2);
+
     #endregion
   }
 }

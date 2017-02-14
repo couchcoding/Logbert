@@ -116,6 +116,7 @@
       // 
       // tslLogLevel
       // 
+      this.tslLogLevel.Margin = new System.Windows.Forms.Padding(2, 1, 0, 2);
       this.tslLogLevel.Name = "tslLogLevel";
       this.tslLogLevel.Size = new System.Drawing.Size(60, 23);
       this.tslLogLevel.Text = "Log Level:";

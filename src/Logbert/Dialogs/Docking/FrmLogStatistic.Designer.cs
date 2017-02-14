@@ -47,7 +47,7 @@
       this.tsbShowLegend.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.tsbShowLegend.Image = global::Com.Couchcoding.Logbert.Properties.Resources.FrmStatisticShowLegend;
       this.tsbShowLegend.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.tsbShowLegend.Margin = new System.Windows.Forms.Padding(1, 1, 0, 2);
+      this.tsbShowLegend.Margin = new System.Windows.Forms.Padding(2, 1, 0, 2);
       this.tsbShowLegend.Name = "tsbShowLegend";
       this.tsbShowLegend.Size = new System.Drawing.Size(23, 22);
       this.tsbShowLegend.Text = "Show Legend";

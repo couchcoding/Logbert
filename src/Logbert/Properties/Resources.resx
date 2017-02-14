@@ -677,4 +677,22 @@ end</value>
   <data name="strMainUnableToOpenUri" xml:space="preserve">
     <value>The Logbert Homepage could not be opened. Please open your browser and navigate to "{0}".</value>
   </data>
+  <data name="strLog4NetDirectodyReceiverDirectoryDoesNotExist" xml:space="preserve">
+    <value>The specified directory does not exists. Please select an existing one.</value>
+  </data>
+  <data name="strLog4NetDirectodyReceiverInvalidFilePattern" xml:space="preserve">
+    <value>Invalid file pattern specified. Please enter a valie one like '.*\.log[\.]?[\d]?'.</value>
+  </data>
+  <data name="strLog4NetDirectoryReceiverSelectDirectoryToObserve" xml:space="preserve">
+    <value>Select the log directory to observe.</value>
+  </data>
+  <data name="strNLogDirectodyReceiverDirectoryDoesNotExist" xml:space="preserve">
+    <value>The specified directory does not exists. Please select an existing one.</value>
+  </data>
+  <data name="strNLogDirectodyReceiverInvalidFilePattern" xml:space="preserve">
+    <value>Invalid file pattern specified. Please enter a valie one like '.*\.log[\.]?[\d]?'.</value>
+  </data>
+  <data name="strNLogDirectoryReceiverSelectDirectoryToObserve" xml:space="preserve">
+    <value>Select the log directory to observe.</value>
+  </data>
 </root>

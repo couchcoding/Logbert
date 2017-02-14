@@ -56,7 +56,7 @@
       this.tsbAddFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.tsbAddFilter.Image = global::Com.Couchcoding.Logbert.Properties.Resources.add_filter;
       this.tsbAddFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.tsbAddFilter.Margin = new System.Windows.Forms.Padding(1, 1, 0, 2);
+      this.tsbAddFilter.Margin = new System.Windows.Forms.Padding(2, 1, 0, 2);
       this.tsbAddFilter.Name = "tsbAddFilter";
       this.tsbAddFilter.Size = new System.Drawing.Size(23, 22);
       this.tsbAddFilter.Text = "Add Filter";

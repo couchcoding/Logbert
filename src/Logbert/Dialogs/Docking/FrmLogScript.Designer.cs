@@ -67,12 +67,12 @@
       // cmsLuaEditSeperator1
       // 
       cmsLuaEditSeperator1.Name = "cmsLuaEditSeperator1";
-      cmsLuaEditSeperator1.Size = new System.Drawing.Size(149, 6);
+      cmsLuaEditSeperator1.Size = new System.Drawing.Size(119, 6);
       // 
       // cmsLuaEditSeperator2
       // 
       cmsLuaEditSeperator2.Name = "cmsLuaEditSeperator2";
-      cmsLuaEditSeperator2.Size = new System.Drawing.Size(149, 6);
+      cmsLuaEditSeperator2.Size = new System.Drawing.Size(119, 6);
       // 
       // scintilla
       // 
@@ -109,55 +109,55 @@
             cmsLuaEditSeperator2,
             this.cmsLuaEditSelectAll});
       this.cmsLuaEdit.Name = "cmsLuaEdit";
-      this.cmsLuaEdit.Size = new System.Drawing.Size(153, 192);
+      this.cmsLuaEdit.Size = new System.Drawing.Size(123, 170);
       this.cmsLuaEdit.Opening += new System.ComponentModel.CancelEventHandler(this.CmsLuaEditOpening);
       // 
       // cmsLuaEditUndo
       // 
       this.cmsLuaEditUndo.Name = "cmsLuaEditUndo";
-      this.cmsLuaEditUndo.Size = new System.Drawing.Size(152, 22);
+      this.cmsLuaEditUndo.Size = new System.Drawing.Size(122, 22);
       this.cmsLuaEditUndo.Text = "Undo";
       this.cmsLuaEditUndo.Click += new System.EventHandler(this.TsbUndoClick);
       // 
       // cmsLuaEditRedo
       // 
       this.cmsLuaEditRedo.Name = "cmsLuaEditRedo";
-      this.cmsLuaEditRedo.Size = new System.Drawing.Size(152, 22);
+      this.cmsLuaEditRedo.Size = new System.Drawing.Size(122, 22);
       this.cmsLuaEditRedo.Text = "Redo";
       this.cmsLuaEditRedo.Click += new System.EventHandler(this.TsbRedoClick);
       // 
       // cmsLuaEditCut
       // 
       this.cmsLuaEditCut.Name = "cmsLuaEditCut";
-      this.cmsLuaEditCut.Size = new System.Drawing.Size(152, 22);
+      this.cmsLuaEditCut.Size = new System.Drawing.Size(122, 22);
       this.cmsLuaEditCut.Text = "Cut";
       this.cmsLuaEditCut.Click += new System.EventHandler(this.TsbCutClick);
       // 
       // cmsLuaEditCopy
       // 
       this.cmsLuaEditCopy.Name = "cmsLuaEditCopy";
-      this.cmsLuaEditCopy.Size = new System.Drawing.Size(152, 22);
+      this.cmsLuaEditCopy.Size = new System.Drawing.Size(122, 22);
       this.cmsLuaEditCopy.Text = "Copy";
       this.cmsLuaEditCopy.Click += new System.EventHandler(this.TsbCopyClick);
       // 
       // cmsLuaEditPaste
       // 
       this.cmsLuaEditPaste.Name = "cmsLuaEditPaste";
-      this.cmsLuaEditPaste.Size = new System.Drawing.Size(152, 22);
+      this.cmsLuaEditPaste.Size = new System.Drawing.Size(122, 22);
       this.cmsLuaEditPaste.Text = "Paste";
       this.cmsLuaEditPaste.Click += new System.EventHandler(this.TsbPasteClick);
       // 
       // cmsLuaEditDelete
       // 
       this.cmsLuaEditDelete.Name = "cmsLuaEditDelete";
-      this.cmsLuaEditDelete.Size = new System.Drawing.Size(152, 22);
+      this.cmsLuaEditDelete.Size = new System.Drawing.Size(122, 22);
       this.cmsLuaEditDelete.Text = "Delete";
       this.cmsLuaEditDelete.Click += new System.EventHandler(this.TsbDeleteClick);
       // 
       // cmsLuaEditSelectAll
       // 
       this.cmsLuaEditSelectAll.Name = "cmsLuaEditSelectAll";
-      this.cmsLuaEditSelectAll.Size = new System.Drawing.Size(152, 22);
+      this.cmsLuaEditSelectAll.Size = new System.Drawing.Size(122, 22);
       this.cmsLuaEditSelectAll.Text = "Select All";
       this.cmsLuaEditSelectAll.Click += new System.EventHandler(this.TsbSelectAllClick);
       // 

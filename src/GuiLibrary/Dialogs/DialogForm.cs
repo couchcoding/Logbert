@@ -70,9 +70,9 @@ namespace Com.Couchcoding.GuiLibrary.Dialogs
     private bool   mShowHeaderArea         = true;
     private bool   mShowFooterArea         = true;
     private Color  mContentColor           = SystemColors.Control;
-    private Color  mHeaderCaptionColor     = Color.White;
-    private Color  mHeaderDescriptionColor = Color.White;
-    private Color  mHeaderColor            = Color.Gray;
+    private Color  mHeaderCaptionColor     = Color.Black;
+    private Color  mHeaderDescriptionColor = Color.DimGray;
+    private Color  mHeaderColor            = Color.White;
     private string mDialogMainCaption      = string.Empty;
     private string mDialogMainDescription  = string.Empty;
     private Image  mDialogImage;
@@ -103,7 +103,7 @@ namespace Com.Couchcoding.GuiLibrary.Dialogs
     /// Gets or sets the foreground color of the dialog header caption.
     /// </summary>
     [Browsable(true)]
-    [DefaultValue(typeof(Color), "White")]
+    [DefaultValue(typeof(Color), "Black")]
     [EditorBrowsable(EditorBrowsableState.Always)]
     [Category("Gui Appearance")]
     [Description("Gets or sets the foreground color of the dialog header caption.")]
@@ -127,7 +127,7 @@ namespace Com.Couchcoding.GuiLibrary.Dialogs
     /// Gets or sets the foreground color of the dialog header text.
     /// </summary>
     [Browsable(true)]
-    [DefaultValue(typeof(Color), "White")]
+    [DefaultValue(typeof(Color), "DimGray")]
     [EditorBrowsable(EditorBrowsableState.Always)]
     [Category("Gui Appearance")]
     [Description("Gets or sets the foreground color of the dialog header description.")]
@@ -175,7 +175,7 @@ namespace Com.Couchcoding.GuiLibrary.Dialogs
     /// Gets or sets the backcolor of the header area.
     /// </summary>
     [Browsable(true)]
-    [DefaultValue(typeof(Color), "Gray")]
+    [DefaultValue(typeof(Color), "White")]
     [EditorBrowsable(EditorBrowsableState.Always)]
     [Category("Gui Appearance")]
     [Description("Gets or sets the backcolor of the header area.")]
@@ -401,6 +401,14 @@ namespace Com.Couchcoding.GuiLibrary.Dialogs
             , ClientRectangle.Width
             , headerHeight));
           }
+
+          ControlPaint.DrawVisualStyleBorder(
+              grfx
+            , new Rectangle(
+                -SystemInformation.BorderSize.Width
+              , -SystemInformation.BorderSize.Height
+              , ClientRectangle.Width + SystemInformation.BorderSize.Width + SystemInformation.BorderSize.Width
+              , headerHeight - 1));
         }
 
         if (mDialogImage != null)
@@ -520,8 +528,8 @@ namespace Com.Couchcoding.GuiLibrary.Dialogs
       Font          = SystemFonts.MessageBoxFont;
 
       ContentColor           = SystemColors.Control;
-      HeaderColor            = Color.Gray;
-      HeaderDescriptionColor = SystemColors.Control;
+      HeaderColor            = Color.White;
+      HeaderDescriptionColor = Color.DimGray;
 
       MinimizeBox   = false;
       MaximizeBox   = false;

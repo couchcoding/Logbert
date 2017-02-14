@@ -100,7 +100,7 @@
       this.Controls.Add(this.btnOk);
       this.DialogMainCaption = "New Logger";
       this.DialogMainDescription = "Select and setup the logger type to create.";
-      this.HeaderDescriptionColor = System.Drawing.Color.LightGray;
+      this.HeaderDescriptionColor = System.Drawing.Color.DimGray;
       this.Location = new System.Drawing.Point(0, 0);
       this.MinimumSize = new System.Drawing.Size(640, 480);
       this.Name = "FrmNew";

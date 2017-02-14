@@ -82,7 +82,7 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
       {
         mnuTimestamp.Show(
             btnTimestamp
-          , new Point(btnTimestamp.Width, btnTimestamp.Height));
+          , new Point(btnTimestamp.Width, btnTimestamp.Top));
       }
     }
 

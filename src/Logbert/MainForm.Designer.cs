@@ -40,8 +40,8 @@ namespace Logbert
       this.mnuMainExtrasOptions = new System.Windows.Forms.ToolStripMenuItem();
       this.mnuMainHelp = new System.Windows.Forms.ToolStripMenuItem();
       this.mnuMainHomepage = new System.Windows.Forms.ToolStripMenuItem();
-      this.mnuMainAbout = new System.Windows.Forms.ToolStripMenuItem();
       this.mnuMainAboutSeperator1 = new System.Windows.Forms.ToolStripSeparator();
+      this.mnuMainAbout = new System.Windows.Forms.ToolStripMenuItem();
       this.mnuMain.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -226,6 +226,11 @@ namespace Logbert
       this.mnuMainHomepage.Text = "Logbert &Homepage";
       this.mnuMainHomepage.Click += new System.EventHandler(this.MnuMainHomepageClick);
       // 
+      // mnuMainAboutSeperator1
+      // 
+      this.mnuMainAboutSeperator1.Name = "mnuMainAboutSeperator1";
+      this.mnuMainAboutSeperator1.Size = new System.Drawing.Size(174, 6);
+      // 
       // mnuMainAbout
       // 
       this.mnuMainAbout.Image = global::Com.Couchcoding.Logbert.Properties.Resources.mnuMainAbout;
@@ -233,11 +238,6 @@ namespace Logbert
       this.mnuMainAbout.Size = new System.Drawing.Size(177, 22);
       this.mnuMainAbout.Text = "&About...";
       this.mnuMainAbout.Click += new System.EventHandler(this.MnuMainHelpAboutClick);
-      // 
-      // mnuMainAboutSeperator1
-      // 
-      this.mnuMainAboutSeperator1.Name = "mnuMainAboutSeperator1";
-      this.mnuMainAboutSeperator1.Size = new System.Drawing.Size(174, 6);
       // 
       // MainForm
       // 

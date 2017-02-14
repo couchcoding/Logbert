@@ -883,6 +883,33 @@ namespace Com.Couchcoding.Logbert.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified directory does not exists. Please select an existing one..
+        /// </summary>
+        internal static string strLog4NetDirectodyReceiverDirectoryDoesNotExist {
+            get {
+                return ResourceManager.GetString("strLog4NetDirectodyReceiverDirectoryDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid file pattern specified. Please enter a valie one like &apos;.*\.log[\.]?[\d]?&apos;..
+        /// </summary>
+        internal static string strLog4NetDirectodyReceiverInvalidFilePattern {
+            get {
+                return ResourceManager.GetString("strLog4NetDirectodyReceiverInvalidFilePattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the log directory to observe..
+        /// </summary>
+        internal static string strLog4NetDirectoryReceiverSelectDirectoryToObserve {
+            get {
+                return ResourceManager.GetString("strLog4NetDirectoryReceiverSelectDirectoryToObserve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The given log file does not exist. Please select an existing one..
         /// </summary>
         internal static string strLog4NetFileReceiverFileDoesNotExist {
@@ -1011,6 +1038,33 @@ namespace Com.Couchcoding.Logbert.Properties {
         internal static string strNewLoggerPanelText {
             get {
                 return ResourceManager.GetString("strNewLoggerPanelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified directory does not exists. Please select an existing one..
+        /// </summary>
+        internal static string strNLogDirectodyReceiverDirectoryDoesNotExist {
+            get {
+                return ResourceManager.GetString("strNLogDirectodyReceiverDirectoryDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid file pattern specified. Please enter a valie one like &apos;.*\.log[\.]?[\d]?&apos;..
+        /// </summary>
+        internal static string strNLogDirectodyReceiverInvalidFilePattern {
+            get {
+                return ResourceManager.GetString("strNLogDirectodyReceiverInvalidFilePattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the log directory to observe..
+        /// </summary>
+        internal static string strNLogDirectoryReceiverSelectDirectoryToObserve {
+            get {
+                return ResourceManager.GetString("strNLogDirectoryReceiverSelectDirectoryToObserve", resourceCulture);
             }
         }
         

@@ -1253,5 +1253,101 @@ namespace Com.Couchcoding.Logbert.Properties {
                 this["FrmLogStatisticShowLegend"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PnlLog4NetDirectorySettingsDirectory {
+            get {
+                return ((string)(this["PnlLog4NetDirectorySettingsDirectory"]));
+            }
+            set {
+                this["PnlLog4NetDirectorySettingsDirectory"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(".*\\.log[\\.]?[\\d]?")]
+        public string PnlLog4NetDirectorySettingsPattern {
+            get {
+                return ((string)(this["PnlLog4NetDirectorySettingsPattern"]));
+            }
+            set {
+                this["PnlLog4NetDirectorySettingsPattern"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool PnlLog4NetDirectorySettingsReadAllExisting {
+            get {
+                return ((bool)(this["PnlLog4NetDirectorySettingsReadAllExisting"]));
+            }
+            set {
+                this["PnlLog4NetDirectorySettingsReadAllExisting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DockLayoutLog4NetDirReceiver {
+            get {
+                return ((string)(this["DockLayoutLog4NetDirReceiver"]));
+            }
+            set {
+                this["DockLayoutLog4NetDirReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DockLayoutNLogDirReceiver {
+            get {
+                return ((string)(this["DockLayoutNLogDirReceiver"]));
+            }
+            set {
+                this["DockLayoutNLogDirReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PnlNLogDirectorySettingsDirectory {
+            get {
+                return ((string)(this["PnlNLogDirectorySettingsDirectory"]));
+            }
+            set {
+                this["PnlNLogDirectorySettingsDirectory"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(".*\\.log[\\.]?[\\d]?")]
+        public string PnlNLogDirectorySettingsPattern {
+            get {
+                return ((string)(this["PnlNLogDirectorySettingsPattern"]));
+            }
+            set {
+                this["PnlNLogDirectorySettingsPattern"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PnlNLogDirectorySettingsReadAllExisting {
+            get {
+                return ((bool)(this["PnlNLogDirectorySettingsReadAllExisting"]));
+            }
+            set {
+                this["PnlNLogDirectorySettingsReadAllExisting"] = value;
+            }
+        }
     }
 }

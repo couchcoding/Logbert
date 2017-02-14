@@ -311,5 +311,29 @@
     <Setting Name="FrmLogStatisticShowLegend" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="PnlLog4NetDirectorySettingsDirectory" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlLog4NetDirectorySettingsPattern" Type="System.String" Scope="User">
+      <Value Profile="(Default)">.*\.log[\.]?[\d]?</Value>
+    </Setting>
+    <Setting Name="PnlLog4NetDirectorySettingsReadAllExisting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="DockLayoutLog4NetDirReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DockLayoutNLogDirReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlNLogDirectorySettingsDirectory" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlNLogDirectorySettingsPattern" Type="System.String" Scope="User">
+      <Value Profile="(Default)">.*\.log[\.]?[\d]?</Value>
+    </Setting>
+    <Setting Name="PnlNLogDirectorySettingsReadAllExisting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
