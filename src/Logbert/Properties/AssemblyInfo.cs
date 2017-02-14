@@ -10,7 +10,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Couchcoding")]
 [assembly: AssemblyProduct("Logbert")]
-[assembly: AssemblyCopyright("Copyright © 2016 Couchcoding")]
+[assembly: AssemblyCopyright("Copyright © 2017 Couchcoding")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -631,7 +631,7 @@ namespace Com.Couchcoding.Logbert.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copyright 2016 Couchcoding. All Right Reserved..
+        ///   Looks up a localized string similar to Copyright 2017 Couchcoding. All Right Reserved..
         /// </summary>
         internal static string strAboutDlgCopyright {
             get {
