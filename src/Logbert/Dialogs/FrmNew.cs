@@ -59,17 +59,7 @@ namespace Com.Couchcoding.Logbert.Dialogs
     /// <summary>
     /// Gets the fully configured <see cref="ILogProvider"/>, or <c>null</c> on error.
     /// </summary>
-    public ILogProvider LogProvider
-    {
-      get
-      {
-        ILogSettingsCtrl settingsCtrl = grpSettings.Controls[0] as ILogSettingsCtrl;
-
-        return settingsCtrl != null
-          ? settingsCtrl.GetConfiguredInstance()
-          : null;
-      }
-    }
+    public ILogProvider LogProvider => (grpSettings.Controls[0] as ILogSettingsCtrl)?.GetConfiguredInstance();
 
     #endregion
 

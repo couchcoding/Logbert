@@ -36,6 +36,7 @@ using System.Windows.Forms;
 using System.ComponentModel;
 
 using Com.Couchcoding.Logbert.Helper;
+using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Properties;
 
 namespace Com.Couchcoding.Logbert.Controls.OptionPanels
@@ -185,6 +186,8 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
       cmbFontStyleWarning.SelectedIndex = Settings.Default.FontStyleWarning == FontStyle.Regular ? 0 : 1;
       cmbFontStyleError.SelectedIndex   = Settings.Default.FontStyleError   == FontStyle.Regular ? 0 : 1;
       cmbFontStyleFatal.SelectedIndex   = Settings.Default.FontStyleFatal   == FontStyle.Regular ? 0 : 1;
+
+      chkDrawGrid.Checked = Settings.Default.LogWindowDrawGrid;
     }
 
     /// <summary>
@@ -221,6 +224,8 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
         Settings.Default.FontStyleWarning = cmbFontStyleWarning.SelectedIndex == 0 ? FontStyle.Regular : FontStyle.Bold;
         Settings.Default.FontStyleError = cmbFontStyleError.SelectedIndex == 0 ? FontStyle.Regular : FontStyle.Bold;
         Settings.Default.FontStyleFatal = cmbFontStyleFatal.SelectedIndex == 0 ? FontStyle.Regular : FontStyle.Bold;
+
+        Settings.Default.LogWindowDrawGrid = chkDrawGrid.Checked;
 
         Settings.Default.SaveSettings();
       }

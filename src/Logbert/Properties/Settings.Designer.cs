@@ -1349,5 +1349,17 @@ namespace Com.Couchcoding.Logbert.Properties {
                 this["PnlNLogDirectorySettingsReadAllExisting"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LogWindowDrawGrid {
+            get {
+                return ((bool)(this["LogWindowDrawGrid"]));
+            }
+            set {
+                this["LogWindowDrawGrid"] = value;
+            }
+        }
     }
 }

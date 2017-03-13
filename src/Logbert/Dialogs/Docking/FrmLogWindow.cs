@@ -406,7 +406,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       {
         foreColor       = SystemColors.HighlightText;
         backColor       = SystemColors.MenuHighlight;
-        backgroundBrush = BrushCache.GetBrushFromColor(backColor);
+        backgroundBrush = GdiCache.GetBrushFromColor(backColor);
       }
       else
       {
@@ -415,32 +415,32 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
           case LogLevel.Trace:
             foreColor = Settings.Default.ForegroundColorTrace;
             backColor = Settings.Default.BackgroundColorTrace;
-            backgroundBrush = BrushCache.GetBrushFromColor(backColor);
+            backgroundBrush = GdiCache.GetBrushFromColor(backColor);
             break;
           case LogLevel.Debug:
             foreColor = Settings.Default.ForegroundColorDebug;
             backColor = Settings.Default.BackgroundColorDebug;
-            backgroundBrush = BrushCache.GetBrushFromColor(backColor);
+            backgroundBrush = GdiCache.GetBrushFromColor(backColor);
             break;
           case LogLevel.Info:
             foreColor = Settings.Default.ForegroundColorInfo;
             backColor = Settings.Default.BackgroundColorInfo;
-            backgroundBrush = BrushCache.GetBrushFromColor(backColor);
+            backgroundBrush = GdiCache.GetBrushFromColor(backColor);
             break;
           case LogLevel.Warning:
             foreColor = Settings.Default.ForegroundColorWarning;
             backColor = Settings.Default.BackgroundColorWarning;
-            backgroundBrush = BrushCache.GetBrushFromColor(backColor);
+            backgroundBrush = GdiCache.GetBrushFromColor(backColor);
             break;
           case LogLevel.Error:
             foreColor = Settings.Default.ForegroundColorError;
             backColor = Settings.Default.BackgroundColorError;
-            backgroundBrush = BrushCache.GetBrushFromColor(backColor);
+            backgroundBrush = GdiCache.GetBrushFromColor(backColor);
             break;
           case LogLevel.Fatal:
             foreColor = Settings.Default.ForegroundColorFatal;
             backColor = Settings.Default.BackgroundColorFatal;
-            backgroundBrush = BrushCache.GetBrushFromColor(backColor);
+            backgroundBrush = GdiCache.GetBrushFromColor(backColor);
             break;
         }
       }
@@ -469,7 +469,9 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         }
 
         e.Graphics.DrawRectangle(
-            SystemPens.ControlDark
+            Settings.Default.LogWindowDrawGrid 
+            ? GdiCache.GetPenFromColor(dtgLogMessages.GridColor) 
+            : GdiCache.GetPenFromColor(backColor)
           , e.CellBounds);
 
         e.Handled = true;

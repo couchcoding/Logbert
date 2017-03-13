@@ -763,9 +763,8 @@ namespace Logbert
       mainDockPanel.Theme = ThemeManager.CurrentApplicationTheme;
       mainDockPanel.Theme.ApplyTo(mnuMain);
 
+      mainDockPanel.BackColor       = mainDockPanel.DockBackColor;
       mainDockPanel.BackgroundImage = Resources.Logbert_Start_Screen;
-      mainDockPanel.BackColor       = SystemColors.Control;
-      mainDockPanel.DockBackColor   = SystemColors.Control;
 
       // Ensure we're using the systems default dialog font for the main view.
       Font = SystemFonts.MessageBoxFont;

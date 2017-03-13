@@ -60,6 +60,7 @@
       this.clrDrpDwnBackFatal = new Com.Couchcoding.Logbert.Controls.ColorPickerCtrl();
       this.lblFontSize = new System.Windows.Forms.Label();
       this.lblFont = new System.Windows.Forms.Label();
+      this.chkDrawGrid = new System.Windows.Forms.CheckBox();
       this.tblLayout.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -234,6 +235,7 @@
       // 
       // tblLayout
       // 
+      this.tblLayout.AutoSize = true;
       this.tblLayout.ColumnCount = 5;
       this.tblLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.tblLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -271,7 +273,7 @@
       this.tblLayout.Controls.Add(this.clrDrpDwnBackFatal, 2, 9);
       this.tblLayout.Controls.Add(this.lblFontSize, 3, 0);
       this.tblLayout.Controls.Add(this.lblFont, 0, 0);
-      this.tblLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tblLayout.Dock = System.Windows.Forms.DockStyle.Top;
       this.tblLayout.Location = new System.Drawing.Point(0, 0);
       this.tblLayout.Name = "tblLayout";
       this.tblLayout.RowCount = 10;
@@ -285,7 +287,7 @@
       this.tblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tblLayout.Size = new System.Drawing.Size(480, 320);
+      this.tblLayout.Size = new System.Drawing.Size(480, 249);
       this.tblLayout.TabIndex = 0;
       // 
       // lblFontStyle
@@ -488,17 +490,30 @@
       this.lblFont.TabIndex = 0;
       this.lblFont.Text = "Font:";
       // 
+      // chkDrawGrid
+      // 
+      this.chkDrawGrid.AutoSize = true;
+      this.chkDrawGrid.FlatStyle = System.Windows.Forms.FlatStyle.System;
+      this.chkDrawGrid.Location = new System.Drawing.Point(3, 252);
+      this.chkDrawGrid.Name = "chkDrawGrid";
+      this.chkDrawGrid.Size = new System.Drawing.Size(162, 18);
+      this.chkDrawGrid.TabIndex = 1;
+      this.chkDrawGrid.Text = "Draw &grid in the log window";
+      this.chkDrawGrid.UseVisualStyleBackColor = true;
+      // 
       // OptionPanelFontColor
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.Controls.Add(this.chkDrawGrid);
       this.Controls.Add(this.tblLayout);
-      this.MinimumSize = new System.Drawing.Size(300, 240);
+      this.MinimumSize = new System.Drawing.Size(320, 270);
       this.Name = "OptionPanelFontColor";
-      this.Size = new System.Drawing.Size(480, 320);
+      this.Size = new System.Drawing.Size(480, 270);
       this.tblLayout.ResumeLayout(false);
       this.tblLayout.PerformLayout();
       this.ResumeLayout(false);
+      this.PerformLayout();
 
     }
 
@@ -536,5 +551,6 @@
     private ColorPickerCtrl clrDrpDwnBackWarning;
     private ColorPickerCtrl clrDrpDwnBackError;
     private ColorPickerCtrl clrDrpDwnBackFatal;
+    private System.Windows.Forms.CheckBox chkDrawGrid;
   }
 }

@@ -37,7 +37,6 @@ using Com.Couchcoding.Logbert.Helper;
 using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Logging;
 using Com.Couchcoding.Logbert.Properties;
-using WeifenLuo.WinFormsUI.Docking;
 
 namespace Com.Couchcoding.Logbert.Controls
 {
@@ -97,6 +96,27 @@ namespace Com.Couchcoding.Logbert.Controls
     /// The <see cref="ILogPresenter"/> isntance to inform about message selection.
     /// </summary>
     private readonly ILogPresenter mLogPresenter;
+
+    #endregion
+
+    #region Public Properties
+
+    /// <summary>
+    /// Gets or sets the background color for the control.
+    /// </summary>
+    /// <returns>A <see cref="T:System.Drawing.Color" /> that represents the background color of the control. The default is the value of the <see cref="P:System.Windows.Forms.Control.DefaultBackColor" /> property.</returns>
+    public sealed override Color BackColor
+    {
+      get
+      {
+        return base.BackColor;
+      }
+
+      set
+      {
+        base.BackColor = value;
+      }
+    }
 
     #endregion
 
@@ -310,6 +330,8 @@ namespace Com.Couchcoding.Logbert.Controls
       SetStyle(ControlStyles.UserPaint,             true);
 
       InitializeComponent();
+
+      BackColor = ThemeManager.CurrentApplicationTheme.ColorPalette.MainWindowActive.Background;
 
       mLogPresenter    = logPresenter;
       mViewRectPadding = new Padding(
