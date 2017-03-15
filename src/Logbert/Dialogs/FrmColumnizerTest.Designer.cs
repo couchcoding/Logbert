@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       this.btnClose = new System.Windows.Forms.Button();
       this.txtLogValue = new System.Windows.Forms.TextBox();
       this.lblTestLogValue = new System.Windows.Forms.Label();
@@ -72,7 +73,7 @@
       this.lblTestLogValue.FlatStyle = System.Windows.Forms.FlatStyle.System;
       this.lblTestLogValue.Location = new System.Drawing.Point(8, 68);
       this.lblTestLogValue.Name = "lblTestLogValue";
-      this.lblTestLogValue.Size = new System.Drawing.Size(85, 15);
+      this.lblTestLogValue.Size = new System.Drawing.Size(86, 15);
       this.lblTestLogValue.TabIndex = 0;
       this.lblTestLogValue.Text = "Test Log value:";
       // 
@@ -82,7 +83,7 @@
       this.lblResult.FlatStyle = System.Windows.Forms.FlatStyle.System;
       this.lblResult.Location = new System.Drawing.Point(8, 223);
       this.lblResult.Name = "lblResult";
-      this.lblResult.Size = new System.Drawing.Size(66, 15);
+      this.lblResult.Size = new System.Drawing.Size(67, 15);
       this.lblResult.TabIndex = 2;
       this.lblResult.Text = "Test Result:";
       // 
@@ -114,12 +115,24 @@
       this.dgvResult.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmColumn,
             this.clmValue});
+      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+      dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
+      dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Window;
+      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+      this.dgvResult.DefaultCellStyle = dataGridViewCellStyle1;
       this.dgvResult.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.dgvResult.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
       this.dgvResult.Location = new System.Drawing.Point(1, 1);
       this.dgvResult.MultiSelect = false;
       this.dgvResult.Name = "dgvResult";
+      this.dgvResult.ReadOnly = true;
       this.dgvResult.RowHeadersVisible = false;
+      this.dgvResult.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgvResult.ShowCellErrors = false;
+      this.dgvResult.ShowEditingIcon = false;
       this.dgvResult.ShowRowErrors = false;
       this.dgvResult.Size = new System.Drawing.Size(606, 161);
       this.dgvResult.TabIndex = 0;
@@ -130,7 +143,8 @@
       this.clmColumn.HeaderText = "Column";
       this.clmColumn.Name = "clmColumn";
       this.clmColumn.ReadOnly = true;
-      this.clmColumn.Width = 75;
+      this.clmColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+      this.clmColumn.Width = 56;
       // 
       // clmValue
       // 
@@ -138,6 +152,7 @@
       this.clmValue.HeaderText = "Value";
       this.clmValue.Name = "clmValue";
       this.clmValue.ReadOnly = true;
+      this.clmValue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
       // 
       // FrmColumnizerTest
       // 
@@ -145,7 +160,7 @@
       this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = this.btnClose;
-      this.ClientSize = new System.Drawing.Size(624, 441);
+      this.ClientSize = new System.Drawing.Size(624, 442);
       this.Controls.Add(this.pnlGrid);
       this.Controls.Add(this.lblResult);
       this.Controls.Add(this.lblTestLogValue);

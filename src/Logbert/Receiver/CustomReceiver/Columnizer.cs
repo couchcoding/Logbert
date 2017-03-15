@@ -28,12 +28,16 @@
 
 #endregion
 
+using Com.Couchcoding.Logbert.Logging;
 using Com.Couchcoding.Logbert.Properties;
 using System.Collections.Generic;
 using System.Xml;
 
 namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver
 {
+  /// <summary>
+  /// Implements a <see cref="Columnizer"/> for custom <see cref="LogMessage"/>s.
+  /// </summary>
   public sealed class Columnizer
   {
     #region Private Properties
@@ -56,6 +60,15 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver
       set;
     }
 
+    /// <summary>
+    /// Gets or sets the <see cref="LogLevel"/> mappings.
+    /// </summary>
+    public Dictionary<LogLevel, string> LogLevelMapping
+    {
+      get;
+      set;
+    }
+    
     #endregion
 
     #region Public Methods
@@ -77,12 +90,34 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver
 
         if (Columns.Count > 0)
         {
+          writer.WriteStartElement("LogColumns");
+
           foreach (LogColumn column in Columns)
           {
             column.SerializeToXml(writer);
           }
+
+          writer.WriteEndElement();
         }
 
+        writer.WriteStartElement("LogLevels");
+
+        foreach (KeyValuePair<LogLevel, string> logLevelMap in LogLevelMapping)
+        {
+          writer.WriteStartElement("LogLevel");
+
+          writer.WriteAttributeString(
+              "Value"
+            , logLevelMap.Value);
+
+          writer.WriteAttributeString(
+              "Level"
+            , ((int)logLevelMap.Key).ToString());
+
+          writer.WriteEndElement();
+        }
+
+        writer.WriteEndElement();
         writer.WriteEndElement();
 
         return true;
@@ -107,9 +142,11 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver
         // Initialize an empty column list.
         Columns = new List<LogColumn>();
 
-        if (node.HasChildNodes)
+        XmlNode columnNode = node.SelectSingleNode("LogColumns");
+
+        if (columnNode.HasChildNodes)
         {
-          foreach (XmlNode childNode in node.ChildNodes)
+          foreach (XmlNode childNode in columnNode.ChildNodes)
           {
             LogColumn deserializedColumn = new LogColumn();
 
@@ -117,6 +154,19 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver
             {
               Columns.Add(deserializedColumn);
             }
+          }
+        }
+
+        XmlNode logLevelNode = node.SelectSingleNode("LogLevels");
+
+        if (logLevelNode.HasChildNodes)
+        {
+          foreach (XmlNode childNode in logLevelNode.ChildNodes)
+          {
+            LogLevel parsedLevel = (LogLevel)int.Parse(
+              childNode.Attributes["Level"].Value);
+
+            LogLevelMapping[parsedLevel] = childNode.Attributes["Value"].Value;
           }
         }
 
@@ -147,6 +197,17 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver
     {
       Name    = name;
       Columns = new List<LogColumn>();
+
+      // Initialize a default log level mapping.
+      LogLevelMapping = new Dictionary<LogLevel, string>
+      {
+          { LogLevel.Trace   , @"(?i)TRACE(?-i)"        }
+        , { LogLevel.Debug   , @"(?i)DEBUG(?-i)"        }
+        , { LogLevel.Info    , @"(?i)INFO(?-i)"         }
+        , { LogLevel.Warning , @"(?i)WARN|WARNING(?-i)" }
+        , { LogLevel.Error   , @"(?i)ERROR(?-i)"        }
+        , { LogLevel.Fatal   , @"(?i)FATAL(?-i)"        }
+      };
     }
 
     #endregion

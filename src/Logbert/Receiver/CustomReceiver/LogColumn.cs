@@ -29,7 +29,6 @@
 #endregion
 
 using Com.Couchcoding.Logbert.Properties;
-using System.Text.RegularExpressions;
 using System.Xml;
 
 namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver
@@ -59,6 +58,24 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver
       set;
     }
 
+    /// <summary>
+    /// Gets or sets the value of this <see cref="LogColumn"/> is optional on parsing, or not.
+    /// </summary>
+    public bool Optional
+    {
+      get;
+      set;
+    }
+
+    /// <summary>
+    /// Gets or sets the <see cref="LogColumnType"/> of the <see cref="LogColumn"/>.
+    /// </summary>
+    public LogColumnType ColumnType
+    {
+      get;
+      set;
+    }
+
     #endregion
 
     #region Public Methods
@@ -82,6 +99,14 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver
             "Expression"
           , Expression);
 
+        writer.WriteAttributeString(
+            "Optional"
+          , Optional.ToString());
+
+        writer.WriteAttributeString(
+            "Type"
+          , ((int)(ColumnType)).ToString());
+
         writer.WriteEndElement();
 
         return true;
@@ -100,13 +125,21 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver
       if (node != null && Equals(node.Name, "LogColumn") && node.Attributes != null)
       {
         if (node.Attributes["Name"]       == null
-        ||  node.Attributes["Expression"] == null)
+        ||  node.Attributes["Expression"] == null
+        ||  node.Attributes["Optional"]   == null
+        ||  node.Attributes["Type"]       == null)
         {
           return false;
         }
 
         Name       = node.Attributes["Name"].Value       ?? Resources.strColumnizerColumnDefaultName;
         Expression = node.Attributes["Expression"].Value ?? Resources.strColumnizerColumnDefaultExpresssion;
+        Optional   = Equals(node.Attributes["Optional"].Value, bool.TrueString);
+
+        int typeResult = 0;
+        int.TryParse(node.Attributes["Type"].Value ?? "0", out typeResult);
+
+        ColumnType = (LogColumnType)typeResult;
 
         return true;
       }
@@ -131,10 +164,14 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver
     /// </summary>
     /// <param name="name">The name of the <see cref="LogColumn"/>.</param>
     /// <param name="expression">The <see cref="Regex"/> string of the <see cref="LogColumn"/>.</param>
-    public LogColumn(string name, string expression)
+    /// <param name="optional">The value of this <see cref="LogColumn"/> is optional on parsing, or not.</param>
+    /// <param name="type">The <see cref="LogColumnType"/> of the <see cref="LogColumn"/>.</param>
+    public LogColumn(string name, string expression, bool optional, LogColumnType type)
     {
       Name       = name;
       Expression = expression;
+      Optional   = optional;
+      ColumnType = type;
     }
 
     #endregion

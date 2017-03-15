@@ -1,9 +1,38 @@
-﻿using System;
+﻿#region Copyright © 2017 Couchcoding
+
+// File:    FrmLogStatistic.cs
+// Package: Logbert
+// Project: Logbert
+// 
+// The MIT License (MIT)
+// 
+// Copyright (c) 2017 Couchcoding
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+#endregion
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.Remoting.Messaging;
-using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Com.Couchcoding.Logbert.Helper;
 using Com.Couchcoding.Logbert.Interfaces;
@@ -13,6 +42,9 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace Com.Couchcoding.Logbert.Dialogs.Docking
 {
+  /// <summary>
+  /// Implements the <see cref="DockContent"/> of the statistic window.
+  /// </summary>
   public partial class FrmLogStatistic : DockContent, ILogPresenter
   {
     #region Public Properties
@@ -187,6 +219,8 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
     #endregion
 
+    #region Private Methods
+
     /// <summary>
     /// Gets the <see cref="DataPoint"/> that represents the specified <paramref name="level"/>.
     /// </summary>
@@ -203,22 +237,6 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       }
 
       return null;
-    }
-
-    /// <summary>
-    /// Handles the SettingChanging event of the <see cref="Application"/>.
-    /// </summary>
-    private void DefaultSettingChanging(object sender, System.Configuration.SettingChangingEventArgs e)
-    {
-      if (e.SettingName.StartsWith("BackgroundColor"))
-      {
-        //foreach (PieItem pieChart in zgOverview.GraphPane.CurveList)
-        //{
-        //  pieChart.Fill = new Fill((Color)Settings.Default["BackgroundColor" + pieChart.Label.Text]);
-        //}
-
-        //zgOverview.Invalidate();
-      }
     }
 
     /// <summary>
@@ -243,9 +261,6 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       {
         components.Dispose();
       }
-
-      // Remove the settings change event handler.
-      Settings.Default.SettingChanging -= DefaultSettingChanging;
 
       base.Dispose(disposing);
     }
@@ -298,6 +313,8 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       }
     }
 
+    #endregion
+
     #region Constructor
 
     /// <summary>
@@ -313,9 +330,6 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
       // Apply the current application theme to the control.
       ThemeManager.CurrentApplicationTheme.ApplyTo(toolStrip1);
-
-      // Listening for settings changes.
-      Settings.Default.SettingChanging += DefaultSettingChanging;
     }
 
     #endregion

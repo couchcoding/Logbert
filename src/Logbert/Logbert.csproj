@@ -127,6 +127,12 @@
     <Compile Include="Controls\OptionPanels\OptionPanelScriptEditor.Designer.cs">
       <DependentUpon>OptionPanelScriptEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CustomDetailsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CustomDetailsControl.Designer.cs">
+      <DependentUpon>CustomDetailsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SyslogDetailsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -201,6 +207,12 @@
     </Compile>
     <Compile Include="Dialogs\FrmColumnizerTest.Designer.cs">
       <DependentUpon>FrmColumnizerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FrmLogLevelMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FrmLogLevelMap.Designer.cs">
+      <DependentUpon>FrmLogLevelMap.cs</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\FrmLogSearch.cs">
       <SubType>Form</SubType>
@@ -298,6 +310,7 @@
       <DependentUpon>CustomFileReceiverSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Receiver\CustomReceiver\LogColumn.cs" />
+    <Compile Include="Receiver\CustomReceiver\LogColumnType.cs" />
     <Compile Include="Receiver\EventlogReceiver\EventlogReceiver.cs" />
     <Compile Include="Receiver\EventlogReceiver\EventlogReceiverSettings.cs">
       <SubType>UserControl</SubType>
@@ -382,6 +395,9 @@
     <EmbeddedResource Include="Controls\OptionPanels\OptionPanelScriptEditor.resx">
       <DependentUpon>OptionPanelScriptEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CustomDetailsControl.resx">
+      <DependentUpon>CustomDetailsControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\SyslogDetailsControl.resx">
       <DependentUpon>SyslogDetailsControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -417,6 +433,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FrmColumnizerTest.resx">
       <DependentUpon>FrmColumnizerTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FrmLogLevelMap.resx">
+      <DependentUpon>FrmLogLevelMap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FrmLogSearch.resx">
       <DependentUpon>FrmLogSearch.cs</DependentUpon>
@@ -498,6 +517,7 @@
     <BaseApplicationManifest Include="Properties\app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\LogLevel_16x.png" />
     <None Include="Resources\FrmStatisticShowLegend.png" />
     <None Include="Resources\FrmLogStatistic.png" />
     <None Include="Resources\Script_16x.png" />

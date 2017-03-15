@@ -389,9 +389,21 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
         // Update the log presenter windows.
         ((ILogPresenter)mLogWindow).LogMessagesChanged(logMessageCopy,    delta);
-        ((ILogPresenter)mLoggerTree).LogMessagesChanged(logMessageCopy,   delta);
-        ((ILogPresenter)mLogScript).LogMessagesChanged(logMessageCopy,    delta);
-        ((ILogPresenter)mLogStatistic).LogMessagesChanged(logMessageCopy, delta);
+
+        if (mLoggerTree != null)
+        {
+          ((ILogPresenter)mLoggerTree).LogMessagesChanged(logMessageCopy, delta);
+        }
+
+        if (mLogScript != null)
+        {
+          ((ILogPresenter)mLogScript).LogMessagesChanged(logMessageCopy, delta);
+        }
+
+        if (mLogStatistic != null)
+        {
+          ((ILogPresenter)mLogStatistic).LogMessagesChanged(logMessageCopy, delta);
+        }
       }
 
       if (tsbTraceLastMessage.Checked && mLogMessages.Count > 0)

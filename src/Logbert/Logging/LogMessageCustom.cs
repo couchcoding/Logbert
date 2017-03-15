@@ -1,12 +1,12 @@
-﻿#region Copyright © 2016 Couchcoding
+﻿#region Copyright © 2017 Couchcoding
 
-// File:    FrmColumnizerTest.cs
+// File:    LogMessageCustom.cs
 // Package: Logbert
 // Project: Logbert
 // 
 // The MIT License (MIT)
 // 
-// Copyright (c) 2016 Couchcoding
+// Copyright (c) 2017 Couchcoding
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +29,13 @@
 #endregion
 
 using System;
-using System.Windows.Forms;
 using Com.Couchcoding.Logbert.Receiver.CustomReceiver;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using Com.Couchcoding.Logbert.Properties;
+using System.Text;
+using Com.Couchcoding.Logbert.Helper;
+using MoonSharp.Interpreter;
 
 namespace Com.Couchcoding.Logbert.Logging
 {
@@ -41,7 +46,30 @@ namespace Com.Couchcoding.Logbert.Logging
   {
     #region Private Fields
 
+    /// <summary>
+    /// The <see cref="Columnizer"/> instance to use for parsing-
+    /// </summary>
     private readonly Columnizer mColumnizer;
+
+    /// <summary>
+    /// A dictionary that holds the parsed information.
+    /// </summary>
+    private readonly Dictionary<int, string> mParsedValue = new Dictionary<int, string>();
+
+    /// <summary>
+    /// Holds the <see cref="DateTime"/> the <see cref="LogMessage"/> is received. 
+    /// </summary>
+    private DateTime mTimestamp;
+
+    /// <summary>
+    /// Holds the message of the <see cref="LogMessage"/>.
+    /// </summary>
+    private string mMessage;
+
+    /// <summary>
+    /// Holds the <see cref="LogLevel"/> of the <see cref="LogMessage"/>.
+    /// </summary>
+    private LogLevel mLevel = LogLevel.Info;
 
     #endregion
 
@@ -54,7 +82,9 @@ namespace Com.Couchcoding.Logbert.Logging
     {
       get
       {
-        throw new NotImplementedException();
+        return mTimestamp == DateTime.MaxValue
+          ? DateTime.Now
+          : mTimestamp;
       }
     }
 
@@ -65,7 +95,7 @@ namespace Com.Couchcoding.Logbert.Logging
     {
       get
       {
-        throw new NotImplementedException();
+        return mMessage ?? string.Empty;
       }
     }
 
@@ -76,7 +106,7 @@ namespace Com.Couchcoding.Logbert.Logging
     {
       get
       {
-        throw new NotImplementedException();
+        return mLevel;
       }
     }
 
@@ -91,10 +121,52 @@ namespace Com.Couchcoding.Logbert.Logging
     /// <returns><c>True</c> on success, otherwise <c>false</c>.</returns>
     private bool ParseData(string data)
     {
-      if (string.IsNullOrEmpty(data))
+      for (int i = 0; i < mColumnizer.Columns.Count; ++i)
       {
-        // No data to parse.
-        return false;
+        Match mtc = Regex.Match(data, mColumnizer.Columns[i].Expression);
+
+        if (!mtc.Success && !mColumnizer.Columns[i].Optional)
+        {
+          return false;
+        }
+
+        mParsedValue[i] = mtc.Success
+          ? mtc.Groups[1].ToString()
+          : string.Empty;
+
+        switch (mColumnizer.Columns[i].ColumnType)
+        {
+          case LogColumnType.Timestamp:
+            if (!DateTime.TryParse(mParsedValue[i], out mTimestamp))
+            {
+              mTimestamp = DateTime.MinValue;
+            }
+            break;
+
+          case LogColumnType.Level:
+            foreach (KeyValuePair<LogLevel, string> logLevelMap in mColumnizer.LogLevelMapping)
+            {
+              if (string.IsNullOrEmpty(logLevelMap.Value))
+              {
+                // Ignore empty patterns.
+                continue;
+              }
+
+              Match mLgMtc = Regex.Match(mParsedValue[i], logLevelMap.Value);
+
+              if (mLgMtc.Success)
+              {
+                mLevel = logLevelMap.Key;
+                break;
+              }
+            }
+
+            break;
+
+          case LogColumnType.Message:
+            mMessage = mParsedValue[i];
+            break;
+        }
       }
 
       return true;
@@ -111,7 +183,76 @@ namespace Com.Couchcoding.Logbert.Logging
     /// <returns>The value to display at the given <paramref name="columnIndex"/>, or <c>null</c> if nothing to display.</returns>
     public override object GetValueForColumn(int columnIndex)
     {
-      throw new NotImplementedException();
+      switch (columnIndex)
+      {
+        case 1:
+          return mIndex;
+        default:
+          if (columnIndex > 0 && columnIndex - 2 < mParsedValue.Count)
+          {
+            if (mColumnizer.Columns[columnIndex - 2].ColumnType == LogColumnType.Timestamp)
+            {
+              // Special handling for the timestamp column. Maybe the timeshift value has to be added.
+              return mTimestamp.AddMilliseconds(mTimeShiftOffset).ToString(Settings.Default.TimestampFormat);
+            }
+
+            return mParsedValue[columnIndex - 2];
+          }
+          break;
+      }
+
+      return string.Empty;
+    }
+
+    /// <summary>
+    /// Exports the <see cref="LogMessage"/> with its data into a comma seperated line.
+    /// </summary>
+    /// <returns>The <see cref="LogMessage"/> with its data as a comma seperated line.</returns>
+    public override string GetCsvLine()
+    {
+      StringBuilder sBuilder = new StringBuilder();
+
+      sBuilder.AppendFormat("\"{0}\"", Index.ToCsv());
+
+      if (mParsedValue.Values.Count > 0)
+      {
+        sBuilder.Append(",");
+      }
+
+      foreach (string parsedValue in mParsedValue.Values)
+      {
+        sBuilder.AppendFormat("\"{0}\",", parsedValue.ToCsv());
+      }
+
+      if (sBuilder[sBuilder.Length - 1] == ',')
+      {
+        // Remove the very last comma.
+        sBuilder.Remove(sBuilder.Length - 1, 1);
+      }
+
+      return sBuilder.ToString() + Environment.NewLine;
+    }
+
+    /// <summary>
+    /// Returns a <see cref="Table"/> that represents the current <see cref="LogMessage"/>.
+    /// </summary>
+    /// <param name="owner">The owner <see cref="Script"/> instance this <see cref="Table"/> is for.</param>
+    /// <returns>A new <see cref="Table"/> object that represents the current <see cref="LogMessage"/>, or <c>null</c> on error.</returns>
+    public override Table ToLuaTable(Script owner)
+    {
+      Table msgData = base.ToLuaTable(owner);
+
+      if (msgData == null)
+      {
+        return null;
+      }
+
+      foreach (KeyValuePair<int, string> columnValue in mParsedValue)
+      {
+        msgData[mColumnizer.Columns[columnValue.Key].Name] = columnValue.Value;
+      }
+      
+      return msgData;
     }
 
     #endregion
@@ -126,6 +267,8 @@ namespace Com.Couchcoding.Logbert.Logging
     /// <param name="columns">The <see cref="Columnizer"/> to use for parsing.</param>
     public LogMessageCustom(string rawData, int index, Columnizer columns) : base(rawData, index)
     {
+      mColumnizer = columns;
+
       if (!ParseData(rawData))
       {
         throw new ApplicationException("Unable to parse the logger data.");

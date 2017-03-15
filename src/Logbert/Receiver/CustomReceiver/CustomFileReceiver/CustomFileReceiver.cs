@@ -34,6 +34,8 @@ using System.Windows.Forms;
 using Com.Couchcoding.Logbert.Helper;
 using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Logging;
+using System;
+using Com.Couchcoding.Logbert.Controls;
 
 namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
 {
@@ -163,6 +165,17 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
       }
     }
 
+    /// <summary>
+    /// Get the <see cref="Control"/> to display details about a selected <see cref="LogMessage"/>.
+    /// </summary>
+    public override ILogPresenter DetailsControl
+    {
+      get
+      {
+        return new CustomDetailsControl(mColumnizer);
+      }
+    }
+
     #endregion
 
     #region Private Methods
@@ -230,56 +243,31 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
 
       while ((line = mFileReader.ReadLine()) != null)
       {
-        //LogMessageCustom cstmLgMsg = new LogMessageCustom(line, mLogNumber + 1);
+        LogMessageCustom cstmLgMsg;
 
-        //foreach (LogColumn column in mColumnizer.Columns)
-        //{
-        //  Regex tmpRgx = new Regex(
-        //      column.Expression
-        //    , RegexOptions.Singleline);
-
-        //  Match tmpMtc = tmpRgx.Match(line);
-
-        //  if (!tmpMtc.Success)
-        //  {
-        //    break;
-        //  }
-        //}        
-
-        //  int log4NetEndTag = dataToParse.IndexOf(
-        //      LOG4NET_LOGMSG_END
-        //    , StringComparison.Ordinal);
-
-        //  if (log4NetEndTag > 0)
-        //  {
-        //    LogMessage newLogMsg;
-
-        //    try
-        //    {
-        //      newLogMsg = new LogMessageLog4Net(
-        //          dataToParse
-        //        , ++mLogNumber);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //      Logger.Warn(ex.Message);
-        //      continue;
-        //    }
-
-        //    messages.Add(newLogMsg);
-
-        //    dataToParse = dataToParse.Substring(
-        //        log4NetEndTag
-        //      , dataToParse.Length - (log4NetEndTag + LOG4NET_LOGMSG_END.Length));
-        //  }
+        try
+        {
+          cstmLgMsg = new LogMessageCustom(
+              line
+            , mLogNumber + 1
+            , mColumnizer);
+        }
+        catch (Exception ex)
+        {
+          Logger.Warn(ex.Message);
+          continue;
         }
 
-        //mLastFileOffset = mFileReader.BaseStream.Position;
+        mLogNumber++;
+        messages.Add(cstmLgMsg);
+      }
 
-        //if (mLogHandler != null)
-        //{
-        //  mLogHandler.HandleMessage(messages.ToArray());
-        //}
+      mLastFileOffset = mFileReader.BaseStream.Position;
+
+      if (mLogHandler != null)
+      {
+        mLogHandler.HandleMessage(messages.ToArray());
+      }
     }
 
     #endregion
@@ -296,10 +284,16 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
 
       foreach (LogColumn lgclm in mColumnizer.Columns)
       {
-        csvHdr += "\"" + lgclm.Name + "\",";
+        csvHdr += "\"" + lgclm.Name.ToCsv() + "\",";
       }
 
-      return csvHdr;
+      if (csvHdr.EndsWith(","))
+      {
+        // Remove the very last comma.
+        csvHdr.Remove(csvHdr.Length - 1, 1);
+      }
+
+      return csvHdr + Environment.NewLine;
     }
 
     /// <summary>

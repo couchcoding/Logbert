@@ -77,9 +77,17 @@ namespace Com.Couchcoding.Logbert.Dialogs
 
         foreach (DataGridViewRow dgvRow in dgvColumns.Rows)
         {
+          bool optional = (bool)dgvRow.Cells[2].Value;
+
+          LogColumnType columnType = (LogColumnType)System.Enum.Parse(
+              typeof(LogColumnType)
+            , (string)dgvRow.Cells[3].Value);
+
           mColumnizer.Columns.Add(new LogColumn(
               (string)dgvRow.Cells[0].Value
-            , (string)dgvRow.Cells[1].Value));
+            , (string)dgvRow.Cells[1].Value
+            , optional
+            , columnType));
         }
 
         return mColumnizer;
@@ -106,7 +114,9 @@ namespace Com.Couchcoding.Logbert.Dialogs
         {
           dgvColumns.Rows.Add(
               column.Name
-            , column.Expression);
+            , column.Expression
+            , column.Optional
+            , column.ColumnType.ToString());
         }
 
         UpdateEditButtons();
@@ -276,7 +286,9 @@ namespace Com.Couchcoding.Logbert.Dialogs
     {
       int newRowIndex = dgvColumns.Rows.Add(
           Resources.strColumnizerColumnDefaultName
-        , Resources.strColumnizerColumnDefaultExpresssion);
+        , Resources.strColumnizerColumnDefaultExpresssion
+        , false
+        , LogColumnType.Unknown.ToString());
 
       if (newRowIndex != -1)
       {
@@ -391,7 +403,7 @@ namespace Com.Couchcoding.Logbert.Dialogs
     }
 
     /// <summary>
-    ///  Handles the Click event of the testr columnizer <see cref="ToolStripButton"/>.
+    /// Handles the Click event of the test columnizer <see cref="ToolStripButton"/>.
     /// </summary>
     private void TsbTestColumnizerClick(object sender, System.EventArgs e)
     {
@@ -400,14 +412,36 @@ namespace Com.Couchcoding.Logbert.Dialogs
 
       foreach (DataGridViewRow dgvRow in dgvColumns.Rows)
       {
+        bool optional = dgvRow.Cells[2].Value != null;
+
+        LogColumnType columnType = (LogColumnType)System.Enum.Parse(
+            typeof(LogColumnType)
+          , (string)dgvRow.Cells[3].Value);
+
         tmpColumnizer.Columns.Add(new LogColumn(
             (string)dgvRow.Cells[0].Value
-          , (string)dgvRow.Cells[1].Value));
+          , (string)dgvRow.Cells[1].Value
+          , optional
+          , columnType));
       }
 
       using (FrmColumnizerTest testColumnizerDlg = new FrmColumnizerTest(tmpColumnizer))
       {
         testColumnizerDlg.ShowDialog(this);
+      }
+    }
+
+    /// <summary>
+    /// Handles the Click event of the edit log levels <see cref="ToolStripButton"/>.
+    /// </summary>
+    private void TsbEditLogLevelsClick(object sender, System.EventArgs e)
+    {
+      using (FrmLogLevelMap logLevelDlg = new FrmLogLevelMap(mColumnizer.LogLevelMapping))
+      {
+        if (logLevelDlg.ShowDialog(this) == DialogResult.OK)
+        {
+          mColumnizer.LogLevelMapping = logLevelDlg.LogLevelMapping;
+        }
       }
     }
 

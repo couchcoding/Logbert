@@ -82,6 +82,7 @@
       legend1.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Tall;
       this.chrtOverview.Legends.Add(legend1);
       this.chrtOverview.Location = new System.Drawing.Point(0, 25);
+      this.chrtOverview.MinimumSize = new System.Drawing.Size(1, 1);
       this.chrtOverview.Name = "chrtOverview";
       series1.ChartArea = "ChartAreaPie";
       series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;

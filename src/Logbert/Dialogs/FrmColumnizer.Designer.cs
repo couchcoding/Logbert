@@ -28,7 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       this.btnCancel = new System.Windows.Forms.Button();
       this.btnOk = new System.Windows.Forms.Button();
       this.lblName = new System.Windows.Forms.Label();
@@ -37,6 +37,8 @@
       this.dgvColumns = new Com.Couchcoding.GuiLibrary.Controls.DataGridViewEx();
       this.clmName = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.clmRegex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.clmOptional = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+      this.clmType = new System.Windows.Forms.DataGridViewComboBoxColumn();
       this.pnlGrid = new Com.Couchcoding.GuiLibrary.Controls.InfoPanel();
       this.tsColumns = new Com.Couchcoding.GuiLibrary.Controls.ToolStripEx();
       this.tsbAddColumn = new System.Windows.Forms.ToolStripButton();
@@ -47,6 +49,8 @@
       this.tsbMoveDown = new System.Windows.Forms.ToolStripButton();
       this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
       this.tsbTestColumnizer = new System.Windows.Forms.ToolStripButton();
+      this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+      this.tsbEditLogLevels = new System.Windows.Forms.ToolStripButton();
       this.nfoPanel = new Com.Couchcoding.GuiLibrary.Controls.InfoPanel();
       ((System.ComponentModel.ISupportInitialize)(this.dgvColumns)).BeginInit();
       this.pnlGrid.SuspendLayout();
@@ -116,7 +120,9 @@
       this.dgvColumns.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dgvColumns.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmName,
-            this.clmRegex});
+            this.clmRegex,
+            this.clmOptional,
+            this.clmType});
       this.dgvColumns.Dock = System.Windows.Forms.DockStyle.Fill;
       this.dgvColumns.Location = new System.Drawing.Point(1, 1);
       this.dgvColumns.MultiSelect = false;
@@ -141,13 +147,35 @@
       // clmRegex
       // 
       this.clmRegex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.clmRegex.DefaultCellStyle = dataGridViewCellStyle3;
+      dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.clmRegex.DefaultCellStyle = dataGridViewCellStyle1;
       this.clmRegex.FillWeight = 70F;
       this.clmRegex.HeaderText = "Regular expression";
       this.clmRegex.MinimumWidth = 100;
       this.clmRegex.Name = "clmRegex";
       this.clmRegex.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+      // 
+      // clmOptional
+      // 
+      this.clmOptional.HeaderText = "Optional";
+      this.clmOptional.MinimumWidth = 70;
+      this.clmOptional.Name = "clmOptional";
+      this.clmOptional.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+      this.clmOptional.Width = 70;
+      // 
+      // clmType
+      // 
+      this.clmType.FlatStyle = System.Windows.Forms.FlatStyle.System;
+      this.clmType.HeaderText = "Type";
+      this.clmType.Items.AddRange(new object[] {
+            "Unknown",
+            "Timestamp",
+            "Level",
+            "Message"});
+      this.clmType.MaxDropDownItems = 4;
+      this.clmType.MinimumWidth = 100;
+      this.clmType.Name = "clmType";
+      this.clmType.Resizable = System.Windows.Forms.DataGridViewTriState.False;
       // 
       // pnlGrid
       // 
@@ -180,11 +208,13 @@
             this.tsbMoveUp,
             this.tsbMoveDown,
             this.toolStripSeparator2,
-            this.tsbTestColumnizer});
-      this.tsColumns.Location = new System.Drawing.Point(464, 133);
+            this.tsbTestColumnizer,
+            this.toolStripSeparator3,
+            this.tsbEditLogLevels});
+      this.tsColumns.Location = new System.Drawing.Point(435, 133);
       this.tsColumns.Name = "tsColumns";
       this.tsColumns.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-      this.tsColumns.Size = new System.Drawing.Size(152, 25);
+      this.tsColumns.Size = new System.Drawing.Size(181, 25);
       this.tsColumns.TabIndex = 3;
       this.tsColumns.Text = "Columns";
       // 
@@ -264,6 +294,21 @@
       this.tsbTestColumnizer.Text = "Test Columnizer";
       this.tsbTestColumnizer.Click += new System.EventHandler(this.TsbTestColumnizerClick);
       // 
+      // toolStripSeparator3
+      // 
+      this.toolStripSeparator3.Name = "toolStripSeparator3";
+      this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+      // 
+      // tsbEditLogLevels
+      // 
+      this.tsbEditLogLevels.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this.tsbEditLogLevels.Image = global::Com.Couchcoding.Logbert.Properties.Resources.LogLevel_16x;
+      this.tsbEditLogLevels.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tsbEditLogLevels.Name = "tsbEditLogLevels";
+      this.tsbEditLogLevels.Size = new System.Drawing.Size(23, 22);
+      this.tsbEditLogLevels.Text = "Edit Log Levels";
+      this.tsbEditLogLevels.Click += new System.EventHandler(this.TsbEditLogLevelsClick);
+      // 
       // nfoPanel
       // 
       this.nfoPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -288,7 +333,7 @@
       this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = this.btnCancel;
-      this.ClientSize = new System.Drawing.Size(624, 441);
+      this.ClientSize = new System.Drawing.Size(624, 442);
       this.Controls.Add(this.nfoPanel);
       this.Controls.Add(this.pnlGrid);
       this.Controls.Add(this.label1);
@@ -333,5 +378,9 @@
     private GuiLibrary.Controls.InfoPanel nfoPanel;
     private System.Windows.Forms.DataGridViewTextBoxColumn clmName;
     private System.Windows.Forms.DataGridViewTextBoxColumn clmRegex;
+    private System.Windows.Forms.DataGridViewCheckBoxColumn clmOptional;
+    private System.Windows.Forms.DataGridViewComboBoxColumn clmType;
+    private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+    private System.Windows.Forms.ToolStripButton tsbEditLogLevels;
   }
 }

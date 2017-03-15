@@ -403,6 +403,16 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LogLevel_16x {
+            get {
+                object obj = ResourceManager.GetObject("LogLevel_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MesageDetails {
             get {
                 object obj = ResourceManager.GetObject("MesageDetails", resourceCulture);
@@ -1020,6 +1030,15 @@ namespace Com.Couchcoding.Logbert.Properties {
         internal static string strMainUnableToOpenUri {
             get {
                 return ResourceManager.GetString("strMainUnableToOpenUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy {0} Details to the Clipboard.
+        /// </summary>
+        internal static string strMessageDetailsCopyButtonTooltip {
+            get {
+                return ResourceManager.GetString("strMessageDetailsCopyButtonTooltip", resourceCulture);
             }
         }
         
