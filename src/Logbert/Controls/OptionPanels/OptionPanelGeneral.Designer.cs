@@ -81,6 +81,7 @@
       this.chkAnnotateWarning = new System.Windows.Forms.CheckBox();
       this.chkAnnotateError = new System.Windows.Forms.CheckBox();
       this.chkAnnotateFatal = new System.Windows.Forms.CheckBox();
+      this.chkCheckForUpdate = new System.Windows.Forms.CheckBox();
       ((System.ComponentModel.ISupportInitialize)(this.nudUpdateRate)).BeginInit();
       this.mnuTimestamp.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.nudMaxLogMessages)).BeginInit();
@@ -194,7 +195,7 @@
             this.mnuTimestamp_slash,
             this.mnuTimestamp_backslash});
       this.mnuTimestamp.Name = "mnuTimestamp";
-      this.mnuTimestamp.Size = new System.Drawing.Size(437, 692);
+      this.mnuTimestamp.Size = new System.Drawing.Size(438, 670);
       // 
       // mnuTimestampPresets
       // 
@@ -204,7 +205,7 @@
             this.mnuTimestampPreset3,
             this.mnuTimestampPreset4});
       this.mnuTimestampPresets.Name = "mnuTimestampPresets";
-      this.mnuTimestampPresets.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestampPresets.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestampPresets.Text = "Presets";
       // 
       // mnuTimestampPreset1
@@ -242,13 +243,13 @@
       // menuItem2
       // 
       this.menuItem2.Name = "menuItem2";
-      this.menuItem2.Size = new System.Drawing.Size(433, 6);
+      this.menuItem2.Size = new System.Drawing.Size(434, 6);
       // 
       // mnuTimestamp_d
       // 
       this.mnuTimestamp_d.Name = "mnuTimestamp_d";
       this.mnuTimestamp_d.ShortcutKeyDisplayString = "The day of the month, from 1 through 31";
-      this.mnuTimestamp_d.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_d.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_d.Tag = "d";
       this.mnuTimestamp_d.Text = "d";
       this.mnuTimestamp_d.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -257,7 +258,7 @@
       // 
       this.mnuTimestamp_dd.Name = "mnuTimestamp_dd";
       this.mnuTimestamp_dd.ShortcutKeyDisplayString = "The day of the month, from 01 through 31";
-      this.mnuTimestamp_dd.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_dd.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_dd.Tag = "dd";
       this.mnuTimestamp_dd.Text = "dd";
       this.mnuTimestamp_dd.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -266,7 +267,7 @@
       // 
       this.mnuTimestamp_ddd.Name = "mnuTimestamp_ddd";
       this.mnuTimestamp_ddd.ShortcutKeyDisplayString = "The abbreviated name of the day of the week";
-      this.mnuTimestamp_ddd.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_ddd.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_ddd.Tag = "ddd";
       this.mnuTimestamp_ddd.Text = "ddd";
       this.mnuTimestamp_ddd.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -275,7 +276,7 @@
       // 
       this.mnuTimestamp_dddd.Name = "mnuTimestamp_dddd";
       this.mnuTimestamp_dddd.ShortcutKeyDisplayString = "The full name of the day of the week";
-      this.mnuTimestamp_dddd.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_dddd.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_dddd.Tag = "dddd";
       this.mnuTimestamp_dddd.Text = "dddd";
       this.mnuTimestamp_dddd.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -284,7 +285,7 @@
       // 
       this.mnuTimestamp_f.Name = "mnuTimestamp_f";
       this.mnuTimestamp_f.ShortcutKeyDisplayString = "The tenths of a second in a date and time value";
-      this.mnuTimestamp_f.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_f.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_f.Tag = "f";
       this.mnuTimestamp_f.Text = "f";
       this.mnuTimestamp_f.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -293,7 +294,7 @@
       // 
       this.mnuTimestamp_ff.Name = "mnuTimestamp_ff";
       this.mnuTimestamp_ff.ShortcutKeyDisplayString = "The hundredths of a second in a date and time value";
-      this.mnuTimestamp_ff.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_ff.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_ff.Tag = "ff";
       this.mnuTimestamp_ff.Text = "ff";
       this.mnuTimestamp_ff.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -302,7 +303,7 @@
       // 
       this.mnuTimestamp_fff.Name = "mnuTimestamp_fff";
       this.mnuTimestamp_fff.ShortcutKeyDisplayString = "The milliseconds in a date and time value.";
-      this.mnuTimestamp_fff.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_fff.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_fff.Tag = "fff";
       this.mnuTimestamp_fff.Text = "fff";
       this.mnuTimestamp_fff.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -311,7 +312,7 @@
       // 
       this.mnuTimestamp_h.Name = "mnuTimestamp_h";
       this.mnuTimestamp_h.ShortcutKeyDisplayString = "The hour, using a 12-hour clock from 1 to 12";
-      this.mnuTimestamp_h.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_h.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_h.Tag = "h";
       this.mnuTimestamp_h.Text = "h";
       this.mnuTimestamp_h.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -320,7 +321,7 @@
       // 
       this.mnuTimestamp_hh.Name = "mnuTimestamp_hh";
       this.mnuTimestamp_hh.ShortcutKeyDisplayString = "The hour, using a 12-hour clock from 01 to 12";
-      this.mnuTimestamp_hh.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_hh.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_hh.Tag = "hh";
       this.mnuTimestamp_hh.Text = "hh";
       this.mnuTimestamp_hh.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -329,7 +330,7 @@
       // 
       this.mnuTimestamp_hhh.Name = "mnuTimestamp_hhh";
       this.mnuTimestamp_hhh.ShortcutKeyDisplayString = "The hour, using a 24-hour clock from 0 to 23";
-      this.mnuTimestamp_hhh.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_hhh.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_hhh.Tag = "H";
       this.mnuTimestamp_hhh.Text = "H";
       this.mnuTimestamp_hhh.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -338,7 +339,7 @@
       // 
       this.mnuTimestamp_hhhh.Name = "mnuTimestamp_hhhh";
       this.mnuTimestamp_hhhh.ShortcutKeyDisplayString = "The hour, using a 24-hour clock from 00 to 23";
-      this.mnuTimestamp_hhhh.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_hhhh.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_hhhh.Tag = "HH";
       this.mnuTimestamp_hhhh.Text = "HH";
       this.mnuTimestamp_hhhh.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -347,7 +348,7 @@
       // 
       this.mnuTimestamp_m.Name = "mnuTimestamp_m";
       this.mnuTimestamp_m.ShortcutKeyDisplayString = "The minute, from 0 through 59";
-      this.mnuTimestamp_m.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_m.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_m.Tag = "m";
       this.mnuTimestamp_m.Text = "m";
       this.mnuTimestamp_m.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -356,7 +357,7 @@
       // 
       this.mnuTimestamp_mm.Name = "mnuTimestamp_mm";
       this.mnuTimestamp_mm.ShortcutKeyDisplayString = "The minute, from 00 through 59";
-      this.mnuTimestamp_mm.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_mm.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_mm.Tag = "mm";
       this.mnuTimestamp_mm.Text = "mm";
       this.mnuTimestamp_mm.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -365,7 +366,7 @@
       // 
       this.mnuTimestamp_mmm.Name = "mnuTimestamp_mmm";
       this.mnuTimestamp_mmm.ShortcutKeyDisplayString = "The month, from 1 through 12";
-      this.mnuTimestamp_mmm.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_mmm.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_mmm.Tag = "M";
       this.mnuTimestamp_mmm.Text = "M";
       this.mnuTimestamp_mmm.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -374,7 +375,7 @@
       // 
       this.mnuTimestamp_mmmm.Name = "mnuTimestamp_mmmm";
       this.mnuTimestamp_mmmm.ShortcutKeyDisplayString = "The month, from 01 through 12";
-      this.mnuTimestamp_mmmm.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_mmmm.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_mmmm.Tag = "MM";
       this.mnuTimestamp_mmmm.Text = "MM";
       this.mnuTimestamp_mmmm.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -383,7 +384,7 @@
       // 
       this.mnuTimestamp_s.Name = "mnuTimestamp_s";
       this.mnuTimestamp_s.ShortcutKeyDisplayString = "The second, from 0 through 59";
-      this.mnuTimestamp_s.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_s.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_s.Tag = "s";
       this.mnuTimestamp_s.Text = "s";
       this.mnuTimestamp_s.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -392,7 +393,7 @@
       // 
       this.mnuTimestamp_ss.Name = "mnuTimestamp_ss";
       this.mnuTimestamp_ss.ShortcutKeyDisplayString = "The second, from 00 through 59";
-      this.mnuTimestamp_ss.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_ss.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_ss.Tag = "ss";
       this.mnuTimestamp_ss.Text = "ss";
       this.mnuTimestamp_ss.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -401,7 +402,7 @@
       // 
       this.mnuTimestamp_t.Name = "mnuTimestamp_t";
       this.mnuTimestamp_t.ShortcutKeyDisplayString = "The first character of the AM/PM designator";
-      this.mnuTimestamp_t.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_t.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_t.Tag = "t";
       this.mnuTimestamp_t.Text = "t";
       this.mnuTimestamp_t.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -410,7 +411,7 @@
       // 
       this.mnuTimestamp_tt.Name = "mnuTimestamp_tt";
       this.mnuTimestamp_tt.ShortcutKeyDisplayString = "The AM/PM designator";
-      this.mnuTimestamp_tt.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_tt.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_tt.Tag = "tt";
       this.mnuTimestamp_tt.Text = "tt";
       this.mnuTimestamp_tt.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -419,7 +420,7 @@
       // 
       this.mnuTimestamp_y.Name = "mnuTimestamp_y";
       this.mnuTimestamp_y.ShortcutKeyDisplayString = "The year, from 0 to 99";
-      this.mnuTimestamp_y.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_y.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_y.Tag = "y";
       this.mnuTimestamp_y.Text = "y";
       this.mnuTimestamp_y.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -428,7 +429,7 @@
       // 
       this.mnuTimestamp_yy.Name = "mnuTimestamp_yy";
       this.mnuTimestamp_yy.ShortcutKeyDisplayString = "The year, from 00 to 99";
-      this.mnuTimestamp_yy.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_yy.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_yy.Tag = "yy";
       this.mnuTimestamp_yy.Text = "yy";
       this.mnuTimestamp_yy.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -437,7 +438,7 @@
       // 
       this.mnuTimestamp_yyy.Name = "mnuTimestamp_yyy";
       this.mnuTimestamp_yyy.ShortcutKeyDisplayString = "The year, with a minimum of three digits";
-      this.mnuTimestamp_yyy.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_yyy.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_yyy.Tag = "yyy";
       this.mnuTimestamp_yyy.Text = "yyy";
       this.mnuTimestamp_yyy.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -446,7 +447,7 @@
       // 
       this.mnuTimestamp_yyyy.Name = "mnuTimestamp_yyyy";
       this.mnuTimestamp_yyyy.ShortcutKeyDisplayString = "The year as a four-digit number";
-      this.mnuTimestamp_yyyy.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_yyyy.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_yyyy.Tag = "yyyy";
       this.mnuTimestamp_yyyy.Text = "yyyy";
       this.mnuTimestamp_yyyy.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -455,7 +456,7 @@
       // 
       this.mnuTimestamp_z.Name = "mnuTimestamp_z";
       this.mnuTimestamp_z.ShortcutKeyDisplayString = "Hours offset from UTC, with no leading zeros";
-      this.mnuTimestamp_z.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_z.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_z.Tag = "z";
       this.mnuTimestamp_z.Text = "z";
       this.mnuTimestamp_z.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -464,7 +465,7 @@
       // 
       this.mnuTimestamp_zz.Name = "mnuTimestamp_zz";
       this.mnuTimestamp_zz.ShortcutKeyDisplayString = "Hours offset from UTC, with a leading zero for a single-digit value";
-      this.mnuTimestamp_zz.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_zz.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_zz.Tag = "zz";
       this.mnuTimestamp_zz.Text = "zz";
       this.mnuTimestamp_zz.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -473,7 +474,7 @@
       // 
       this.mnuTimestamp_zzz.Name = "mnuTimestamp_zzz";
       this.mnuTimestamp_zzz.ShortcutKeyDisplayString = "Hours and minutes offset from UTC";
-      this.mnuTimestamp_zzz.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_zzz.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_zzz.Tag = "zzz";
       this.mnuTimestamp_zzz.Text = "zzz";
       this.mnuTimestamp_zzz.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -482,7 +483,7 @@
       // 
       this.mnuTimestamp_colon.Name = "mnuTimestamp_colon";
       this.mnuTimestamp_colon.ShortcutKeyDisplayString = "The time separator";
-      this.mnuTimestamp_colon.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_colon.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_colon.Tag = ":";
       this.mnuTimestamp_colon.Text = ":";
       this.mnuTimestamp_colon.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -491,7 +492,7 @@
       // 
       this.mnuTimestamp_slash.Name = "mnuTimestamp_slash";
       this.mnuTimestamp_slash.ShortcutKeyDisplayString = "The date separator";
-      this.mnuTimestamp_slash.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_slash.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_slash.Tag = "/";
       this.mnuTimestamp_slash.Text = "/";
       this.mnuTimestamp_slash.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -500,7 +501,7 @@
       // 
       this.mnuTimestamp_backslash.Name = "mnuTimestamp_backslash";
       this.mnuTimestamp_backslash.ShortcutKeyDisplayString = "The escape character";
-      this.mnuTimestamp_backslash.Size = new System.Drawing.Size(436, 22);
+      this.mnuTimestamp_backslash.Size = new System.Drawing.Size(437, 22);
       this.mnuTimestamp_backslash.Tag = "\\";
       this.mnuTimestamp_backslash.Text = "\\";
       this.mnuTimestamp_backslash.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -531,17 +532,17 @@
       // 
       this.lblMaxLogMessages.AutoSize = true;
       this.lblMaxLogMessages.FlatStyle = System.Windows.Forms.FlatStyle.System;
-      this.lblMaxLogMessages.Location = new System.Drawing.Point(3, 204);
+      this.lblMaxLogMessages.Location = new System.Drawing.Point(3, 228);
       this.lblMaxLogMessages.Name = "lblMaxLogMessages";
       this.lblMaxLogMessages.Size = new System.Drawing.Size(204, 13);
-      this.lblMaxLogMessages.TabIndex = 7;
+      this.lblMaxLogMessages.TabIndex = 8;
       this.lblMaxLogMessages.Text = "Maximum log messages for each receiver:";
       // 
       // nudMaxLogMessages
       // 
       this.nudMaxLogMessages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.nudMaxLogMessages.Location = new System.Drawing.Point(3, 220);
+      this.nudMaxLogMessages.Location = new System.Drawing.Point(3, 244);
       this.nudMaxLogMessages.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -549,7 +550,7 @@
             0});
       this.nudMaxLogMessages.Name = "nudMaxLogMessages";
       this.nudMaxLogMessages.Size = new System.Drawing.Size(474, 20);
-      this.nudMaxLogMessages.TabIndex = 8;
+      this.nudMaxLogMessages.TabIndex = 9;
       this.nudMaxLogMessages.Value = new decimal(new int[] {
             1000000,
             0,
@@ -560,10 +561,10 @@
       // 
       this.chkEnableColorMap.AutoSize = true;
       this.chkEnableColorMap.FlatStyle = System.Windows.Forms.FlatStyle.System;
-      this.chkEnableColorMap.Location = new System.Drawing.Point(3, 252);
+      this.chkEnableColorMap.Location = new System.Drawing.Point(3, 276);
       this.chkEnableColorMap.Name = "chkEnableColorMap";
       this.chkEnableColorMap.Size = new System.Drawing.Size(255, 18);
-      this.chkEnableColorMap.TabIndex = 9;
+      this.chkEnableColorMap.TabIndex = 10;
       this.chkEnableColorMap.Text = "Enable color map annotation in the log window.";
       this.chkEnableColorMap.UseVisualStyleBackColor = true;
       this.chkEnableColorMap.CheckedChanged += new System.EventHandler(this.ChkEnableColorMapCheckedChanged);
@@ -573,10 +574,10 @@
       this.chkAnnotateTrace.AutoSize = true;
       this.chkAnnotateTrace.Enabled = false;
       this.chkAnnotateTrace.FlatStyle = System.Windows.Forms.FlatStyle.System;
-      this.chkAnnotateTrace.Location = new System.Drawing.Point(18, 276);
+      this.chkAnnotateTrace.Location = new System.Drawing.Point(18, 300);
       this.chkAnnotateTrace.Name = "chkAnnotateTrace";
       this.chkAnnotateTrace.Size = new System.Drawing.Size(152, 18);
-      this.chkAnnotateTrace.TabIndex = 10;
+      this.chkAnnotateTrace.TabIndex = 11;
       this.chkAnnotateTrace.Text = "Annotate trace messages";
       this.chkAnnotateTrace.UseVisualStyleBackColor = true;
       // 
@@ -585,10 +586,10 @@
       this.chkAnnotateDebug.AutoSize = true;
       this.chkAnnotateDebug.Enabled = false;
       this.chkAnnotateDebug.FlatStyle = System.Windows.Forms.FlatStyle.System;
-      this.chkAnnotateDebug.Location = new System.Drawing.Point(18, 299);
+      this.chkAnnotateDebug.Location = new System.Drawing.Point(18, 323);
       this.chkAnnotateDebug.Name = "chkAnnotateDebug";
       this.chkAnnotateDebug.Size = new System.Drawing.Size(158, 18);
-      this.chkAnnotateDebug.TabIndex = 11;
+      this.chkAnnotateDebug.TabIndex = 12;
       this.chkAnnotateDebug.Text = "Annotate debug messages";
       this.chkAnnotateDebug.UseVisualStyleBackColor = true;
       // 
@@ -597,10 +598,10 @@
       this.chkAnnotateInfo.AutoSize = true;
       this.chkAnnotateInfo.Enabled = false;
       this.chkAnnotateInfo.FlatStyle = System.Windows.Forms.FlatStyle.System;
-      this.chkAnnotateInfo.Location = new System.Drawing.Point(18, 322);
+      this.chkAnnotateInfo.Location = new System.Drawing.Point(18, 346);
       this.chkAnnotateInfo.Name = "chkAnnotateInfo";
       this.chkAnnotateInfo.Size = new System.Drawing.Size(145, 18);
-      this.chkAnnotateInfo.TabIndex = 12;
+      this.chkAnnotateInfo.TabIndex = 13;
       this.chkAnnotateInfo.Text = "Annotate info messages";
       this.chkAnnotateInfo.UseVisualStyleBackColor = true;
       // 
@@ -609,10 +610,10 @@
       this.chkAnnotateWarning.AutoSize = true;
       this.chkAnnotateWarning.Enabled = false;
       this.chkAnnotateWarning.FlatStyle = System.Windows.Forms.FlatStyle.System;
-      this.chkAnnotateWarning.Location = new System.Drawing.Point(18, 345);
+      this.chkAnnotateWarning.Location = new System.Drawing.Point(18, 369);
       this.chkAnnotateWarning.Name = "chkAnnotateWarning";
       this.chkAnnotateWarning.Size = new System.Drawing.Size(165, 18);
-      this.chkAnnotateWarning.TabIndex = 13;
+      this.chkAnnotateWarning.TabIndex = 14;
       this.chkAnnotateWarning.Text = "Annotate warning messages";
       this.chkAnnotateWarning.UseVisualStyleBackColor = true;
       // 
@@ -621,10 +622,10 @@
       this.chkAnnotateError.AutoSize = true;
       this.chkAnnotateError.Enabled = false;
       this.chkAnnotateError.FlatStyle = System.Windows.Forms.FlatStyle.System;
-      this.chkAnnotateError.Location = new System.Drawing.Point(18, 368);
+      this.chkAnnotateError.Location = new System.Drawing.Point(18, 392);
       this.chkAnnotateError.Name = "chkAnnotateError";
       this.chkAnnotateError.Size = new System.Drawing.Size(149, 18);
-      this.chkAnnotateError.TabIndex = 14;
+      this.chkAnnotateError.TabIndex = 15;
       this.chkAnnotateError.Text = "Annotate error messages";
       this.chkAnnotateError.UseVisualStyleBackColor = true;
       // 
@@ -633,17 +634,29 @@
       this.chkAnnotateFatal.AutoSize = true;
       this.chkAnnotateFatal.Enabled = false;
       this.chkAnnotateFatal.FlatStyle = System.Windows.Forms.FlatStyle.System;
-      this.chkAnnotateFatal.Location = new System.Drawing.Point(18, 391);
+      this.chkAnnotateFatal.Location = new System.Drawing.Point(18, 415);
       this.chkAnnotateFatal.Name = "chkAnnotateFatal";
       this.chkAnnotateFatal.Size = new System.Drawing.Size(148, 18);
-      this.chkAnnotateFatal.TabIndex = 15;
+      this.chkAnnotateFatal.TabIndex = 16;
       this.chkAnnotateFatal.Text = "Annotate fatal messages";
       this.chkAnnotateFatal.UseVisualStyleBackColor = true;
+      // 
+      // chkCheckForUpdate
+      // 
+      this.chkCheckForUpdate.AutoSize = true;
+      this.chkCheckForUpdate.FlatStyle = System.Windows.Forms.FlatStyle.System;
+      this.chkCheckForUpdate.Location = new System.Drawing.Point(3, 201);
+      this.chkCheckForUpdate.Name = "chkCheckForUpdate";
+      this.chkCheckForUpdate.Size = new System.Drawing.Size(251, 18);
+      this.chkCheckForUpdate.TabIndex = 7;
+      this.chkCheckForUpdate.Text = "Check for a new version of Logbert on startup.";
+      this.chkCheckForUpdate.UseVisualStyleBackColor = true;
       // 
       // OptionPanelGeneral
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.Controls.Add(this.chkCheckForUpdate);
       this.Controls.Add(this.chkAnnotateFatal);
       this.Controls.Add(this.chkAnnotateError);
       this.Controls.Add(this.chkAnnotateWarning);
@@ -662,7 +675,7 @@
       this.Controls.Add(this.lblUpdateRate);
       this.MinimumSize = new System.Drawing.Size(320, 410);
       this.Name = "OptionPanelGeneral";
-      this.Size = new System.Drawing.Size(480, 410);
+      this.Size = new System.Drawing.Size(480, 440);
       ((System.ComponentModel.ISupportInitialize)(this.nudUpdateRate)).EndInit();
       this.mnuTimestamp.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.nudMaxLogMessages)).EndInit();
@@ -725,5 +738,6 @@
     private System.Windows.Forms.CheckBox chkAnnotateWarning;
     private System.Windows.Forms.CheckBox chkAnnotateError;
     private System.Windows.Forms.CheckBox chkAnnotateFatal;
+    private System.Windows.Forms.CheckBox chkCheckForUpdate;
   }
 }

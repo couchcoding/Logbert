@@ -65,6 +65,23 @@ namespace Logbert
     [STAThread]
     private static void Main(string[] args)
     {
+      try
+      {
+        // Upgrade the user settings if necessary.
+        if (Settings.Default.SettingsUpgradeRequired)
+        {
+          Settings.Default.Upgrade();
+          Settings.Default.SettingsUpgradeRequired = false;
+          Settings.Default.SaveSettings();
+        }
+      }
+      catch (Exception ex)
+      {
+        Logger.Error(
+            "Error while upgrading the user settings: {0}"
+          , ex);
+      }
+
       if (Settings.Default.FrmMainAllowOnlyOneInstance && !MainForm.CreateNamedPipe(NAMED_PIPED_NAME))
       {
         Logger.Info("Another instance of Logbert is already running.");

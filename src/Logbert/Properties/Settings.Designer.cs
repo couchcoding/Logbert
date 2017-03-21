@@ -1361,5 +1361,29 @@ namespace Com.Couchcoding.Logbert.Properties {
                 this["LogWindowDrawGrid"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FrmMainCheckForUpdateOnStartup {
+            get {
+                return ((bool)(this["FrmMainCheckForUpdateOnStartup"]));
+            }
+            set {
+                this["FrmMainCheckForUpdateOnStartup"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SettingsUpgradeRequired {
+            get {
+                return ((bool)(this["SettingsUpgradeRequired"]));
+            }
+            set {
+                this["SettingsUpgradeRequired"] = value;
+            }
+        }
     }
 }

@@ -29,6 +29,7 @@
 #endregion
 
 using System;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Com.Couchcoding.GuiLibrary.Controls
@@ -55,6 +56,37 @@ namespace Com.Couchcoding.GuiLibrary.Controls
     /// </summary>
     private const uint MA_ACTIVATEANDEAT = 0x2;
 
+    /// <summary>
+    /// Sent to a window if the mouse causes the cursor to move within a window and mouse input is not captured. 
+    /// </summary>
+    private const int WM_SETCURSOR = 0x0020;
+
+    /// <summary>
+    /// The Hand cursor.
+    /// </summary>
+    private const int IDC_HAND = 0x7f89;
+
+    #endregion
+
+    #region Interop Methods
+
+    /// <summary>
+    /// Loads the specified cursor resource from the executable (.EXE) file associated with an application instance.
+    /// </summary>
+    /// <param name="hInstance">A handle to an instance of the module whose executable file contains the cursor to be loaded. </param>
+    /// <param name="lpCursorName">The name of the cursor resource to be loaded.</param>
+    /// <returns>If the function succeeds, the return value is the handle to the newly loaded cursor.</returns>
+    [DllImport("user32.dll")]
+    private static extern int LoadCursor(int hInstance, int lpCursorName);
+
+    /// <summary>
+    /// Sets the cursor shape. 
+    /// </summary>
+    /// <param name="hCursor">A handle to the cursor.</param>
+    /// <returns>The return value is the handle to the previous cursor, if there was one. </returns>
+    [DllImport("user32.dll")]
+    private static extern int SetCursor(int hCursor);
+
     #endregion
 
     #region Overridden Methods
@@ -65,6 +97,16 @@ namespace Com.Couchcoding.GuiLibrary.Controls
     /// <param name="m">The Windows <see cref="T:System.Windows.Forms.Message"/> to process.</param>
     protected override void WndProc(ref Message m)
     {
+      if (m.Msg == WM_SETCURSOR && Cursor == Cursors.Hand)
+      {
+        // Set the systems hand cursor.
+        SetCursor(LoadCursor(0, IDC_HAND));
+
+        // The message has been handled.
+        m.Result = IntPtr.Zero;
+        return;
+      }
+
       base.WndProc(ref m);
 
       if (m.Msg == WM_MOUSEACTIVATE && m.Result == (IntPtr)MA_ACTIVATEANDEAT)

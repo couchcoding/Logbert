@@ -140,6 +140,7 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
       chkAllowOnlyOneInstance.Checked = Settings.Default.FrmMainAllowOnlyOneInstance;
       nudMaxLogMessages.Value         = Settings.Default.MaxLogMessages;
       chkEnableColorMap.Checked       = Settings.Default.EnableColorMap;
+      chkCheckForUpdate.Checked       = Settings.Default.FrmMainCheckForUpdateOnStartup;
 
       chkAnnotateTrace.Checked        = ((LogLevel)Settings.Default.ColorMapAnnotation & LogLevel.Trace)   == LogLevel.Trace;
       chkAnnotateDebug.Checked        = ((LogLevel)Settings.Default.ColorMapAnnotation & LogLevel.Debug)   == LogLevel.Debug;
@@ -162,6 +163,7 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
         Settings.Default.FrmMainAllowOnlyOneInstance         = chkAllowOnlyOneInstance.Checked;
         Settings.Default.MaxLogMessages                      = (int)nudMaxLogMessages.Value;
         Settings.Default.EnableColorMap                      = chkEnableColorMap.Checked;
+        Settings.Default.FrmMainCheckForUpdateOnStartup      = chkCheckForUpdate.Checked;
 
         Settings.Default.ColorMapAnnotation = 0;
         Settings.Default.ColorMapAnnotation |= chkAnnotateTrace.Checked   ? (int)LogLevel.Trace   : 0;

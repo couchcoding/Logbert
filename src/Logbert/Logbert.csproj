@@ -256,6 +256,7 @@
     <Compile Include="Dialogs\FrmOptions.Designer.cs">
       <DependentUpon>FrmOptions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Browser.cs" />
     <Compile Include="Helper\GdiCache.cs" />
     <Compile Include="Helper\Extensions.cs" />
     <Compile Include="Helper\FlatColorTable.cs" />

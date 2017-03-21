@@ -509,7 +509,7 @@
       this.Controls.Add(this.tblLayout);
       this.MinimumSize = new System.Drawing.Size(320, 270);
       this.Name = "OptionPanelFontColor";
-      this.Size = new System.Drawing.Size(480, 270);
+      this.Size = new System.Drawing.Size(480, 280);
       this.tblLayout.ResumeLayout(false);
       this.tblLayout.PerformLayout();
       this.ResumeLayout(false);

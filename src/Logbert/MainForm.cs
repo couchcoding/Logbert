@@ -48,6 +48,9 @@ using System.IO.Pipes;
 using System.Text;
 
 using Com.Couchcoding.Logbert.Receiver;
+using System.Net;
+using System.Text.RegularExpressions;
+using System.Reflection;
 
 namespace Logbert
 {
@@ -55,7 +58,25 @@ namespace Logbert
   {
     #region Private Consts
 
+    /// <summary>
+    /// Defines the URL to the logbert homepage.
+    /// </summary>
     private const string LOGBERT_HOMEPAGE_URI = @"https://github.com/couchcoding/Logbert/";
+
+    /// <summary>
+    /// Defines the URL to check for the newest version of Logbert.
+    /// </summary>
+    private const string LOGBERT_UPDATE_API = @"https://api.github.com/repos/couchcoding/Logbert/releases/latest";
+
+    /// <summary>
+    /// Defines the URL the user may download the newest version of Logbert.
+    /// </summary>
+    private const string LOGBER_LATEST_URI = @"https://github.com/couchcoding/Logbert/releases/latest";
+
+    /// <summary>
+    /// Defines the <see cref="Regex"/> to parse a release name from the GitHub API 3 JSON string.
+    /// </summary>
+    private const string RELEASE_VERSION_REGEX = "\"name\":\"([\\d\\.]+)\"";
 
     #endregion
 
@@ -76,6 +97,11 @@ namespace Logbert
     /// </summary>
     /// <param name="pipedMessage">The received piped message.</param>
     private delegate void HandlePipedMessageDelegate(string pipedMessage);
+
+    /// <summary>
+    /// The <see cref="ToolStripLabel"/> that indicates an update.
+    /// </summary>
+    private readonly ToolStripLabel mUpdateLabel;
 
     #endregion
 
@@ -105,37 +131,9 @@ namespace Logbert
 
     private void MnuMainHomepageClick(object sender, EventArgs e)
     {
-      try
-      {
-        System.Diagnostics.Process.Start(LOGBERT_HOMEPAGE_URI);
-      }
-      catch (Exception ex1)
-      {
-        // System.ComponentModel.Win32Exception is a known exception that occurs when Firefox is default browser.  
-        // It actually opens the browser but STILL throws this exception so we can just ignore it.  If not this exception,
-        // then attempt to open the URL in IE instead.
-        if (ex1.GetType().ToString() != "System.ComponentModel.Win32Exception")
-        {
-          // Sometimes throws exception so we have to just ignore.
-          // This is a common .NET issue that no one online really has a great reason for so now we just need to try to open the URL using IE if we can.
-          try
-          {
-            System.Diagnostics.ProcessStartInfo startInfo = 
-              new System.Diagnostics.ProcessStartInfo("IExplore.exe", LOGBERT_HOMEPAGE_URI);
-
-            System.Diagnostics.Process.Start(startInfo);
-          }
-          catch
-          {
-            MessageBox.Show(
-                this
-              , string.Format(Resources.strMainUnableToOpenUri, LOGBERT_HOMEPAGE_URI)
-              , Application.ProductName
-              , MessageBoxButtons.OK
-              , MessageBoxIcon.Error);
-          }
-        }
-      }
+      Browser.Open(
+          LOGBERT_HOMEPAGE_URI
+        , this);
     }
 
     private void MnuMainHelpAboutClick(object sender, EventArgs e)
@@ -613,6 +611,101 @@ namespace Logbert
             NamedPipeConnected
           , null);
       }
+
+      if (Settings.Default.FrmMainCheckForUpdateOnStartup)
+      {
+        // Build the web request object for the online update check.
+        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(LOGBERT_UPDATE_API);
+
+        // GitHub needs some properties to set.
+        request.Method    = "GET";
+        request.UserAgent = "Logbert";
+
+        try
+        {
+          // Start the update request (asnychronous).
+          request.BeginGetResponse(
+              FinishOnlineUpdateRequest
+            , request);
+        }
+        catch (Exception ex)
+        {
+          Logger.Error(
+              "Error while initializing the check for a new version of Logbert: {0}"
+            , ex.Message);
+        }
+      }
+    }
+
+    /// <summary>
+    /// Initializes and shows the Update Available <see cref="ToolStripLabel"/>.
+    /// </summary>
+    private void SetupAndShowUpdateLabel()
+    {
+      if (InvokeRequired)
+      {
+        // We're comming from an asynchronous operation. So we need to invoke this method if necessary.
+        BeginInvoke(new Action(SetupAndShowUpdateLabel));
+        return;
+      }
+
+      mUpdateLabel.Click += (sender, e) =>
+      {
+        // Initialize the open browser handler.
+        Browser.Open(LOGBER_LATEST_URI, this);
+      };
+
+      // Finally make the link visible.
+      mUpdateLabel.Visible = true;
+    }
+
+    /// <summary>
+    /// Handles the finish of the asynchronous online update check.
+    /// </summary>
+    /// <param name="result">The <see cref="IAsyncResult"/> object that holds the state information.</param>
+    private void FinishOnlineUpdateRequest(IAsyncResult result)
+    {
+      try
+      {
+        // Get the response from GitHub.
+        HttpWebResponse response = (result.AsyncState as HttpWebRequest).EndGetResponse(result) as HttpWebResponse;
+
+        if (response != null)
+        {
+          using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+          {
+            // Load the JSON response string.
+            string versionResponse = reader.ReadToEnd();
+
+            if (!string.IsNullOrEmpty(versionResponse))
+            {
+              // Look for the release name within the response.
+              Match latestVersionMatch = Regex.Match(
+                  versionResponse
+                , RELEASE_VERSION_REGEX
+                , RegexOptions.Multiline);
+
+              if (latestVersionMatch.Success)
+              {
+                // Try to parse the release name to a .NET version object.
+                Version latestRelease = new Version(latestVersionMatch.Groups[1].ToString());
+
+                if (latestRelease > Assembly.GetEntryAssembly().GetName().Version)
+                {
+                  // A new version is available.
+                  SetupAndShowUpdateLabel();
+                }
+              }
+            }
+          }
+        }
+      }
+      catch (Exception ex)
+      {
+        Logger.Error(
+            "Error while checking for a new version of Logbert: {0}"
+          , ex.Message);
+      }
     }
 
     /// <summary>
@@ -643,6 +736,9 @@ namespace Logbert
       }
     }
 
+    /// <summary>
+    /// Handles the Click event of the find next <see cref="ToolStripMenuItem"/>.
+    /// </summary>
     private void MnuMainEditFindNextClick(object sender, EventArgs e)
     {
       mFindWindow.PerformSearch(mFindWindow.CurrentSearchValue);
@@ -759,6 +855,20 @@ namespace Logbert
     public MainForm(string logFileToLoad)
     {
       InitializeComponent();
+
+      mUpdateLabel = new ToolStripLabel("Update Available")
+      {
+          IsLink           = true
+        , Alignment        = ToolStripItemAlignment.Right
+        , LinkBehavior     = LinkBehavior.AlwaysUnderline
+        , Overflow         = ToolStripItemOverflow.Never
+        , LinkColor        = SystemColors.ControlDark
+        , VisitedLinkColor = SystemColors.ControlDark
+        , ActiveLinkColor  = SystemColors.ControlText
+        , Visible          = false
+      };
+
+      MainMenuStrip.Items.Add(mUpdateLabel);
 
       mainDockPanel.Theme = ThemeManager.CurrentApplicationTheme;
       mainDockPanel.Theme.ApplyTo(mnuMain);

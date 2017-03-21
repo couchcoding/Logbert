@@ -29,7 +29,6 @@
 #endregion
 
 using System;
-using System.Diagnostics;
 using System.Windows.Forms;
 
 using Com.Couchcoding.GuiLibrary.Dialogs;
@@ -65,38 +64,7 @@ namespace Com.Couchcoding.Logbert.Dialogs
 
       if (info.SubItem != null && info.SubItem.Text.StartsWith("http"))
       {
-        try
-        {
-          Process.Start(info.SubItem.Text);
-        }
-        catch (Exception ex1)
-        {
-          // System.ComponentModel.Win32Exception is a known exception that occurs when Firefox is default browser.  
-          // It actually opens the browser but STILL throws this exception so we can just ignore it.  If not this exception,
-          // then attempt to open the URL in IE instead.
-          if (ex1.GetType().ToString() != "System.ComponentModel.Win32Exception")
-          {
-            // Sometimes throws exception so we have to just ignore
-            // this is a common .NET bug that no one online really has a great reason for so now we just need to try to open
-            // the URL using IE if we can.
-            try
-            {
-              ProcessStartInfo startInfo = new ProcessStartInfo(
-                  "IExplore.exe"
-                , info.SubItem.Text);
-
-              Process.Start(startInfo);
-            }
-            catch (Exception ex2)
-            {
-              MessageBox.Show(
-                  Application.ProductName
-                , string.Format(Resources.strErrorOpeningSystemBrowser, ex2.Message)
-                , MessageBoxButtons.OK
-                , MessageBoxIcon.Error);
-            }
-          }
-        }
+        Browser.Open(info.SubItem.Text, this);
       }
     }
 
