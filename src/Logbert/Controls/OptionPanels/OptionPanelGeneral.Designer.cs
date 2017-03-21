@@ -673,7 +673,7 @@
       this.Controls.Add(this.nfoPanel);
       this.Controls.Add(this.nudUpdateRate);
       this.Controls.Add(this.lblUpdateRate);
-      this.MinimumSize = new System.Drawing.Size(320, 410);
+      this.MinimumSize = new System.Drawing.Size(320, 440);
       this.Name = "OptionPanelGeneral";
       this.Size = new System.Drawing.Size(480, 440);
       ((System.ComponentModel.ISupportInitialize)(this.nudUpdateRate)).EndInit();

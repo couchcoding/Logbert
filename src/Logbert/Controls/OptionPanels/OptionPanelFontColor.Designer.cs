@@ -507,7 +507,7 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.Controls.Add(this.chkDrawGrid);
       this.Controls.Add(this.tblLayout);
-      this.MinimumSize = new System.Drawing.Size(320, 270);
+      this.MinimumSize = new System.Drawing.Size(320, 280);
       this.Name = "OptionPanelFontColor";
       this.Size = new System.Drawing.Size(480, 280);
       this.tblLayout.ResumeLayout(false);

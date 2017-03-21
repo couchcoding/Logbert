@@ -133,7 +133,7 @@
       this.lstElements.IntegralHeight = false;
       this.lstElements.Location = new System.Drawing.Point(3, 67);
       this.lstElements.Name = "lstElements";
-      this.lstElements.Size = new System.Drawing.Size(318, 118);
+      this.lstElements.Size = new System.Drawing.Size(318, 130);
       this.lstElements.TabIndex = 3;
       this.lstElements.SelectedIndexChanged += new System.EventHandler(this.LstElementsSelectedIndexChanged);
       // 
@@ -222,7 +222,7 @@
       this.lblTabSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
       this.lblTabSize.AutoSize = true;
       this.lblTabSize.FlatStyle = System.Windows.Forms.FlatStyle.System;
-      this.lblTabSize.Location = new System.Drawing.Point(3, 194);
+      this.lblTabSize.Location = new System.Drawing.Point(3, 206);
       this.lblTabSize.Name = "lblTabSize";
       this.lblTabSize.Size = new System.Drawing.Size(52, 13);
       this.lblTabSize.TabIndex = 9;
@@ -231,7 +231,7 @@
       // nudTabSize
       // 
       this.nudTabSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-      this.nudTabSize.Location = new System.Drawing.Point(3, 210);
+      this.nudTabSize.Location = new System.Drawing.Point(3, 222);
       this.nudTabSize.Name = "nudTabSize";
       this.nudTabSize.Size = new System.Drawing.Size(120, 20);
       this.nudTabSize.TabIndex = 10;
@@ -246,7 +246,7 @@
       this.chkInsertSpaceForTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
       this.chkInsertSpaceForTabs.AutoSize = true;
       this.chkInsertSpaceForTabs.FlatStyle = System.Windows.Forms.FlatStyle.System;
-      this.chkInsertSpaceForTabs.Location = new System.Drawing.Point(129, 210);
+      this.chkInsertSpaceForTabs.Location = new System.Drawing.Point(129, 222);
       this.chkInsertSpaceForTabs.Name = "chkInsertSpaceForTabs";
       this.chkInsertSpaceForTabs.Size = new System.Drawing.Size(133, 18);
       this.chkInsertSpaceForTabs.TabIndex = 11;
@@ -258,7 +258,7 @@
       this.chkWordWrap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
       this.chkWordWrap.AutoSize = true;
       this.chkWordWrap.FlatStyle = System.Windows.Forms.FlatStyle.System;
-      this.chkWordWrap.Location = new System.Drawing.Point(3, 241);
+      this.chkWordWrap.Location = new System.Drawing.Point(3, 253);
       this.chkWordWrap.Name = "chkWordWrap";
       this.chkWordWrap.Size = new System.Drawing.Size(84, 18);
       this.chkWordWrap.TabIndex = 12;
@@ -270,7 +270,7 @@
       this.chkHighlightCurrentLine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
       this.chkHighlightCurrentLine.AutoSize = true;
       this.chkHighlightCurrentLine.FlatStyle = System.Windows.Forms.FlatStyle.System;
-      this.chkHighlightCurrentLine.Location = new System.Drawing.Point(3, 264);
+      this.chkHighlightCurrentLine.Location = new System.Drawing.Point(3, 276);
       this.chkHighlightCurrentLine.Name = "chkHighlightCurrentLine";
       this.chkHighlightCurrentLine.Size = new System.Drawing.Size(128, 18);
       this.chkHighlightCurrentLine.TabIndex = 13;
@@ -295,9 +295,9 @@
       this.Controls.Add(this.lblElement);
       this.Controls.Add(this.lstElements);
       this.Controls.Add(this.tblLayout);
-      this.MinimumSize = new System.Drawing.Size(300, 320);
+      this.MinimumSize = new System.Drawing.Size(320, 300);
       this.Name = "OptionPanelScriptEditor";
-      this.Size = new System.Drawing.Size(480, 320);
+      this.Size = new System.Drawing.Size(480, 300);
       this.tblLayout.ResumeLayout(false);
       this.tblLayout.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.nudTabSize)).EndInit();
