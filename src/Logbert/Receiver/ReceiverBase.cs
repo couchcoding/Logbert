@@ -130,6 +130,17 @@ namespace Com.Couchcoding.Logbert.Receiver
     }
 
     /// <summary>
+    /// Determines whether this <see cref="ILogProvider"/> supports the logger tree window.
+    /// </summary>
+    public virtual bool HasStatisticView
+    {
+      get
+      {
+        return true;
+      }
+    }
+
+    /// <summary>
     /// Gets the supported <see cref="LogLevel"/>s of the <see cref="ILogProvider"/>.
     /// </summary>
     public virtual LogLevel SupportedLevels

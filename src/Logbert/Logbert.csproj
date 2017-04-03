@@ -133,6 +133,12 @@
     <Compile Include="Controls\CustomDetailsControl.Designer.cs">
       <DependentUpon>CustomDetailsControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\WinDebugDetailsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WinDebugDetailsControl.Designer.cs">
+      <DependentUpon>WinDebugDetailsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SyslogDetailsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -289,6 +295,7 @@
     <Compile Include="Logging\LogMessageEventlog.cs" />
     <Compile Include="Logging\LogMessageLog4Net.cs" />
     <Compile Include="Logging\LogMessageSyslog.cs" />
+    <Compile Include="Logging\LogMessageWinDebug.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -384,6 +391,14 @@
     </Compile>
     <Compile Include="Receiver\SyslogUdpReceiver\SyslogUdpReceiver.cs" />
     <Compile Include="Receiver\ValidationResult.cs" />
+    <Compile Include="Receiver\WinDebugReceiver\DebugMonitor.cs" />
+    <Compile Include="Receiver\WinDebugReceiver\WinDebugReceiverSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Receiver\WinDebugReceiver\WinDebugReceiverSettings.Designer.cs">
+      <DependentUpon>WinDebugReceiverSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Receiver\WinDebugReceiver\WinDebugReceiver.cs" />
     <EmbeddedResource Include="Controls\ColorMap.resx">
       <DependentUpon>ColorMap.cs</DependentUpon>
     </EmbeddedResource>
@@ -398,6 +413,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\CustomDetailsControl.resx">
       <DependentUpon>CustomDetailsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WinDebugDetailsControl.resx">
+      <DependentUpon>WinDebugDetailsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\SyslogDetailsControl.resx">
       <DependentUpon>SyslogDetailsControl.cs</DependentUpon>
@@ -501,6 +519,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Receiver\SyslogUdpReceiver\SyslogUdpReceiverSettings.resx">
       <DependentUpon>SyslogUdpReceiverSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Receiver\WinDebugReceiver\WinDebugReceiverSettings.resx">
+      <DependentUpon>WinDebugReceiverSettings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <Compile Include="Logging\LogMessage.cs" />

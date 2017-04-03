@@ -268,7 +268,7 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
           IPAddress.Any
         , 0);
 
-      Byte[] receiveBytes;
+      byte[] receiveBytes;
 
       try
       {

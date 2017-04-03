@@ -734,17 +734,23 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// </summary>
     private void TmrUpdateTick(object sender, EventArgs e)
     {
-      if (mLogMessages.Count > 0 && mLogMessages[mLogMessages.Count -1].Index != mLastLogMessageIndex)
+      if (mLogMessages.Count > 0)
       {
-        tmrUpdate.Stop();
+        // Get the very last received and processed log message.
+        LogMessage lastLogMsg = mLogMessages[mLogMessages.Count -1];
 
-        try
+        if (lastLogMsg != null && lastLogMsg.Index != mLastLogMessageIndex)
         {
-          LogMessagesChanged(mLogMessages.Count - mLastLogMessageIndex);
-        }
-        finally
-        {
-          tmrUpdate.Start();
+          tmrUpdate.Stop();
+
+          try
+          {
+            LogMessagesChanged(mLogMessages.Count - mLastLogMessageIndex);
+          }
+          finally
+          {
+            tmrUpdate.Start();
+          }
         }
       }
     }
@@ -1170,27 +1176,33 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
         tsbShowMessageDetails.Visible = mLogProvider.HasMessageDetails;
         tsbShowLoggerTree.Visible     = mLogProvider.HasLoggerTree;
+        tsbShowStatistic.Visible      = mLogProvider.HasStatisticView;
       }
       else
       {
         tsbShowMessageDetails.Visible = false;
         tsbShowLoggerTree.Visible     = false;
         tsSeperatorWindows.Visible    = false;
+        tsbShowStatistic.Visible      = false;
       }
 
       mLogScript = new FrmLogScript((IBookmarkProvider)mLogWindow, this);
       mBookmarks = new FrmLogBookmarks((IBookmarkProvider)mLogWindow);
-      mLogStatistic = new FrmLogStatistic(mLogProvider);
 
-      mLogStatistic.VisibleChanged += (sender, e) =>
+      if (mLogProvider.HasStatisticView)
       {
-        tsbShowStatistic.Checked = !mLogStatistic.IsHidden;
-      };
+        mLogStatistic = new FrmLogStatistic(mLogProvider);
 
-      mBookmarks.VisibleChanged += (sender, e) =>
-      {
-        tsbShowBookmarks.Checked = !mBookmarks.IsHidden;
-      };
+        mLogStatistic.VisibleChanged += (sender, e) =>
+        {
+          tsbShowStatistic.Checked = !mLogStatistic.IsHidden;
+        };
+
+        mBookmarks.VisibleChanged += (sender, e) =>
+        {
+          tsbShowBookmarks.Checked = !mBookmarks.IsHidden;
+        };
+      }
 
       mFilter = new FrmLogFilter(
           logProvider

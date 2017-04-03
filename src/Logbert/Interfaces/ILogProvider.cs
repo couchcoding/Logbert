@@ -107,6 +107,14 @@ namespace Com.Couchcoding.Logbert.Interfaces
     }
 
     /// <summary>
+    /// Determines whether this <see cref="ILogProvider"/> has a statistic window.
+    /// </summary>
+    bool HasStatisticView
+    {
+      get;
+    }
+
+    /// <summary>
     /// Gets the supported <see cref="LogLevel"/>s of the <see cref="ILogProvider"/>.
     /// </summary>
     LogLevel SupportedLevels
