@@ -1385,5 +1385,17 @@ namespace Com.Couchcoding.Logbert.Properties {
                 this["SettingsUpgradeRequired"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DockLayoutWinDebugReceiver {
+            get {
+                return ((string)(this["DockLayoutWinDebugReceiver"]));
+            }
+            set {
+                this["DockLayoutWinDebugReceiver"] = value;
+            }
+        }
     }
 }

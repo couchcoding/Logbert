@@ -46,6 +46,7 @@ using Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver;
 using Com.Couchcoding.Logbert.Receiver.EventlogReceiver;
 using Com.Couchcoding.Logbert.Receiver.Log4NetDirReceiver;
 using Com.Couchcoding.Logbert.Receiver.NLogDirReceiver;
+using Com.Couchcoding.Logbert.Receiver.WinDebugReceiver;
 
 namespace Com.Couchcoding.Logbert.Dialogs
 {
@@ -175,6 +176,7 @@ namespace Com.Couchcoding.Logbert.Dialogs
       lstLogger.Items.Add(new SyslogFileReceiver());
       lstLogger.AddSeperator();
       lstLogger.Items.Add(new EventlogReceiver());
+      lstLogger.Items.Add(new WinDebugReceiver());
       lstLogger.AddSeperator();
       lstLogger.Items.Add(new CustomFileReceiver());
 

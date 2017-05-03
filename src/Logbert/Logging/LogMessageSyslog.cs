@@ -240,7 +240,7 @@ namespace Com.Couchcoding.Logbert.Logging
         return false;
       }
 
-      UInt32 priMatrix = UInt32.Parse(msgMtc.Groups[1].Value);
+      uint priMatrix = UInt32.Parse(msgMtc.Groups[1].Value);
 
       mSeverity       = (Severity)((int)priMatrix & 0x07);
       mFacility       = (Facility)((int)priMatrix >> 3);

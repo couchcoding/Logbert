@@ -1176,27 +1176,33 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
         tsbShowMessageDetails.Visible = mLogProvider.HasMessageDetails;
         tsbShowLoggerTree.Visible     = mLogProvider.HasLoggerTree;
+        tsbShowStatistic.Visible      = mLogProvider.HasStatisticView;
       }
       else
       {
         tsbShowMessageDetails.Visible = false;
         tsbShowLoggerTree.Visible     = false;
         tsSeperatorWindows.Visible    = false;
+        tsbShowStatistic.Visible      = false;
       }
 
       mLogScript = new FrmLogScript((IBookmarkProvider)mLogWindow, this);
       mBookmarks = new FrmLogBookmarks((IBookmarkProvider)mLogWindow);
-      mLogStatistic = new FrmLogStatistic(mLogProvider);
 
-      mLogStatistic.VisibleChanged += (sender, e) =>
+      if (mLogProvider.HasStatisticView)
       {
-        tsbShowStatistic.Checked = !mLogStatistic.IsHidden;
-      };
+        mLogStatistic = new FrmLogStatistic(mLogProvider);
 
-      mBookmarks.VisibleChanged += (sender, e) =>
-      {
-        tsbShowBookmarks.Checked = !mBookmarks.IsHidden;
-      };
+        mLogStatistic.VisibleChanged += (sender, e) =>
+        {
+          tsbShowStatistic.Checked = !mLogStatistic.IsHidden;
+        };
+
+        mBookmarks.VisibleChanged += (sender, e) =>
+        {
+          tsbShowBookmarks.Checked = !mBookmarks.IsHidden;
+        };
+      }
 
       mFilter = new FrmLogFilter(
           logProvider
