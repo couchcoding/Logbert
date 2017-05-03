@@ -734,17 +734,23 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// </summary>
     private void TmrUpdateTick(object sender, EventArgs e)
     {
-      if (mLogMessages.Count > 0 && mLogMessages[mLogMessages.Count -1].Index != mLastLogMessageIndex)
+      if (mLogMessages.Count > 0)
       {
-        tmrUpdate.Stop();
+        // Get the very last received and processed log message.
+        LogMessage lastLogMsg = mLogMessages[mLogMessages.Count -1];
 
-        try
+        if (lastLogMsg != null && lastLogMsg.Index != mLastLogMessageIndex)
         {
-          LogMessagesChanged(mLogMessages.Count - mLastLogMessageIndex);
-        }
-        finally
-        {
-          tmrUpdate.Start();
+          tmrUpdate.Stop();
+
+          try
+          {
+            LogMessagesChanged(mLogMessages.Count - mLastLogMessageIndex);
+          }
+          finally
+          {
+            tmrUpdate.Start();
+          }
         }
       }
     }

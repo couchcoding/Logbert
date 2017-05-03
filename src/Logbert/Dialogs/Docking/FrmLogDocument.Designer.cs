@@ -40,7 +40,7 @@
       this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
       this.tsbReload = new System.Windows.Forms.ToolStripButton();
       this.tsbClearMessages = new System.Windows.Forms.ToolStripButton();
-      this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+      this.tsbSaveMessages = new System.Windows.Forms.ToolStripDropDownButton();
       this.cmsSaveMessagesRaw = new System.Windows.Forms.ToolStripMenuItem();
       this.cmsSaveMessagesCsv = new System.Windows.Forms.ToolStripMenuItem();
       this.tsSeperatorWindows = new System.Windows.Forms.ToolStripSeparator();
@@ -96,7 +96,7 @@
             this.toolStripSeparator4,
             this.tsbReload,
             this.tsbClearMessages,
-            this.toolStripDropDownButton1,
+            this.tsbSaveMessages,
             this.tsSeperatorWindows,
             this.tsbShowMessageDetails,
             this.tsbShowLoggerTree,
@@ -327,17 +327,17 @@
       this.tsbClearMessages.Text = "Clear Messages";
       this.tsbClearMessages.Click += new System.EventHandler(this.TsbClearMessagesClick);
       // 
-      // toolStripDropDownButton1
+      // tsbSaveMessages
       // 
-      this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+      this.tsbSaveMessages.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this.tsbSaveMessages.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cmsSaveMessagesRaw,
             this.cmsSaveMessagesCsv});
-      this.toolStripDropDownButton1.Image = global::Com.Couchcoding.Logbert.Properties.Resources.save_16xLG;
-      this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-      this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 23);
-      this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+      this.tsbSaveMessages.Image = global::Com.Couchcoding.Logbert.Properties.Resources.save_16xLG;
+      this.tsbSaveMessages.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.tsbSaveMessages.Name = "tsbSaveMessages";
+      this.tsbSaveMessages.Size = new System.Drawing.Size(29, 23);
+      this.tsbSaveMessages.Text = "Save Messages";
       // 
       // cmsSaveMessagesRaw
       // 
@@ -541,7 +541,7 @@
     private System.Windows.Forms.ToolStripButton tsbToggleBookmark;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     private System.Windows.Forms.ToolStripButton tsbShowFilter;
-    private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+    private System.Windows.Forms.ToolStripDropDownButton tsbSaveMessages;
     private System.Windows.Forms.ToolStripMenuItem cmsSaveMessagesRaw;
     private System.Windows.Forms.ToolStripMenuItem cmsSaveMessagesCsv;
     private System.Windows.Forms.StatusStrip stBar;
