@@ -31,9 +31,12 @@
 using System;
 using Com.Couchcoding.Logbert.Receiver.CustomReceiver;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using Com.Couchcoding.Logbert.Properties;
 using System.Text;
+using System.Windows.Forms;
+
 using Com.Couchcoding.Logbert.Helper;
 using MoonSharp.Interpreter;
 
@@ -137,7 +140,7 @@ namespace Com.Couchcoding.Logbert.Logging
         switch (mColumnizer.Columns[i].ColumnType)
         {
           case LogColumnType.Timestamp:
-            if (!DateTime.TryParse(mParsedValue[i], out mTimestamp))
+            if (!DateTime.TryParseExact(mParsedValue[i], mColumnizer.DateTimeFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out mTimestamp))
             {
               mTimestamp = DateTime.MinValue;
             }
@@ -152,9 +155,7 @@ namespace Com.Couchcoding.Logbert.Logging
                 continue;
               }
 
-              Match mLgMtc = Regex.Match(mParsedValue[i], logLevelMap.Value);
-
-              if (mLgMtc.Success)
+              if (Regex.Match(mParsedValue[i], logLevelMap.Value).Success)
               {
                 mLevel = logLevelMap.Key;
                 break;
@@ -230,7 +231,7 @@ namespace Com.Couchcoding.Logbert.Logging
         sBuilder.Remove(sBuilder.Length - 1, 1);
       }
 
-      return sBuilder.ToString() + Environment.NewLine;
+      return sBuilder + Environment.NewLine;
     }
 
     /// <summary>

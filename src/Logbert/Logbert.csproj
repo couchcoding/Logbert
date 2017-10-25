@@ -166,6 +166,12 @@
     <Compile Include="Controls\OptionPanels\OptionPanelGeneral.Designer.cs">
       <DependentUpon>OptionPanelGeneral.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\FrmEditTimeStampFormat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FrmEditTimeStampFormat.Designer.cs">
+      <DependentUpon>FrmEditTimeStampFormat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\Docking\FrmLogBookmarks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -429,6 +435,9 @@
     <EmbeddedResource Include="Controls\OptionPanels\OptionPanelGeneral.resx">
       <DependentUpon>OptionPanelGeneral.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FrmEditTimeStampFormat.resx">
+      <DependentUpon>FrmEditTimeStampFormat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\Docking\FrmLogBookmarks.resx">
       <DependentUpon>FrmLogBookmarks.cs</DependentUpon>
     </EmbeddedResource>
@@ -539,6 +548,7 @@
     <BaseApplicationManifest Include="Properties\app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\VSO_Time_16x.png" />
     <None Include="Resources\LogLevel_16x.png" />
     <None Include="Resources\FrmStatisticShowLegend.png" />
     <None Include="Resources\FrmLogStatistic.png" />

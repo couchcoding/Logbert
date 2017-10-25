@@ -40,6 +40,15 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver
   /// </summary>
   public sealed class Columnizer
   {
+    #region Private Fields
+    
+    /// <summary>
+    /// The default format string to parse a timestamp value.
+    /// </summary>
+    public static readonly string DefaultDateTimeFormat = "yyyy-dd-MM hh:mm:ss.fff";
+    
+    #endregion
+
     #region Private Properties
 
     /// <summary>
@@ -69,7 +78,16 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver
       set;
     }
     
-    #endregion
+    /// <summary>
+    /// Gets or sets the format string of the timestamp.
+    /// </summary>
+    public string DateTimeFormat
+    {
+      get;
+      set;
+    }
+
+      #endregion
 
     #region Public Methods
 
@@ -87,6 +105,10 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver
         writer.WriteAttributeString(
             "Name"
           , Name);
+
+        writer.WriteAttributeString(
+            "DateTimeFormat"
+          , DateTimeFormat);
 
         if (Columns.Count > 0)
         {
@@ -138,6 +160,10 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver
         Name = node.Attributes["Name"] != null
              ? node.Attributes["Name"].Value ?? Resources.strColumnizerDefaultName
              : Resources.strColumnizerDefaultName;
+
+        DateTimeFormat = node.Attributes["DateTimeFormat"] != null
+            ? node.Attributes["DateTimeFormat"].Value ?? DefaultDateTimeFormat
+            : DefaultDateTimeFormat;
 
         // Initialize an empty column list.
         Columns = new List<LogColumn>();
@@ -195,8 +221,9 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver
     /// <param name="name">The name of the new <see cref="Columnizer"/> instance.</param>
     public Columnizer(string name = "New Columnizer")
     {
-      Name    = name;
-      Columns = new List<LogColumn>();
+      Name           = name;
+      Columns        = new List<LogColumn>();
+      DateTimeFormat = DefaultDateTimeFormat;
 
       // Initialize a default log level mapping.
       LogLevelMapping = new Dictionary<LogLevel, string>

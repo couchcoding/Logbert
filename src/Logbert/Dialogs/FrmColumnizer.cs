@@ -445,6 +445,20 @@ namespace Com.Couchcoding.Logbert.Dialogs
       }
     }
 
+    /// <summary>
+    /// Handles the Click event of the edit timestamp format <see cref="ToolStripButton"/>.
+    /// </summary>
+    private void TsbEditDateTimeFormatClick(object sender, System.EventArgs e)
+    {
+        using (FrmEditTimeStampFormat logLevelDlg = new FrmEditTimeStampFormat(mColumnizer.DateTimeFormat))
+        {
+            if (logLevelDlg.ShowDialog(this) == DialogResult.OK)
+            {
+                mColumnizer.DateTimeFormat = logLevelDlg.DateTimeFormat;
+            }
+        }
+    }
+
     #endregion
 
     #region Constructor
@@ -471,6 +485,7 @@ namespace Com.Couchcoding.Logbert.Dialogs
       tsColumns.Renderer = new CustomToolStripSystemRenderer();
     }
 
-    #endregion
-  }
+        #endregion
+
+    }
 }
