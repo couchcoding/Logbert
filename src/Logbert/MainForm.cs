@@ -879,19 +879,6 @@ namespace Logbert
       // Ensure we're using the systems default dialog font for the main view.
       Font = SystemFonts.MessageBoxFont;
 
-      try
-      {
-        if (Settings.Default.GetPreviousVersion("FrmMainFormSize") != null)
-        {
-          // Upgrade previous user settings if necessary.
-          Settings.Default.Upgrade();
-        }
-      }
-      catch (Exception ex)
-      {
-        Logger.Error(ex.Message);
-      }
-
       // Set the size and location of the main window.
       LoadDialogSettings();
 

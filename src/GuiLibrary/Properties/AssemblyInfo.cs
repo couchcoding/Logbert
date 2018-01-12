@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Couchcoding")]
 [assembly: AssemblyProduct("Logbert GUI Library")]
-[assembly: AssemblyCopyright("Copyright ©  2017 Couchcoding")]
+[assembly: AssemblyCopyright("Copyright ©  2018 Couchcoding")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

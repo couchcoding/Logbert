@@ -329,7 +329,7 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetDirReceiver
 
       if (mStartFromBeginning)
       {
-        for (int i = 1; i < collectedFiles.Count; ++i)
+        for (int i = collectedFiles.Count - 1; i > 0; i--)
         {
           using (mFileReader = new StreamReader(new FileStream(collectedFiles[i], FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
           {

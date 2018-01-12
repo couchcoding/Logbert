@@ -32,6 +32,7 @@ using Com.Couchcoding.Logbert.Helper;
 using Com.Couchcoding.Logbert.Properties;
 using MoonSharp.Interpreter;
 using System;
+using System.Globalization;
 
 namespace Com.Couchcoding.Logbert.Logging
 {
@@ -147,7 +148,9 @@ namespace Com.Couchcoding.Logbert.Logging
         case 2:
           return Level.ToString();
         case 3:
-          return mTimestamp.AddMilliseconds(mTimeShiftOffset).ToString(Settings.Default.TimestampFormat);
+          return mTimestamp.AddMilliseconds(mTimeShiftOffset).ToString(
+              Settings.Default.TimestampFormat
+            , CultureInfo.InvariantCulture);
         case 4:
           return mProcessId.ToString();
         case 5:

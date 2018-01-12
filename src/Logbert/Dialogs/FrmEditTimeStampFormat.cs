@@ -33,6 +33,7 @@ using System.Windows.Forms;
 
 using Com.Couchcoding.GuiLibrary.Dialogs;
 using Com.Couchcoding.Logbert.Receiver.CustomReceiver;
+using Com.Couchcoding.Logbert.Helper;
 
 namespace Com.Couchcoding.Logbert.Dialogs
 {
@@ -99,6 +100,8 @@ namespace Com.Couchcoding.Logbert.Dialogs
     public FrmEditTimeStampFormat(string format)
     {
       InitializeComponent();
+
+      ThemeManager.CurrentApplicationTheme.ApplyTo(mnuTimestamp);
 
       txtTimestampFormat.Text = format ?? Columnizer.DefaultDateTimeFormat;
     }
