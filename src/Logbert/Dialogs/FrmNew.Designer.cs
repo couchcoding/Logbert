@@ -60,15 +60,14 @@
       // 
       // lstLogger
       // 
-      this.lstLogger.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+      this.lstLogger.Dock = System.Windows.Forms.DockStyle.Left;
       this.lstLogger.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
       this.lstLogger.FormattingEnabled = true;
       this.lstLogger.IntegralHeight = false;
       this.lstLogger.ItemHeight = 24;
-      this.lstLogger.Location = new System.Drawing.Point(8, 68);
+      this.lstLogger.Location = new System.Drawing.Point(5, 65);
       this.lstLogger.Name = "lstLogger";
-      this.lstLogger.Size = new System.Drawing.Size(160, 324);
+      this.lstLogger.Size = new System.Drawing.Size(160, 372);
       this.lstLogger.TabIndex = 2;
       this.lstLogger.SelectedIndexChanged += new System.EventHandler(this.LstLoggerSelectedIndexChanged);
       // 
@@ -93,15 +92,13 @@
       this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
       this.CancelButton = this.btnCancel;
-      this.ClientSize = new System.Drawing.Size(624, 441);
+      this.ClientSize = new System.Drawing.Size(624, 442);
       this.Controls.Add(this.grpSettings);
       this.Controls.Add(this.lstLogger);
       this.Controls.Add(this.btnCancel);
       this.Controls.Add(this.btnOk);
       this.DialogMainCaption = "New Logger";
       this.DialogMainDescription = "Select and setup the logger type to create.";
-      this.HeaderDescriptionColor = System.Drawing.Color.DimGray;
-      this.Location = new System.Drawing.Point(0, 0);
       this.MinimumSize = new System.Drawing.Size(640, 480);
       this.Name = "FrmNew";
       this.Text = "New Logger";

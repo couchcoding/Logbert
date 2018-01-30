@@ -28,6 +28,7 @@
 
 #endregion
 
+using Com.Couchcoding.GuiLibrary.Helper;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -42,16 +43,6 @@ namespace Com.Couchcoding.GuiLibrary.Dialogs
     #region Private Consts
 
     /// <summary>
-    /// Defines the default horizontal resolution.
-    /// </summary>
-    protected const float DEFAULT_DPI_Y = 96.0f;
-
-    /// <summary>
-    /// Defines the defualt vertical resolution.
-    /// </summary>
-    protected const float DEFAULT_DPI_X = 96.0f;
-
-    /// <summary>
     /// Defines the height of the button area within the dialog.
     /// </summary>
     protected const int BUTTON_AREA_HEIGHT = 40;
@@ -64,8 +55,6 @@ namespace Com.Couchcoding.GuiLibrary.Dialogs
     #endregion
 
     #region Private Fields
-
-    private static SizeF mDpiSize = new SizeF(96.0f, 96.0f);
 
     private bool   mShowHeaderArea         = true;
     private bool   mShowFooterArea         = true;
@@ -341,44 +330,9 @@ namespace Com.Couchcoding.GuiLibrary.Dialogs
     {
       Padding = new Padding(
           5
-        , mShowHeaderArea ? RescaleByDpiY(HEADER_AREA_HEIGHT) + 5 : 5
+        , mShowHeaderArea ? HEADER_AREA_HEIGHT + 5 : 5
         , 5
         , 5);
-    }
-
-    /// <summary>
-    /// Reloads the current DPI-Settings of the system.
-    /// </summary>
-    /// <param name="ctrl">The <see cref="Control"/> to use the <see cref="Graphics"/> object from.</param>
-    protected static void ReloadDpiSettings(Control ctrl)
-    {
-      if (ctrl != null)
-      {
-        using (Graphics grfx = ctrl.CreateGraphics())
-        {
-          mDpiSize = new SizeF(grfx.DpiX, grfx.DpiY);
-        }
-      }
-    }
-
-    /// <summary>
-    /// Rescales the given value by the currently used DPI-Settings.
-    /// </summary>
-    /// <param name="value">The value to rescale.</param>
-    /// <returns>The rescaled value.</returns>
-    protected static int RescaleByDpiY(int value)
-    {
-      return (int)((value / DEFAULT_DPI_Y) * mDpiSize.Height);
-    }
-
-    /// <summary>
-    /// Rescales the given value by the currently used DPI-Settings.
-    /// </summary>
-    /// <param name="value">The value to rescale.</param>
-    /// <returns>The rescaled value.</returns>
-    protected static int RescaleByDpiX(int value)
-    {
-      return (int)((value / DEFAULT_DPI_X) * mDpiSize.Width);
     }
 
     /// <summary>
@@ -389,7 +343,7 @@ namespace Com.Couchcoding.GuiLibrary.Dialogs
     {
       if (mShowHeaderArea && Width > 0 && Height > 0)
       {
-        int headerHeight = RescaleByDpiY(HEADER_AREA_HEIGHT);
+        int headerHeight = DpiHelper.RescaleByDpiY(HEADER_AREA_HEIGHT);
 
         if (mHeaderColor != Color.Transparent && mHeaderColor != mContentColor)
         {
@@ -439,8 +393,8 @@ namespace Com.Couchcoding.GuiLibrary.Dialogs
                 , captionFont
                 , captionBrush
                 , new Point(
-                    RescaleByDpiY(12)
-                  , RescaleByDpiY(8)));
+                    DpiHelper.RescaleByDpiY(12)
+                  , DpiHelper.RescaleByDpiY(8)));
             }
           }
         }
@@ -458,10 +412,10 @@ namespace Com.Couchcoding.GuiLibrary.Dialogs
                 , Font
                 , textBrush
                 , new RectangleF(
-                    RescaleByDpiY(24)
-                  , RescaleByDpiY(30)
-                  , ClientRectangle.Width - imgSpaceLeft - RescaleByDpiX(30)
-                  , headerHeight - RescaleByDpiY(22))
+                    DpiHelper.RescaleByDpiY(24)
+                  , DpiHelper.RescaleByDpiY(30)
+                  , ClientRectangle.Width - imgSpaceLeft - DpiHelper.RescaleByDpiX(30)
+                  , headerHeight - DpiHelper.RescaleByDpiY(22))
                 , sFormat);
             }
           }
@@ -477,7 +431,7 @@ namespace Com.Couchcoding.GuiLibrary.Dialogs
     {
       base.OnPaint(e);
 
-      int buttonHeight = mShowFooterArea ? RescaleByDpiY(BUTTON_AREA_HEIGHT) : 0;
+      int buttonHeight = mShowFooterArea ? DpiHelper.RescaleByDpiY(BUTTON_AREA_HEIGHT) : 0;
 
       using (Brush contentBrush = new SolidBrush(ContentColor))
       {
@@ -524,9 +478,7 @@ namespace Com.Couchcoding.GuiLibrary.Dialogs
       SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
       SetStyle(ControlStyles.ResizeRedraw,          true);
 
-      AutoScaleMode = AutoScaleMode.Dpi;
-      Font          = SystemFonts.MessageBoxFont;
-
+      Font                   = SystemFonts.MessageBoxFont;
       ContentColor           = SystemColors.Control;
       HeaderColor            = Color.White;
       HeaderDescriptionColor = Color.DimGray;
@@ -537,7 +489,6 @@ namespace Com.Couchcoding.GuiLibrary.Dialogs
       ShowInTaskbar = false;
       StartPosition = FormStartPosition.CenterParent;
 
-      ReloadDpiSettings(this);
       RecalculatePadding();
     }
 

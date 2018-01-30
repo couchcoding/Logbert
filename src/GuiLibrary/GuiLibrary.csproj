@@ -99,6 +99,7 @@
     <Compile Include="Dialogs\DialogForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Helper\DpiHelper.cs" />
     <Compile Include="Interop\Win32.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

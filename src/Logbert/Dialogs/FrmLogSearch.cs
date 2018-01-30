@@ -344,9 +344,7 @@ namespace Com.Couchcoding.Logbert.Dialogs
     {
       InitializeComponent();
 
-      AutoScaleMode = AutoScaleMode.Dpi;
-      Font          = SystemFonts.MessageBoxFont;
-
+      Font                    = SystemFonts.MessageBoxFont;
       mSearchable             = searchable;
       cmbLookIn.SelectedIndex = 0;
 

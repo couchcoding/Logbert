@@ -2,21 +2,21 @@ using System.Windows.Forms;
 
 namespace Logbert
 {
-    partial class MainForm
+  partial class MainForm
+  {
+    /// <summary>
+    /// Required designer variable.
+    /// </summary>
+    private System.ComponentModel.IContainer components = null;
+
+    #region Windows Form Designer generated code
+
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent()
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
-
-      #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
       this.timeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.levelColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -260,16 +260,16 @@ namespace Logbert
       this.ResumeLayout(false);
       this.PerformLayout();
 
-        }
+    }
 
-        #endregion
+    #endregion
 
-        private System.Windows.Forms.ColumnHeader timeColumnHeader;
-        private System.Windows.Forms.ColumnHeader levelColumnHeader;
-        private System.Windows.Forms.ColumnHeader loggerColumnHeader;
-        private System.Windows.Forms.ColumnHeader threadColumnHeader;
-        private System.Windows.Forms.ColumnHeader msgColumnHeader;
-        private WeifenLuo.WinFormsUI.Docking.DockPanel mainDockPanel;
+    private System.Windows.Forms.ColumnHeader timeColumnHeader;
+    private System.Windows.Forms.ColumnHeader levelColumnHeader;
+    private System.Windows.Forms.ColumnHeader loggerColumnHeader;
+    private System.Windows.Forms.ColumnHeader threadColumnHeader;
+    private System.Windows.Forms.ColumnHeader msgColumnHeader;
+    private WeifenLuo.WinFormsUI.Docking.DockPanel mainDockPanel;
     private Com.Couchcoding.GuiLibrary.Controls.MenuStripEx mnuMain;
     private ToolStripMenuItem mnuMainFile;
     private ToolStripMenuItem mnuMainFileNewLogger;

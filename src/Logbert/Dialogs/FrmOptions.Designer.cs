@@ -65,15 +65,14 @@
       // 
       // lstSettings
       // 
-      this.lstSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+      this.lstSettings.Dock = System.Windows.Forms.DockStyle.Left;
       this.lstSettings.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
       this.lstSettings.FormattingEnabled = true;
       this.lstSettings.IntegralHeight = false;
       this.lstSettings.ItemHeight = 24;
-      this.lstSettings.Location = new System.Drawing.Point(8, 68);
+      this.lstSettings.Location = new System.Drawing.Point(5, 65);
       this.lstSettings.Name = "lstSettings";
-      this.lstSettings.Size = new System.Drawing.Size(160, 324);
+      this.lstSettings.Size = new System.Drawing.Size(160, 372);
       this.lstSettings.TabIndex = 0;
       this.lstSettings.SelectedIndexChanged += new System.EventHandler(this.LstSettingsSelectedIndexChanged);
       // 
@@ -104,17 +103,16 @@
       // FrmOptions
       // 
       this.AcceptButton = this.btnOk;
-      this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
       this.CancelButton = this.btnCancel;
-      this.ClientSize = new System.Drawing.Size(624, 441);
+      this.ClientSize = new System.Drawing.Size(624, 442);
       this.Controls.Add(this.grpSettings);
       this.Controls.Add(this.lstSettings);
       this.Controls.Add(this.btnCancel);
       this.Controls.Add(this.btnOk);
       this.DialogMainCaption = "Options";
       this.DialogMainDescription = "Setup the program behaviour and the look and feel.";
-      this.Location = new System.Drawing.Point(0, 0);
       this.MinimumSize = new System.Drawing.Size(640, 480);
       this.Name = "FrmOptions";
       this.Text = "Options";

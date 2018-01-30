@@ -51,6 +51,7 @@ using Com.Couchcoding.Logbert.Receiver;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Reflection;
+using Com.Couchcoding.GuiLibrary.Helper;
 
 namespace Logbert
 {
@@ -854,6 +855,8 @@ namespace Logbert
     /// <param name="logFileToLoad">The optional path to a log file to load.</param>
     public MainForm(string logFileToLoad)
     {
+      DpiHelper.ReloadDpiSettings(this);
+
       InitializeComponent();
 
       mUpdateLabel = new ToolStripLabel("Update Available")

@@ -28,6 +28,7 @@
 
 #endregion
 
+using Com.Couchcoding.GuiLibrary.Helper;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -135,7 +136,7 @@ namespace Com.Couchcoding.GuiLibrary.Controls
       }
       set
       {
-        base.ItemHeight = value;
+        base.ItemHeight = DpiHelper.RescaleByDpiY(value);
       }
     }
 
@@ -155,9 +156,11 @@ namespace Com.Couchcoding.GuiLibrary.Controls
       }
       set
       {
-        if (value > 0 && mSeperatorHeight != value)
+        int newValue = DpiHelper.RescaleByDpiY(value);
+
+        if (newValue > 0 && mSeperatorHeight != newValue)
         {
-          mSeperatorHeight = value;
+          mSeperatorHeight = newValue;
         }
       }
     }

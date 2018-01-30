@@ -43,6 +43,7 @@ using Com.Couchcoding.Logbert.Logging.Filter;
 using Com.Couchcoding.Logbert.Properties;
 
 using WeifenLuo.WinFormsUI.Docking;
+using Com.Couchcoding.GuiLibrary.Helper;
 
 namespace Com.Couchcoding.Logbert.Dialogs.Docking
 {
