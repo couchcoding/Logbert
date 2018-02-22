@@ -401,12 +401,13 @@ namespace Com.Couchcoding.Logbert.Controls
         {
           this.SuspendDrawing();
 
-          tblLogMessage.Font = new Font(
-              Font.FontFamily
-            , tblLogMessage.Font.Size + 1);
+          tblLogMessage.Font = FontCache.GetFontFromIdentifier(
+              Font.Name
+            , tblLogMessage.Font.Size + 1
+            , FontStyle.Regular);
 
-          mBoldCaptionFont = new Font(
-              Font.FontFamily
+          mBoldCaptionFont = FontCache.GetFontFromIdentifier(
+              Font.Name
             , mBoldCaptionFont.Size + 1
             , FontStyle.Bold);
 
@@ -441,12 +442,13 @@ namespace Com.Couchcoding.Logbert.Controls
         {
           this.SuspendDrawing();
 
-          tblLogMessage.Font = new Font(
-              Font.FontFamily
-            , tblLogMessage.Font.Size - 1);
+          tblLogMessage.Font = FontCache.GetFontFromIdentifier(
+              Font.Name
+            , tblLogMessage.Font.Size - 1
+            , FontStyle.Regular);
 
-          mBoldCaptionFont = new Font(
-              Font.FontFamily
+          mBoldCaptionFont = FontCache.GetFontFromIdentifier(
+              Font.Name
             , mBoldCaptionFont.Size - 1
             , FontStyle.Bold);
 
@@ -483,8 +485,9 @@ namespace Com.Couchcoding.Logbert.Controls
       // Apply the current application theme to the control.
       ThemeManager.CurrentApplicationTheme.ApplyTo(logDetailToolStrip);
 
-      mBoldCaptionFont = new Font(
-          Font
+      mBoldCaptionFont = FontCache.GetFontFromIdentifier(
+          Font.Name
+        , Font.Size
         , FontStyle.Bold);
 
       lblCaptionLogger.Font    = mBoldCaptionFont;

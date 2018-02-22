@@ -882,6 +882,10 @@ namespace Logbert
       // Ensure we're using the systems default dialog font for the main view.
       Font = SystemFonts.MessageBoxFont;
 
+      MainMenuStrip.ImageScalingSize = new Size(
+          DpiHelper.RescaleByDpiX(MainMenuStrip.ImageScalingSize.Width)
+        , DpiHelper.RescaleByDpiY(MainMenuStrip.ImageScalingSize.Height));
+
       // Set the size and location of the main window.
       LoadDialogSettings();
 

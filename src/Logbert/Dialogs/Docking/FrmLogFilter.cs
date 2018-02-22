@@ -415,9 +415,10 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         {
           dgvFilter.SuspendDrawing();
 
-          dgvFilter.Font = new Font(
-              Font.FontFamily
-            , dgvFilter.Font.Size + 1);
+          dgvFilter.Font = FontCache.GetFontFromIdentifier(
+              Font.Name
+            , dgvFilter.Font.Size + 1
+            , FontStyle.Regular);
 
           return dgvFilter.Font.Size < MAX_ZOOM_LEVEL;
         }
@@ -442,9 +443,10 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         {
           dgvFilter.SuspendDrawing();
 
-          dgvFilter.Font = new Font(
-              Font.FontFamily
-            , dgvFilter.Font.Size - 1);
+          dgvFilter.Font = FontCache.GetFontFromIdentifier(
+              Font.Name
+            , dgvFilter.Font.Size - 1
+            , FontStyle.Regular);
 
           return dgvFilter.Font.Size > MIN_ZOOM_LEVEL;
         }

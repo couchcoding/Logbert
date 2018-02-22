@@ -329,9 +329,10 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         {
           dgvBookmarks.SuspendDrawing();
 
-          dgvBookmarks.Font = new Font(
-              Font.FontFamily
-            , dgvBookmarks.Font.Size + 1);
+          dgvBookmarks.Font = FontCache.GetFontFromIdentifier(
+              Font.Name
+            , dgvBookmarks.Font.Size + 1
+            , FontStyle.Regular);
 
           return dgvBookmarks.Font.Size < MAX_ZOOM_LEVEL;
         }
@@ -356,9 +357,10 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         {
           dgvBookmarks.SuspendDrawing();
 
-          dgvBookmarks.Font = new Font(
-              Font.FontFamily
-            , dgvBookmarks.Font.Size - 1);
+          dgvBookmarks.Font = FontCache.GetFontFromIdentifier(
+              Font.Name
+            , dgvBookmarks.Font.Size - 1
+            , FontStyle.Regular);
 
           return dgvBookmarks.Font.Size > MIN_ZOOM_LEVEL;
         }

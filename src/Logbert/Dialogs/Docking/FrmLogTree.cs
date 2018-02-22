@@ -439,9 +439,10 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         {
           tvLoggerTree.SuspendDrawing();
 
-          tvLoggerTree.Font = new Font(
-              Font.FontFamily
-            , tvLoggerTree.Font.Size + 1);
+          tvLoggerTree.Font = FontCache.GetFontFromIdentifier(
+              Font.Name
+            , tvLoggerTree.Font.Size + 1
+            , FontStyle.Regular);
 
           return tvLoggerTree.Font.Size < MAX_ZOOM_LEVEL;
         }
@@ -466,9 +467,10 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         {
           tvLoggerTree.SuspendDrawing();
 
-          tvLoggerTree.Font = new Font(
-              Font.FontFamily
-            , tvLoggerTree.Font.Size - 1);
+          tvLoggerTree.Font = FontCache.GetFontFromIdentifier(
+              Font.Name
+            , tvLoggerTree.Font.Size - 1
+            , FontStyle.Regular);
 
           return tvLoggerTree.Font.Size > MIN_ZOOM_LEVEL;
         }

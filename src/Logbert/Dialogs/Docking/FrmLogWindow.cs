@@ -401,6 +401,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       Color foreColor       = SystemColors.WindowText;
       Color backColor       = SystemColors.Window;
       Brush backgroundBrush = null;
+      FontStyle fontStyle   = FontStyle.Regular;
 
       if ((e.State & DataGridViewElementStates.Selected) == DataGridViewElementStates.Selected)
       {
@@ -415,31 +416,37 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
           case LogLevel.Trace:
             foreColor = Settings.Default.ForegroundColorTrace;
             backColor = Settings.Default.BackgroundColorTrace;
+            fontStyle = Settings.Default.FontStyleTrace;
             backgroundBrush = GdiCache.GetBrushFromColor(backColor);
             break;
           case LogLevel.Debug:
             foreColor = Settings.Default.ForegroundColorDebug;
             backColor = Settings.Default.BackgroundColorDebug;
+            fontStyle = Settings.Default.FontStyleDebug;
             backgroundBrush = GdiCache.GetBrushFromColor(backColor);
             break;
           case LogLevel.Info:
             foreColor = Settings.Default.ForegroundColorInfo;
             backColor = Settings.Default.BackgroundColorInfo;
+            fontStyle = Settings.Default.FontStyleInfo;
             backgroundBrush = GdiCache.GetBrushFromColor(backColor);
             break;
           case LogLevel.Warning:
             foreColor = Settings.Default.ForegroundColorWarning;
             backColor = Settings.Default.BackgroundColorWarning;
+            fontStyle = Settings.Default.FontStyleWarning;
             backgroundBrush = GdiCache.GetBrushFromColor(backColor);
             break;
           case LogLevel.Error:
             foreColor = Settings.Default.ForegroundColorError;
             backColor = Settings.Default.BackgroundColorError;
+            fontStyle = Settings.Default.FontStyleError;
             backgroundBrush = GdiCache.GetBrushFromColor(backColor);
             break;
           case LogLevel.Fatal:
             foreColor = Settings.Default.ForegroundColorFatal;
             backColor = Settings.Default.BackgroundColorFatal;
+            fontStyle = Settings.Default.FontStyleFatal;
             backgroundBrush = GdiCache.GetBrushFromColor(backColor);
             break;
         }
@@ -458,10 +465,15 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         }
         else
         {
+          Font logFont = FontCache.GetFontFromIdentifier(
+              Settings.Default.LogMessagesFontName
+            , Settings.Default.LogMessagesFontSize
+            , fontStyle);
+
           TextRenderer.DrawText(
               e.Graphics
             , e.Value.ToString()
-            , dtgLogMessages.DefaultCellStyle.Font
+            , logFont
             , e.CellBounds
             , foreColor
             , backColor
@@ -577,16 +589,18 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         {
           Settings.Default.SettingChanging -= DefaultSettingChanging;
 
-          dtgLogMessages.DefaultCellStyle.Font = new Font(
+          dtgLogMessages.DefaultCellStyle.Font = FontCache.GetFontFromIdentifier(
               Settings.Default.LogMessagesFontName
-            , Settings.Default.LogMessagesFontSize);
+            , Settings.Default.LogMessagesFontSize
+            , FontStyle.Regular);
         }
         catch
         {
           // Reset the font on error.
-          dtgLogMessages.Font = new Font(
+          dtgLogMessages.Font = FontCache.GetFontFromIdentifier(
               DEFAULT_FONT_NAME
-            , DEFAULT_FONT_SIZE);
+            , DEFAULT_FONT_SIZE
+            , FontStyle.Regular);
 
           mRowHeight = dtgLogMessages.RowTemplate.Height;
 
@@ -864,9 +878,10 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
           {
             dtgLogMessages.SuspendDrawing();
 
-            dtgLogMessages.DefaultCellStyle.Font = new Font(
-                dtgLogMessages.DefaultCellStyle.Font.FontFamily
-              , dtgLogMessages.DefaultCellStyle.Font.Size + 1);
+            dtgLogMessages.DefaultCellStyle.Font = FontCache.GetFontFromIdentifier(
+                dtgLogMessages.DefaultCellStyle.Font.Name
+              , dtgLogMessages.DefaultCellStyle.Font.Size + 1
+              , FontStyle.Regular);
 
             ++mRowHeight;
 
@@ -904,9 +919,10 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
           {
             dtgLogMessages.SuspendDrawing();
 
-            dtgLogMessages.DefaultCellStyle.Font = new Font(
-                dtgLogMessages.DefaultCellStyle.Font.FontFamily
-              , dtgLogMessages.DefaultCellStyle.Font.Size - 1);
+            dtgLogMessages.DefaultCellStyle.Font = FontCache.GetFontFromIdentifier(
+                dtgLogMessages.DefaultCellStyle.Font.Name
+              , dtgLogMessages.DefaultCellStyle.Font.Size - 1
+              , FontStyle.Regular);
 
             --mRowHeight;
 
@@ -1109,6 +1125,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       {
         // Remove the synchronize tree menu item if no tree is available.
         cmLogMessage.Items.Remove(cmsSynchronizeTree);
+        cmLogMessage.Items.Remove(cmsSeperator);
       }
 
       ThemeManager.CurrentApplicationTheme.ApplyTo(cmColumns);
@@ -1118,16 +1135,18 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       {
         try
         {
-          dtgLogMessages.DefaultCellStyle.Font = new Font(
+          dtgLogMessages.DefaultCellStyle.Font = FontCache.GetFontFromIdentifier(
               Settings.Default.LogMessagesFontName
-            , Settings.Default.LogMessagesFontSize);
+            , Settings.Default.LogMessagesFontSize
+            , FontStyle.Regular);
         }
         catch
         {
           // Reset the font on error.
-          dtgLogMessages.Font = new Font(
+          dtgLogMessages.Font = FontCache.GetFontFromIdentifier(
               DEFAULT_FONT_NAME
-            , DEFAULT_FONT_SIZE);
+            , DEFAULT_FONT_SIZE
+            , FontStyle.Regular);
 
           mRowHeight = dtgLogMessages.RowTemplate.Height;
 

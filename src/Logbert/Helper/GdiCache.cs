@@ -1,6 +1,6 @@
 ﻿#region Copyright © 2015 Couchcoding
 
-// File:    BrushCache.cs
+// File:    GdiCache.cs
 // Package: Logbert
 // Project: Logbert
 // 
@@ -34,7 +34,7 @@ using System.Drawing;
 namespace Com.Couchcoding.Logbert.Helper
 {
   /// <summary>
-  /// Implements a cache for <see cref="Brushes"/> nad <see cref="Pen"/>s.
+  /// Implements a cache for <see cref="Brushes"/> and <see cref="Pen"/>s.
   /// </summary>
   public static class GdiCache
   {
@@ -43,7 +43,7 @@ namespace Com.Couchcoding.Logbert.Helper
     /// <summary>
     /// The one and only <see cref="Brush"/> cache.
     /// </summary>
-    private static readonly Dictionary<Color, Brush> mBrushCache = new Dictionary<Color,Brush>();
+    private static readonly Dictionary<Color, Brush> mBrushCache = new Dictionary<Color, Brush>();
 
     /// <summary>
     /// The one and only <see cref="Pen"/> cache.
@@ -51,12 +51,12 @@ namespace Com.Couchcoding.Logbert.Helper
     private static readonly Dictionary<Color, Pen> mPenCache = new Dictionary<Color, Pen>();
 
     /// <summary>
-    /// Simple object for thread synchronization to access the <see cref="Brush"/>es..
+    /// Simple object for thread synchronization to access the <see cref="Brush"/>es.
     /// </summary>
     private static readonly object mBrushSync = new object();
 
     /// <summary>
-    /// Simple object for thread synchronization to access the <see cref="Pen"/>s..
+    /// Simple object for thread synchronization to access the <see cref="Pen"/>s.
     /// </summary>
     private static readonly object mPenSync = new object();
 

@@ -35,6 +35,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Com.Couchcoding.GuiLibrary.Controls
 {
@@ -69,6 +70,19 @@ namespace Com.Couchcoding.GuiLibrary.Controls
       }
 
       #endregion
+    }
+
+    /// <summary>
+    /// Defines all known <see cref="ListView"/> states.
+    /// </summary>
+    private enum ListViewState
+    {
+      Normal = 1,
+      Hot = 2,
+      Selected = 3,
+      Disabled = 4,
+      SelectedAnNotFocused = 5,
+      HotSelected = 6
     }
 
     #endregion
@@ -185,15 +199,29 @@ namespace Com.Couchcoding.GuiLibrary.Controls
     /// Handles the item drawing of a non selected item.
     /// </summary>
     /// <param name="e">A <see cref="T:System.Windows.Forms.DrawItemEventArgs"/> that contains the event data.</param>
-    protected virtual void DrawItemHighlighted(DrawItemEventArgs e)
+    /// <param name="selected">Determines wheter the item is currently selected.</param>
+    protected virtual void DrawItemHighlighted(DrawItemEventArgs e, bool selected)
     {
+      if (VisualStyleRenderer.IsSupported)
+      {
+        VisualStyleElement elementToDraw = selected 
+          ? VisualStyleElement.CreateElement("Explorer::ListView", 1, (int)ListViewState.HotSelected)
+          : VisualStyleElement.CreateElement("Explorer::ListView", 1, (int)ListViewState.Hot);
+
+        if (VisualStyleRenderer.IsElementDefined(elementToDraw))
+        {
+          new VisualStyleRenderer(elementToDraw).DrawBackground(e.Graphics, e.Bounds);
+          return;
+        }
+      }
+
       using (Pen backPen = new Pen(Color.FromArgb(25, SystemColors.Highlight)))
       {
         e.Graphics.FillRectangle(
             backPen.Brush
           , 0
           , e.Bounds.Top
-          , e.Bounds.Width  - 0
+          , e.Bounds.Width - 0
           , e.Bounds.Height - 0);
 
         using (Pen highlightPen = new Pen(Color.FromArgb(100, backPen.Color)))
@@ -202,7 +230,7 @@ namespace Com.Couchcoding.GuiLibrary.Controls
               highlightPen
             , 0
             , e.Bounds.Top
-            , e.Bounds.Width  - 1
+            , e.Bounds.Width - 1
             , e.Bounds.Height - 1);
         }
       }
@@ -212,15 +240,30 @@ namespace Com.Couchcoding.GuiLibrary.Controls
     /// Handles the item drawing of a selected item.
     /// </summary>
     /// <param name="e">A <see cref="T:System.Windows.Forms.DrawItemEventArgs"/> that contains the event data.</param>
-    protected virtual void DrawItemSelected(DrawItemEventArgs e)
+    /// <param name="hover">Determines whether the cursor is currently hovering over the item.</param>
+    protected virtual void DrawItemSelected(DrawItemEventArgs e, bool hover)
     {
+      if (VisualStyleRenderer.IsSupported)
+      {
+        VisualStyleElement elementToDraw = hover 
+          ? VisualStyleElement.CreateElement("Explorer::ListView", 1, (int)ListViewState.HotSelected)
+          : VisualStyleElement.CreateElement("Explorer::ListView", 1, (int)ListViewState.Selected);
+
+        if (VisualStyleRenderer.IsElementDefined(elementToDraw))
+        {
+
+          new VisualStyleRenderer(elementToDraw).DrawBackground(e.Graphics, e.Bounds);
+          return;
+        }
+      }
+
       using (Pen backPen = new Pen(Color.FromArgb(50, SystemColors.Highlight)))
       {
         e.Graphics.FillRectangle(
             backPen.Brush
           , 0
           , e.Bounds.Top
-          , e.Bounds.Width  - 0
+          , e.Bounds.Width - 0
           , e.Bounds.Height - 0);
 
         using (Pen highlightPen = new Pen(Color.FromArgb(200, backPen.Color)))
@@ -229,7 +272,7 @@ namespace Com.Couchcoding.GuiLibrary.Controls
               highlightPen
             , 0
             , e.Bounds.Top
-            , e.Bounds.Width  - 1
+            , e.Bounds.Width - 1
             , e.Bounds.Height - 1);
         }
       }
@@ -289,11 +332,11 @@ namespace Com.Couchcoding.GuiLibrary.Controls
       }
 
       bool isSelected = (e.State & DrawItemState.Selected) == DrawItemState.Selected;
-      bool isHover    = !isSelected && mMouseIndex != -1 && e.Index == mMouseIndex;
+      bool isHover    = mMouseIndex != -1 && e.Index == mMouseIndex;
 
       if (isSelected)
       {
-        DrawItemSelected(e);
+        DrawItemSelected(e, isHover);
 
         if (Focused && ShowFocusCues)
         {
@@ -307,7 +350,7 @@ namespace Com.Couchcoding.GuiLibrary.Controls
 
       if (isHover)
       {
-        DrawItemHighlighted(e);
+        DrawItemHighlighted(e, isSelected);
       }
       
       DrawItemText(e);
@@ -357,10 +400,10 @@ namespace Com.Couchcoding.GuiLibrary.Controls
       if (GetStyle(ControlStyles.UserPaint))
       {
         Message m = new Message();
-        m.HWnd    = Handle;
-        m.Msg     = WM_PRINTCLIENT;
-        m.WParam  = e.Graphics.GetHdc();
-        m.LParam  = (IntPtr)PRF_CLIENT;
+        m.HWnd = Handle;
+        m.Msg = WM_PRINTCLIENT;
+        m.WParam = e.Graphics.GetHdc();
+        m.LParam = (IntPtr)PRF_CLIENT;
 
         DefWndProc(ref m);
         e.Graphics.ReleaseHdc(m.WParam);
