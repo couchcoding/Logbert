@@ -147,18 +147,21 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
     /// <summary>
     /// Gets the columns to display of the <see cref="ILogProvider"/>.
     /// </summary>
-    public override Dictionary<int, string> Columns
+    public override Dictionary<int, LogColumnData> Columns
     {
       get
       {
-        Dictionary<int, string> clmDict = new Dictionary<int, string>
+        Dictionary<int, LogColumnData> clmDict = new Dictionary<int, LogColumnData>
         {
-          { 0, "Number" }
+          { 0, new LogColumnData("Number") }
         };
 
         foreach (LogColumn lgclm in mColumnizer.Columns)
         {
-          clmDict.Add(clmDict.Count, lgclm.Name);
+          clmDict.Add(clmDict.Count, new LogColumnData(
+            lgclm.Name
+          , true
+          , lgclm.ColumnType == LogColumnType.Message ? 1024 : 100));
         }
 
         return clmDict;
@@ -382,10 +385,11 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
     }
 
     /// <summary>
-    /// Saves the current docking layout of the <see cref="ReceiverBase"/> instance.
+    /// Saves the current docking and collumn layout of the <see cref="ILogProvider"/> implementation.
     /// </summary>
     /// <param name="layout">The layout as string to save.</param>
-    public override void SaveLayout(string layout)
+    /// <param name="columnLayout">The current column layout to save.</param>
+    public override void SaveLayout(string layout, List<LogColumnData> columnLayout)
     {
       Properties.Settings.Default.DockLayoutCustomReceiver = layout ?? string.Empty;
       Properties.Settings.Default.SaveSettings();

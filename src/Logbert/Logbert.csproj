@@ -273,6 +273,7 @@
     <Compile Include="Helper\GdiCache.cs" />
     <Compile Include="Helper\Extensions.cs" />
     <Compile Include="Helper\FlatColorTable.cs" />
+    <Compile Include="Helper\LogColumnData.cs" />
     <Compile Include="Helper\Logger.cs" />
     <Compile Include="Helper\LogMessageSelectedEventArgs.cs" />
     <Compile Include="Helper\MruManager.cs" />

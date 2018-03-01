@@ -333,30 +333,23 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
             , SortMode     = DataGridViewColumnSortMode.Programmatic
           });
 
-          foreach (KeyValuePair<int, string> columnData in logProvider.Columns)
+          foreach (KeyValuePair<int, LogColumnData> columnData in logProvider.Columns)
           {
             DataGridViewColumn clmHdr = new DataGridViewTextBoxColumn
             { 
                 Tag        = columnData.Key 
-              , HeaderText = columnData.Value
+              , HeaderText = columnData.Value.Name
+              , Width      = columnData.Value.Width
+              , Visible    = columnData.Value.Visible
               , SortMode   = DataGridViewColumnSortMode.Programmatic
             };
             
             dtgLogMessages.Columns.Add(clmHdr);
-
-            // Set a default width to the column.
-            clmHdr.Width = 100;
           }
         }
         finally
         {
           dtgLogMessages.ResumeDrawing();
-
-          if (dtgLogMessages.ColumnCount > 0)
-          {
-            // Initial strech the last column.
-            dtgLogMessages.Columns[dtgLogMessages.ColumnCount - 1].Width = 1024;
-          }
         }
       }
     }
@@ -576,6 +569,59 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         e.MinimumHeight = mRowHeight;
         e.Height        = mRowHeight;
       }
+    }
+
+    private void dtgLogMessages_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+    {
+      if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+      {
+        cmLogMessage.Show(
+            this
+          , PointToClient(Cursor.Position));
+      }
+    }
+
+    private void dtgLogMessages_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+    {
+      if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+      {
+        dtgLogMessages.Rows[e.RowIndex].Selected = true;
+      }
+    }
+
+    private void copyToClipboardToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      IDataObject clipboardData = dtgLogMessages.GetClipboardContent();
+
+      if (clipboardData != null)
+      {
+        Clipboard.SetDataObject(clipboardData);
+      }
+    }
+
+    private void synchronizeTreeToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      LogMessage selectedMessage = mFilteredLogMessages[dtgLogMessages.SelectedRows[0].Index] as LogMessage;
+
+      if (selectedMessage != null)
+      {
+        mLogcontainer.SynchronizeTree(selectedMessage);
+      } 
+    }
+
+    private void CmsToggleBookmarkClick(object sender, EventArgs e)
+    {
+      LogMessage selectedMessage = mFilteredLogMessages[dtgLogMessages.SelectedRows[0].Index] as LogMessage;
+
+        // Toggle the bookmark state.
+        if (mBookmarks.Contains(selectedMessage))
+        {
+          RemoveBookmark(selectedMessage);
+        }
+        else
+        {
+          AddBookmark(selectedMessage);
+        }
     }
 
     /// <summary>
@@ -1104,6 +1150,23 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       }
     }
 
+    public List<LogColumnData> GetColumnLayout()
+    {
+      List<LogColumnData> columnLayout = new List<LogColumnData>();
+
+      foreach (DataGridViewColumn column in dtgLogMessages.Columns)
+      {
+        if ((int)column.Tag == -1)
+        {
+          continue;
+        }
+
+        columnLayout.Add(new LogColumnData(column.HeaderText, column.Visible, column.Width));
+      }
+
+      return columnLayout;
+    }
+
     #endregion
 
     #region Constructor
@@ -1175,57 +1238,5 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
     #endregion
 
-    private void dtgLogMessages_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-    {
-      if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
-      {
-        cmLogMessage.Show(
-            this
-          , PointToClient(Cursor.Position));
-      }
-    }
-
-    private void dtgLogMessages_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
-    {
-      if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
-      {
-        dtgLogMessages.Rows[e.RowIndex].Selected = true;
-      }
-    }
-
-    private void copyToClipboardToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      IDataObject clipboardData = dtgLogMessages.GetClipboardContent();
-
-      if (clipboardData != null)
-      {
-        Clipboard.SetDataObject(clipboardData);
-      }
-    }
-
-    private void synchronizeTreeToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      LogMessage selectedMessage = mFilteredLogMessages[dtgLogMessages.SelectedRows[0].Index] as LogMessage;
-
-      if (selectedMessage != null)
-      {
-        mLogcontainer.SynchronizeTree(selectedMessage);
-      } 
-    }
-
-    private void CmsToggleBookmarkClick(object sender, EventArgs e)
-    {
-      LogMessage selectedMessage = mFilteredLogMessages[dtgLogMessages.SelectedRows[0].Index] as LogMessage;
-
-        // Toggle the bookmark state.
-        if (mBookmarks.Contains(selectedMessage))
-        {
-          RemoveBookmark(selectedMessage);
-        }
-        else
-        {
-          AddBookmark(selectedMessage);
-        }
-    }
   }
 }

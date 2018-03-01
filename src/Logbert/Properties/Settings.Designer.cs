@@ -384,18 +384,6 @@ namespace Com.Couchcoding.Logbert.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("250")]
-        public int WaitCursorTimeout {
-            get {
-                return ((int)(this["WaitCursorTimeout"]));
-            }
-            set {
-                this["WaitCursorTimeout"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string PnlSyslogSettingsInterface {
             get {
@@ -1395,6 +1383,282 @@ namespace Com.Couchcoding.Logbert.Properties {
             }
             set {
                 this["DockLayoutWinDebugReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1,1,1,1,1,1")]
+        public string ColumnVisibleLog4NetDirReceiver {
+            get {
+                return ((string)(this["ColumnVisibleLog4NetDirReceiver"]));
+            }
+            set {
+                this["ColumnVisibleLog4NetDirReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100,100,100,100,100,1024")]
+        public string ColumnWidthLog4NetDirReceiver {
+            get {
+                return ((string)(this["ColumnWidthLog4NetDirReceiver"]));
+            }
+            set {
+                this["ColumnWidthLog4NetDirReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1,1,1,1,1,1")]
+        public string ColumnVisibleLog4NetUdpReceiver {
+            get {
+                return ((string)(this["ColumnVisibleLog4NetUdpReceiver"]));
+            }
+            set {
+                this["ColumnVisibleLog4NetUdpReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1,1,1,1,1,1")]
+        public string ColumnVisibleLog4NetFileReceiver {
+            get {
+                return ((string)(this["ColumnVisibleLog4NetFileReceiver"]));
+            }
+            set {
+                this["ColumnVisibleLog4NetFileReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100,100,100,100,100,1024")]
+        public string ColumnWidthLog4NetUdpReceiver {
+            get {
+                return ((string)(this["ColumnWidthLog4NetUdpReceiver"]));
+            }
+            set {
+                this["ColumnWidthLog4NetUdpReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100,100,100,100,100,1024")]
+        public string ColumnWidthLog4NetFileReceiver {
+            get {
+                return ((string)(this["ColumnWidthLog4NetFileReceiver"]));
+            }
+            set {
+                this["ColumnWidthLog4NetFileReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1,1,1,1,1,1")]
+        public string ColumnVisibleNLogDirReceiver {
+            get {
+                return ((string)(this["ColumnVisibleNLogDirReceiver"]));
+            }
+            set {
+                this["ColumnVisibleNLogDirReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1,1,1,1,1,1")]
+        public string ColumnVisibleNLogFileReceiver {
+            get {
+                return ((string)(this["ColumnVisibleNLogFileReceiver"]));
+            }
+            set {
+                this["ColumnVisibleNLogFileReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1,1,1,1,1,1")]
+        public string ColumnVisibleNLogTcpReceiver {
+            get {
+                return ((string)(this["ColumnVisibleNLogTcpReceiver"]));
+            }
+            set {
+                this["ColumnVisibleNLogTcpReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1,1,1,1,1,1")]
+        public string ColumnVisibleNLogUdpReceiver {
+            get {
+                return ((string)(this["ColumnVisibleNLogUdpReceiver"]));
+            }
+            set {
+                this["ColumnVisibleNLogUdpReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100,100,100,100,100,1024")]
+        public string ColumnWidthNLogDirReceiver {
+            get {
+                return ((string)(this["ColumnWidthNLogDirReceiver"]));
+            }
+            set {
+                this["ColumnWidthNLogDirReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100,100,100,100,100,1024")]
+        public string ColumnWidthNLogFileReceiver {
+            get {
+                return ((string)(this["ColumnWidthNLogFileReceiver"]));
+            }
+            set {
+                this["ColumnWidthNLogFileReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100,100,100,100,100,1024")]
+        public string ColumnWidthNLogTcpReceiver {
+            get {
+                return ((string)(this["ColumnWidthNLogTcpReceiver"]));
+            }
+            set {
+                this["ColumnWidthNLogTcpReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100,100,100,100,100,1024")]
+        public string ColumnWidthNLogUdpReceiver {
+            get {
+                return ((string)(this["ColumnWidthNLogUdpReceiver"]));
+            }
+            set {
+                this["ColumnWidthNLogUdpReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1,1,1,1,1,1,1,1")]
+        public string ColumnVisibleEventlogReceiver {
+            get {
+                return ((string)(this["ColumnVisibleEventlogReceiver"]));
+            }
+            set {
+                this["ColumnVisibleEventlogReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100,100,100,100,100,100,100,1024")]
+        public string ColumnWidthEventlogReceiver {
+            get {
+                return ((string)(this["ColumnWidthEventlogReceiver"]));
+            }
+            set {
+                this["ColumnWidthEventlogReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1,1,1,1,1,1,1")]
+        public string ColumnVisibleSyslogFileReceiver {
+            get {
+                return ((string)(this["ColumnVisibleSyslogFileReceiver"]));
+            }
+            set {
+                this["ColumnVisibleSyslogFileReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100,100,100,100,100,100,1024")]
+        public string ColumnWidthSyslogFileReceiver {
+            get {
+                return ((string)(this["ColumnWidthSyslogFileReceiver"]));
+            }
+            set {
+                this["ColumnWidthSyslogFileReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1,1,1,1,1,1,1")]
+        public string ColumnVisibleSyslogUdpReceiver {
+            get {
+                return ((string)(this["ColumnVisibleSyslogUdpReceiver"]));
+            }
+            set {
+                this["ColumnVisibleSyslogUdpReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100,100,100,100,100,100,1024")]
+        public string ColumnWidthSyslogUdpReceiver {
+            get {
+                return ((string)(this["ColumnWidthSyslogUdpReceiver"]));
+            }
+            set {
+                this["ColumnWidthSyslogUdpReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1,1,1,1,1")]
+        public string ColumnVisibleWinDebugReceiver {
+            get {
+                return ((string)(this["ColumnVisibleWinDebugReceiver"]));
+            }
+            set {
+                this["ColumnVisibleWinDebugReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100,100,100,100,1024")]
+        public string ColumnWidthWinDebugReceiver {
+            get {
+                return ((string)(this["ColumnWidthWinDebugReceiver"]));
+            }
+            set {
+                this["ColumnWidthWinDebugReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        public int WaitCursorTimeout {
+            get {
+                return ((int)(this["WaitCursorTimeout"]));
+            }
+            set {
+                this["WaitCursorTimeout"] = value;
             }
         }
     }

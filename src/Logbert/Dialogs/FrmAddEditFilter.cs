@@ -29,6 +29,7 @@
 #endregion
 
 using Com.Couchcoding.GuiLibrary.Dialogs;
+using Com.Couchcoding.Logbert.Helper;
 using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Logging.Filter;
 using Com.Couchcoding.Logbert.Properties;
@@ -124,9 +125,9 @@ namespace Com.Couchcoding.Logbert.Dialogs
 
       if (logProvider != null)
       {
-        foreach (string columnName in logProvider.Columns.Values)
+        foreach (LogColumnData columnName in logProvider.Columns.Values)
         {
-          cmbColumnToFilter.Items.Add(columnName);
+          cmbColumnToFilter.Items.Add(columnName.Name);
         }
 
         if (cmbColumnToFilter.Items.Count > 0)

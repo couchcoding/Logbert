@@ -32,6 +32,7 @@ using System;
 using System.Collections.Generic;
 using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Logging;
+using Com.Couchcoding.Logbert.Helper;
 
 namespace Com.Couchcoding.Logbert.Receiver
 {
@@ -102,7 +103,7 @@ namespace Com.Couchcoding.Logbert.Receiver
     /// <summary>
     /// Gets the columns to display of the <see cref="ILogProvider"/>.
     /// </summary>
-    public abstract Dictionary<int, string> Columns
+    public abstract Dictionary<int, LogColumnData> Columns
     {
       get;
     }
@@ -262,10 +263,11 @@ namespace Com.Couchcoding.Logbert.Receiver
     }
 
     /// <summary>
-    /// Saves the current docking layout of the <see cref="ReceiverBase"/> instance.
+    /// Saves the current docking and collumn layout of the <see cref="ILogProvider"/> implementation.
     /// </summary>
     /// <param name="layout">The layout as string to save.</param>
-    public abstract void SaveLayout(string layout);
+    /// <param name="columnLayout">The current column layout to save.</param>
+    public abstract void SaveLayout(string layout, List<LogColumnData> columnLayout);
 
     /// <summary>
     /// Loads the docking layout of the <see cref="ReceiverBase"/> instance.

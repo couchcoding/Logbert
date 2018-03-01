@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 
 using Com.Couchcoding.Logbert.Logging;
+using Com.Couchcoding.Logbert.Helper;
 
 namespace Com.Couchcoding.Logbert.Interfaces
 {
@@ -85,7 +86,7 @@ namespace Com.Couchcoding.Logbert.Interfaces
     /// <summary>
     /// Gets the columns to display of the <see cref="ILogProvider"/>.
     /// </summary>
-    Dictionary<int, string> Columns
+    Dictionary<int, LogColumnData> Columns
     {
       get;
     }
@@ -187,10 +188,11 @@ namespace Com.Couchcoding.Logbert.Interfaces
     string GetCsvHeader();
 
     /// <summary>
-    /// Saves the current docking layout of the <see cref="ILogProvider"/> implementation.
+    /// Saves the current docking and collumn layout of the <see cref="ILogProvider"/> implementation.
     /// </summary>
     /// <param name="layout">The layout as string to save.</param>
-    void SaveLayout(string layout);
+    /// <param name="columnLayout">The current column layout to save.</param>
+    void SaveLayout(string layout, List<LogColumnData> columnLayout);
 
     /// <summary>
     /// Loads the docking layout of the <see cref="ILogProvider"/> implementation.

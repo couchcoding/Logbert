@@ -144,22 +144,25 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
     /// <summary>
     /// Gets the columns to display of the <see cref="ILogProvider"/>.
     /// </summary>
-    public override Dictionary<int, string> Columns
+    public override Dictionary<int, LogColumnData> Columns
     {
       get
       {
-        return new Dictionary<int, string>
+        string[] visibleVal = Properties.Settings.Default.ColumnVisibleSyslogFileReceiver.Split(',');
+        string[] widthVal   = Properties.Settings.Default.ColumnWidthSyslogFileReceiver.Split(',');
+
+        return new Dictionary<int, LogColumnData>
         {
-          { 0, "Number"             },
-          { 1, "Severity"           },
-          { 2, "Local Machine Time" },
-          { 3, "Time"               },
-          { 4, "Facility"           },
-          { 5, "Sender"             },
-          { 6, "Message"            }
+          { 0, new LogColumnData("Number",             visibleVal[0] == "1", int.Parse(widthVal[0])) },
+          { 1, new LogColumnData("Severity",           visibleVal[1] == "1", int.Parse(widthVal[1])) },
+          { 2, new LogColumnData("Local Machine Time", visibleVal[2] == "1", int.Parse(widthVal[2])) },
+          { 3, new LogColumnData("Time",               visibleVal[3] == "1", int.Parse(widthVal[3])) },
+          { 4, new LogColumnData("Facility",           visibleVal[4] == "1", int.Parse(widthVal[4])) },
+          { 5, new LogColumnData("Sender",             visibleVal[5] == "1", int.Parse(widthVal[5])) },
+          { 6, new LogColumnData("Message",            visibleVal[6] == "1", int.Parse(widthVal[6])) }
         };
       }
-    }
+    } 
 
     /// <summary>
     /// Gets or sets the active state if the <see cref="ILogProvider"/>.
@@ -422,12 +425,34 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
     }
 
     /// <summary>
-    /// Saves the current docking layout of the <see cref="ReceiverBase"/> instance.
+    /// Saves the current docking and collumn layout of the <see cref="ILogProvider"/> implementation.
     /// </summary>
     /// <param name="layout">The layout as string to save.</param>
-    public override void SaveLayout(string layout)
+    /// <param name="columnLayout">The current column layout to save.</param>
+    public override void SaveLayout(string layout, List<LogColumnData> columnLayout)
     {
       Properties.Settings.Default.DockLayoutSyslogFileReceiver = layout ?? string.Empty;
+
+      Properties.Settings.Default.ColumnVisibleSyslogFileReceiver = string.Format(
+          "{0},{1},{2},{3},{4},{5},{6}"
+        , columnLayout[0].Visible ? 1 : 0
+        , columnLayout[1].Visible ? 1 : 0
+        , columnLayout[2].Visible ? 1 : 0
+        , columnLayout[3].Visible ? 1 : 0
+        , columnLayout[4].Visible ? 1 : 0
+        , columnLayout[5].Visible ? 1 : 0
+        , columnLayout[6].Visible ? 1 : 0);
+
+      Properties.Settings.Default.ColumnWidthSyslogFileReceiver = string.Format(
+          "{0},{1},{2},{3},{4},{5},{6}"
+        , columnLayout[0].Width
+        , columnLayout[1].Width
+        , columnLayout[2].Width
+        , columnLayout[3].Width
+        , columnLayout[4].Width
+        , columnLayout[5].Width
+        , columnLayout[6].Width);
+
       Properties.Settings.Default.SaveSettings();
     }
 

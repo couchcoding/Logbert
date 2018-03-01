@@ -92,9 +92,6 @@
     <Setting Name="FontStyleFatal" Type="System.Drawing.FontStyle" Scope="User">
       <Value Profile="(Default)">Regular</Value>
     </Setting>
-    <Setting Name="WaitCursorTimeout" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">250</Value>
-    </Setting>
     <Setting Name="PnlSyslogSettingsInterface" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
@@ -346,6 +343,75 @@
     </Setting>
     <Setting Name="DockLayoutWinDebugReceiver" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ColumnVisibleLog4NetDirReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1,1,1,1,1,1</Value>
+    </Setting>
+    <Setting Name="ColumnWidthLog4NetDirReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100,100,100,100,100,1024</Value>
+    </Setting>
+    <Setting Name="ColumnVisibleLog4NetUdpReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1,1,1,1,1,1</Value>
+    </Setting>
+    <Setting Name="ColumnVisibleLog4NetFileReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1,1,1,1,1,1</Value>
+    </Setting>
+    <Setting Name="ColumnWidthLog4NetUdpReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100,100,100,100,100,1024</Value>
+    </Setting>
+    <Setting Name="ColumnWidthLog4NetFileReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100,100,100,100,100,1024</Value>
+    </Setting>
+    <Setting Name="ColumnVisibleNLogDirReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1,1,1,1,1,1</Value>
+    </Setting>
+    <Setting Name="ColumnVisibleNLogFileReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1,1,1,1,1,1</Value>
+    </Setting>
+    <Setting Name="ColumnVisibleNLogTcpReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1,1,1,1,1,1</Value>
+    </Setting>
+    <Setting Name="ColumnVisibleNLogUdpReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1,1,1,1,1,1</Value>
+    </Setting>
+    <Setting Name="ColumnWidthNLogDirReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100,100,100,100,100,1024</Value>
+    </Setting>
+    <Setting Name="ColumnWidthNLogFileReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100,100,100,100,100,1024</Value>
+    </Setting>
+    <Setting Name="ColumnWidthNLogTcpReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100,100,100,100,100,1024</Value>
+    </Setting>
+    <Setting Name="ColumnWidthNLogUdpReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100,100,100,100,100,1024</Value>
+    </Setting>
+    <Setting Name="ColumnVisibleEventlogReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1,1,1,1,1,1,1,1</Value>
+    </Setting>
+    <Setting Name="ColumnWidthEventlogReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100,100,100,100,100,100,100,1024</Value>
+    </Setting>
+    <Setting Name="ColumnVisibleSyslogFileReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1,1,1,1,1,1,1</Value>
+    </Setting>
+    <Setting Name="ColumnWidthSyslogFileReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100,100,100,100,100,100,1024</Value>
+    </Setting>
+    <Setting Name="ColumnVisibleSyslogUdpReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1,1,1,1,1,1,1</Value>
+    </Setting>
+    <Setting Name="ColumnWidthSyslogUdpReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100,100,100,100,100,100,1024</Value>
+    </Setting>
+    <Setting Name="ColumnVisibleWinDebugReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1,1,1,1,1</Value>
+    </Setting>
+    <Setting Name="ColumnWidthWinDebugReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100,100,100,100,1024</Value>
+    </Setting>
+    <Setting Name="WaitCursorTimeout" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1000</Value>
     </Setting>
   </Settings>
 </SettingsFile>

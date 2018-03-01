@@ -62,17 +62,20 @@ namespace Com.Couchcoding.Logbert.Receiver.WinDebugReceiver
     /// <summary>
     /// Gets the columns to display of the <see cref="ILogProvider"/>.
     /// </summary>
-    public override Dictionary<int, string> Columns
+    public override Dictionary<int, LogColumnData> Columns
     {
       get
       {
-        return new Dictionary<int, string>
+        string[] visibleVal = Properties.Settings.Default.ColumnVisibleWinDebugReceiver.Split(',');
+        string[] widthVal   = Properties.Settings.Default.ColumnWidthWinDebugReceiver.Split(',');
+
+        return new Dictionary<int, LogColumnData>
         {
-          { 0, "Number"     },
-          { 1, "Level"      },
-          { 2, "Timestamp"  },
-          { 3, "Process ID" },
-          { 4, "Message"    }
+          { 0, new LogColumnData("Number",     visibleVal[0] == "1", int.Parse(widthVal[0])) },
+          { 1, new LogColumnData("Level",      visibleVal[1] == "1", int.Parse(widthVal[1])) },
+          { 2, new LogColumnData("Timestamp",  visibleVal[2] == "1", int.Parse(widthVal[2])) },
+          { 3, new LogColumnData("Process ID", visibleVal[3] == "1", int.Parse(widthVal[3])) },
+          { 4, new LogColumnData("Message",    visibleVal[4] == "1", int.Parse(widthVal[4])) }
         };
       }
     }
@@ -275,12 +278,30 @@ namespace Com.Couchcoding.Logbert.Receiver.WinDebugReceiver
     }
 
     /// <summary>
-    /// Saves the current docking layout of the <see cref="ReceiverBase"/> instance.
+    /// Saves the current docking and collumn layout of the <see cref="ILogProvider"/> implementation.
     /// </summary>
     /// <param name="layout">The layout as string to save.</param>
-    public override void SaveLayout(string layout)
+    /// <param name="columnLayout">The current column layout to save.</param>
+    public override void SaveLayout(string layout, List<LogColumnData> columnLayout)
     {
       Properties.Settings.Default.DockLayoutWinDebugReceiver = layout ?? string.Empty;
+
+      Properties.Settings.Default.ColumnVisibleWinDebugReceiver = string.Format(
+          "{0},{1},{2},{3},{4}"
+        , columnLayout[0].Visible ? 1 : 0
+        , columnLayout[1].Visible ? 1 : 0
+        , columnLayout[2].Visible ? 1 : 0
+        , columnLayout[3].Visible ? 1 : 0
+        , columnLayout[4].Visible ? 1 : 0);
+
+      Properties.Settings.Default.ColumnWidthWinDebugReceiver = string.Format(
+          "{0},{1},{2},{3},{4}"
+        , columnLayout[0].Width
+        , columnLayout[1].Width
+        , columnLayout[2].Width
+        , columnLayout[3].Width
+        , columnLayout[4].Width);
+
       Properties.Settings.Default.SaveSettings();
     }
 

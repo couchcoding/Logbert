@@ -930,7 +930,9 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
             if (memStream.Length > 0)
             {
-              mLogProvider.SaveLayout(Encoding.UTF8.GetString(memStream.ToArray()));
+              mLogProvider.SaveLayout(
+                  Encoding.UTF8.GetString(memStream.ToArray())
+                , ((FrmLogWindow)mLogWindow).GetColumnLayout());
             }
           }
         }
