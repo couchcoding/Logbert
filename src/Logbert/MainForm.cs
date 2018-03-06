@@ -77,7 +77,7 @@ namespace Logbert
     /// <summary>
     /// Defines the <see cref="Regex"/> to parse a release name from the GitHub API 3 JSON string.
     /// </summary>
-    private const string RELEASE_VERSION_REGEX = "\"name\":\"([\\d\\.]+)\"";
+    private const string RELEASE_VERSION_REGEX = "\"name\":[\\s]*\"([\\d\\.]+)\"";
 
     #endregion
 
@@ -615,6 +615,9 @@ namespace Logbert
 
       if (Settings.Default.FrmMainCheckForUpdateOnStartup)
       {
+        // Use the security protocol Tls12 for web requests to github.
+        ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+
         // Build the web request object for the online update check.
         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(LOGBERT_UPDATE_API);
 
