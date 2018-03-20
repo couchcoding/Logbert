@@ -195,6 +195,19 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
     }
 
     /// <summary>
+    /// Handles the CheckedChanged event of the join multicast group <see cref="CheckBox"/>.
+    /// </summary>
+    private void ChkMulticastGroupCheckedChanged(object sender, EventArgs e)
+    {
+      txtMulticastIp.Enabled = chkMulticastGroup.Checked;
+
+      if (txtMulticastIp.Enabled)
+      {
+        txtMulticastIp.Select();
+      }
+    }
+
+    /// <summary>
     /// Raises the <see cref="E:System.Windows.Forms.UserControl.Load"/> event.
     /// </summary>
     /// <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data. </param>
@@ -216,7 +229,9 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
           }
         }
 
-        nudPort.Value = Settings.Default.PnlLog4NetUdpSettingsPort;
+        nudPort.Value             = Settings.Default.PnlLog4NetUdpSettingsPort;
+        txtMulticastIp.Text       = Settings.Default.PnlLog4NetUdpSettingsMulticastAddress;
+        chkMulticastGroup.Checked = Settings.Default.PnlLog4NetUdpSettingsJoinMulticast;
       }
     }
 
@@ -230,9 +245,24 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
     /// <returns>The <see cref="ValidationResult"/> of the validation.</returns>
     public ValidationResult ValidateSettings()
     {
-      return cmbNetworkInterface.SelectedItem != null
-        ? ValidationResult.Success
-        : ValidationResult.Error(Resources.strLog4NetUdpReceiverNoNetworkInterfaceAvailable);
+      if (cmbNetworkInterface.SelectedItem == null)
+      {
+        return ValidationResult.Error(Resources.strLog4NetUdpReceiverNoNetworkInterfaceAvailable);
+      }
+
+      if (chkMulticastGroup.Checked)
+      {
+        IPAddress parsedMulticastAddress;
+
+        if (!IPAddress.TryParse(txtMulticastIp.Text, out parsedMulticastAddress))
+        {
+          txtMulticastIp.Select();
+
+          return ValidationResult.Error(Resources.strLog4NetUdpReceiverInvalidIpAddress);
+        }
+      }
+
+      return ValidationResult.Success;
     }
 
     /// <summary>
@@ -256,14 +286,17 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
               if (ModifierKeys != Keys.Shift)
               {
                 // Save the current settings as new default values.
-                Settings.Default.PnlLog4NetUdpSettingsInterface = cmbNetworkInterface.SelectedItem.ToString();
-                Settings.Default.PnlLog4NetUdpSettingsPort      = (int)nudPort.Value;
+                Settings.Default.PnlLog4NetUdpSettingsInterface        = cmbNetworkInterface.SelectedItem.ToString();
+                Settings.Default.PnlLog4NetUdpSettingsPort             = (int)nudPort.Value;
+                Settings.Default.PnlLog4NetUdpSettingsJoinMulticast    = chkMulticastGroup.Checked;
+                Settings.Default.PnlLog4NetUdpSettingsMulticastAddress = txtMulticastIp.Text;
 
                 Settings.Default.SaveSettings();
               }
 
-              return new Log4NetUdpReceiver(
-                  (int)nudPort.Value
+              return new Log4NetUdpReceiver(chkMulticastGroup.Checked 
+                  ? IPAddress.Parse(txtMulticastIp.Text.Trim()) 
+                  : null
                 , new IPEndPoint(ipAddress.Address, (int)nudPort.Value));
             }
           }

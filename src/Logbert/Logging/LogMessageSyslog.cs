@@ -223,8 +223,9 @@ namespace Com.Couchcoding.Logbert.Logging
     /// Parses the given <paramref name="data"/> for possible log message parts.
     /// </summary>
     /// <param name="data">The data string to parse.</param>
+    /// <param name="timestampFormat">The format of the timestamp within the message.</param>
     /// <returns><c>True</c> on success, otherwise <c>false</c>.</returns>
-    private bool ParseData(string data)
+    private bool ParseData(string data, string timestampFormat)
     {
       if (string.IsNullOrEmpty(data))
       {
@@ -246,23 +247,23 @@ namespace Com.Couchcoding.Logbert.Logging
       mFacility       = (Facility)((int)priMatrix >> 3);
       mLocalTimestamp = DateTime.Now;
 
-      string syslogMessage = data.Substring(msgMtc.Groups[0].Length);
+      string syslogMessage = data.Substring(msgMtc.Groups[0].Length).TrimStart();
       int hostIndex = 0;
 
-      if (syslogMessage.Length > 15)
+      if (syslogMessage.Length > timestampFormat.Length)
       { 
-        string strTimeStamp = syslogMessage.Substring(hostIndex, 15);
+        string strTimeStamp = syslogMessage.Substring(hostIndex, timestampFormat.Length);
 
-        bool dtParseResult = DateTime.TryParseExact(
+        bool dtParseResult = !string.IsNullOrEmpty(timestampFormat) && DateTime.TryParseExact(
             strTimeStamp
-          , "MMM d HH:mm:ss"
+          , timestampFormat
           , CultureInfo.InvariantCulture
           , DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.AssumeLocal
           , out mTimestamp);
 
         if (dtParseResult)
         {
-          hostIndex += 16;
+          hostIndex += timestampFormat.Length + 1;
         }
         else
         {
@@ -378,9 +379,10 @@ namespace Com.Couchcoding.Logbert.Logging
     /// </summary>
     /// <param name="rawData">The data <see cref="Array"/> the new <see cref="LogMessageSyslog"/> represents.</param>
     /// <param name="index">The index of the <see cref="LogMessage"/>.</param>
-    public LogMessageSyslog(string rawData, int index) : base(rawData, index)
+    /// <param name="timestampFormat">The format of the timestamp within the message.</param>
+    public LogMessageSyslog(string rawData, int index, string timestampFormat) : base(rawData, index)
     {
-      if (!ParseData(rawData))
+      if (!ParseData(rawData, timestampFormat))
       {
         throw new ApplicationException("Unable to parse the logger data.");
       }

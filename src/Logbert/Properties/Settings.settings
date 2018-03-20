@@ -413,5 +413,59 @@
     <Setting Name="WaitCursorTimeout" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1000</Value>
     </Setting>
+    <Setting Name="PnlCustomUdpSettingsInterface" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlCustomUdpSettingsPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">7071</Value>
+    </Setting>
+    <Setting Name="DockLayoutCustomUdpReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlCustomUdpSettingsMulticastAddress" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlCustomUdpSettingsJoinMulticast" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="PnlLog4NetUdpSettingsJoinMulticast" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="PnlLog4NetUdpSettingsMulticastAddress" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlNLogUdpSettingsJoinMulticast" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="PnlNLogUdpSettingsMulticastAddress" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DockLayoutCustomDirReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlCustomDirectorySettingsDirectory" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlCustomDirectorySettingsPattern" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlCustomDirectorySettingsReadAllExisting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DockLayoutCustomTcpReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlCustomTcpSettingsInterface" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlCustomTcpSettingsPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="PnlSyslogFileSettingsTimestampFormat" Type="System.String" Scope="User">
+      <Value Profile="(Default)">MMM d HH:mm:ss</Value>
+    </Setting>
+    <Setting Name="PnlSyslogUdpSettingsTimestampFormat" Type="System.String" Scope="User">
+      <Value Profile="(Default)">MMM d HH:mm:ss</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

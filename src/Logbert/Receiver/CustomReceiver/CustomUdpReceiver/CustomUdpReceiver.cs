@@ -1,12 +1,12 @@
-﻿#region Copyright © 2015 Couchcoding
+﻿#region Copyright © 2018 Couchcoding
 
-// File:    NLogUdpReceiver.cs
+// File:    CustomUdpReceiver.cs
 // Package: Logbert
 // Project: Logbert
 // 
 // The MIT License (MIT)
 // 
-// Copyright (c) 2015 Couchcoding
+// Copyright (c) 2018 Couchcoding
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,25 +30,26 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Com.Couchcoding.Logbert.Helper;
+using Com.Couchcoding.Logbert.Interfaces;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Windows.Forms;
-
-using Com.Couchcoding.Logbert.Interfaces;
-
-using Com.Couchcoding.Logbert.Controls;
-using Com.Couchcoding.Logbert.Helper;
+using Com.Couchcoding.Logbert.Receiver.Log4NetUdpReceiver;
 using Com.Couchcoding.Logbert.Logging;
+using Com.Couchcoding.Logbert.Controls;
 
-namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
+namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomUdpReceiver
 {
-  /// <summary>
-  /// Implements a <see cref="ILogProvider"/> for the NLog UDP service.
-  /// </summary>
-  public class NLogUdpReceiver : ReceiverBase
+  public sealed class CustomUdpReceiver : ReceiverBase
   {
     #region Private Fields
+
+    /// <summary>
+    /// The linked <see cref="Columnizer"/> instance.
+    /// </summary>
+    private readonly Columnizer mColumnizer;
 
     /// <summary>
     /// Holds the multicast IP address to listen for.
@@ -128,7 +129,7 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
     {
       get
       {
-        return "NLog UDP Receiver";
+        return "Custom UDP Receiver";
       }
     }
 
@@ -161,13 +162,25 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
     }
 
     /// <summary>
+    /// Determines whether this <see cref="ILogProvider"/> supports the logger tree window.
+    /// </summary>
+    public override bool HasLoggerTree
+    {
+      get
+      {
+        // Currently no logger tree is supported.
+        return false;
+      }
+    }
+
+    /// <summary>
     /// Gets the settings <see cref="Control"/> of the <see cref="ILogProvider"/>.
     /// </summary>
     public override ILogSettingsCtrl Settings
     {
       get
       {
-        return new NLogUdpReceiverSettings();
+        return new CustomUdpReceiverSettings();
       }
     }
 
@@ -178,20 +191,22 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
     {
       get
       {
-        string[] visibleVal = Properties.Settings.Default.ColumnVisibleNLogUdpReceiver.Split(',');
-        string[] widthVal   = Properties.Settings.Default.ColumnWidthNLogUdpReceiver.Split(',');
-
-        return new Dictionary<int, LogColumnData>
+        Dictionary<int, LogColumnData> clmDict = new Dictionary<int, LogColumnData>
         {
-          { 0, new LogColumnData("Number",    visibleVal[0] == "1", int.Parse(widthVal[0])) },
-          { 1, new LogColumnData("Level",     visibleVal[1] == "1", int.Parse(widthVal[1])) },
-          { 2, new LogColumnData("Timestamp", visibleVal[2] == "1", int.Parse(widthVal[2])) },
-          { 3, new LogColumnData("Logger",    visibleVal[3] == "1", int.Parse(widthVal[3])) },
-          { 4, new LogColumnData("Thread",    visibleVal[4] == "1", int.Parse(widthVal[4])) },
-          { 5, new LogColumnData("Message",   visibleVal[5] == "1", int.Parse(widthVal[5])) }
+          { 0, new LogColumnData("Number") }
         };
+
+        foreach (LogColumn lgclm in mColumnizer.Columns)
+        {
+          clmDict.Add(clmDict.Count, new LogColumnData(
+            lgclm.Name
+          , true
+          , lgclm.ColumnType == LogColumnType.Message ? 1024 : 100));
+        }
+
+        return clmDict;
       }
-    } 
+    }
 
     /// <summary>
     /// Determines whether this <see cref="ILogProvider"/> supports reloading of the content, ot not.
@@ -211,7 +226,7 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
     {
       get
       {
-        return new Log4NetDetailsControl();
+        return new CustomDetailsControl(mColumnizer);
       }
     }
 
@@ -254,7 +269,7 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
       IPEndPoint wantedIpEndPoint   = ((UdpState)(ar.AsyncState)).EndPoint;
       IPEndPoint receivedIpEndPoint = new IPEndPoint(IPAddress.Any, 0);
 
-      Byte[] receiveBytes;
+      byte[] receiveBytes;
 
       try
       {
@@ -275,9 +290,10 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
       {
         try
         {
-          LogMessage newLogMsg = new LogMessageLog4Net(
+          LogMessage newLogMsg = new LogMessageCustom(
               Encoding.ASCII.GetString(receiveBytes)
-            , ++mLogNumber);
+            , ++mLogNumber
+            , mColumnizer);
 
           if (mLogHandler != null)
           {
@@ -296,15 +312,6 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
     #endregion
 
     #region Public Methods
-
-    /// <summary>
-    /// Returns a string that represents the current object.
-    /// </summary>
-    /// <returns>A string that represents the current object.</returns>
-    public override string ToString()
-    {
-      return Name;
-    }
 
     /// <summary>
     /// Intizializes the <see cref="ILogProvider"/>.
@@ -373,26 +380,32 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
     /// <summary>
     /// Gets the header used for the CSV file export.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>The header used for the CSV file export.</returns>
     public override string GetCsvHeader()
     {
-      return "\"Number\","
-           + "\"Level\","
-           + "\"Timestamp\","
-           + "\"Logger\","
-           + "\"Thread\","
-           + "\"Message\","
-           + "\"Location\","
-           + "\"Custom Data\""
-           + Environment.NewLine;
+      string csvHdr = "\"Number\",";
+
+      foreach (LogColumn lgclm in mColumnizer.Columns)
+      {
+        csvHdr += "\"" + lgclm.Name.ToCsv() + "\",";
+      }
+
+      if (csvHdr.EndsWith(","))
+      {
+        // Remove the very last comma.
+        csvHdr.Remove(csvHdr.Length - 1, 1);
+      }
+
+      return csvHdr + Environment.NewLine;
     }
 
     /// <summary>
-    /// Resets the <see cref="ILogProvider"/> instance.
+    /// Returns a string that represents the current object.
     /// </summary>
-    public override void Clear()
+    /// <returns>A string that represents the current object.</returns>
+    public override string ToString()
     {
-      mLogNumber = 0;
+      return Name;
     }
 
     /// <summary>
@@ -402,26 +415,7 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
     /// <param name="columnLayout">The current column layout to save.</param>
     public override void SaveLayout(string layout, List<LogColumnData> columnLayout)
     {
-      Properties.Settings.Default.DockLayoutNLogUdpReceiver = layout ?? string.Empty;
-
-      Properties.Settings.Default.ColumnVisibleNLogUdpReceiver = string.Format(
-          "{0},{1},{2},{3},{4},{5}"
-        , columnLayout[0].Visible ? 1 : 0
-        , columnLayout[1].Visible ? 1 : 0
-        , columnLayout[2].Visible ? 1 : 0
-        , columnLayout[3].Visible ? 1 : 0
-        , columnLayout[4].Visible ? 1 : 0
-        , columnLayout[5].Visible ? 1 : 0);
-
-      Properties.Settings.Default.ColumnWidthNLogUdpReceiver = string.Format(
-          "{0},{1},{2},{3},{4},{5}"
-        , columnLayout[0].Width
-        , columnLayout[1].Width
-        , columnLayout[2].Width
-        , columnLayout[3].Width
-        , columnLayout[4].Width
-        , columnLayout[5].Width);
-
+      Properties.Settings.Default.DockLayoutCustomUdpReceiver = layout ?? string.Empty;
       Properties.Settings.Default.SaveSettings();
     }
 
@@ -431,7 +425,7 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
     /// <returns>The restored layout, or <c>null</c> if none exists.</returns>
     public override string LoadLayout()
     {
-      return Properties.Settings.Default.DockLayoutNLogUdpReceiver;
+      return Properties.Settings.Default.DockLayoutCustomUdpReceiver;
     }
 
     #endregion
@@ -439,22 +433,24 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
     #region Constructor
 
     /// <summary>
-    /// Creates a new and empty instance of the <see cref="NLogUdpReceiver"/> class.
+    /// Creates a new and empty instance of the <see cref="CustomUdpReceiver"/> class.
     /// </summary>
-    public NLogUdpReceiver()
+    public CustomUdpReceiver()
     {
 
     }
 
     /// <summary>
-    /// Creates a new and configured instance of the <see cref="NLogUdpReceiver"/> class.
+    /// Creates a new and configured instance of the <see cref="CustomUdpReceiver"/> class.
     /// </summary>
     /// <param name="multicastIp">The multicast IP address to listen for.</param>
     /// <param name="listenInterface">The network interface to listen on.</param>
-    public NLogUdpReceiver(IPAddress multicastIp, IPEndPoint listenInterface)
+    /// <param name="columnizer">The <see cref="Columnizer"/> instance to use for parsing.</param>
+    public CustomUdpReceiver(IPAddress multicastIp, IPEndPoint listenInterface, Columnizer columnizer)
     {
       mMulticastIpAddress = multicastIp;
       mListenInterface    = listenInterface;
+      mColumnizer         = columnizer;
     }
 
     #endregion

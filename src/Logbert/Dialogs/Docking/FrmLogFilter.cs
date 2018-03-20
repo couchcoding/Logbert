@@ -175,7 +175,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
             int rowIndex = dgvFilter.Rows.Add(
                 mFilterImage
               , filter.IsActive
-              , mLogProvider.Columns[filter.ColumnIndex - 1]
+              , mLogProvider.Columns[filter.ColumnIndex - 1].Name
               , string.Format("{0}{1}{2}", filter.OperatorIndex == 1 
                 ? Resources.strFilterNotMatchStartTag 
                 : string.Empty, filter.ColumnMatchValueRegEx, filter.OperatorIndex == 1 

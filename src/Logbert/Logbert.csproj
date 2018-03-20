@@ -318,12 +318,33 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Receiver\CustomReceiver\Columnizer.cs" />
+    <Compile Include="Receiver\CustomReceiver\CustomDirReceiver\CustomDirReceiver.cs" />
+    <Compile Include="Receiver\CustomReceiver\CustomDirReceiver\CustomDirReceiverSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Receiver\CustomReceiver\CustomDirReceiver\CustomDirReceiverSettings.Designer.cs">
+      <DependentUpon>CustomDirReceiverSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Receiver\CustomReceiver\CustomFileReceiver\CustomFileReceiver.cs" />
     <Compile Include="Receiver\CustomReceiver\CustomFileReceiver\CustomFileReceiverSettings.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Receiver\CustomReceiver\CustomFileReceiver\CustomFileReceiverSettings.Designer.cs">
       <DependentUpon>CustomFileReceiverSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Receiver\CustomReceiver\CustomTcpReceiver\CustomTcpReceiver.cs" />
+    <Compile Include="Receiver\CustomReceiver\CustomTcpReceiver\CustomTcpReceiverSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Receiver\CustomReceiver\CustomTcpReceiver\CustomTcpReceiverSettings.Designer.cs">
+      <DependentUpon>CustomTcpReceiverSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Receiver\CustomReceiver\CustomUdpReceiver\CustomUdpReceiver.cs" />
+    <Compile Include="Receiver\CustomReceiver\CustomUdpReceiver\CustomUdpReceiverSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Receiver\CustomReceiver\CustomUdpReceiver\CustomUdpReceiverSettings.Designer.cs">
+      <DependentUpon>CustomUdpReceiverSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Receiver\CustomReceiver\LogColumn.cs" />
     <Compile Include="Receiver\CustomReceiver\LogColumnType.cs" />
@@ -497,9 +518,18 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Receiver\CustomReceiver\CustomDirReceiver\CustomDirReceiverSettings.resx">
+      <DependentUpon>CustomDirReceiverSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Receiver\CustomReceiver\CustomFileReceiver\CustomFileReceiverSettings.resx">
       <DependentUpon>CustomFileReceiverSettings.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Receiver\CustomReceiver\CustomTcpReceiver\CustomTcpReceiverSettings.resx">
+      <DependentUpon>CustomTcpReceiverSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Receiver\CustomReceiver\CustomUdpReceiver\CustomUdpReceiverSettings.resx">
+      <DependentUpon>CustomUdpReceiverSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Receiver\EventlogReceiver\EventlogReceiverSettings.resx">
       <DependentUpon>EventlogReceiverSettings.cs</DependentUpon>

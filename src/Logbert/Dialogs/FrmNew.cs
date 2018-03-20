@@ -47,6 +47,7 @@ using Com.Couchcoding.Logbert.Receiver.EventlogReceiver;
 using Com.Couchcoding.Logbert.Receiver.Log4NetDirReceiver;
 using Com.Couchcoding.Logbert.Receiver.NLogDirReceiver;
 using Com.Couchcoding.Logbert.Receiver.WinDebugReceiver;
+using Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomUdpReceiver;
 
 namespace Com.Couchcoding.Logbert.Dialogs
 {
@@ -108,11 +109,6 @@ namespace Com.Couchcoding.Logbert.Dialogs
           finally
           {
             grpSettings.ResumeLayout();
-
-            if (grpSettings.Controls.Count == 1)
-            {
-              grpSettings.Controls[0].Select();
-            }
           }
         }
       }
@@ -178,7 +174,10 @@ namespace Com.Couchcoding.Logbert.Dialogs
       lstLogger.Items.Add(new EventlogReceiver());
       lstLogger.Items.Add(new WinDebugReceiver());
       lstLogger.AddSeperator();
+      lstLogger.Items.Add(new CustomUdpReceiver());
+      lstLogger.Items.Add(new CustomTcpReceiver());
       lstLogger.Items.Add(new CustomFileReceiver());
+      lstLogger.Items.Add(new CustomDirReceiver());
 
       lstLogger.SelectedIndex = 0;
     }

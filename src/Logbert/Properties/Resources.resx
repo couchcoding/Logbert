@@ -704,4 +704,61 @@ Maybe the data the file contains is not yet supported by Logbert.</value>
   <data name="VSO_Time_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\VSO_Time_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="strCustomUdpReceiverNetworkIPAddress" xml:space="preserve">
+    <value>IP Address:{0}{1}{2}</value>
+  </data>
+  <data name="strCustomUdpReceiverNetworkSpeed" xml:space="preserve">
+    <value>Speed:{0}{0}{1} MBit/s{2}</value>
+  </data>
+  <data name="strCustomUdpReceiverNoNetworkInterfaceAvailable" xml:space="preserve">
+    <value>No network interface available to listen on.</value>
+  </data>
+  <data name="strCustomUdpReceiverInvalidIpAddress" xml:space="preserve">
+    <value>The given IP address is invalid.</value>
+  </data>
+  <data name="strLog4NetUdpReceiverInvalidIpAddress" xml:space="preserve">
+    <value>The given IP address is invalid.</value>
+  </data>
+  <data name="strNLogUdpReceiverInvalidIpAddress" xml:space="preserve">
+    <value>The given IP address is invalid.</value>
+  </data>
+  <data name="strCustomDirectodyReceiverDirectoryDoesNotExist" xml:space="preserve">
+    <value>The specified directory does not exists. Please select an existing one.</value>
+  </data>
+  <data name="strCustomDirectodyReceiverInvalidFilePattern" xml:space="preserve">
+    <value>Invalid file pattern specified. Please enter a valie one like '.*\.log[\.]?[\d]?'.</value>
+  </data>
+  <data name="strCustomDirReceiverNoColumnizerSelected" xml:space="preserve">
+    <value>No columnizer is selected. Please choose an existing, or create a new one.</value>
+  </data>
+  <data name="strCustomUdpReceiverNoColumnizerSelected" xml:space="preserve">
+    <value>No columnizer is selected. Please choose an existing, or create a new one.</value>
+  </data>
+  <data name="strCustomTcpReceiverNetworkDescription" xml:space="preserve">
+    <value>Description:{0}{1}{2}</value>
+  </data>
+  <data name="strCustomTcpReceiverNetworkIPAddress" xml:space="preserve">
+    <value>IP Address:{0}{1}{2}</value>
+  </data>
+  <data name="strCustomTcpReceiverNetworkSpeed" xml:space="preserve">
+    <value>Speed:{0}{0}{1} MBit/s{2}</value>
+  </data>
+  <data name="strCustomTcpReceiverNoColumnizerSelected" xml:space="preserve">
+    <value>No columnizer is selected. Please choose an existing, or create a new one.</value>
+  </data>
+  <data name="strCustomTcpReceiverNoNetworkInterfaceAvailable" xml:space="preserve">
+    <value>No network interface available to listen on.</value>
+  </data>
+  <data name="strCustomDirectoryReceiverSelectDirectoryToObserve" xml:space="preserve">
+    <value>Select the log directory to observe.</value>
+  </data>
+  <data name="strCustomUdpReceiverNetworkDescription" xml:space="preserve">
+    <value>Description:{0}{1}{2}</value>
+  </data>
+  <data name="strSyslogFileReceiverTimestampNotSpecified" xml:space="preserve">
+    <value>Please enter a valid timestamp format, or select a predefined one.</value>
+  </data>
+  <data name="strSyslogUdpReceiverTimestampNotSpecified" xml:space="preserve">
+    <value>Please enter a valid timestamp format, or select a predefined one.</value>
+  </data>
 </root>

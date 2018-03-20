@@ -1,6 +1,6 @@
-﻿namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
+﻿namespace Com.Couchcoding.Logbert.Receiver.NlogTcpReceiver
 {
-  partial class NLogUdpReceiverSettings
+  partial class CustomTcpReceiverSettings
   {
     /// <summary> 
     /// Required designer variable.
@@ -33,8 +33,11 @@
       this.lblPort = new System.Windows.Forms.Label();
       this.nudPort = new System.Windows.Forms.NumericUpDown();
       this.nfoPanel = new Com.Couchcoding.GuiLibrary.Controls.InfoPanel();
-      this.txtMulticastIp = new System.Windows.Forms.TextBox();
-      this.chkMulticastGroup = new System.Windows.Forms.CheckBox();
+      this.btnRemoveColumnizer = new System.Windows.Forms.Button();
+      this.btnAddColumnizer = new System.Windows.Forms.Button();
+      this.btnEditColumnizer = new System.Windows.Forms.Button();
+      this.cmbColumnizer = new System.Windows.Forms.ComboBox();
+      this.lblColumnizer = new System.Windows.Forms.Label();
       ((System.ComponentModel.ISupportInitialize)(this.nudPort)).BeginInit();
       this.SuspendLayout();
       // 
@@ -85,7 +88,7 @@
       this.nudPort.Size = new System.Drawing.Size(400, 20);
       this.nudPort.TabIndex = 4;
       this.nudPort.Value = new decimal(new int[] {
-            7071,
+            7072,
             0,
             0,
             0});
@@ -106,41 +109,79 @@
       this.nfoPanel.TextPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
       this.nfoPanel.Title = "";
       // 
-      // txtMulticastIp
+      // btnRemoveColumnizer
       // 
-      this.txtMulticastIp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+      this.btnRemoveColumnizer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+      this.btnRemoveColumnizer.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Remove_16xMD;
+      this.btnRemoveColumnizer.Location = new System.Drawing.Point(348, 176);
+      this.btnRemoveColumnizer.Name = "btnRemoveColumnizer";
+      this.btnRemoveColumnizer.Size = new System.Drawing.Size(23, 22);
+      this.btnRemoveColumnizer.TabIndex = 8;
+      this.btnRemoveColumnizer.UseVisualStyleBackColor = true;
+      this.btnRemoveColumnizer.Click += new System.EventHandler(this.BtnRemoveColumnizerClick);
+      // 
+      // btnAddColumnizer
+      // 
+      this.btnAddColumnizer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+      this.btnAddColumnizer.Image = global::Com.Couchcoding.Logbert.Properties.Resources.action_add_16xMD;
+      this.btnAddColumnizer.Location = new System.Drawing.Point(319, 176);
+      this.btnAddColumnizer.Name = "btnAddColumnizer";
+      this.btnAddColumnizer.Size = new System.Drawing.Size(23, 22);
+      this.btnAddColumnizer.TabIndex = 7;
+      this.btnAddColumnizer.UseVisualStyleBackColor = true;
+      this.btnAddColumnizer.Click += new System.EventHandler(this.BtnAddColumnizerClick);
+      // 
+      // btnEditColumnizer
+      // 
+      this.btnEditColumnizer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+      this.btnEditColumnizer.Enabled = false;
+      this.btnEditColumnizer.Image = global::Com.Couchcoding.Logbert.Properties.Resources.PencilAngled_16xMD_color;
+      this.btnEditColumnizer.Location = new System.Drawing.Point(377, 176);
+      this.btnEditColumnizer.Name = "btnEditColumnizer";
+      this.btnEditColumnizer.Size = new System.Drawing.Size(23, 22);
+      this.btnEditColumnizer.TabIndex = 9;
+      this.btnEditColumnizer.UseVisualStyleBackColor = true;
+      this.btnEditColumnizer.Click += new System.EventHandler(this.BtnEditColumnizerClick);
+      // 
+      // cmbColumnizer
+      // 
+      this.cmbColumnizer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtMulticastIp.Enabled = false;
-      this.txtMulticastIp.Location = new System.Drawing.Point(134, 163);
-      this.txtMulticastIp.Name = "txtMulticastIp";
-      this.txtMulticastIp.Size = new System.Drawing.Size(266, 20);
-      this.txtMulticastIp.TabIndex = 6;
+      this.cmbColumnizer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.cmbColumnizer.FlatStyle = System.Windows.Forms.FlatStyle.System;
+      this.cmbColumnizer.FormattingEnabled = true;
+      this.cmbColumnizer.Location = new System.Drawing.Point(0, 177);
+      this.cmbColumnizer.Name = "cmbColumnizer";
+      this.cmbColumnizer.Size = new System.Drawing.Size(313, 21);
+      this.cmbColumnizer.Sorted = true;
+      this.cmbColumnizer.TabIndex = 6;
       // 
-      // chkMulticastGroup
+      // lblColumnizer
       // 
-      this.chkMulticastGroup.AutoSize = true;
-      this.chkMulticastGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
-      this.chkMulticastGroup.Location = new System.Drawing.Point(0, 164);
-      this.chkMulticastGroup.Name = "chkMulticastGroup";
-      this.chkMulticastGroup.Size = new System.Drawing.Size(131, 18);
-      this.chkMulticastGroup.TabIndex = 5;
-      this.chkMulticastGroup.Text = "Join &Multicast Group:";
-      this.chkMulticastGroup.UseVisualStyleBackColor = true;
-      this.chkMulticastGroup.CheckedChanged += new System.EventHandler(this.ChkMulticastGroupCheckedChanged);
+      this.lblColumnizer.AutoSize = true;
+      this.lblColumnizer.FlatStyle = System.Windows.Forms.FlatStyle.System;
+      this.lblColumnizer.Location = new System.Drawing.Point(0, 161);
+      this.lblColumnizer.Name = "lblColumnizer";
+      this.lblColumnizer.Size = new System.Drawing.Size(61, 13);
+      this.lblColumnizer.TabIndex = 5;
+      this.lblColumnizer.Text = "&Columnizer:";
       // 
-      // NLogUdpReceiverSettings
+      // CustomTcpReceiverSettings
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.Controls.Add(this.txtMulticastIp);
-      this.Controls.Add(this.chkMulticastGroup);
+      this.Controls.Add(this.btnRemoveColumnizer);
+      this.Controls.Add(this.btnAddColumnizer);
+      this.Controls.Add(this.btnEditColumnizer);
+      this.Controls.Add(this.cmbColumnizer);
+      this.Controls.Add(this.lblColumnizer);
       this.Controls.Add(this.nfoPanel);
       this.Controls.Add(this.nudPort);
       this.Controls.Add(this.lblPort);
       this.Controls.Add(this.cmbNetworkInterface);
       this.Controls.Add(this.lblNetworkInterface);
       this.Margin = new System.Windows.Forms.Padding(0);
-      this.Name = "NLogUdpReceiverSettings";
+      this.Name = "CustomTcpReceiverSettings";
       this.Size = new System.Drawing.Size(400, 300);
       ((System.ComponentModel.ISupportInitialize)(this.nudPort)).EndInit();
       this.ResumeLayout(false);
@@ -155,7 +196,10 @@
     private System.Windows.Forms.Label lblPort;
     private System.Windows.Forms.NumericUpDown nudPort;
     private GuiLibrary.Controls.InfoPanel nfoPanel;
-    private System.Windows.Forms.TextBox txtMulticastIp;
-    private System.Windows.Forms.CheckBox chkMulticastGroup;
+    private System.Windows.Forms.Button btnRemoveColumnizer;
+    private System.Windows.Forms.Button btnAddColumnizer;
+    private System.Windows.Forms.Button btnEditColumnizer;
+    private System.Windows.Forms.ComboBox cmbColumnizer;
+    private System.Windows.Forms.Label lblColumnizer;
   }
 }

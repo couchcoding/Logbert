@@ -72,7 +72,12 @@ namespace Logbert
     /// <summary>
     /// Defines the URL the user may download the newest version of Logbert.
     /// </summary>
-    private const string LOGBER_LATEST_URI = @"https://github.com/couchcoding/Logbert/releases/latest";
+    private const string LOGBERT_LATEST_URI = @"https://github.com/couchcoding/Logbert/releases/latest";
+
+    /// <summary>
+    /// Defines the default timeout for update check reqeusts.
+    /// </summary>
+    private const int LOGBERT_UPDATE_TIMEOUT = 2000;
 
     /// <summary>
     /// Defines the <see cref="Regex"/> to parse a release name from the GitHub API 3 JSON string.
@@ -434,7 +439,7 @@ namespace Logbert
         ReceiverBase[] knownFileReceiver = 
         {
             new Log4NetFileReceiver(logFileToLoad, true)
-          , new SyslogFileReceiver (logFileToLoad, true)
+          , new SyslogFileReceiver (logFileToLoad, true, Settings.Default.PnlSyslogFileSettingsTimestampFormat)
         };
 
         foreach (ReceiverBase receiver in knownFileReceiver)
@@ -622,8 +627,10 @@ namespace Logbert
         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(LOGBERT_UPDATE_API);
 
         // GitHub needs some properties to set.
-        request.Method    = "GET";
-        request.UserAgent = "Logbert";
+        request.Method           = "GET";
+        request.UserAgent        = "Logbert";
+        request.Timeout          = LOGBERT_UPDATE_TIMEOUT;
+        request.ReadWriteTimeout = LOGBERT_UPDATE_TIMEOUT;
 
         try
         {
@@ -656,7 +663,7 @@ namespace Logbert
       mUpdateLabel.Click += (sender, e) =>
       {
         // Initialize the open browser handler.
-        Browser.Open(LOGBER_LATEST_URI, this);
+        Browser.Open(LOGBERT_LATEST_URI, this);
       };
 
       // Finally make the link visible.

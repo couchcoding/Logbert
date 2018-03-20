@@ -67,7 +67,7 @@
       this.lstLogger.ItemHeight = 24;
       this.lstLogger.Location = new System.Drawing.Point(5, 65);
       this.lstLogger.Name = "lstLogger";
-      this.lstLogger.Size = new System.Drawing.Size(160, 372);
+      this.lstLogger.Size = new System.Drawing.Size(180, 372);
       this.lstLogger.TabIndex = 2;
       this.lstLogger.SelectedIndexChanged += new System.EventHandler(this.LstLoggerSelectedIndexChanged);
       // 
@@ -77,11 +77,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.grpSettings.GroupImage = global::Com.Couchcoding.Logbert.Properties.Resources.properties_16xLG;
-      this.grpSettings.Location = new System.Drawing.Point(174, 68);
+      this.grpSettings.Location = new System.Drawing.Point(194, 68);
       this.grpSettings.Name = "grpSettings";
       this.grpSettings.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
       this.grpSettings.SeperatorColor = System.Drawing.SystemColors.ControlDark;
-      this.grpSettings.Size = new System.Drawing.Size(442, 324);
+      this.grpSettings.Size = new System.Drawing.Size(422, 324);
       this.grpSettings.TabIndex = 3;
       this.grpSettings.TabStop = false;
       this.grpSettings.Text = "Settings";

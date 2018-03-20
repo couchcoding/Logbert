@@ -51,9 +51,9 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
     #region Private Fields
 
     /// <summary>
-    /// Holds the port to listen on.
+    /// Holds the multicast IP address to listen for.
     /// </summary>
-    private readonly int mPort;
+    private IPAddress mMulticastIpAddress;
 
     /// <summary>
     /// The network interface to listen on.
@@ -316,8 +316,35 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
 
       try
       {
-        mUdpClient     = new UdpClient(mPort);
-        UdpState state = new UdpState(mUdpClient, mListenInterface);
+        mUdpClient        = new UdpClient();
+        mUdpClient.Client = new Socket(
+            AddressFamily.InterNetwork
+          , SocketType.Dgram
+          , ProtocolType.Udp);
+
+        IPEndPoint localEP = new IPEndPoint(
+            mListenInterface.Address
+          , mListenInterface.Port);
+
+        mUdpClient.Client.Bind(localEP);
+
+        if (mMulticastIpAddress != null)
+        {
+          try
+          {
+            mUdpClient.JoinMulticastGroup(
+                mMulticastIpAddress
+              , mListenInterface.Address);
+          }
+          catch (Exception ex)
+          {
+            Logger.Warn(ex.Message);
+          }
+        }
+
+        UdpState state = new UdpState(
+            mUdpClient
+          , mListenInterface);
 
         mUdpClient.BeginReceive(
             ReceiveUdpMessage
@@ -422,12 +449,12 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
     /// <summary>
     /// Creates a new and configured instance of the <see cref="Log4NetUdpReceiver"/> class.
     /// </summary>
-    /// <param name="port">The port to listen on for new <see cref="LogMessage"/>s</param>
+    /// <param name="multicastIp">The multicast IP address to listen for.</param>
     /// <param name="listenInterface">The network interface to listen on.</param>
-    public Log4NetUdpReceiver(int port, IPEndPoint listenInterface)
+    public Log4NetUdpReceiver(IPAddress multicastIp, IPEndPoint listenInterface)
     {
-      mPort            = port;
-      mListenInterface = listenInterface;
+      mMulticastIpAddress = multicastIp;
+      mListenInterface    = listenInterface;
     }
 
     #endregion

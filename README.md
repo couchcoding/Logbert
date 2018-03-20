@@ -5,7 +5,7 @@ Logbert is an advanced log message viewer for log4net, log4j and others.
 
 ### Features
 * Multiple log receivers
-  * Chainsaw compatible loggers like log4net or nlog (UDP, TCP and File based)
+  * Chainsaw compatible loggers like log4net or nlog (UDP, TCP, File and Directory based)
   * Windows event log
   * SysLog events (UDP, TCP and File based)
 * Create unlimited count of bookmarks
@@ -21,7 +21,7 @@ Logbert is an advanced log message viewer for log4net, log4j and others.
   * Trigger function if a new log message is received or a bookmark is changed
 * Statistic windows to see the log level ratio.
 * Directory based receiving (load multiple log files as one)
-* Customizable log receiver
+* Customizable log receiver (UDP, TCP, File and Directory based)
 
 ### Planned Features
 * HTML Reporting

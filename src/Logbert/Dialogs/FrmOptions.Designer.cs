@@ -43,11 +43,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.grpSettings.Controls.Add(this.pnlOptionPanel);
       this.grpSettings.GroupImage = global::Com.Couchcoding.Logbert.Properties.Resources.properties_16xLG;
-      this.grpSettings.Location = new System.Drawing.Point(174, 68);
+      this.grpSettings.Location = new System.Drawing.Point(194, 68);
       this.grpSettings.Name = "grpSettings";
       this.grpSettings.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
       this.grpSettings.SeperatorColor = System.Drawing.SystemColors.ControlDark;
-      this.grpSettings.Size = new System.Drawing.Size(442, 324);
+      this.grpSettings.Size = new System.Drawing.Size(422, 324);
       this.grpSettings.TabIndex = 1;
       this.grpSettings.TabStop = false;
       this.grpSettings.Text = "Settings";
@@ -59,7 +59,7 @@
       this.pnlOptionPanel.Dock = System.Windows.Forms.DockStyle.Fill;
       this.pnlOptionPanel.Location = new System.Drawing.Point(0, 36);
       this.pnlOptionPanel.Name = "pnlOptionPanel";
-      this.pnlOptionPanel.Size = new System.Drawing.Size(442, 288);
+      this.pnlOptionPanel.Size = new System.Drawing.Size(422, 288);
       this.pnlOptionPanel.TabIndex = 0;
       this.pnlOptionPanel.VisibleChanged += new System.EventHandler(this.PnlOptionPanelVisibleChanged);
       // 
@@ -72,7 +72,7 @@
       this.lstSettings.ItemHeight = 24;
       this.lstSettings.Location = new System.Drawing.Point(5, 65);
       this.lstSettings.Name = "lstSettings";
-      this.lstSettings.Size = new System.Drawing.Size(160, 372);
+      this.lstSettings.Size = new System.Drawing.Size(180, 372);
       this.lstSettings.TabIndex = 0;
       this.lstSettings.SelectedIndexChanged += new System.EventHandler(this.LstSettingsSelectedIndexChanged);
       // 

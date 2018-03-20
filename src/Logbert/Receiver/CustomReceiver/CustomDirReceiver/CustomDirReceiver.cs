@@ -1,12 +1,12 @@
-﻿#region Copyright © 2015 Couchcoding
+﻿#region Copyright © 2018 Couchcoding
 
-// File:    SyslogFileReceiver.cs
+// File:    CustomDirReceiver.cs
 // Package: Logbert
 // Project: Logbert
 // 
 // The MIT License (MIT)
 // 
-// Copyright (c) 2015 Couchcoding
+// Copyright (c) 2018 Couchcoding
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -31,38 +31,76 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-
-using Com.Couchcoding.Logbert.Interfaces;
-
-using Com.Couchcoding.Logbert.Logging;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using Com.Couchcoding.Logbert.Interfaces;
 
 using Com.Couchcoding.Logbert.Controls;
 using Com.Couchcoding.Logbert.Helper;
+using Com.Couchcoding.Logbert.Logging;
+using Com.Couchcoding.Logbert.Receiver.CustomReceiver;
 
-namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
+namespace Com.Couchcoding.Logbert.Receiver.Log4NetDirReceiver
 {
   /// <summary>
-  /// Implements a <see cref="ILogProvider"/> for the Log4Net file service.
+  /// Implements a <see cref="ILogProvider"/> for the custom file service.
   /// </summary>
-  public class SyslogFileReceiver : ReceiverBase
+  public class CustomDirReceiver : ReceiverBase
   {
+    #region Private Consts
+
+    /// <summary>
+    /// Defines the end tag of a Log4Net message.
+    /// </summary>
+    private const string LOG4NET_LOGMSG_END = "</log4j:event>";
+
+    #endregion
+
+    #region Private Classes
+
+    /// <summary>
+    /// Implements a string comparer that supports natural sorting.
+    /// </summary>
+    private sealed class NaturalStringComparer : IComparer<string>
+    {
+      /// <summary>Compares two objects and returns a value indicating whether one is less than, equal to, or greater than the other.</summary>
+      /// <returns>A signed integer that indicates the relative values of <paramref name="a" /> and <paramref name="b" />, as shown in the following table.Value Meaning Less than zero<paramref name="a" /> is less than <paramref name="b" />.Zero<paramref name="a" /> equals <paramref name="b" />.Greater than zero<paramref name="a" /> is greater than <paramref name="b" />.</returns>
+      /// <param name="a">The first object to compare.</param>
+      /// <param name="b">The second object to compare.</param>
+      public int Compare(string a, string b)
+      {
+        return Win32.StrCmpLogicalW(a, b);
+      }
+    }
+
+    #endregion
+
     #region Private Fields
 
     /// <summary>
-    /// Holds the name of the File to observe.
+    /// The linked <see cref="Columnizer"/> instance.
     /// </summary>
-    private readonly string mFileToObserve;
+    private readonly Columnizer mColumnizer;
 
     /// <summary>
-    /// The format of the timestamp of a received message.
+    /// Holds the name of the directory to observe.
     /// </summary>
-    private readonly string mTimestampFormat;
+    private readonly string mDirectoryToObserve;
 
     /// <summary>
     /// Determines whether the file to observed should be read from beginning, or not.
     /// </summary>
     private readonly bool mStartFromBeginning;
+
+    /// <summary>
+    /// Holds the filename pattern to observe.
+    /// </summary>
+    private readonly string mFilenamePattern;
+
+    /// <summary>
+    /// Holds the currently observed log file.
+    /// </summary>
+    private string mCurrentLogFile;
 
     /// <summary>
     /// The <see cref="FileSystemWatcher"/> used to observe file content changes.
@@ -91,60 +129,27 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
     /// <summary>
     /// Gets the name of the <see cref="ILogProvider"/>.
     /// </summary>
-    public override string Name
-    {
-      get
-      {
-        return "Syslog File Receiver";
-      }
-    }
+    public override string Name => "Custom Dir Receiver";
 
     /// <summary>
     /// Gets the description of the <see cref="ILogProvider"/>
     /// </summary>
-    public override string Description
-    {
-      get
-      {
-        return string.Format(
-            "{0} ({1})"
-          , Name
-          , !string.IsNullOrEmpty(mFileToObserve) ? Path.GetFileName(mFileToObserve) : "-");
-      }
-    }
+    public override string Description => $"{Name} ({(!string.IsNullOrEmpty(mDirectoryToObserve) ? Path.GetDirectoryName(mDirectoryToObserve) : "-")})";
 
     /// <summary>
     /// Gets the filename for export of the received <see cref="LogMessage"/>s.
     /// </summary>
-    public override string ExportFileName
-    {
-      get
-      {
-        return Description;
-      }
-    }
+    public override string ExportFileName => Description;
 
     /// <summary>
     /// Gets the tooltip to display at the document tab.
     /// </summary>
-    public override string Tooltip
-    {
-      get
-      {
-        return mFileToObserve;
-      }
-    }
+    public override string Tooltip => mDirectoryToObserve;
 
     /// <summary>
     /// Gets the settings <see cref="Control"/> of the <see cref="ILogProvider"/>.
     /// </summary>
-    public override ILogSettingsCtrl Settings
-    {
-      get
-      {
-        return new SyslogFileReceiverSettings();
-      }
-    }
+    public override ILogSettingsCtrl Settings => new CustomDirReceiverSettings();
 
     /// <summary>
     /// Gets the columns to display of the <see cref="ILogProvider"/>.
@@ -153,19 +158,20 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
     {
       get
       {
-        string[] visibleVal = Properties.Settings.Default.ColumnVisibleSyslogFileReceiver.Split(',');
-        string[] widthVal   = Properties.Settings.Default.ColumnWidthSyslogFileReceiver.Split(',');
-
-        return new Dictionary<int, LogColumnData>
+        Dictionary<int, LogColumnData> clmDict = new Dictionary<int, LogColumnData>
         {
-          { 0, new LogColumnData("Number",             visibleVal[0] == "1", int.Parse(widthVal[0])) },
-          { 1, new LogColumnData("Severity",           visibleVal[1] == "1", int.Parse(widthVal[1])) },
-          { 2, new LogColumnData("Local Machine Time", visibleVal[2] == "1", int.Parse(widthVal[2])) },
-          { 3, new LogColumnData("Time",               visibleVal[3] == "1", int.Parse(widthVal[3])) },
-          { 4, new LogColumnData("Facility",           visibleVal[4] == "1", int.Parse(widthVal[4])) },
-          { 5, new LogColumnData("Sender",             visibleVal[5] == "1", int.Parse(widthVal[5])) },
-          { 6, new LogColumnData("Message",            visibleVal[6] == "1", int.Parse(widthVal[6])) }
+          { 0, new LogColumnData("Number") }
         };
+
+        foreach (LogColumn lgclm in mColumnizer.Columns)
+        {
+          clmDict.Add(clmDict.Count, new LogColumnData(
+            lgclm.Name
+          , true
+          , lgclm.ColumnType == LogColumnType.Message ? 1024 : 100));
+        }
+
+        return clmDict;
       }
     } 
 
@@ -193,29 +199,7 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
     /// <summary>
     /// Get the <see cref="Control"/> to display details about a selected <see cref="LogMessage"/>.
     /// </summary>
-    public override ILogPresenter DetailsControl
-    {
-      get
-      {
-        return new SyslogDetailsControl();
-      }
-    }
-
-    /// <summary>
-    /// Gets the supported <see cref="LogLevel"/>s of the <see cref="ILogProvider"/>.
-    /// </summary>
-    public override LogLevel SupportedLevels => LogLevel.All;
-
-    /// <summary>
-    /// Gets the path seperator for the logger tree.
-    /// </summary>
-    public override string LoggerTreePathSeperator
-    {
-      get
-      {
-        return "\t";
-      }
-    }
+    public override ILogPresenter DetailsControl => new CustomDetailsControl(mColumnizer);
 
     #endregion
 
@@ -228,7 +212,16 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
     {
       if (e.ChangeType == WatcherChangeTypes.Changed)
       {
-        ReadNewLogMessagesFromFile();
+        if (string.IsNullOrEmpty(mCurrentLogFile) && Regex.IsMatch(e.FullPath, mFilenamePattern))
+        {
+          // Set the one and only file as file to observe.
+          mCurrentLogFile = e.FullPath;
+        }
+
+        if (e.FullPath.Equals(mCurrentLogFile))
+        {
+          ReadNewLogMessagesFromFile();
+        }
       }
     }
 
@@ -241,27 +234,14 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
       if (mFileWatcher != null)
       {
         mFileWatcher.EnableRaisingEvents = false;
-        mFileWatcher.Changed            -= OnLogFileChanged;
-        mFileWatcher.Error              -= OnFileWatcherError;
+        mFileWatcher.Changed -= OnLogFileChanged;
+        mFileWatcher.Created -= OnLogFileChanged;
+        mFileWatcher.Error   -= OnFileWatcherError;
+
         mFileWatcher.Dispose();
       }
 
-      string pathOfFile = Path.GetDirectoryName(mFileToObserve);
-      string nameOfFile = Path.GetFileName(mFileToObserve);
-
-      if (!string.IsNullOrEmpty(pathOfFile) && !string.IsNullOrEmpty(nameOfFile))
-      {
-        mFileWatcher = new FileSystemWatcher(
-            pathOfFile
-          , nameOfFile);
-
-        mFileWatcher.NotifyFilter        = NotifyFilters.LastWrite | NotifyFilters.Size;
-        mFileWatcher.Changed            += OnLogFileChanged;
-        mFileWatcher.Error              += OnFileWatcherError;
-        mFileWatcher.EnableRaisingEvents = IsActive;
-
-        ReadNewLogMessagesFromFile();
-      }
+      Initialize(mLogHandler);
     }
 
     /// <summary>
@@ -274,25 +254,38 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
         return;
       }
 
+      if (mLastFileOffset > mFileReader.BaseStream.Length)
+      {
+        // the current log file was re-created. Observe from beginning on.
+        mLastFileOffset = 0;
+      }
+
       mFileReader.BaseStream.Seek(
           mLastFileOffset
         , SeekOrigin.Begin);
 
       string line;
-
       List<LogMessage> messages = new List<LogMessage>();
 
       while ((line = mFileReader.ReadLine()) != null)
       {
-        if (string.IsNullOrEmpty(line))
+        LogMessageCustom cstmLgMsg;
+
+        try
         {
+          cstmLgMsg = new LogMessageCustom(
+              line
+            , mLogNumber + 1
+            , mColumnizer);
+        }
+        catch (Exception ex)
+        {
+          Logger.Warn(ex.Message);
           continue;
         }
 
-        messages.Add(new LogMessageSyslog(
-            line
-          , ++mLogNumber
-          , mTimestampFormat));
+        mLogNumber++;
+        messages.Add(cstmLgMsg);
       }
 
       mLastFileOffset = mFileReader.BaseStream.Position;
@@ -324,33 +317,66 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
     {
       base.Initialize(logHandler);
 
-      mFileReader = new StreamReader(new FileStream(
-          mFileToObserve
-        , FileMode.Open
-        , FileAccess.Read
-        , FileShare.ReadWrite));
+      Regex filePattern           = new Regex(mFilenamePattern);
+      DirectoryInfo dirInfo       = new DirectoryInfo(mDirectoryToObserve);
+      List<string> collectedFiles = new List<string>();
 
-      mLogNumber      = 0;
-      mLastFileOffset = mStartFromBeginning
-        ? 0
-        : mFileReader.BaseStream.Length;
-
-      string pathOfFile = Path.GetDirectoryName(mFileToObserve);
-      string nameOfFile = Path.GetFileName(mFileToObserve);
-
-      if (!string.IsNullOrEmpty(pathOfFile) && !string.IsNullOrEmpty(nameOfFile))
+      foreach (FileInfo fInfo in dirInfo.GetFiles())
       {
-        mFileWatcher = new FileSystemWatcher(
-            pathOfFile
-          , nameOfFile);
+        if (filePattern.IsMatch(fInfo.FullName))
+        {
+          collectedFiles.Add(fInfo.FullName);
+        }
+      }
 
-        mFileWatcher.NotifyFilter        = NotifyFilters.LastWrite | NotifyFilters.Size;
-        mFileWatcher.Changed            += OnLogFileChanged;
-        mFileWatcher.Error              += OnFileWatcherError;
-        mFileWatcher.EnableRaisingEvents = IsActive;
+      // Ensure the list of files is natural sorted.
+      collectedFiles.Sort(new NaturalStringComparer());
+
+      mLogNumber = 0;
+
+      if (mStartFromBeginning)
+      {
+        for (int i = collectedFiles.Count - 1; i > 0; i--)
+        {
+          using (mFileReader = new StreamReader(new FileStream(collectedFiles[i], FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
+          {
+            // Reset file offset count.
+            mLastFileOffset = 0;
+
+            // Read the current file.
+            ReadNewLogMessagesFromFile();
+          }
+        }
+      }
+
+      if (collectedFiles.Count > 0)
+      {
+        // The very first file (without decimal suffix) is the current log file.
+        mCurrentLogFile = collectedFiles[0];
+
+        mFileReader = new StreamReader(new FileStream(
+            mCurrentLogFile
+          , FileMode.Open
+          , FileAccess.Read
+          , FileShare.ReadWrite));
+
+        if (!mStartFromBeginning)
+        {
+          // Ommit the already logged data.
+          mLastFileOffset = mFileReader.BaseStream.Length;
+        }
 
         ReadNewLogMessagesFromFile();
       }
+
+      mFileWatcher = new FileSystemWatcher(mDirectoryToObserve);
+
+      mFileWatcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.Size | NotifyFilters.FileName;
+      mFileWatcher.Changed     += OnLogFileChanged;
+      mFileWatcher.Created     += OnLogFileChanged;
+      mFileWatcher.Error       += OnFileWatcherError;
+
+      mFileWatcher.EnableRaisingEvents = IsActive;
     }
 
     /// <summary>
@@ -381,6 +407,7 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
       {
         mFileWatcher.EnableRaisingEvents = false;
         mFileWatcher.Changed            -= OnLogFileChanged;
+        mFileWatcher.Created            -= OnLogFileChanged;
         mFileWatcher.Error              -= OnFileWatcherError;
         mFileWatcher.Dispose();
       }
@@ -398,14 +425,20 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
     /// <returns></returns>
     public override string GetCsvHeader()
     {
-      return "\"Number\","
-           + "\"Severity\","
-           + "\"Local Machine Time\","
-           + "\"Time\","
-           + "\"Facility\","
-           + "\"Sender\","
-           + "\"Message\""
-           + Environment.NewLine;
+      string csvHdr = "\"Number\",";
+
+      foreach (LogColumn lgclm in mColumnizer.Columns)
+      {
+        csvHdr += "\"" + lgclm.Name.ToCsv() + "\",";
+      }
+
+      if (csvHdr.EndsWith(","))
+      {
+        // Remove the very last comma.
+        csvHdr.Remove(csvHdr.Length - 1, 1);
+      }
+
+      return csvHdr + Environment.NewLine;
     }
 
     /// <summary>
@@ -414,20 +447,7 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
     /// <returns><c>True</c> if the file can be handled, otherwise <c>false</c>.</returns>
     public override bool CanHandleLogFile()
     {
-      if (string.IsNullOrEmpty(mFileToObserve) || !File.Exists(mFileToObserve))
-      {
-        return false;
-      }
-
-      using (StreamReader tmpReader = new StreamReader(mFileToObserve))
-      {
-        string firstLine = tmpReader.ReadLine();
-
-        return Regex.IsMatch(
-            firstLine ?? string.Empty
-          , @"<([0-9]{1,3})>"
-          , RegexOptions.IgnoreCase);
-      }
+      return !string.IsNullOrEmpty(mDirectoryToObserve) && Directory.Exists(mDirectoryToObserve);
     }
 
     /// <summary>
@@ -437,28 +457,7 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
     /// <param name="columnLayout">The current column layout to save.</param>
     public override void SaveLayout(string layout, List<LogColumnData> columnLayout)
     {
-      Properties.Settings.Default.DockLayoutSyslogFileReceiver = layout ?? string.Empty;
-
-      Properties.Settings.Default.ColumnVisibleSyslogFileReceiver = string.Format(
-          "{0},{1},{2},{3},{4},{5},{6}"
-        , columnLayout[0].Visible ? 1 : 0
-        , columnLayout[1].Visible ? 1 : 0
-        , columnLayout[2].Visible ? 1 : 0
-        , columnLayout[3].Visible ? 1 : 0
-        , columnLayout[4].Visible ? 1 : 0
-        , columnLayout[5].Visible ? 1 : 0
-        , columnLayout[6].Visible ? 1 : 0);
-
-      Properties.Settings.Default.ColumnWidthSyslogFileReceiver = string.Format(
-          "{0},{1},{2},{3},{4},{5},{6}"
-        , columnLayout[0].Width
-        , columnLayout[1].Width
-        , columnLayout[2].Width
-        , columnLayout[3].Width
-        , columnLayout[4].Width
-        , columnLayout[5].Width
-        , columnLayout[6].Width);
-
+      Properties.Settings.Default.DockLayoutCustomDirReceiver = layout ?? string.Empty;
       Properties.Settings.Default.SaveSettings();
     }
 
@@ -468,7 +467,7 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
     /// <returns>The restored layout, or <c>null</c> if none exists.</returns>
     public override string LoadLayout()
     {
-      return Properties.Settings.Default.DockLayoutSyslogFileReceiver;
+      return Properties.Settings.Default.DockLayoutCustomDirReceiver;
     }
 
     #endregion
@@ -476,24 +475,26 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
     #region Constructor
 
     /// <summary>
-    /// Creates a new and empty instance of the <see cref="SyslogFileReceiver"/> class.
+    /// Creates a new and empty instance of the <see cref="CustomDirReceiver"/> class.
     /// </summary>
-    public SyslogFileReceiver()
+    public CustomDirReceiver()
     {
 
     }
 
     /// <summary>
-    /// Creates a new and configured instance of the <see cref="SyslogFileReceiver"/> class.
+    /// Creates a new and configured instance of the <see cref="CustomDirReceiver"/> class.
     /// </summary>
-    /// <param name="fileToObserve">The file the new <see cref="SyslogFileReceiver"/> instance should observe.</param>
-    /// <param name="startFromBeginning">Determines whether the new <see cref="SyslogFileReceiver"/> should read the given <paramref name="fileToObserve"/> from beginnin, or not.</param>
-    /// <param name="timestampFormat">The format of the timestamp of a received message.</param>
-    public SyslogFileReceiver(string fileToObserve, bool startFromBeginning, string timestampFormat)
+    /// <param name="directoryToObserve">The directory the new <see cref="CustomDirReceiver"/> instance should observe.</param>
+    /// <param name="filenamePattern">The <see cref="Regex"/> to find the files to load and observe.</param>
+    /// <param name="startFromBeginning">Determines whether the new <see cref="Log4NetDirReceiver"/> should read all files within the given <paramref name="directoryToObserve"/>, or not.</param>
+    /// <param name="columnizer">The <see cref="Columnizer"/> instance to use for parsing.</param>
+    public CustomDirReceiver(string directoryToObserve, string filenamePattern, bool startFromBeginning, Columnizer columnizer)
     {
-      mFileToObserve      = fileToObserve;
+      mDirectoryToObserve = directoryToObserve;
+      mFilenamePattern    = filenamePattern;
       mStartFromBeginning = startFromBeginning;
-      mTimestampFormat    = timestampFormat;
+      mColumnizer         = columnizer;
     }
 
     #endregion

@@ -1661,5 +1661,221 @@ namespace Com.Couchcoding.Logbert.Properties {
                 this["WaitCursorTimeout"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PnlCustomUdpSettingsInterface {
+            get {
+                return ((string)(this["PnlCustomUdpSettingsInterface"]));
+            }
+            set {
+                this["PnlCustomUdpSettingsInterface"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7071")]
+        public int PnlCustomUdpSettingsPort {
+            get {
+                return ((int)(this["PnlCustomUdpSettingsPort"]));
+            }
+            set {
+                this["PnlCustomUdpSettingsPort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DockLayoutCustomUdpReceiver {
+            get {
+                return ((string)(this["DockLayoutCustomUdpReceiver"]));
+            }
+            set {
+                this["DockLayoutCustomUdpReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PnlCustomUdpSettingsMulticastAddress {
+            get {
+                return ((string)(this["PnlCustomUdpSettingsMulticastAddress"]));
+            }
+            set {
+                this["PnlCustomUdpSettingsMulticastAddress"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PnlCustomUdpSettingsJoinMulticast {
+            get {
+                return ((bool)(this["PnlCustomUdpSettingsJoinMulticast"]));
+            }
+            set {
+                this["PnlCustomUdpSettingsJoinMulticast"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PnlLog4NetUdpSettingsJoinMulticast {
+            get {
+                return ((bool)(this["PnlLog4NetUdpSettingsJoinMulticast"]));
+            }
+            set {
+                this["PnlLog4NetUdpSettingsJoinMulticast"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PnlLog4NetUdpSettingsMulticastAddress {
+            get {
+                return ((string)(this["PnlLog4NetUdpSettingsMulticastAddress"]));
+            }
+            set {
+                this["PnlLog4NetUdpSettingsMulticastAddress"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PnlNLogUdpSettingsJoinMulticast {
+            get {
+                return ((bool)(this["PnlNLogUdpSettingsJoinMulticast"]));
+            }
+            set {
+                this["PnlNLogUdpSettingsJoinMulticast"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PnlNLogUdpSettingsMulticastAddress {
+            get {
+                return ((string)(this["PnlNLogUdpSettingsMulticastAddress"]));
+            }
+            set {
+                this["PnlNLogUdpSettingsMulticastAddress"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DockLayoutCustomDirReceiver {
+            get {
+                return ((string)(this["DockLayoutCustomDirReceiver"]));
+            }
+            set {
+                this["DockLayoutCustomDirReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PnlCustomDirectorySettingsDirectory {
+            get {
+                return ((string)(this["PnlCustomDirectorySettingsDirectory"]));
+            }
+            set {
+                this["PnlCustomDirectorySettingsDirectory"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PnlCustomDirectorySettingsPattern {
+            get {
+                return ((string)(this["PnlCustomDirectorySettingsPattern"]));
+            }
+            set {
+                this["PnlCustomDirectorySettingsPattern"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PnlCustomDirectorySettingsReadAllExisting {
+            get {
+                return ((bool)(this["PnlCustomDirectorySettingsReadAllExisting"]));
+            }
+            set {
+                this["PnlCustomDirectorySettingsReadAllExisting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DockLayoutCustomTcpReceiver {
+            get {
+                return ((string)(this["DockLayoutCustomTcpReceiver"]));
+            }
+            set {
+                this["DockLayoutCustomTcpReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PnlCustomTcpSettingsInterface {
+            get {
+                return ((string)(this["PnlCustomTcpSettingsInterface"]));
+            }
+            set {
+                this["PnlCustomTcpSettingsInterface"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int PnlCustomTcpSettingsPort {
+            get {
+                return ((int)(this["PnlCustomTcpSettingsPort"]));
+            }
+            set {
+                this["PnlCustomTcpSettingsPort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("MMM d HH:mm:ss")]
+        public string PnlSyslogFileSettingsTimestampFormat {
+            get {
+                return ((string)(this["PnlSyslogFileSettingsTimestampFormat"]));
+            }
+            set {
+                this["PnlSyslogFileSettingsTimestampFormat"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("MMM d HH:mm:ss")]
+        public string PnlSyslogUdpSettingsTimestampFormat {
+            get {
+                return ((string)(this["PnlSyslogUdpSettingsTimestampFormat"]));
+            }
+            set {
+                this["PnlSyslogUdpSettingsTimestampFormat"] = value;
+            }
+        }
     }
 }

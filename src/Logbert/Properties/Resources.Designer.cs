@@ -731,6 +731,42 @@ namespace Com.Couchcoding.Logbert.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified directory does not exists. Please select an existing one..
+        /// </summary>
+        internal static string strCustomDirectodyReceiverDirectoryDoesNotExist {
+            get {
+                return ResourceManager.GetString("strCustomDirectodyReceiverDirectoryDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid file pattern specified. Please enter a valie one like &apos;.*\.log[\.]?[\d]?&apos;..
+        /// </summary>
+        internal static string strCustomDirectodyReceiverInvalidFilePattern {
+            get {
+                return ResourceManager.GetString("strCustomDirectodyReceiverInvalidFilePattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the log directory to observe..
+        /// </summary>
+        internal static string strCustomDirectoryReceiverSelectDirectoryToObserve {
+            get {
+                return ResourceManager.GetString("strCustomDirectoryReceiverSelectDirectoryToObserve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No columnizer is selected. Please choose an existing, or create a new one..
+        /// </summary>
+        internal static string strCustomDirReceiverNoColumnizerSelected {
+            get {
+                return ResourceManager.GetString("strCustomDirReceiverNoColumnizerSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The given log file does not exist. Please select an existing one..
         /// </summary>
         internal static string strCustomFileReceiverFileDoesNotExist {
@@ -745,6 +781,105 @@ namespace Com.Couchcoding.Logbert.Properties {
         internal static string strCustomFileReceiverNoColumnizerSelected {
             get {
                 return ResourceManager.GetString("strCustomFileReceiverNoColumnizerSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description:{0}{1}{2}.
+        /// </summary>
+        internal static string strCustomTcpReceiverNetworkDescription {
+            get {
+                return ResourceManager.GetString("strCustomTcpReceiverNetworkDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IP Address:{0}{1}{2}.
+        /// </summary>
+        internal static string strCustomTcpReceiverNetworkIPAddress {
+            get {
+                return ResourceManager.GetString("strCustomTcpReceiverNetworkIPAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Speed:{0}{0}{1} MBit/s{2}.
+        /// </summary>
+        internal static string strCustomTcpReceiverNetworkSpeed {
+            get {
+                return ResourceManager.GetString("strCustomTcpReceiverNetworkSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No columnizer is selected. Please choose an existing, or create a new one..
+        /// </summary>
+        internal static string strCustomTcpReceiverNoColumnizerSelected {
+            get {
+                return ResourceManager.GetString("strCustomTcpReceiverNoColumnizerSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No network interface available to listen on..
+        /// </summary>
+        internal static string strCustomTcpReceiverNoNetworkInterfaceAvailable {
+            get {
+                return ResourceManager.GetString("strCustomTcpReceiverNoNetworkInterfaceAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The given IP address is invalid..
+        /// </summary>
+        internal static string strCustomUdpReceiverInvalidIpAddress {
+            get {
+                return ResourceManager.GetString("strCustomUdpReceiverInvalidIpAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description:{0}{1}{2}.
+        /// </summary>
+        internal static string strCustomUdpReceiverNetworkDescription {
+            get {
+                return ResourceManager.GetString("strCustomUdpReceiverNetworkDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IP Address:{0}{1}{2}.
+        /// </summary>
+        internal static string strCustomUdpReceiverNetworkIPAddress {
+            get {
+                return ResourceManager.GetString("strCustomUdpReceiverNetworkIPAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Speed:{0}{0}{1} MBit/s{2}.
+        /// </summary>
+        internal static string strCustomUdpReceiverNetworkSpeed {
+            get {
+                return ResourceManager.GetString("strCustomUdpReceiverNetworkSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No columnizer is selected. Please choose an existing, or create a new one..
+        /// </summary>
+        internal static string strCustomUdpReceiverNoColumnizerSelected {
+            get {
+                return ResourceManager.GetString("strCustomUdpReceiverNoColumnizerSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No network interface available to listen on..
+        /// </summary>
+        internal static string strCustomUdpReceiverNoNetworkInterfaceAvailable {
+            get {
+                return ResourceManager.GetString("strCustomUdpReceiverNoNetworkInterfaceAvailable", resourceCulture);
             }
         }
         
@@ -934,6 +1069,15 @@ namespace Com.Couchcoding.Logbert.Properties {
         internal static string strLog4NetFileReceiverFilePattern {
             get {
                 return ResourceManager.GetString("strLog4NetFileReceiverFilePattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The given IP address is invalid..
+        /// </summary>
+        internal static string strLog4NetUdpReceiverInvalidIpAddress {
+            get {
+                return ResourceManager.GetString("strLog4NetUdpReceiverInvalidIpAddress", resourceCulture);
             }
         }
         
@@ -1142,6 +1286,15 @@ namespace Com.Couchcoding.Logbert.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The given IP address is invalid..
+        /// </summary>
+        internal static string strNLogUdpReceiverInvalidIpAddress {
+            get {
+                return ResourceManager.GetString("strNLogUdpReceiverInvalidIpAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description:{0}{1}{2}.
         /// </summary>
         internal static string strNLogUdpReceiverNetworkDescription {
@@ -1305,6 +1458,15 @@ namespace Com.Couchcoding.Logbert.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid timestamp format, or select a predefined one..
+        /// </summary>
+        internal static string strSyslogFileReceiverTimestampNotSpecified {
+            get {
+                return ResourceManager.GetString("strSyslogFileReceiverTimestampNotSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The given IP address is invalid..
         /// </summary>
         internal static string strSyslogReceiverInvalidIpAddress {
@@ -1319,6 +1481,15 @@ namespace Com.Couchcoding.Logbert.Properties {
         internal static string strSyslogReceiverNoNetworkInterfaceAvailable {
             get {
                 return ResourceManager.GetString("strSyslogReceiverNoNetworkInterfaceAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid timestamp format, or select a predefined one..
+        /// </summary>
+        internal static string strSyslogUdpReceiverTimestampNotSpecified {
+            get {
+                return ResourceManager.GetString("strSyslogUdpReceiverTimestampNotSpecified", resourceCulture);
             }
         }
         

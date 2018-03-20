@@ -38,6 +38,7 @@ using Com.Couchcoding.Logbert.Properties;
 using System.Net.Sockets;
 
 using Com.Couchcoding.Logbert.Helper;
+using System.Drawing;
 
 namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
 {
@@ -232,6 +233,48 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
         nudPort.Value             = Settings.Default.PnlSyslogSettingsPort;
         txtMulticastIp.Text       = Settings.Default.PnlSyslogSettingsMulticastAddress;
         chkMulticastGroup.Checked = Settings.Default.PnlSyslogSettingsJoinMulticast;
+        txtTimestampFormat.Text   = Settings.Default.PnlSyslogFileSettingsTimestampFormat;
+      }
+    }
+
+    /// <summary>
+    /// Handles the ButtonClick event of the timestamp help <see cref="Button"/>.
+    /// </summary>
+    private void TxtTimestampFormatButtonClick(object sender, EventArgs e)
+    {
+      Control btnTimestamp = sender as Control;
+
+      if (btnTimestamp != null)
+      {
+        mnuTimestamp.Show(
+            btnTimestamp
+          , new Point(btnTimestamp.Width, btnTimestamp.Top));
+      }
+    }
+
+    /// <summary>
+    /// Handles the Click event of a timestamp help <see cref="MenuItem"/>.
+    /// </summary>
+    private void MnuTimestampClick(object sender, System.EventArgs e)
+    {
+      ToolStripMenuItem mnuCtrl = sender as ToolStripMenuItem;
+
+      if (mnuCtrl != null && mnuCtrl.Tag != null)
+      {
+        txtTimestampFormat.SelectedText = mnuCtrl.Tag.ToString();
+      }
+    }
+
+    /// <summary>
+    /// Handles the Click event of a timestamp preset <see cref="MenuItem"/>.
+    /// </summary>
+    private void MnuTimestampPresetClick(object sender, System.EventArgs e)
+    {
+      ToolStripMenuItem mnuCtrl = sender as ToolStripMenuItem;
+
+      if (mnuCtrl != null && mnuCtrl.Tag != null)
+      {
+        txtTimestampFormat.Text = mnuCtrl.Tag.ToString();
       }
     }
 
@@ -260,6 +303,11 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
 
           return ValidationResult.Error(Resources.strSyslogReceiverInvalidIpAddress);
         }
+      }
+
+      if (string.IsNullOrEmpty(txtTimestampFormat.Text))
+      {
+        return ValidationResult.Error(Resources.strSyslogUdpReceiverTimestampNotSpecified);
       }
 
       return ValidationResult.Success;
@@ -297,7 +345,8 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
               return new SyslogUdpReceiver(chkMulticastGroup.Checked 
                   ? IPAddress.Parse(txtMulticastIp.Text.Trim()) 
                   : null
-                , new IPEndPoint(ipAddress.Address, (int)nudPort.Value));
+                , new IPEndPoint(ipAddress.Address, (int)nudPort.Value)
+                , Settings.Default.PnlSyslogUdpSettingsTimestampFormat);
             }
           }
         }

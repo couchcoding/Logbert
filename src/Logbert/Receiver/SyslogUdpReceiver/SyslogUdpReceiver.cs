@@ -65,6 +65,11 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
     private UdpClient mUdpClient;
 
     /// <summary>
+    /// The format of the timestamp of a received message.
+    /// </summary>
+    private readonly string mTimestampFormat;
+
+    /// <summary>
     /// Counts the received messages;
     /// </summary>
     private int mLogNumber;
@@ -291,7 +296,8 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
         {
           LogMessage newLogMsg = new LogMessageSyslog(
               Encoding.ASCII.GetString(receiveBytes)
-            , ++mLogNumber);
+            , ++mLogNumber
+            , mTimestampFormat);
 
           if (mLogHandler != null)
           {
@@ -466,10 +472,12 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
     /// </summary>
     /// <param name="multicastIp">The multicast IP address to listen for.</param>
     /// <param name="listenInterface">The network interface to listen on.</param>
-    public SyslogUdpReceiver(IPAddress multicastIp, IPEndPoint listenInterface)
+    /// <param name="timestampFormat">The format of the timestamp of a received message.</param>
+    public SyslogUdpReceiver(IPAddress multicastIp, IPEndPoint listenInterface, string timestampFormat)
     {
       mMulticastIpAddress = multicastIp;
       mListenInterface    = listenInterface;
+      mTimestampFormat    = timestampFormat;
     }
 
     #endregion

@@ -36,6 +36,7 @@ using Com.Couchcoding.Logbert.Properties;
 using System.IO;
 
 using Com.Couchcoding.Logbert.Helper;
+using System.Drawing;
 
 namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
 {
@@ -83,6 +84,48 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
         }
 
         chkStartFromBeginning.Checked = Settings.Default.PnlSyslogFileSettingsStartFromBeginning;
+        txtTimestampFormat.Text = Settings.Default.PnlSyslogFileSettingsTimestampFormat;
+      }
+    }
+
+    /// <summary>
+    /// Handles the ButtonClick event of the timestamp help <see cref="Button"/>.
+    /// </summary>
+    private void TxtTimestampFormatButtonClick(object sender, EventArgs e)
+    {
+      Control btnTimestamp = sender as Control;
+
+      if (btnTimestamp != null)
+      {
+        mnuTimestamp.Show(
+            btnTimestamp
+          , new Point(btnTimestamp.Width, btnTimestamp.Top));
+      }
+    }
+
+    /// <summary>
+    /// Handles the Click event of a timestamp preset <see cref="MenuItem"/>.
+    /// </summary>
+    private void MnuTimestampPresetClick(object sender, System.EventArgs e)
+    {
+      ToolStripMenuItem mnuCtrl = sender as ToolStripMenuItem;
+
+      if (mnuCtrl != null && mnuCtrl.Tag != null)
+      {
+        txtTimestampFormat.Text = mnuCtrl.Tag.ToString();
+      }
+    }
+
+    /// <summary>
+    /// Handles the Click event of a timestamp help <see cref="MenuItem"/>.
+    /// </summary>
+    private void MnuTimestampClick(object sender, System.EventArgs e)
+    {
+      ToolStripMenuItem mnuCtrl = sender as ToolStripMenuItem;
+
+      if (mnuCtrl != null && mnuCtrl.Tag != null)
+      {
+        txtTimestampFormat.SelectedText = mnuCtrl.Tag.ToString();
       }
     }
 
@@ -96,15 +139,20 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
     /// <returns>The <see cref="ValidationResult"/> of the validation.</returns>
     public ValidationResult ValidateSettings()
     {
-      if (File.Exists(txtLogFile.Text))
+      if (!File.Exists(txtLogFile.Text))
       {
-        return ValidationResult.Success;
+        txtLogFile.SelectAll();
+        txtLogFile.Select();
+
+        return ValidationResult.Error(Resources.strSyslogFileReceiverFileDoesNotExist);
       }
 
-      txtLogFile.SelectAll();
-      txtLogFile.Select();
+      if (string.IsNullOrEmpty(txtTimestampFormat.Text))
+      {
+        return ValidationResult.Error(Resources.strSyslogFileReceiverTimestampNotSpecified);
+      }
 
-      return ValidationResult.Error(Resources.strSyslogFileReceiverFileDoesNotExist);
+      return ValidationResult.Success;
     }
 
     /// <summary>
@@ -118,13 +166,15 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
         // Save the current settings as new default values.
         Settings.Default.PnlSyslogFileSettingsFile               = txtLogFile.Text;
         Settings.Default.PnlSyslogFileSettingsStartFromBeginning = chkStartFromBeginning.Checked;
+        Settings.Default.PnlSyslogFileSettingsTimestampFormat    = txtTimestampFormat.Text;
 
         Settings.Default.SaveSettings();
       }
 
       return new SyslogFileReceiver(
           txtLogFile.Text
-        , chkStartFromBeginning.Checked);
+        , chkStartFromBeginning.Checked
+        , txtTimestampFormat.Text);
     }
 
     #endregion

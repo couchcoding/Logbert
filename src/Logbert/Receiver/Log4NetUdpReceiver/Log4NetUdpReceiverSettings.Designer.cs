@@ -33,6 +33,8 @@
       this.lblPort = new System.Windows.Forms.Label();
       this.nudPort = new System.Windows.Forms.NumericUpDown();
       this.nfoPanel = new Com.Couchcoding.GuiLibrary.Controls.InfoPanel();
+      this.txtMulticastIp = new System.Windows.Forms.TextBox();
+      this.chkMulticastGroup = new System.Windows.Forms.CheckBox();
       ((System.ComponentModel.ISupportInitialize)(this.nudPort)).BeginInit();
       this.SuspendLayout();
       // 
@@ -104,10 +106,34 @@
       this.nfoPanel.TextPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
       this.nfoPanel.Title = "";
       // 
+      // txtMulticastIp
+      // 
+      this.txtMulticastIp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.txtMulticastIp.Enabled = false;
+      this.txtMulticastIp.Location = new System.Drawing.Point(134, 163);
+      this.txtMulticastIp.Name = "txtMulticastIp";
+      this.txtMulticastIp.Size = new System.Drawing.Size(266, 20);
+      this.txtMulticastIp.TabIndex = 6;
+      // 
+      // chkMulticastGroup
+      // 
+      this.chkMulticastGroup.AutoSize = true;
+      this.chkMulticastGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
+      this.chkMulticastGroup.Location = new System.Drawing.Point(0, 164);
+      this.chkMulticastGroup.Name = "chkMulticastGroup";
+      this.chkMulticastGroup.Size = new System.Drawing.Size(131, 18);
+      this.chkMulticastGroup.TabIndex = 5;
+      this.chkMulticastGroup.Text = "Join &Multicast Group:";
+      this.chkMulticastGroup.UseVisualStyleBackColor = true;
+      this.chkMulticastGroup.CheckedChanged += new System.EventHandler(this.ChkMulticastGroupCheckedChanged);
+      // 
       // Log4NetUdpReceiverSettings
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.Controls.Add(this.txtMulticastIp);
+      this.Controls.Add(this.chkMulticastGroup);
       this.Controls.Add(this.nfoPanel);
       this.Controls.Add(this.nudPort);
       this.Controls.Add(this.lblPort);
@@ -129,5 +155,7 @@
     private System.Windows.Forms.Label lblPort;
     private System.Windows.Forms.NumericUpDown nudPort;
     private GuiLibrary.Controls.InfoPanel nfoPanel;
+    private System.Windows.Forms.TextBox txtMulticastIp;
+    private System.Windows.Forms.CheckBox chkMulticastGroup;
   }
 }
