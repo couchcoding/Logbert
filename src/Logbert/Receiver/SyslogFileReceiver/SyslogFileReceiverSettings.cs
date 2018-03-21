@@ -187,6 +187,8 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
     public SyslogFileReceiverSettings()
     {
       InitializeComponent();
+
+      ThemeManager.CurrentApplicationTheme.ApplyTo(mnuTimestamp);
     }
 
     #endregion

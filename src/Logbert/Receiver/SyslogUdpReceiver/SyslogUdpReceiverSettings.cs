@@ -366,6 +366,8 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
     {
       InitializeComponent();
       
+      ThemeManager.CurrentApplicationTheme.ApplyTo(mnuTimestamp);
+
       // Initialize the controls.
       EnumerateAndAddNetworkInterfaces();
     }
