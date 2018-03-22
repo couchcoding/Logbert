@@ -233,7 +233,7 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
         nudPort.Value             = Settings.Default.PnlSyslogSettingsPort;
         txtMulticastIp.Text       = Settings.Default.PnlSyslogSettingsMulticastAddress;
         chkMulticastGroup.Checked = Settings.Default.PnlSyslogSettingsJoinMulticast;
-        txtTimestampFormat.Text   = Settings.Default.PnlSyslogFileSettingsTimestampFormat;
+        txtTimestampFormat.Text   = Settings.Default.PnlSyslogUdpSettingsTimestampFormat;
       }
     }
 
@@ -334,10 +334,11 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
               if (ModifierKeys != Keys.Shift)
               {
                 // Save the current settings as new default values.
-                Settings.Default.PnlSyslogSettingsInterface        = cmbNetworkInterface.SelectedItem.ToString();
-                Settings.Default.PnlSyslogSettingsPort             = (int)nudPort.Value;
-                Settings.Default.PnlSyslogSettingsJoinMulticast    = chkMulticastGroup.Checked;
-                Settings.Default.PnlSyslogSettingsMulticastAddress = txtMulticastIp.Text;
+                Settings.Default.PnlSyslogSettingsInterface          = cmbNetworkInterface.SelectedItem.ToString();
+                Settings.Default.PnlSyslogSettingsPort               = (int)nudPort.Value;
+                Settings.Default.PnlSyslogSettingsJoinMulticast      = chkMulticastGroup.Checked;
+                Settings.Default.PnlSyslogSettingsMulticastAddress   = txtMulticastIp.Text;
+                Settings.Default.PnlSyslogUdpSettingsTimestampFormat = txtTimestampFormat.Text;
 
                 Settings.Default.SaveSettings();
               }
@@ -346,7 +347,7 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
                   ? IPAddress.Parse(txtMulticastIp.Text.Trim()) 
                   : null
                 , new IPEndPoint(ipAddress.Address, (int)nudPort.Value)
-                , Settings.Default.PnlSyslogUdpSettingsTimestampFormat);
+                , txtTimestampFormat.Text);
             }
           }
         }
