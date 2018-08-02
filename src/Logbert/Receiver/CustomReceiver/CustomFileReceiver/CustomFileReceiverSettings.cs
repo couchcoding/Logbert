@@ -338,6 +338,23 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
         chkStartFromBeginning.Checked = Settings.Default.PnlCustomFileSettingsStartFromBeginning;
       }
 
+      foreach (EncodingInfo encoding in Encoding.GetEncodings())
+      {
+        EncodingWrapper encWrapper = new EncodingWrapper(encoding);
+
+        cmbEncoding.Items.Add(encWrapper);
+
+        if (encoding.CodePage == (ModifierKeys != Keys.Shift ? Settings.Default.PnlSyslogUdpSettingsEncoding : Encoding.Default.CodePage))
+        {
+          cmbEncoding.SelectedItem = encWrapper;
+        }
+      }
+
+      if (cmbEncoding.SelectedItem == null)
+      {
+        cmbEncoding.SelectedIndex = 0;
+      }
+
       UpdateEditButtons();
     }
 
@@ -351,10 +368,21 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
     /// <returns>A fully configured <see cref="ILogProvider"/> instance.</returns>
     public ILogProvider GetConfiguredInstance()
     {
+      if (ModifierKeys != Keys.Shift)
+      {
+        // Save the current settings as new default values.
+        Settings.Default.PnlCustomFileSettingsFile               = txtLogFile.Text;
+        Settings.Default.PnlCustomFileSettingsStartFromBeginning = chkStartFromBeginning.Checked;
+        Settings.Default.PnlCustomFileSettingsEncoding           = ((EncodingWrapper)cmbEncoding.SelectedItem).Codepage;
+
+        Settings.Default.SaveSettings();
+      }
+
       return new CustomFileReceiver(
           txtLogFile.Text
         , chkStartFromBeginning.Checked
-        , cmbColumnizer.SelectedItem as Columnizer);
+        , cmbColumnizer.SelectedItem as Columnizer
+        , Settings.Default.PnlCustomFileSettingsEncoding);
     }
 
     /// <summary>

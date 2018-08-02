@@ -195,11 +195,15 @@ namespace Com.Couchcoding.Logbert.Helper
       TextRenderer.MeasureText(
           shortenPath
         , font
-        , new Size(200, 0)
+        , new Size(maxWidth, 0)
         ,   TextFormatFlags.PathEllipsis 
           | TextFormatFlags.ModifyString);
 
-      return shortenPath;
+        int cutOffIndex = shortenPath.IndexOf('\0');
+
+        return cutOffIndex > 0 
+            ? shortenPath.Remove(cutOffIndex) 
+            : shortenPath;
     }
 
     /// <summary>

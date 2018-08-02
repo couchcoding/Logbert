@@ -367,6 +367,23 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetDirReceiver
         chkInitialReadAll.Checked = Settings.Default.PnlCustomDirectorySettingsReadAllExisting;
       }
 
+      foreach (EncodingInfo encoding in Encoding.GetEncodings())
+      {
+        EncodingWrapper encWrapper = new EncodingWrapper(encoding);
+
+        cmbEncoding.Items.Add(encWrapper);
+
+        if (encoding.CodePage == (ModifierKeys != Keys.Shift ? Settings.Default.PnlSyslogUdpSettingsEncoding : Encoding.Default.CodePage))
+        {
+          cmbEncoding.SelectedItem = encWrapper;
+        }
+      }
+
+      if (cmbEncoding.SelectedItem == null)
+      {
+        cmbEncoding.SelectedIndex = 0;
+      }
+
       UpdateEditButtons();
     }
 
@@ -413,6 +430,7 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetDirReceiver
         Settings.Default.PnlCustomDirectorySettingsDirectory       = txtLogDirectory.Text;
         Settings.Default.PnlCustomDirectorySettingsPattern         = txtLogFilePattern.Text;
         Settings.Default.PnlCustomDirectorySettingsReadAllExisting = chkInitialReadAll.Checked;
+        Settings.Default.PnlCustomDirectorySettingsEncoding        = ((EncodingWrapper)cmbEncoding.SelectedItem).Codepage;
 
         Settings.Default.SaveSettings();
       }
@@ -421,7 +439,8 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetDirReceiver
           txtLogDirectory.Text
         , txtLogFilePattern.Text
         , chkInitialReadAll.Checked
-        , cmbColumnizer.SelectedItem as Columnizer);
+        , cmbColumnizer.SelectedItem as Columnizer
+        , Settings.Default.PnlCustomDirectorySettingsEncoding);
     }
 
     #endregion

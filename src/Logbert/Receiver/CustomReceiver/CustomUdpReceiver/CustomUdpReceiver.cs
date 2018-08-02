@@ -30,7 +30,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using Com.Couchcoding.Logbert.Helper;
 using Com.Couchcoding.Logbert.Interfaces;
@@ -291,7 +290,7 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomUdpReceiver
         try
         {
           LogMessage newLogMsg = new LogMessageCustom(
-              Encoding.ASCII.GetString(receiveBytes)
+              mEncoding.GetString(receiveBytes)
             , ++mLogNumber
             , mColumnizer);
 
@@ -446,7 +445,8 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomUdpReceiver
     /// <param name="multicastIp">The multicast IP address to listen for.</param>
     /// <param name="listenInterface">The network interface to listen on.</param>
     /// <param name="columnizer">The <see cref="Columnizer"/> instance to use for parsing.</param>
-    public CustomUdpReceiver(IPAddress multicastIp, IPEndPoint listenInterface, Columnizer columnizer)
+    /// <param name="codePage">The codepage to use for encoding of the data to parse.</param>
+    public CustomUdpReceiver(IPAddress multicastIp, IPEndPoint listenInterface, Columnizer columnizer, int codePage) : base (codePage)
     {
       mMulticastIpAddress = multicastIp;
       mListenInterface    = listenInterface;

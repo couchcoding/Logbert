@@ -476,6 +476,23 @@ namespace Com.Couchcoding.Logbert.Receiver.NlogTcpReceiver
         nudPort.Value = Settings.Default.PnlNLogTcpSettingsPort;
       }
 
+      foreach (EncodingInfo encoding in Encoding.GetEncodings())
+      {
+        EncodingWrapper encWrapper = new EncodingWrapper(encoding);
+
+        cmbEncoding.Items.Add(encWrapper);
+
+        if (encoding.CodePage == (ModifierKeys != Keys.Shift ? Settings.Default.PnlSyslogUdpSettingsEncoding : Encoding.Default.CodePage))
+        {
+          cmbEncoding.SelectedItem = encWrapper;
+        }
+      }
+
+      if (cmbEncoding.SelectedItem == null)
+      {
+        cmbEncoding.SelectedIndex = 0;
+      }
+
       UpdateEditButtons();
     }
 
@@ -522,6 +539,7 @@ namespace Com.Couchcoding.Logbert.Receiver.NlogTcpReceiver
                 // Save the current settings as new default values.
                 Settings.Default.PnlCustomTcpSettingsInterface = cmbNetworkInterface.SelectedItem.ToString();
                 Settings.Default.PnlCustomTcpSettingsPort      = (int)nudPort.Value;
+                Settings.Default.PnlCustomTcpSettingsEncoding  = ((EncodingWrapper)cmbEncoding.SelectedItem).Codepage;
 
                 Settings.Default.SaveSettings();
               }
@@ -529,7 +547,8 @@ namespace Com.Couchcoding.Logbert.Receiver.NlogTcpReceiver
               return new CustomTcpReceiver(
                   (int)nudPort.Value
                 , new IPEndPoint(ipAddress.Address, (int)nudPort.Value)
-                , cmbColumnizer.SelectedItem as Columnizer);
+                , cmbColumnizer.SelectedItem as Columnizer
+                , Settings.Default.PnlCustomTcpSettingsEncoding);
             }
           }
         }

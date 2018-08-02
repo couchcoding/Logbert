@@ -31,6 +31,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Com.Couchcoding.Logbert.Interfaces;
@@ -338,7 +339,7 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetDirReceiver
       {
         for (int i = collectedFiles.Count - 1; i > 0; i--)
         {
-          using (mFileReader = new StreamReader(new FileStream(collectedFiles[i], FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
+          using (mFileReader = new StreamReader(new FileStream(collectedFiles[i], FileMode.Open, FileAccess.Read, FileShare.ReadWrite), mEncoding))
           {
             // Reset file offset count.
             mLastFileOffset = 0;
@@ -358,7 +359,8 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetDirReceiver
             mCurrentLogFile
           , FileMode.Open
           , FileAccess.Read
-          , FileShare.ReadWrite));
+          , FileShare.ReadWrite)
+          , mEncoding);
 
         if (!mStartFromBeginning)
         {
@@ -489,7 +491,7 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetDirReceiver
     /// <param name="filenamePattern">The <see cref="Regex"/> to find the files to load and observe.</param>
     /// <param name="startFromBeginning">Determines whether the new <see cref="Log4NetDirReceiver"/> should read all files within the given <paramref name="directoryToObserve"/>, or not.</param>
     /// <param name="columnizer">The <see cref="Columnizer"/> instance to use for parsing.</param>
-    public CustomDirReceiver(string directoryToObserve, string filenamePattern, bool startFromBeginning, Columnizer columnizer)
+    public CustomDirReceiver(string directoryToObserve, string filenamePattern, bool startFromBeginning, Columnizer columnizer, int codePage) : base(codePage)
     {
       mDirectoryToObserve = directoryToObserve;
       mFilenamePattern    = filenamePattern;

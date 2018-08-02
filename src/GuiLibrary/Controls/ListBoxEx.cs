@@ -434,6 +434,11 @@ namespace Com.Couchcoding.GuiLibrary.Controls
     {
       base.OnSelectedIndexChanged(e);
 
+      if (SelectedIndex <= 0)
+      {
+        return;
+      }
+
       if (Items[SelectedIndex] is Seperator && Items.Count > SelectedIndex)
       {
         ++SelectedIndex;

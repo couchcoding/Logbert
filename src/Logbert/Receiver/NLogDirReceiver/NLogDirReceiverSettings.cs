@@ -35,6 +35,7 @@ using System.Windows.Forms;
 using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Properties;
 using System.IO;
+using System.Text;
 
 using Com.Couchcoding.Logbert.Helper;
 
@@ -111,6 +112,23 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogDirReceiver
         txtLogFilePattern.Text    = Settings.Default.PnlNLogDirectorySettingsPattern ;
         chkInitialReadAll.Checked = Settings.Default.PnlNLogDirectorySettingsReadAllExisting;
       }
+
+      foreach (EncodingInfo encoding in Encoding.GetEncodings())
+      {
+        EncodingWrapper encWrapper = new EncodingWrapper(encoding);
+
+        cmbEncoding.Items.Add(encWrapper);
+
+        if (encoding.CodePage == (ModifierKeys != Keys.Shift ? Settings.Default.PnlSyslogUdpSettingsEncoding : Encoding.Default.CodePage))
+        {
+          cmbEncoding.SelectedItem = encWrapper;
+        }
+      }
+
+      if (cmbEncoding.SelectedItem == null)
+      {
+        cmbEncoding.SelectedIndex = 0;
+      }
     }
 
     #endregion
@@ -154,6 +172,7 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogDirReceiver
         Settings.Default.PnlNLogDirectorySettingsDirectory       = txtLogDirectory.Text;
         Settings.Default.PnlNLogDirectorySettingsPattern         = txtLogFilePattern.Text;
         Settings.Default.PnlNLogDirectorySettingsReadAllExisting = chkInitialReadAll.Checked;
+        Settings.Default.PnlNLogDirectorySettingsEncoding        = ((EncodingWrapper)cmbEncoding.SelectedItem).Codepage;
 
         Settings.Default.SaveSettings();
       }
@@ -161,7 +180,8 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogDirReceiver
       return new NLogDirReceiver(
           txtLogDirectory.Text
         , txtLogFilePattern.Text
-        , chkInitialReadAll.Checked);
+        , chkInitialReadAll.Checked
+        , Settings.Default.PnlNLogDirectorySettingsEncoding);
     }
 
     #endregion

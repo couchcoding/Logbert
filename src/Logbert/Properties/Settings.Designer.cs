@@ -12,7 +12,7 @@ namespace Com.Couchcoding.Logbert.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.7.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -1875,6 +1875,174 @@ namespace Com.Couchcoding.Logbert.Properties {
             }
             set {
                 this["PnlSyslogUdpSettingsTimestampFormat"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Visual Studio Light")]
+        public string ApplicationTheme {
+            get {
+                return ((string)(this["ApplicationTheme"]));
+            }
+            set {
+                this["ApplicationTheme"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1252")]
+        public int PnlSyslogFileSettingsEncoding {
+            get {
+                return ((int)(this["PnlSyslogFileSettingsEncoding"]));
+            }
+            set {
+                this["PnlSyslogFileSettingsEncoding"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1252")]
+        public int PnlSyslogUdpSettingsEncoding {
+            get {
+                return ((int)(this["PnlSyslogUdpSettingsEncoding"]));
+            }
+            set {
+                this["PnlSyslogUdpSettingsEncoding"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1252")]
+        public int PnlNLogUdpSettingsEncoding {
+            get {
+                return ((int)(this["PnlNLogUdpSettingsEncoding"]));
+            }
+            set {
+                this["PnlNLogUdpSettingsEncoding"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1252")]
+        public int PnlNLogTcpSettingsEncoding {
+            get {
+                return ((int)(this["PnlNLogTcpSettingsEncoding"]));
+            }
+            set {
+                this["PnlNLogTcpSettingsEncoding"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1252")]
+        public int PnlNLogFileSettingsEncoding {
+            get {
+                return ((int)(this["PnlNLogFileSettingsEncoding"]));
+            }
+            set {
+                this["PnlNLogFileSettingsEncoding"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1252")]
+        public int PnlNLogDirectorySettingsEncoding {
+            get {
+                return ((int)(this["PnlNLogDirSettingsEncoding"]));
+            }
+            set {
+                this["PnlNLogDirSettingsEncoding"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1252")]
+        public int PnlLog4NetFileSettingsEncoding {
+            get {
+                return ((int)(this["PnlLog4NetFileSettingsEncoding"]));
+            }
+            set {
+                this["PnlLog4NetFileSettingsEncoding"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1252")]
+        public int PnlLog4NetDirectorySettingsEncoding {
+            get {
+                return ((int)(this["PnlLog4NetDirSettingsEncoding"]));
+            }
+            set {
+                this["PnlLog4NetDirSettingsEncoding"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1252")]
+        public int PnlLog4NetUdpSettingsEncoding {
+            get {
+                return ((int)(this["PnlLog4NetUdpSettingsEncoding"]));
+            }
+            set {
+                this["PnlLog4NetUdpSettingsEncoding"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1252")]
+        public int PnlCustomFileSettingsEncoding {
+            get {
+                return ((int)(this["PnlCustomFileSettingsEncoding"]));
+            }
+            set {
+                this["PnlCustomFileSettingsEncoding"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1252")]
+        public int PnlCustomDirectorySettingsEncoding {
+            get {
+                return ((int)(this["PnlCustomDirSettingsEncoding"]));
+            }
+            set {
+                this["PnlCustomDirSettingsEncoding"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1252")]
+        public int PnlCustomUdpSettingsEncoding {
+            get {
+                return ((int)(this["PnlCustomUdpSettingsEncoding"]));
+            }
+            set {
+                this["PnlCustomUdpSettingsEncoding"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1252")]
+        public int PnlCustomTcpSettingsEncoding {
+            get {
+                return ((int)(this["PnlCustomTcpSettingsEncoding"]));
+            }
+            set {
+                this["PnlCustomTcpSettingsEncoding"] = value;
             }
         }
     }

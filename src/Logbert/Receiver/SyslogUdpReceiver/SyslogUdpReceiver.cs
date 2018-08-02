@@ -32,8 +32,6 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Windows.Forms;
 
 using Com.Couchcoding.Logbert.Controls;
 using Com.Couchcoding.Logbert.Helper;
@@ -295,7 +293,7 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
         try
         {
           LogMessage newLogMsg = new LogMessageSyslog(
-              Encoding.ASCII.GetString(receiveBytes)
+              mEncoding.GetString(receiveBytes)
             , ++mLogNumber
             , mTimestampFormat);
 
@@ -473,7 +471,8 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
     /// <param name="multicastIp">The multicast IP address to listen for.</param>
     /// <param name="listenInterface">The network interface to listen on.</param>
     /// <param name="timestampFormat">The format of the timestamp of a received message.</param>
-    public SyslogUdpReceiver(IPAddress multicastIp, IPEndPoint listenInterface, string timestampFormat)
+    /// <param name="codePage">The codepage to use for encoding of the data to parse.</param>
+    public SyslogUdpReceiver(IPAddress multicastIp, IPEndPoint listenInterface, string timestampFormat, int codePage) : base(codePage)
     {
       mMulticastIpAddress = multicastIp;
       mListenInterface    = listenInterface;

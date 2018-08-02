@@ -33,7 +33,6 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Windows.Forms;
 
 using Com.Couchcoding.Logbert.Interfaces;
 
@@ -276,7 +275,7 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
         try
         {
           LogMessage newLogMsg = new LogMessageLog4Net(
-              Encoding.ASCII.GetString(receiveBytes)
+              mEncoding.GetString(receiveBytes)
             , ++mLogNumber);
 
           if (mLogHandler != null)
@@ -451,7 +450,8 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
     /// </summary>
     /// <param name="multicastIp">The multicast IP address to listen for.</param>
     /// <param name="listenInterface">The network interface to listen on.</param>
-    public Log4NetUdpReceiver(IPAddress multicastIp, IPEndPoint listenInterface)
+    /// <param name="codePage">The codepage to use for encoding of the data to parse.</param>
+    public Log4NetUdpReceiver(IPAddress multicastIp, IPEndPoint listenInterface, int codePage) : base(codePage)
     {
       mMulticastIpAddress = multicastIp;
       mListenInterface    = listenInterface;

@@ -79,7 +79,7 @@ namespace Com.Couchcoding.Logbert.Controls
     #region Public Properties
 
     /// <summary>
-    /// Gets the count of currently displayed <see cref=LogMessage"/>s.
+    /// Gets the count of currently displayed <see cref="LogMessage"/>s.
     /// </summary>
     public int DisplayedLogMessagesCount
     {
