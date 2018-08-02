@@ -35,7 +35,6 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Windows.Forms;
 
 using Com.Couchcoding.Logbert.Interfaces;
 
@@ -262,7 +261,7 @@ namespace Com.Couchcoding.Logbert.Receiver.NlogTcpReceiver
                     , 0
                     , receivedBytes.Length);
 
-                  receivedMessage.Append(Encoding.ASCII.GetString(
+                  receivedMessage.Append(mEncoding.GetString(
                       receivedBytes
                     , 0
                     , receivedByteCount));
@@ -419,7 +418,8 @@ namespace Com.Couchcoding.Logbert.Receiver.NlogTcpReceiver
     /// </summary>
     /// <param name="port">The port to listen on for new <see cref="LogMessage"/>s</param>
     /// <param name="listenInterface">The network interface to listen on.</param>
-    public CustomTcpReceiver(int port, IPEndPoint listenInterface, Columnizer columnizer)
+    /// <param name="codePage">The codepage to use for encoding of the data to parse.</param>
+    public CustomTcpReceiver(int port, IPEndPoint listenInterface, Columnizer columnizer, int codePage) : base (codePage)
     {
       mPort            = port;
       mListenInterface = listenInterface;

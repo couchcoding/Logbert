@@ -34,7 +34,6 @@ using System.Collections.Generic;
 using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Logging;
 using System.Diagnostics;
-using System.Windows.Forms;
 
 using Com.Couchcoding.Logbert.Controls;
 using Com.Couchcoding.Logbert.Helper;

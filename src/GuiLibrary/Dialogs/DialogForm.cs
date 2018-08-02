@@ -31,6 +31,7 @@
 using Com.Couchcoding.GuiLibrary.Helper;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace Com.Couchcoding.GuiLibrary.Dialogs
@@ -351,24 +352,28 @@ namespace Com.Couchcoding.GuiLibrary.Dialogs
           {
             grfx.FillRectangle(headerBrush, new Rectangle(
               0
-            , 0
-            , ClientRectangle.Width
-            , headerHeight));
+              , 0
+              , ClientRectangle.Width
+              , headerHeight));
           }
 
-          ControlPaint.DrawVisualStyleBorder(
-              grfx
-            , new Rectangle(
-                -SystemInformation.BorderSize.Width
-              , -SystemInformation.BorderSize.Height
-              , ClientRectangle.Width + SystemInformation.BorderSize.Width + SystemInformation.BorderSize.Width
-              , headerHeight - 1));
+          Rectangle shadowRect = new Rectangle(0, headerHeight - 2, Width, 2);
+
+          if (shadowRect.Width > 0 && shadowRect.Height > 0)
+          {
+            using (LinearGradientBrush shadowBrush = new LinearGradientBrush(shadowRect, SystemColors.ControlDark, ContentColor, LinearGradientMode.Vertical))
+            {
+              // Set the wrap mode to tile flip x to fix flickering on resize.
+              shadowBrush.WrapMode = WrapMode.TileFlipX;
+
+              grfx.FillRectangle(shadowBrush, shadowRect);
+            }
+          }
         }
 
         if (mDialogImage != null)
         {
-          grfx.DrawImage(
-              mDialogImage
+          grfx.DrawImage(mDialogImage
             , new Rectangle(
                 ClientRectangle.Width - mDialogImage.Width
               , (headerHeight - mDialogImage.Height) >> 1

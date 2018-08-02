@@ -1,4 +1,6 @@
-﻿using WeifenLuo.WinFormsUI.Docking;
+﻿using Com.Couchcoding.Logbert.Properties;
+
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace Com.Couchcoding.Logbert.Helper
 {
@@ -18,7 +20,16 @@ namespace Com.Couchcoding.Logbert.Helper
       {
         if (mApplicationTheme == null)
         {
-          mApplicationTheme = new VS2015LightTheme();
+            switch (Settings.Default.ApplicationTheme)
+            {
+                case "Visual Studio Blue":
+                    mApplicationTheme = new VS2015BlueTheme();
+                    break;
+                default:
+                    mApplicationTheme = new VS2015LightTheme();
+                    break;
+            }
+            
         }
 
         return mApplicationTheme;

@@ -31,11 +31,13 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 using Com.Couchcoding.Logbert.Interfaces;
 
 using Com.Couchcoding.Logbert.Logging;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 using Com.Couchcoding.Logbert.Controls;
 using Com.Couchcoding.Logbert.Helper;
@@ -251,11 +253,11 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
 
       if (!string.IsNullOrEmpty(pathOfFile) && !string.IsNullOrEmpty(nameOfFile))
       {
-        mFileWatcher = new FileSystemWatcher(
-            pathOfFile
-          , nameOfFile);
+        mFileWatcher = new FileSystemWatcher(pathOfFile, nameOfFile)
+        {
+          NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.Size
+        };
 
-        mFileWatcher.NotifyFilter        = NotifyFilters.LastWrite | NotifyFilters.Size;
         mFileWatcher.Changed            += OnLogFileChanged;
         mFileWatcher.Error              += OnFileWatcherError;
         mFileWatcher.EnableRaisingEvents = IsActive;
@@ -289,11 +291,18 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
           continue;
         }
 
-        messages.Add(new LogMessageSyslog(
+        try
+        {
+          messages.Add(new LogMessageSyslog(
             line
-          , ++mLogNumber
-          , mTimestampFormat));
+            , ++mLogNumber
+            , mTimestampFormat));
+        }
+        catch (Exception ex)
+        {
+          Logger.Warn(ex.Message);
       }
+    }
 
       mLastFileOffset = mFileReader.BaseStream.Position;
 
@@ -328,7 +337,8 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
           mFileToObserve
         , FileMode.Open
         , FileAccess.Read
-        , FileShare.ReadWrite));
+        , FileShare.ReadWrite)
+        , mEncoding);
 
       mLogNumber      = 0;
       mLastFileOffset = mStartFromBeginning
@@ -340,11 +350,11 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
 
       if (!string.IsNullOrEmpty(pathOfFile) && !string.IsNullOrEmpty(nameOfFile))
       {
-        mFileWatcher = new FileSystemWatcher(
-            pathOfFile
-          , nameOfFile);
+        mFileWatcher = new FileSystemWatcher(pathOfFile, nameOfFile)
+        {
+          NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.Size
+        };
 
-        mFileWatcher.NotifyFilter        = NotifyFilters.LastWrite | NotifyFilters.Size;
         mFileWatcher.Changed            += OnLogFileChanged;
         mFileWatcher.Error              += OnFileWatcherError;
         mFileWatcher.EnableRaisingEvents = IsActive;
@@ -489,7 +499,8 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
     /// <param name="fileToObserve">The file the new <see cref="SyslogFileReceiver"/> instance should observe.</param>
     /// <param name="startFromBeginning">Determines whether the new <see cref="SyslogFileReceiver"/> should read the given <paramref name="fileToObserve"/> from beginnin, or not.</param>
     /// <param name="timestampFormat">The format of the timestamp of a received message.</param>
-    public SyslogFileReceiver(string fileToObserve, bool startFromBeginning, string timestampFormat)
+    /// <param name="codePage">The codepage to use for encoding of the data to parse.</param>
+    public SyslogFileReceiver(string fileToObserve, bool startFromBeginning, string timestampFormat, int codePage) : base (codePage)
     {
       mFileToObserve      = fileToObserve;
       mStartFromBeginning = startFromBeginning;

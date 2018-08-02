@@ -121,15 +121,14 @@ namespace Logbert
     [Localizable(true)]
     public sealed override Font Font
     {
-      get
-      {
-        return base.Font;
-      }
-      set
-      {
-        base.Font = value;
-      }
+      get => base.Font;
+      set => base.Font = value;
     }
+
+    /// <summary>
+    /// Gets the main <see cref="DockPanel"/> of the application.
+    /// </summary>
+    public DockPanel MainDockPanel => mainDockPanel;
 
     #endregion
 
@@ -334,6 +333,8 @@ namespace Logbert
       }
 
       RebuildMruList();
+
+      MruManager.MruListChanged += (_, __) => RebuildMruList();
     }
 
     private void RebuildMruList()
@@ -432,14 +433,14 @@ namespace Logbert
     /// </summary>
     /// <param name="logFileToLoad">The log file to load into a new logger window.</param>
     /// <param name="verbose">[Optional] <c>True</c> to inform the user about any load error, otherwise <c>false</c>. Default is <c>True</c>.</param>
-    private void LoadFileIntoLogger(string logFileToLoad, bool verbose = true)
+    public void LoadFileIntoLogger(string logFileToLoad, bool verbose = true)
     {
       if (!string.IsNullOrEmpty(logFileToLoad) && File.Exists(logFileToLoad))
       {
         ReceiverBase[] knownFileReceiver = 
         {
-            new Log4NetFileReceiver(logFileToLoad, true)
-          , new SyslogFileReceiver (logFileToLoad, true, Settings.Default.PnlSyslogFileSettingsTimestampFormat)
+            new Log4NetFileReceiver(logFileToLoad, true, Settings.Default.PnlLog4NetFileSettingsEncoding)
+          , new SyslogFileReceiver (logFileToLoad, true, Settings.Default.PnlSyslogFileSettingsTimestampFormat, Settings.Default.PnlSyslogFileSettingsEncoding)
         };
 
         foreach (ReceiverBase receiver in knownFileReceiver)
@@ -886,9 +887,6 @@ namespace Logbert
       mainDockPanel.Theme = ThemeManager.CurrentApplicationTheme;
       mainDockPanel.Theme.ApplyTo(mnuMain);
 
-      mainDockPanel.BackColor       = mainDockPanel.DockBackColor;
-      mainDockPanel.BackgroundImage = Resources.Logbert_Start_Screen;
-
       // Ensure we're using the systems default dialog font for the main view.
       Font = SystemFonts.MessageBoxFont;
 
@@ -901,6 +899,9 @@ namespace Logbert
 
       // Create the one and only find window instance.
       mFindWindow = new FrmLogSearch(this);
+
+      // Initialize and show the welcome page.
+      new FrmWelcome(this).Show(mainDockPanel);
 
       LoadFileIntoLogger(logFileToLoad);
     }

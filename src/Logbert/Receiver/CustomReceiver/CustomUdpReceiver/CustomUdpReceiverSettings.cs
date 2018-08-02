@@ -491,6 +491,23 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
         chkMulticastGroup.Checked = Settings.Default.PnlCustomUdpSettingsJoinMulticast;
       }
 
+      foreach (EncodingInfo encoding in Encoding.GetEncodings())
+      {
+        EncodingWrapper encWrapper = new EncodingWrapper(encoding);
+
+        cmbEncoding.Items.Add(encWrapper);
+
+        if (encoding.CodePage == (ModifierKeys != Keys.Shift ? Settings.Default.PnlSyslogUdpSettingsEncoding : Encoding.Default.CodePage))
+        {
+          cmbEncoding.SelectedItem = encWrapper;
+        }
+      }
+
+      if (cmbEncoding.SelectedItem == null)
+      {
+        cmbEncoding.SelectedIndex = 0;
+      }
+
       UpdateEditButtons();
     }
 
@@ -551,6 +568,7 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
                 Settings.Default.PnlCustomUdpSettingsPort             = (int)nudPort.Value;
                 Settings.Default.PnlCustomUdpSettingsJoinMulticast    = chkMulticastGroup.Checked;
                 Settings.Default.PnlCustomUdpSettingsMulticastAddress = txtMulticastIp.Text;
+                Settings.Default.PnlCustomUdpSettingsEncoding         = ((EncodingWrapper)cmbEncoding.SelectedItem).Codepage;
 
                 Settings.Default.SaveSettings();
               }
@@ -559,7 +577,8 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
                   ? IPAddress.Parse(txtMulticastIp.Text.Trim()) 
                   : null
                 , new IPEndPoint(ipAddress.Address, (int)nudPort.Value)
-                , cmbColumnizer.SelectedItem as Columnizer);
+                , cmbColumnizer.SelectedItem as Columnizer
+                , Settings.Default.PnlCustomUdpSettingsEncoding);
             }
           }
         }

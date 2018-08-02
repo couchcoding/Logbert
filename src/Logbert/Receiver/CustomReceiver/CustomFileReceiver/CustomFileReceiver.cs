@@ -35,6 +35,7 @@ using Com.Couchcoding.Logbert.Helper;
 using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Logging;
 using System;
+
 using Com.Couchcoding.Logbert.Controls;
 
 namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
@@ -320,7 +321,8 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
           mFileToObserve
         , FileMode.Open
         , FileAccess.Read
-        , FileShare.ReadWrite));
+        , FileShare.ReadWrite)
+        , mEncoding);
 
       mLogNumber      = 0;
       mLastFileOffset = mStartFromBeginning
@@ -422,7 +424,8 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
     /// <param name="fileToObserve">The file the new <see cref="CustomFileReceiver"/> instance should observe.</param>
     /// <param name="startFromBeginning">Determines whether the new <see cref="CustomFileReceiver"/> should read the given <paramref name="CustomFileReceiver"/> from beginnin, or not.</param>
     /// <param name="columnizer">The <see cref="Columnizer"/> instance to use for parsing.</param>
-    public CustomFileReceiver(string fileToObserve, bool startFromBeginning, Columnizer columnizer)
+    /// <param name="codePage">The codepage to use for encoding of the data to parse.</param>
+    public CustomFileReceiver(string fileToObserve, bool startFromBeginning, Columnizer columnizer, int codePage) : base (codePage)
     {
       mFileToObserve      = fileToObserve;
       mStartFromBeginning = startFromBeginning;

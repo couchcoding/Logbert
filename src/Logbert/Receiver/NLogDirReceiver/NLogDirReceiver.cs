@@ -32,7 +32,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
 using Com.Couchcoding.Logbert.Interfaces;
 
 using Com.Couchcoding.Logbert.Controls;
@@ -340,7 +339,7 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogDirReceiver
       {
         for (int i = collectedFiles.Count - 1; i > 0; i--)
         {
-          using (mFileReader = new StreamReader(new FileStream(collectedFiles[i], FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
+          using (mFileReader = new StreamReader(new FileStream(collectedFiles[i], FileMode.Open, FileAccess.Read, FileShare.ReadWrite), mEncoding))
           {
             // Reset file offset count.
             mLastFileOffset = 0;
@@ -360,7 +359,8 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogDirReceiver
             mCurrentLogFile
           , FileMode.Open
           , FileAccess.Read
-          , FileShare.ReadWrite));
+          , FileShare.ReadWrite)
+          , mEncoding);
 
         if (!mStartFromBeginning)
         {
@@ -504,7 +504,8 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogDirReceiver
     /// <param name="directoryToObserve">The directory the new <see cref="NLogDirReceiver"/> instance should observe.</param>
     /// <param name="filenamePattern">The <see cref="Regex"/> to find the files to load and observe.</param>
     /// <param name="startFromBeginning">Determines whether the new <see cref="NLogDirReceiver"/> should read all files within the given <paramref name="directoryToObserve"/>, or not.</param>
-    public NLogDirReceiver(string directoryToObserve, string filenamePattern, bool startFromBeginning)
+    /// <param name="codePage">The codepage to use for encoding of the data to parse.</param>
+    public NLogDirReceiver(string directoryToObserve, string filenamePattern, bool startFromBeginning, int codePage) : base (codePage)
     {
       mDirectoryToObserve = directoryToObserve;
       mFilenamePattern    = filenamePattern;

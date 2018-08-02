@@ -254,7 +254,7 @@ namespace Com.Couchcoding.Logbert.Receiver.NlogTcpReceiver
                     , 0
                     , receivedBytes.Length);
 
-                  receivedMessage.Append(Encoding.ASCII.GetString(
+                  receivedMessage.Append(mEncoding.GetString(
                       receivedBytes
                     , 0
                     , receivedByteCount));
@@ -427,7 +427,8 @@ namespace Com.Couchcoding.Logbert.Receiver.NlogTcpReceiver
     /// </summary>
     /// <param name="port">The port to listen on for new <see cref="LogMessage"/>s</param>
     /// <param name="listenInterface">The network interface to listen on.</param>
-    public NlogTcpReceiver(int port, IPEndPoint listenInterface)
+    /// <param name="codePage">The codepage to use for encoding of the data to parse.</param>
+    public NlogTcpReceiver(int port, IPEndPoint listenInterface, int codePage) : base (codePage)
     {
       mPort            = port;
       mListenInterface = listenInterface;

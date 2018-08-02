@@ -30,6 +30,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Text;
+
 using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Logging;
 using Com.Couchcoding.Logbert.Helper;
@@ -41,6 +43,15 @@ namespace Com.Couchcoding.Logbert.Receiver
   /// </summary>
   public abstract class ReceiverBase : ILogProvider, IDisposable
   {
+    #region Private Consts
+
+    /// <summary>
+    ///  Use the ISO-8859-1 (Western European (Windows)) as default encoding.
+    /// </summary>
+    private const int SYSTEM_DEFAULT_CODEPAGE = 1252;
+
+    #endregion
+
     #region Private Fields
 
     /// <summary>
@@ -52,6 +63,11 @@ namespace Com.Couchcoding.Logbert.Receiver
     /// Holds the active state if the <see cref="ILogProvider"/>.
     /// </summary>
     protected bool mIsActive = true;
+
+    /// <summary>
+    /// The <see cref="Encoding"/> to use while parsing the data.
+    /// </summary>
+    protected Encoding mEncoding;
 
     #endregion
 
@@ -274,6 +290,29 @@ namespace Com.Couchcoding.Logbert.Receiver
     /// </summary>
     /// <returns>The restored layout, or <c>null</c> if none exists.</returns>
     public abstract string LoadLayout();
+
+    #endregion
+
+    #region Constructor
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ReceiverBase"/> with the specified parameters.
+    /// </summary>
+    /// <param name="codePage">The codepage to use for encoding of the datato parse.</param>
+    protected ReceiverBase(int codePage = SYSTEM_DEFAULT_CODEPAGE)
+    {
+      try
+      {
+        mEncoding = Encoding.GetEncoding(codePage);
+      }
+      catch (Exception ex)
+      {
+        Logger.Warn($"Unable to restore encoding (Codepage: {codePage}): {ex.Message}");
+
+        // Using the system default encoding as fallback.
+        mEncoding = Encoding.Default;
+      }
+    }
 
     #endregion
   }

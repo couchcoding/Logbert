@@ -61,7 +61,7 @@ namespace Com.Couchcoding.Logbert.Dialogs
     /// <summary>
     /// Gets the fully configured <see cref="ILogProvider"/>, or <c>null</c> on error.
     /// </summary>
-    public ILogProvider LogProvider => (grpSettings.Controls[0] as ILogSettingsCtrl)?.GetConfiguredInstance();
+    public ILogProvider LogProvider => (pnlLoggerPanel.Controls[0] as ILogSettingsCtrl)?.GetConfiguredInstance();
 
     #endregion
 
@@ -76,7 +76,7 @@ namespace Com.Couchcoding.Logbert.Dialogs
 
       if (logProvider != null)
       {
-        grpSettings.SuspendLayout();
+        pnlLoggerPanel.SuspendLayout();
 
         using (new WaitCursor(Cursors.Default, Settings.Default.WaitCursorTimeout))
         {
@@ -86,32 +86,62 @@ namespace Com.Couchcoding.Logbert.Dialogs
 
             if (newSettingsCtrl != null)
             {
-              if (grpSettings.Controls.Count == 1)
+              if (pnlLoggerPanel.Controls.Count == 1)
               {
-                ILogSettingsCtrl oldSettingsCtrl = grpSettings.Controls[0] as ILogSettingsCtrl;
+                ILogSettingsCtrl oldSettingsCtrl = pnlLoggerPanel.Controls[0] as ILogSettingsCtrl;
 
                 if (oldSettingsCtrl != null)
                 {
-                  grpSettings.Controls.RemoveAt(0);
+                  pnlLoggerPanel.Controls.RemoveAt(0);
                   oldSettingsCtrl.Dispose();
                 }
               }
 
               ((Control)newSettingsCtrl).Dock = DockStyle.Fill;
 
-              grpSettings.Controls.Add((Control)newSettingsCtrl);
+              pnlLoggerPanel.Controls.Add((Control)newSettingsCtrl);
+              pnlLoggerPanel.AutoScrollMinSize = pnlLoggerPanel.Controls[0].MinimumSize;
 
               grpSettings.Text = string.Format(
-                  Resources.strNewLoggerPanelText
+                Resources.strNewLoggerPanelText
                 , logProvider.Name);
             }
           }
           finally
           {
-            grpSettings.ResumeLayout();
+            pnlLoggerPanel.ResumeLayout(true);
           }
         }
       }
+    }
+
+    /// <summary>
+    /// Initializes the user interface of the dialog.
+    /// </summary>
+    private void InitializeUserInterface()
+    {
+
+      InitializeComponent();
+
+      lstLogger.Items.Add(new Log4NetUdpReceiver());
+      lstLogger.Items.Add(new Log4NetFileReceiver());
+      lstLogger.Items.Add(new Log4NetDirReceiver());
+      lstLogger.AddSeperator();
+      lstLogger.Items.Add(new NlogTcpReceiver());
+      lstLogger.Items.Add(new NLogUdpReceiver());
+      lstLogger.Items.Add(new NLogFileReceiver());
+      lstLogger.Items.Add(new NLogDirReceiver());
+      lstLogger.AddSeperator();
+      lstLogger.Items.Add(new SyslogUdpReceiver());
+      lstLogger.Items.Add(new SyslogFileReceiver());
+      lstLogger.AddSeperator();
+      lstLogger.Items.Add(new EventlogReceiver());
+      lstLogger.Items.Add(new WinDebugReceiver());
+      lstLogger.AddSeperator();
+      lstLogger.Items.Add(new CustomUdpReceiver());
+      lstLogger.Items.Add(new CustomTcpReceiver());
+      lstLogger.Items.Add(new CustomFileReceiver());
+      lstLogger.Items.Add(new CustomDirReceiver());
     }
 
     /// <summary>
@@ -123,8 +153,8 @@ namespace Com.Couchcoding.Logbert.Dialogs
     {
       if (dlgResult == DialogResult.OK)
       {
-        ILogSettingsCtrl oldSettingsCtrl = grpSettings.Controls.Count > 0 
-          ? grpSettings.Controls[0] as ILogSettingsCtrl
+        ILogSettingsCtrl oldSettingsCtrl = pnlLoggerPanel.Controls.Count > 0
+          ? pnlLoggerPanel.Controls[0] as ILogSettingsCtrl
           : null;
 
         if (oldSettingsCtrl != null)
@@ -134,7 +164,7 @@ namespace Com.Couchcoding.Logbert.Dialogs
           if (!result.IsSuccess)
           {
             MessageBox.Show(
-                this
+              this
               , result.ErrorMsg
               , Application.ProductName
               , MessageBoxButtons.OK
@@ -157,29 +187,26 @@ namespace Com.Couchcoding.Logbert.Dialogs
     /// </summary>
     public FrmNew()
     {
-      InitializeComponent();
-
-      lstLogger.Items.Add(new Log4NetUdpReceiver());
-      lstLogger.Items.Add(new Log4NetFileReceiver());
-      lstLogger.Items.Add(new Log4NetDirReceiver());
-      lstLogger.AddSeperator();
-      lstLogger.Items.Add(new NlogTcpReceiver());
-      lstLogger.Items.Add(new NLogUdpReceiver());
-      lstLogger.Items.Add(new NLogFileReceiver());
-      lstLogger.Items.Add(new NLogDirReceiver());
-      lstLogger.AddSeperator();
-      lstLogger.Items.Add(new SyslogUdpReceiver());
-      lstLogger.Items.Add(new SyslogFileReceiver());
-      lstLogger.AddSeperator();
-      lstLogger.Items.Add(new EventlogReceiver());
-      lstLogger.Items.Add(new WinDebugReceiver());
-      lstLogger.AddSeperator();
-      lstLogger.Items.Add(new CustomUdpReceiver());
-      lstLogger.Items.Add(new CustomTcpReceiver());
-      lstLogger.Items.Add(new CustomFileReceiver());
-      lstLogger.Items.Add(new CustomDirReceiver());
+      InitializeUserInterface();
 
       lstLogger.SelectedIndex = 0;
+    }
+
+    /// <summary>
+    /// Creates a new instance of the <see cref="FrmNew"/> <see cref="Form"/>.
+    /// </summary>
+    public FrmNew(string selectedReceiver)
+    {
+      InitializeUserInterface();
+
+      for (int receiverIndex = 0; receiverIndex < lstLogger.Items.Count; receiverIndex++)
+      {
+        if (lstLogger.Items[receiverIndex] is ReceiverBase currentReceiver && Equals(currentReceiver.Name, selectedReceiver))
+        {
+          lstLogger.SelectedIndex = receiverIndex;
+          break;
+        }
+      }
     }
 
     #endregion

@@ -187,6 +187,7 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
       cmbFontStyleError.SelectedIndex   = Settings.Default.FontStyleError   == FontStyle.Regular ? 0 : 1;
       cmbFontStyleFatal.SelectedIndex   = Settings.Default.FontStyleFatal   == FontStyle.Regular ? 0 : 1;
 
+      cmbApplicationTheme.SelectedItem = Settings.Default.ApplicationTheme;
       chkDrawGrid.Checked = Settings.Default.LogWindowDrawGrid;
     }
 
@@ -226,6 +227,7 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
         Settings.Default.FontStyleFatal = cmbFontStyleFatal.SelectedIndex == 0 ? FontStyle.Regular : FontStyle.Bold;
 
         Settings.Default.LogWindowDrawGrid = chkDrawGrid.Checked;
+        Settings.Default.ApplicationTheme = cmbApplicationTheme.Text;
 
         Settings.Default.SaveSettings();
       }

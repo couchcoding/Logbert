@@ -297,7 +297,8 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
               return new NLogUdpReceiver(chkMulticastGroup.Checked 
                   ? IPAddress.Parse(txtMulticastIp.Text.Trim()) 
                   : null
-                , new IPEndPoint(ipAddress.Address, (int)nudPort.Value));
+                , new IPEndPoint(ipAddress.Address, (int)nudPort.Value)
+                , Settings.Default.PnlNLogUdpSettingsEncoding);
             }
           }
         }

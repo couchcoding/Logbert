@@ -34,6 +34,7 @@ using System.Windows.Forms;
 using Com.Couchcoding.Logbert.Interfaces;
 using Com.Couchcoding.Logbert.Properties;
 using System.IO;
+using System.Text;
 
 using Com.Couchcoding.Logbert.Helper;
 
@@ -84,6 +85,23 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogFileReceiver
 
         chkStartFromBeginning.Checked = Settings.Default.PnlNLogFileSettingsStartFromBeginning;
       }
+
+      foreach (EncodingInfo encoding in Encoding.GetEncodings())
+      {
+        EncodingWrapper encWrapper = new EncodingWrapper(encoding);
+
+        cmbEncoding.Items.Add(encWrapper);
+
+        if (encoding.CodePage == (ModifierKeys != Keys.Shift ? Settings.Default.PnlSyslogUdpSettingsEncoding : Encoding.Default.CodePage))
+        {
+          cmbEncoding.SelectedItem = encWrapper;
+        }
+      }
+
+      if (cmbEncoding.SelectedItem == null)
+      {
+        cmbEncoding.SelectedIndex = 0;
+      }
     }
 
     #endregion
@@ -118,13 +136,15 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogFileReceiver
         // Save the current settings as new default values.
         Settings.Default.PnlNLogFileSettingsFile               = txtLogFile.Text;
         Settings.Default.PnlNLogFileSettingsStartFromBeginning = chkStartFromBeginning.Checked;
+        Settings.Default.PnlNLogFileSettingsEncoding           = ((EncodingWrapper)cmbEncoding.SelectedItem).Codepage;
 
         Settings.Default.SaveSettings();
       }
 
       return new NLogFileReceiver(
           txtLogFile.Text
-        , chkStartFromBeginning.Checked);
+        , chkStartFromBeginning.Checked
+        , Settings.Default.PnlNLogFileSettingsEncoding);
     }
 
     #endregion
