@@ -316,17 +316,17 @@ namespace Com.Couchcoding.Logbert.Controls
         {
           txtDataNumber.Text      = logMessage.Index.ToString();
           txtDataLevel.Text       = logMessage.Level.ToString();
-          txtDataDateAndTime.Text = logMessage.Timestamp.AddMilliseconds(logMessage.TimeShiftOffset).ToString(Settings.Default.TimestampFormat);
+          txtDataDateAndTime.Text = logMessage.Timestamp.Add(logMessage.TimeShiftOffset).ToString(Settings.Default.TimestampFormat);
           txtDataLogger.Text      = logMessage.Logger;
           txtDataCategory.Text    = logMessage.Category;
           txtDataUsername.Text    = logMessage.Username;
           txtDataInstaceId.Text   = logMessage.InstanceId.ToString();
 
-          if (logMessage.TimeShiftOffset != 0)
+          if (logMessage.TimeShiftOffset.Milliseconds != 0)
           {
             txtDataDateAndTime.Text += string.Format(
                 Resources.strLoggerDetailsCtrlOffset
-              , logMessage.TimeShiftOffset);
+              , logMessage.TimeShiftOffset.Milliseconds);
           }
 
           // Replace all known new line character combinations with the .net one.

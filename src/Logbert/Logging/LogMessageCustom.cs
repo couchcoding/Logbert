@@ -194,7 +194,7 @@ namespace Com.Couchcoding.Logbert.Logging
             if (mColumnizer.Columns[columnIndex - 2].ColumnType == LogColumnType.Timestamp)
             {
               // Special handling for the timestamp column. Maybe the timeshift value has to be added.
-              return mTimestamp.AddMilliseconds(mTimeShiftOffset).ToString(
+              return mTimestamp.Add(mTimeShiftOffset).ToString(
                   Settings.Default.TimestampFormat
                 , CultureInfo.InvariantCulture);
             }

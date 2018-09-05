@@ -148,7 +148,7 @@ namespace Com.Couchcoding.Logbert.Logging
         case 2:
           return Level.ToString();
         case 3:
-          return mTimestamp.AddMilliseconds(mTimeShiftOffset).ToString(
+          return mTimestamp.Add(mTimeShiftOffset).ToString(
               Settings.Default.TimestampFormat
             , CultureInfo.InvariantCulture);
         case 4:

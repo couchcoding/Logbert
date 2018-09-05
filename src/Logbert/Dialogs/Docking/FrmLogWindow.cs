@@ -31,6 +31,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -147,7 +148,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       get
       {
         return dtgLogMessages.SelectedRows.Count > 0
-          ? mFilteredLogMessages[dtgLogMessages.SelectedRows[0].Index]
+          ? mFilteredLogMessages[dtgLogMessages.SelectedRows.OrderByIndex().First().Index]
           : null;
       }
     }
@@ -506,15 +507,18 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     {
       LogMessage selectedMessage = null;
 
-      if (dtgLogMessages.SelectedRows.Count    == 1
-      &&  dtgLogMessages.SelectedRows[0].Index >= 0
-      &&  dtgLogMessages.SelectedRows[0].Index < mFilteredLogMessages.Count)
-      {
-        selectedMessage = mFilteredLogMessages[dtgLogMessages.SelectedRows[0].Index];
+      if (dtgLogMessages.SelectedRows.Count == 1)
+      { 
+        int messageIndex = dtgLogMessages.SelectedRows.OrderByIndex().First().Index;
 
-        // If a row above the last one is selected, disable the tail feature.
-        mLogcontainer.TailEnabled = dtgLogMessages.SelectedRows[0].Index >= mFilteredLogMessages.Count - 1 
-                                 && Settings.Default.LogWndAutoScrollOnLastMessageSelect;
+        if (messageIndex >= 0 && messageIndex < mFilteredLogMessages.Count)
+        {
+          selectedMessage = mFilteredLogMessages[messageIndex];
+
+          // If a row above the last one is selected, disable the tail feature.
+          mLogcontainer.TailEnabled = messageIndex >= mFilteredLogMessages.Count - 1 
+                                   && Settings.Default.LogWndAutoScrollOnLastMessageSelect;
+        }
       }
 
       OnRaiseLogMessageSelectedEvent(
@@ -545,16 +549,16 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     {
       if (e.RowIndex >= 0 && e.RowIndex < mFilteredLogMessages.Count && e.ColumnIndex == 0)
       {
-        LogMessage currentMsg = mFilteredLogMessages[dtgLogMessages.SelectedRows[0].Index];
+        LogMessage currentMsg = mFilteredLogMessages[dtgLogMessages.SelectedRows.OrderByIndex().First().Index];
 
         // Toggle the bookmark state.
         if (mBookmarks.Contains(currentMsg))
         {
-          RemoveBookmark(currentMsg);
+          RemoveBookmarks(new List<LogMessage>(new[] { currentMsg }));
         }
         else
         {
-          AddBookmark(currentMsg);
+          AddBookmarks(new List<LogMessage>(new[] { currentMsg }));
         }
       }
     }
@@ -601,7 +605,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
     private void synchronizeTreeToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      LogMessage selectedMessage = mFilteredLogMessages[dtgLogMessages.SelectedRows[0].Index] as LogMessage;
+      LogMessage selectedMessage = mFilteredLogMessages[dtgLogMessages.SelectedRows.OrderByIndex().First().Index] as LogMessage;
 
       if (selectedMessage != null)
       {
@@ -611,17 +615,26 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
     private void CmsToggleBookmarkClick(object sender, EventArgs e)
     {
-      LogMessage selectedMessage = mFilteredLogMessages[dtgLogMessages.SelectedRows[0].Index] as LogMessage;
+      if (mFilteredLogMessages[dtgLogMessages.SelectedRows.OrderByIndex().First().Index] is LogMessage firstMessage)
+      {
+        bool isBookmarked = mBookmarks.Contains(firstMessage);
+        List<LogMessage> selectedMessages = new List<LogMessage>();
+
+        foreach (DataGridViewRow messageRow in dtgLogMessages.SelectedRows)
+        {
+          selectedMessages.Add(mFilteredLogMessages[messageRow.Index]);
+        }
 
         // Toggle the bookmark state.
-        if (mBookmarks.Contains(selectedMessage))
+        if (isBookmarked)
         {
-          RemoveBookmark(selectedMessage);
+          RemoveBookmarks(selectedMessages);
         }
         else
         {
-          AddBookmark(selectedMessage);
+          AddBookmarks(selectedMessages);
         }
+      }
     }
 
     /// <summary>
@@ -727,11 +740,19 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// Adds a new Bookmark for the given <paramref name="message"/>.
     /// </summary>
     /// <param name="message">The <see cref="LogMessage"/> to bookmark.</param>
-    public void AddBookmark(LogMessage message)
+    public void AddBookmarks(List<LogMessage> messages)
     {
-      if (message != null && !mBookmarks.Contains(message))
+      if (messages == null || messages.Count == 0)
       {
-        mBookmarks.Add(message);
+        return;
+      }
+
+      foreach (LogMessage message in messages)
+      {
+        if (!mBookmarks.Contains(message))
+        {
+          mBookmarks.Add(message);
+        }
       }
 
       dtgLogMessages.Invalidate();
@@ -746,11 +767,19 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// Removes the given <paramref name="message"/> from the bookmarks.
     /// </summary>
     /// <param name="message">The <see cref="LogMessage"/> to remove from the bookmarks.</param>
-    public void RemoveBookmark(LogMessage message)
+    public void RemoveBookmarks(List<LogMessage> messages)
     {
-      if (message != null && mBookmarks.Contains(message))
+      if (messages == null || messages.Count == 0)
       {
-        mBookmarks.Remove(message);
+        return;
+      }
+
+      foreach (LogMessage message in messages)
+      {
+        if (mBookmarks.Contains(message))
+        {
+          mBookmarks.Remove(message);
+        }
       }
 
       dtgLogMessages.Invalidate();
@@ -1025,11 +1054,14 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
           // Remember the current selected message.
           LogMessage selectedMessage = null;
 
-          if (dtgLogMessages.SelectedRows.Count == 1
-          && dtgLogMessages.SelectedRows[0].Index >= 0
-          && dtgLogMessages.SelectedRows[0].Index < mFilteredLogMessages.Count)
-          {
-            selectedMessage = mFilteredLogMessages[dtgLogMessages.SelectedRows[0].Index];
+          if (dtgLogMessages.SelectedRows.Count == 1)
+          { 
+            int messageIndex = dtgLogMessages.SelectedRows.OrderByIndex().First().Index;
+
+            if (messageIndex >= 0 && messageIndex < mFilteredLogMessages.Count)
+            {
+              selectedMessage = mFilteredLogMessages[messageIndex];
+            }
           }
 
           // Clear all existing datasets.
@@ -1101,7 +1133,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
       int currentMessageIndex = dtgLogMessages.SelectedRows.Count == 0 
         ? 0 
-        : dtgLogMessages.SelectedRows[0].Index + 1;
+        : dtgLogMessages.SelectedRows.OrderByIndex().First().Index + 1;
 
       Regex rgxToSeachFor = new Regex(pattern,
         Settings.Default.FrmFindSearchMatchCase 

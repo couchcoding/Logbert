@@ -304,16 +304,16 @@ namespace Com.Couchcoding.Logbert.Controls
         {
           txtDataNumber.Text            = logMessage.Index.ToString();
           txtDataSeverity.Text          = logMessage.Level.ToString();
-          txtDataLocalMachineTime.Text  = logMessage.LocalTimestamp.AddMilliseconds(logMessage.TimeShiftOffset).ToString(Settings.Default.TimestampFormat);
+          txtDataLocalMachineTime.Text  = logMessage.LocalTimestamp.Add(logMessage.TimeShiftOffset).ToString(Settings.Default.TimestampFormat);
           txtDataTime.Text              = logMessage.Timestamp.ToString(Settings.Default.TimestampFormat);
           txtDataFacility.Text          = logMessage.LogFacility.ToString();
           txtDataSender.Text            = logMessage.Logger;
 
-          if (logMessage.TimeShiftOffset != 0)
+          if (logMessage.TimeShiftOffset.Milliseconds != 0)
           {
             txtDataLocalMachineTime.Text += string.Format(
                 Resources.strLoggerDetailsCtrlOffset
-              , logMessage.TimeShiftOffset);
+              , logMessage.TimeShiftOffset.Milliseconds);
           }
 
           // Replace all known new line character combinations with the .net one.

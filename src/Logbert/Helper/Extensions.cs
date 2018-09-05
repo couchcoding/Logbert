@@ -29,9 +29,11 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
 using System.IO.Pipes;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -68,6 +70,16 @@ namespace Com.Couchcoding.Logbert.Helper
     #endregion
 
     #region Public Methods
+
+    /// <summary>
+    /// Gets the specified <paramref name="selection"/> ordered by its index.
+    /// </summary>
+    /// <param name="selection">The <see cref="DataGridViewSelectedRowCollection"/> to order.</param>
+    /// <returns>The specified <paramref name="selection"/> ordered by its index.</returns>
+    public static IEnumerable<DataGridViewRow> OrderByIndex(this DataGridViewSelectedRowCollection selection)
+    {
+      return selection.Cast<DataGridViewRow>().OrderBy(row => row.Index);
+    }
 
     /// <summary>
     /// Suspens the target <see cref="Control"/> from processing redraw events.

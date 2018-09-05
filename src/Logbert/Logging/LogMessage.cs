@@ -68,7 +68,7 @@ namespace Com.Couchcoding.Logbert.Logging
     /// <summary>
     /// The timeshift offset for the <see cref="LogMessage"/>.
     /// </summary>
-    protected int mTimeShiftOffset;
+    protected TimeSpan mTimeShiftOffset;
 
     #endregion
 
@@ -130,10 +130,11 @@ namespace Com.Couchcoding.Logbert.Logging
         return mLogger;
       }
     }
+
     /// <summary>
     /// Get or sets the timeshift offset for the <see cref="LogMessage"/>.
     /// </summary>
-    public int TimeShiftOffset
+    public TimeSpan TimeShiftOffset
     {
       get
       {

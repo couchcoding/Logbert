@@ -28,6 +28,7 @@
 
 #endregion
 
+using System;
 using System.Collections.Generic;
 
 using Com.Couchcoding.Logbert.Logging;
@@ -56,14 +57,6 @@ namespace Com.Couchcoding.Logbert.Interfaces
     {
       get;
       set;
-    }
-
-    /// <summary>
-    /// Gets the timeshift value for the displayed <see cref="LogMessage"/>s.
-    /// </summary>
-    int TimeShiftValue
-    {
-      get;
     }
 
     #endregion

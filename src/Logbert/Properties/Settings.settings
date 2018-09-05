@@ -485,13 +485,13 @@
     <Setting Name="PnlNLogFileSettingsEncoding" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1252</Value>
     </Setting>
-    <Setting Name="PnlNLogDirSettingsEncoding" Type="System.Int32" Scope="User">
+    <Setting Name="PnlNLogDirectorySettingsEncoding" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1252</Value>
     </Setting>
     <Setting Name="PnlLog4NetFileSettingsEncoding" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1252</Value>
     </Setting>
-    <Setting Name="PnlLog4NetDirSettingsEncoding" Type="System.Int32" Scope="User">
+    <Setting Name="PnlLog4NetDirectorySettingsEncoding" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1252</Value>
     </Setting>
     <Setting Name="PnlLog4NetUdpSettingsEncoding" Type="System.Int32" Scope="User">
@@ -500,13 +500,25 @@
     <Setting Name="PnlCustomFileSettingsEncoding" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1252</Value>
     </Setting>
-    <Setting Name="PnlCustomDirSettingsEncoding" Type="System.Int32" Scope="User">
+    <Setting Name="PnlCustomDirectorySettingsEncoding" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1252</Value>
     </Setting>
     <Setting Name="PnlCustomUdpSettingsEncoding" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1252</Value>
     </Setting>
     <Setting Name="PnlCustomTcpSettingsEncoding" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1252</Value>
+    </Setting>
+    <Setting Name="TimeShiftValue" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="TimeShiftUnitIndex" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="PnlNLogDirSettingsEncoding" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1252</Value>
+    </Setting>
+    <Setting Name="PnlCustomDirSettingsEncoding" Type="System.String" Scope="User">
       <Value Profile="(Default)">1252</Value>
     </Setting>
   </Settings>

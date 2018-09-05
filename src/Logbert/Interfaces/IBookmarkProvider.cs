@@ -71,16 +71,16 @@ namespace Com.Couchcoding.Logbert.Interfaces
     bool SelectLogMessage(LogMessage message);
 
     /// <summary>
-    /// Adds a new Bookmark for the given <paramref name="message"/>.
+    /// Adds a new Bookmark for the given list of <paramref name="message"/>s.
     /// </summary>
-    /// <param name="message">The <see cref="LogMessage"/> to bookmark.</param>
-    void AddBookmark(LogMessage message);
+    /// <param name="messages">The <see cref="LogMessage"/>s to bookmark.</param>
+    void AddBookmarks(List<LogMessage> messages);
 
     /// <summary>
-    /// Removes the given <paramref name="message"/> from the bookmarks.
+    /// Removes the given <paramref name="message"/>s from the bookmarks.
     /// </summary>
-    /// <param name="message">The <see cref="LogMessage"/> to remove from the bookmarks.</param>
-    void RemoveBookmark(LogMessage message);
+    /// <param name="messages">The <see cref="LogMessage"/>s to remove from the bookmarks.</param>
+    void RemoveBookmarks(List<LogMessage> messages);
 
     /// <summary>
     /// Registers a <see cref="IBookmarkObserver"/> to the <see cref="IBookmarkProvider"/> instance.
