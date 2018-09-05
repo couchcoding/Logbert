@@ -38,6 +38,7 @@ using Com.Couchcoding.Logbert.Properties;
 using System.Net.Sockets;
 
 using Com.Couchcoding.Logbert.Helper;
+using System.Text;
 
 namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
 {
@@ -233,6 +234,23 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
         txtMulticastIp.Text       = Settings.Default.PnlNLogUdpSettingsMulticastAddress;
         chkMulticastGroup.Checked = Settings.Default.PnlNLogUdpSettingsJoinMulticast;
       }
+
+      foreach (EncodingInfo encoding in Encoding.GetEncodings())
+      {
+        EncodingWrapper encWrapper = new EncodingWrapper(encoding);
+
+        cmbEncoding.Items.Add(encWrapper);
+
+        if (encoding.CodePage == (ModifierKeys != Keys.Shift ? Settings.Default.PnlNLogUdpSettingsEncoding : Encoding.Default.CodePage))
+        {
+          cmbEncoding.SelectedItem = encWrapper;
+        }
+      }
+
+      if (cmbEncoding.SelectedItem == null)
+      {
+        cmbEncoding.SelectedIndex = 0;
+      }
     }
 
     #endregion
@@ -290,6 +308,7 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
                 Settings.Default.PnlNLogUdpSettingsPort             = (int)nudPort.Value;
                 Settings.Default.PnlNLogUdpSettingsJoinMulticast    = chkMulticastGroup.Checked;
                 Settings.Default.PnlNLogUdpSettingsMulticastAddress = txtMulticastIp.Text;
+                Settings.Default.PnlNLogUdpSettingsEncoding         = ((EncodingWrapper)cmbEncoding.SelectedItem).Codepage;
 
                 Settings.Default.SaveSettings();
               }

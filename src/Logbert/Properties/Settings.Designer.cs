@@ -12,7 +12,7 @@ namespace Com.Couchcoding.Logbert.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.8.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -1955,10 +1955,10 @@ namespace Com.Couchcoding.Logbert.Properties {
         [global::System.Configuration.DefaultSettingValueAttribute("1252")]
         public int PnlNLogDirectorySettingsEncoding {
             get {
-                return ((int)(this["PnlNLogDirSettingsEncoding"]));
+                return ((int)(this["PnlNLogDirectorySettingsEncoding"]));
             }
             set {
-                this["PnlNLogDirSettingsEncoding"] = value;
+                this["PnlNLogDirectorySettingsEncoding"] = value;
             }
         }
         
@@ -1979,10 +1979,10 @@ namespace Com.Couchcoding.Logbert.Properties {
         [global::System.Configuration.DefaultSettingValueAttribute("1252")]
         public int PnlLog4NetDirectorySettingsEncoding {
             get {
-                return ((int)(this["PnlLog4NetDirSettingsEncoding"]));
+                return ((int)(this["PnlLog4NetDirectorySettingsEncoding"]));
             }
             set {
-                this["PnlLog4NetDirSettingsEncoding"] = value;
+                this["PnlLog4NetDirectorySettingsEncoding"] = value;
             }
         }
         
@@ -2015,10 +2015,10 @@ namespace Com.Couchcoding.Logbert.Properties {
         [global::System.Configuration.DefaultSettingValueAttribute("1252")]
         public int PnlCustomDirectorySettingsEncoding {
             get {
-                return ((int)(this["PnlCustomDirSettingsEncoding"]));
+                return ((int)(this["PnlCustomDirectorySettingsEncoding"]));
             }
             set {
-                this["PnlCustomDirSettingsEncoding"] = value;
+                this["PnlCustomDirectorySettingsEncoding"] = value;
             }
         }
         
@@ -2043,6 +2043,54 @@ namespace Com.Couchcoding.Logbert.Properties {
             }
             set {
                 this["PnlCustomTcpSettingsEncoding"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TimeShiftValue {
+            get {
+                return ((double)(this["TimeShiftValue"]));
+            }
+            set {
+                this["TimeShiftValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int TimeShiftUnitIndex {
+            get {
+                return ((int)(this["TimeShiftUnitIndex"]));
+            }
+            set {
+                this["TimeShiftUnitIndex"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1252")]
+        public string PnlNLogDirSettingsEncoding {
+            get {
+                return ((string)(this["PnlNLogDirSettingsEncoding"]));
+            }
+            set {
+                this["PnlNLogDirSettingsEncoding"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1252")]
+        public string PnlCustomDirSettingsEncoding {
+            get {
+                return ((string)(this["PnlCustomDirSettingsEncoding"]));
+            }
+            set {
+                this["PnlCustomDirSettingsEncoding"] = value;
             }
         }
     }

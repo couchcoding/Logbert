@@ -44,7 +44,7 @@
       this.dtgLogMessages.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
       this.dtgLogMessages.Location = new System.Drawing.Point(0, 0);
       this.dtgLogMessages.Margin = new System.Windows.Forms.Padding(0);
-      this.dtgLogMessages.MultiSelect = false;
+      this.dtgLogMessages.MultiSelect = true;
       this.dtgLogMessages.Name = "dtgLogMessages";
       this.dtgLogMessages.ReadOnly = true;
       this.dtgLogMessages.RowHeadersVisible = false;

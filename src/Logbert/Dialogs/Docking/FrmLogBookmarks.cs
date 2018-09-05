@@ -28,6 +28,7 @@
 
 #endregion
 
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -90,7 +91,17 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     {
       if (mBookmarkProvider != null && dgvBookmarks.SelectedRows.Count > 0)
       {
-        mBookmarkProvider.RemoveBookmark(dgvBookmarks.SelectedRows[0].Tag as LogMessage);
+        List<LogMessage> selectedMessages = new List<LogMessage>();
+
+        foreach (DataGridViewRow selectedRow in dgvBookmarks.SelectedRows)
+        {
+          if (dgvBookmarks.SelectedRows[0].Tag is LogMessage message)
+          {
+            selectedMessages.Add(message);
+          }
+        }
+
+        mBookmarkProvider.RemoveBookmarks(selectedMessages);
       }
     }
 

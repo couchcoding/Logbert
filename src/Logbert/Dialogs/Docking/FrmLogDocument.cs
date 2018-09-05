@@ -112,7 +112,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// <summary>
     /// The global timeshift value to set for all <see cref="LogMessage"/>s.
     /// </summary>
-    private int mTimeShiftValue;
+    private TimeSpan mTimeShiftValue;
 
     #endregion
 
@@ -215,17 +215,6 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       }
     }
 
-    /// <summary>
-    /// Gets the timeshift value for the displayed <see cref="LogMessage"/>s.
-    /// </summary>
-    public int TimeShiftValue
-    {
-      get
-      {
-        return mTimeShiftValue;
-      }
-    }
-
     #endregion
 
     #region Private Methods
@@ -240,7 +229,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       mMessageDetails?.Show(LogDockPanel, DockState.DockBottom);
       mBookmarks?.Show(LogDockPanel,      DockState.DockBottom);
       mFilter?.Show(LogDockPanel,         DockState.DockBottom);
-      mLogStatistic?.Show(LogDockPanel,      DockState.DockBottom);
+      mLogStatistic?.Show(LogDockPanel,   DockState.DockBottom);
       mLoggerTree?.Show(LogDockPanel,     DockState.DockRight);
 
       mMessageDetails?.Activate();
@@ -528,11 +517,11 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       {
         if (((IBookmarkProvider)mLogWindow).Bookmarks.Contains(selLogMessage))
         {
-          ((IBookmarkProvider)mLogWindow).RemoveBookmark(selLogMessage);
+          ((IBookmarkProvider)mLogWindow).RemoveBookmarks(new List<LogMessage>(new[] { selLogMessage }));
         }
         else
         {
-          ((IBookmarkProvider)mLogWindow).AddBookmark(selLogMessage);
+          ((IBookmarkProvider)mLogWindow).AddBookmarks(new List<LogMessage>(new[] { selLogMessage }));
         }
       }
     }
@@ -716,18 +705,10 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// </summary>
     private void TsbTimeShiftClick(object sender, EventArgs e)
     {
-      txtTimeShift.Enabled = tsbTimeShift.Checked;
-      tslTimeShift.Enabled = tsbTimeShift.Checked;
+      txtTimeShift.Enabled     = tsbTimeShift.Checked;
+      tsbTimeShiftUnit.Enabled = tsbTimeShift.Checked;
 
-      int newValue;
-      if (tsbTimeShift.Checked && int.TryParse(txtTimeShift.Text.Trim(), out newValue))
-      {
-        SetTimeshiftValue(newValue);
-      }
-      else
-      {
-        SetTimeshiftValue(0);
-      }
+      SetTimeshiftValue();
     }
 
     /// <summary>
@@ -979,47 +960,95 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// <param name="e"></param>
     private void TxtTimeShiftValidated(object sender, EventArgs e)
     {
-      int newValue;
-
-      if (!int.TryParse(txtTimeShift.Text.Trim(), out newValue))
-      {
-        txtTimeShift.Text = mTimeShiftValue.ToString();
-        return;
-      }
-
-      SetTimeshiftValue(newValue);
+      SetTimeshiftValue();
     }
 
     /// <summary>
     /// Sets a new timeshift value to the <see cref="LogMessage"/>s.
     /// </summary>
     /// <param name="newValue"></param>
-    private void SetTimeshiftValue(int newValue)
+    private void SetTimeshiftValue()
     {
-      if (mTimeShiftValue != newValue)
+      if (!int.TryParse(txtTimeShift.Text.Trim(), out int newValue))
       {
-        mTimeShiftValue = newValue;
+        txtTimeShift.Text = ((int)Settings.Default.TimeShiftValue).ToString();
+        return;
+      }
 
-        using (new WaitCursor())
+      mTimeShiftValue = new TimeSpan(0);
+
+      switch (Settings.Default.TimeShiftUnitIndex)
+      {
+        case 0:
+          tsbTimeShiftUnit.Text = tsbTimeShiftUnitMillisecond.Text;
+          break;
+        case 1:
+          tsbTimeShiftUnit.Text = tsbTimeShiftUnitSecond.Text;
+          break;
+        case 2:
+          tsbTimeShiftUnit.Text = tsbTimeShiftUnitMinute.Text;
+          break;
+        case 3:
+          tsbTimeShiftUnit.Text = tsbTimeShiftUnitHour.Text;
+          break;
+        case 4:
+          tsbTimeShiftUnit.Text = tsbTimeShiftUnitDay.Text;
+          break;
+      }
+
+      if (tsbTimeShift.Checked)
+      {
+        switch (Settings.Default.TimeShiftUnitIndex)
         {
-          mLogMessageLock.EnterWriteLock();
+          case 0:
+            mTimeShiftValue = new TimeSpan(0, 0, 0, 0, newValue);
+            tsbTimeShiftUnit.Text = tsbTimeShiftUnitMillisecond.Text;
+            break;
+          case 1:
+            mTimeShiftValue = new TimeSpan(0, 0, 0, newValue, 0);
+            tsbTimeShiftUnit.Text = tsbTimeShiftUnitSecond.Text;
+            break;
+          case 2:
+            mTimeShiftValue = new TimeSpan(0, 0, newValue, 0, 0);
+            tsbTimeShiftUnit.Text = tsbTimeShiftUnitMinute.Text;
+            break;
+          case 3:
+            mTimeShiftValue = new TimeSpan(0, newValue, 0, 0, 0);
+            tsbTimeShiftUnit.Text = tsbTimeShiftUnitHour.Text;
+            break;
+          case 4:
+            mTimeShiftValue = new TimeSpan(newValue, 0, 0, 0, 0);
+            tsbTimeShiftUnit.Text = tsbTimeShiftUnitDay.Text;
+            break;
+        }
 
-          try
-          {
-            // Update the timeshift offset value.
-            foreach (LogMessage logMsg in mLogMessages)
-            {
-              logMsg.TimeShiftOffset = mTimeShiftValue;
-            }
-          }
-          finally
-          {
-            mLogMessageLock.ExitWriteLock();
-          }
-
-          ((ILogFilterHandler)mLogWindow).FilterChanged();
+        if (Settings.Default.TimeShiftValue != mTimeShiftValue.TotalMilliseconds)
+        {
+          Settings.Default.TimeShiftValue = mTimeShiftValue.TotalMilliseconds;
+          Settings.Default.SaveSettings();
         }
       }
+
+      using (new WaitCursor())
+      {
+        mLogMessageLock.EnterWriteLock();
+
+        try
+        {
+          // Update the timeshift offset value.
+          foreach (LogMessage logMsg in mLogMessages)
+          {
+            logMsg.TimeShiftOffset = mTimeShiftValue;
+          }
+        }
+        finally
+        {
+          mLogMessageLock.ExitWriteLock();
+        }
+
+        ((ILogFilterHandler)mLogWindow).FilterChanged();
+      }
+
     }
 
     #endregion
@@ -1220,10 +1249,64 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
       LogDockPanel.Theme = ThemeManager.CurrentApplicationTheme;
 
+      SetTimeshiftValue();
+
       ThemeManager.CurrentApplicationTheme.ApplyTo(tsMessages);
       ThemeManager.CurrentApplicationTheme.ApplyTo(stBar);
     }
 
     #endregion
+
+    private void tsbTimeShiftUnit_DropDownOpening(object sender, EventArgs e)
+    {
+      tsbTimeShiftUnitMillisecond.Checked = false;
+      tsbTimeShiftUnitSecond.Checked = false;
+      tsbTimeShiftUnitMinute.Checked = false;
+      tsbTimeShiftUnitHour.Checked = false;
+      tsbTimeShiftUnitDay.Checked = false;
+
+      switch (Settings.Default.TimeShiftUnitIndex)
+      { 
+        case 0:
+          tsbTimeShiftUnitMillisecond.Checked = true;
+          break;
+        case 1:
+          tsbTimeShiftUnitSecond.Checked = true;
+          break;
+        case 2:
+          tsbTimeShiftUnitMinute.Checked = true;
+          break;
+        case 3:
+          tsbTimeShiftUnitHour.Checked = true;
+          break;
+        case 4:
+          tsbTimeShiftUnitDay.Checked = true;
+          break;
+      }
+    }
+
+    private void TsbTimeShiftUnitClicked(object sender, EventArgs e)
+    {
+      switch (((ToolStripItem)sender).Name)
+      {
+        case "tsbTimeShiftUnitMillisecond":
+          Settings.Default.TimeShiftUnitIndex = 0;
+          break;
+        case "tsbTimeShiftUnitSecond":
+          Settings.Default.TimeShiftUnitIndex = 1;
+          break;
+        case "tsbTimeShiftUnitMinute":
+          Settings.Default.TimeShiftUnitIndex = 2;
+          break;
+        case "tsbTimeShiftUnitHour":
+          Settings.Default.TimeShiftUnitIndex = 3;
+          break;
+        case "tsbTimeShiftUnitDay":
+          Settings.Default.TimeShiftUnitIndex = 4;
+          break;
+      }
+
+      SetTimeshiftValue();
+    }
   }
 }

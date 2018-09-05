@@ -283,11 +283,11 @@ namespace Com.Couchcoding.Logbert.Controls
           txtDataTime.Text      = logMessage.Timestamp.ToString(Settings.Default.TimestampFormat);
           txtDataProcessId.Text = logMessage.ProcessId.ToString();
 
-          if (logMessage.TimeShiftOffset != 0)
+          if (logMessage.TimeShiftOffset.Milliseconds != 0)
           {
             txtDataTime.Text += string.Format(
                 Resources.strLoggerDetailsCtrlOffset
-              , logMessage.TimeShiftOffset);
+              , logMessage.TimeShiftOffset.Milliseconds);
           }
 
           // Replace all known new line character combinations with the .net one.

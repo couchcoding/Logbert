@@ -1171,7 +1171,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         {
           if (message.Index == msgIndex)
           {
-            mBookmarkProvider.AddBookmark(message);
+            mBookmarkProvider.AddBookmarks(new List<LogMessage>(new[] { message }));
             return true;
           }
         }
@@ -1195,7 +1195,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         {
           if (message.Index == msgIndex)
           {
-            mBookmarkProvider.RemoveBookmark(message);
+            mBookmarkProvider.RemoveBookmarks(new List<LogMessage>(new[] { message }));
             return true;
           }
         }
