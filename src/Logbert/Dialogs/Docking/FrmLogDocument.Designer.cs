@@ -1,4 +1,4 @@
-﻿namespace Com.Couchcoding.Logbert.Dialogs.Docking
+﻿namespace Couchcoding.Logbert.Dialogs.Docking
 {
   partial class FrmLogDocument
   {
@@ -18,7 +18,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogDocument));
             this.LogDockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.tsMessages = new Com.Couchcoding.GuiLibrary.Controls.ToolStripEx();
+            this.tsMessages = new Couchcoding.Logbert.Gui.Controls.ToolStripEx();
             this.tslLogLevel = new System.Windows.Forms.ToolStripLabel();
             this.tsbShowTrace = new System.Windows.Forms.ToolStripButton();
             this.tsbShowDebug = new System.Windows.Forms.ToolStripButton();
@@ -132,7 +132,6 @@
             this.tsbShowTrace.CheckOnClick = true;
             this.tsbShowTrace.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsbShowTrace.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbShowTrace.Image = global::Com.Couchcoding.Logbert.Properties.Resources.trace;
             this.tsbShowTrace.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbShowTrace.Name = "tsbShowTrace";
             this.tsbShowTrace.Size = new System.Drawing.Size(23, 23);
@@ -146,7 +145,6 @@
             this.tsbShowDebug.CheckOnClick = true;
             this.tsbShowDebug.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsbShowDebug.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbShowDebug.Image = global::Com.Couchcoding.Logbert.Properties.Resources.debug;
             this.tsbShowDebug.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbShowDebug.Name = "tsbShowDebug";
             this.tsbShowDebug.Size = new System.Drawing.Size(23, 23);
@@ -160,7 +158,6 @@
             this.tsbShowInfo.CheckOnClick = true;
             this.tsbShowInfo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsbShowInfo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbShowInfo.Image = global::Com.Couchcoding.Logbert.Properties.Resources.info;
             this.tsbShowInfo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbShowInfo.Name = "tsbShowInfo";
             this.tsbShowInfo.Size = new System.Drawing.Size(23, 23);
@@ -174,7 +171,6 @@
             this.tsbShowWarn.CheckOnClick = true;
             this.tsbShowWarn.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsbShowWarn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbShowWarn.Image = global::Com.Couchcoding.Logbert.Properties.Resources.warn;
             this.tsbShowWarn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbShowWarn.Name = "tsbShowWarn";
             this.tsbShowWarn.Size = new System.Drawing.Size(23, 23);
@@ -188,7 +184,6 @@
             this.tsbShowError.CheckOnClick = true;
             this.tsbShowError.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsbShowError.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbShowError.Image = global::Com.Couchcoding.Logbert.Properties.Resources.error;
             this.tsbShowError.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbShowError.Name = "tsbShowError";
             this.tsbShowError.Size = new System.Drawing.Size(23, 23);
@@ -202,7 +197,6 @@
             this.tsbShowFatal.CheckOnClick = true;
             this.tsbShowFatal.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsbShowFatal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbShowFatal.Image = global::Com.Couchcoding.Logbert.Properties.Resources.fatal;
             this.tsbShowFatal.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbShowFatal.Name = "tsbShowFatal";
             this.tsbShowFatal.Size = new System.Drawing.Size(23, 23);
@@ -221,7 +215,6 @@
             this.tsbStartPause.CheckOnClick = true;
             this.tsbStartPause.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsbStartPause.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbStartPause.Image = global::Com.Couchcoding.Logbert.Properties.Resources.StatusAnnotations_Play_16xLG;
             this.tsbStartPause.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbStartPause.Name = "tsbStartPause";
             this.tsbStartPause.Size = new System.Drawing.Size(23, 23);
@@ -237,7 +230,6 @@
             // tsbGotoFirstMessage
             // 
             this.tsbGotoFirstMessage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbGotoFirstMessage.Image = global::Com.Couchcoding.Logbert.Properties.Resources.move_to_top;
             this.tsbGotoFirstMessage.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbGotoFirstMessage.Name = "tsbGotoFirstMessage";
             this.tsbGotoFirstMessage.Size = new System.Drawing.Size(23, 23);
@@ -247,7 +239,6 @@
             // tsbGotoLastMessage
             // 
             this.tsbGotoLastMessage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbGotoLastMessage.Image = global::Com.Couchcoding.Logbert.Properties.Resources.move_to_bottom;
             this.tsbGotoLastMessage.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbGotoLastMessage.Name = "tsbGotoLastMessage";
             this.tsbGotoLastMessage.Size = new System.Drawing.Size(23, 23);
@@ -260,7 +251,6 @@
             this.tsbTraceLastMessage.CheckOnClick = true;
             this.tsbTraceLastMessage.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsbTraceLastMessage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbTraceLastMessage.Image = global::Com.Couchcoding.Logbert.Properties.Resources.to_bottom;
             this.tsbTraceLastMessage.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbTraceLastMessage.Name = "tsbTraceLastMessage";
             this.tsbTraceLastMessage.Size = new System.Drawing.Size(23, 23);
@@ -275,7 +265,6 @@
             // 
             this.tsbToggleBookmark.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbToggleBookmark.Enabled = false;
-            this.tsbToggleBookmark.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Bookmark_6986;
             this.tsbToggleBookmark.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbToggleBookmark.Name = "tsbToggleBookmark";
             this.tsbToggleBookmark.Size = new System.Drawing.Size(23, 23);
@@ -290,7 +279,6 @@
             // tsbZoomIn
             // 
             this.tsbZoomIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbZoomIn.Image = global::Com.Couchcoding.Logbert.Properties.Resources.zoom_16xLG;
             this.tsbZoomIn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbZoomIn.Name = "tsbZoomIn";
             this.tsbZoomIn.Size = new System.Drawing.Size(23, 23);
@@ -300,7 +288,6 @@
             // tsbZoomOut
             // 
             this.tsbZoomOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbZoomOut.Image = global::Com.Couchcoding.Logbert.Properties.Resources.ZoomOut_16xLG;
             this.tsbZoomOut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbZoomOut.Name = "tsbZoomOut";
             this.tsbZoomOut.Size = new System.Drawing.Size(23, 23);
@@ -315,7 +302,6 @@
             // tsbReload
             // 
             this.tsbReload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbReload.Image = global::Com.Couchcoding.Logbert.Properties.Resources.refresh_16xLG;
             this.tsbReload.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbReload.Name = "tsbReload";
             this.tsbReload.Size = new System.Drawing.Size(23, 23);
@@ -325,7 +311,6 @@
             // tsbClearMessages
             // 
             this.tsbClearMessages.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbClearMessages.Image = global::Com.Couchcoding.Logbert.Properties.Resources.action_Cancel_16xLG;
             this.tsbClearMessages.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbClearMessages.Name = "tsbClearMessages";
             this.tsbClearMessages.Size = new System.Drawing.Size(23, 23);
@@ -338,7 +323,6 @@
             this.tsbSaveMessages.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cmsSaveMessagesRaw,
             this.cmsSaveMessagesCsv});
-            this.tsbSaveMessages.Image = global::Com.Couchcoding.Logbert.Properties.Resources.save_16xLG;
             this.tsbSaveMessages.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSaveMessages.Name = "tsbSaveMessages";
             this.tsbSaveMessages.Size = new System.Drawing.Size(29, 23);
@@ -369,7 +353,6 @@
             this.tsbShowMessageDetails.CheckOnClick = true;
             this.tsbShowMessageDetails.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsbShowMessageDetails.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbShowMessageDetails.Image = global::Com.Couchcoding.Logbert.Properties.Resources.MesageDetails;
             this.tsbShowMessageDetails.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbShowMessageDetails.Name = "tsbShowMessageDetails";
             this.tsbShowMessageDetails.Size = new System.Drawing.Size(23, 23);
@@ -383,7 +366,6 @@
             this.tsbShowLoggerTree.CheckOnClick = true;
             this.tsbShowLoggerTree.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsbShowLoggerTree.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbShowLoggerTree.Image = global::Com.Couchcoding.Logbert.Properties.Resources.LoggerTree;
             this.tsbShowLoggerTree.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbShowLoggerTree.Name = "tsbShowLoggerTree";
             this.tsbShowLoggerTree.Size = new System.Drawing.Size(23, 23);
@@ -395,7 +377,6 @@
             // 
             this.tsbShowBookmarks.CheckOnClick = true;
             this.tsbShowBookmarks.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbShowBookmarks.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Bookmark_5776;
             this.tsbShowBookmarks.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbShowBookmarks.Name = "tsbShowBookmarks";
             this.tsbShowBookmarks.Size = new System.Drawing.Size(23, 23);
@@ -406,7 +387,6 @@
             // 
             this.tsbShowFilter.CheckOnClick = true;
             this.tsbShowFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbShowFilter.Image = global::Com.Couchcoding.Logbert.Properties.Resources.filter_16xLG;
             this.tsbShowFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbShowFilter.Name = "tsbShowFilter";
             this.tsbShowFilter.Size = new System.Drawing.Size(23, 23);
@@ -417,7 +397,6 @@
             // 
             this.tsbShowStatistic.CheckOnClick = true;
             this.tsbShowStatistic.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbShowStatistic.Image = global::Com.Couchcoding.Logbert.Properties.Resources.FrmLogStatistic;
             this.tsbShowStatistic.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbShowStatistic.Name = "tsbShowStatistic";
             this.tsbShowStatistic.Size = new System.Drawing.Size(23, 23);
@@ -433,7 +412,6 @@
             // 
             this.tsbTimeShift.CheckOnClick = true;
             this.tsbTimeShift.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbTimeShift.Image = global::Com.Couchcoding.Logbert.Properties.Resources.clock_16xLG;
             this.tsbTimeShift.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbTimeShift.Name = "tsbTimeShift";
             this.tsbTimeShift.Size = new System.Drawing.Size(23, 23);
@@ -461,7 +439,6 @@
             this.tsbTimeShiftUnitHour,
             this.tsbTimeShiftUnitDay});
             this.tsbTimeShiftUnit.Enabled = false;
-            this.tsbTimeShiftUnit.Image = ((System.Drawing.Image)(resources.GetObject("tsbTimeShiftUnit.Image")));
             this.tsbTimeShiftUnit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbTimeShiftUnit.Name = "tsbTimeShiftUnit";
             this.tsbTimeShiftUnit.Size = new System.Drawing.Size(81, 23);
@@ -559,7 +536,7 @@
     #endregion
 
     private WeifenLuo.WinFormsUI.Docking.DockPanel LogDockPanel;
-    private Com.Couchcoding.GuiLibrary.Controls.ToolStripEx tsMessages;
+    private Couchcoding.Logbert.Gui.Controls.ToolStripEx tsMessages;
     private System.Windows.Forms.ToolStripButton tsbShowDebug;
     private System.Windows.Forms.ToolStripButton tsbShowInfo;
     private System.Windows.Forms.ToolStripButton tsbShowWarn;

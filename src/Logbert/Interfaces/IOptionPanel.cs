@@ -28,7 +28,7 @@
 
 #endregion
 
-namespace Com.Couchcoding.Logbert.Interfaces
+namespace Couchcoding.Logbert.Interfaces
 {
   /// <summary>
   /// An Interface for all <see cref="System.Windows.Forms.Control"/>s to s display in the option dialog.

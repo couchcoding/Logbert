@@ -1,4 +1,4 @@
-﻿namespace Com.Couchcoding.Logbert.Dialogs
+﻿namespace Couchcoding.Logbert.Dialogs
 {
   partial class FrmNew
   {
@@ -30,8 +30,8 @@
     {
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.lstLogger = new Com.Couchcoding.GuiLibrary.Controls.ListBoxEx();
-            this.grpSettings = new Com.Couchcoding.GuiLibrary.Controls.GroupBoxEx();
+            this.lstLogger = new Couchcoding.Logbert.Gui.Controls.ListBoxEx();
+            this.grpSettings = new Couchcoding.Logbert.Gui.Controls.GroupBoxEx();
             this.pnlLoggerPanel = new System.Windows.Forms.Panel();
             this.grpSettings.SuspendLayout();
             this.SuspendLayout();
@@ -79,7 +79,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpSettings.Controls.Add(this.pnlLoggerPanel);
-            this.grpSettings.GroupImage = global::Com.Couchcoding.Logbert.Properties.Resources.properties_16xLG;
+            this.grpSettings.GroupImage = global::Couchcoding.Logbert.Properties.Resources.properties_16xLG;
             this.grpSettings.Location = new System.Drawing.Point(194, 68);
             this.grpSettings.Name = "grpSettings";
             this.grpSettings.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
@@ -123,8 +123,8 @@
 
     private System.Windows.Forms.Button btnOk;
     private System.Windows.Forms.Button btnCancel;
-    private Com.Couchcoding.GuiLibrary.Controls.ListBoxEx lstLogger;
-    private Com.Couchcoding.GuiLibrary.Controls.GroupBoxEx grpSettings;
+    private Couchcoding.Logbert.Gui.Controls.ListBoxEx lstLogger;
+    private Couchcoding.Logbert.Gui.Controls.GroupBoxEx grpSettings;
     private System.Windows.Forms.Panel pnlLoggerPanel;
   }
 }

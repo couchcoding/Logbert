@@ -31,9 +31,9 @@
 using System;
 using System.Threading;
 
-using Com.Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Interfaces;
 
-namespace Com.Couchcoding.Logbert.Helper
+namespace Couchcoding.Logbert.Helper
 {
 
 	/// <summary>

@@ -34,19 +34,23 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Logging;
-using Com.Couchcoding.Logbert.Receiver.CustomReceiver;
-using Com.Couchcoding.GuiLibrary.Controls;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Receiver.CustomReceiver;
+using Couchcoding.Logbert.Gui.Controls;
+using Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Theme.Palettes;
+using Couchcoding.Logbert.Theme.Interfaces;
+using Couchcoding.Logbert.Theme;
+using Couchcoding.Logbert.Theme.Themes;
 
-namespace Com.Couchcoding.Logbert.Controls
+namespace Couchcoding.Logbert.Controls
 {
   /// <summary>
   /// Implements a <see cref="UserControl"/> to display details of a selected <see cref="LogMessage"/>.
   /// </summary>
-  public partial class CustomDetailsControl : UserControl, ILogPresenter
+  public partial class CustomDetailsControl : UserControl, ILogPresenter, IThemable
   {
     #region Private Consts
 
@@ -196,7 +200,7 @@ namespace Com.Couchcoding.Logbert.Controls
       if (e.Row > 0)
       {
         e.Graphics.DrawLine(
-            SystemPens.Control
+            GdiCache.GetPenFromColor(ThemeManager.CurrentApplicationTheme.ColorPalette.DividerColor)
           , new Point(e.CellBounds.Left,  e.CellBounds.Top)
           , new Point(e.CellBounds.Right, e.CellBounds.Top));
       }
@@ -263,7 +267,8 @@ namespace Com.Couchcoding.Logbert.Controls
         ReadOnly    = true,
         Dock        = DockStyle.Fill,
         Margin      = new Padding(3, 4, 3, 1),
-        BackColor   = SystemColors.Window,
+        BackColor   = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground,
+        ForeColor   = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForeground,
         Tag         = column
       };
 
@@ -276,9 +281,10 @@ namespace Com.Couchcoding.Logbert.Controls
       {
         BackgroundImageLayout = ImageLayout.Center,
         Cursor                = Cursors.Hand,
-        Image                 = Resources.Copy_6524,
+        Image                 = ThemeManager.CurrentApplicationTheme.Resources.Images["FrmScriptTbCopy"],
         Margin                = new Padding(2, 2, 1, 1),
         Size                  = new Size(17, 18),
+        Visible               = false
       };
 
       pbxCopyButton.Click += (sender, e) => 
@@ -490,6 +496,29 @@ namespace Com.Couchcoding.Logbert.Controls
       return false;
     }
 
+    /// <summary>
+    /// Applies the current theme to the <see cref="Control"/>.
+    /// </summary>
+    /// <param name="theme">The <see cref="BaseTheme"/> instance to apply.</param>
+    public void ApplyTheme(BaseTheme theme)
+    {
+      tsbZoomIn.Image  = theme.Resources.Images["FrmMainTbZoomIn"];
+      tsbZoomOut.Image = theme.Resources.Images["FrmMainTbZoomOut"];
+      tsbCopy.Image    = theme.Resources.Images["FrmScriptTbCopy"];
+
+      LogMessagePanel.BackColor  = theme.ColorPalette.ContentBackground;
+      LogMessagePanel.ForeColor  = theme.ColorPalette.ContentForeground;
+
+      foreach (Control ctrl in tblLogMessage.Controls)
+      {
+        if (ctrl is TextBox textBoxControl)
+        {
+          textBoxControl.BackColor = theme.ColorPalette.ContentBackground;
+          textBoxControl.ForeColor = theme.ColorPalette.ContentForeground;
+        }
+      }
+    }
+
     #endregion
 
     #region Constructor
@@ -500,9 +529,6 @@ namespace Com.Couchcoding.Logbert.Controls
     public CustomDetailsControl(Columnizer columnizer)
     {
       InitializeComponent();
-
-      // Apply the current application theme to the control.
-      ThemeManager.CurrentApplicationTheme.ApplyTo(logDetailToolStrip);
 
       mColumnizer      = columnizer;
       mBoldCaptionFont = FontCache.GetFontFromIdentifier(
@@ -516,6 +542,9 @@ namespace Com.Couchcoding.Logbert.Controls
       {
         AddLogMsgRowItem(column);
       }
+
+      // Apply the current application theme to the control.
+      ThemeManager.ApplyTo(this);
     }
 
     #endregion

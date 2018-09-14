@@ -30,7 +30,7 @@
 
 using System.Text.RegularExpressions;
 
-namespace Com.Couchcoding.Logbert.Logging.Filter
+namespace Couchcoding.Logbert.Logging.Filter
 {
   /// <summary>
   /// Implements a <see cref="LogLevel"/> to filter <see cref="LogMessage"/>s with a defined value. 

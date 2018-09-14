@@ -30,7 +30,7 @@
 
 using System.Diagnostics;
 
-namespace Com.Couchcoding.Logbert.Helper
+namespace Couchcoding.Logbert.Helper
 {
   /// <summary>
   /// Implements a logger to send message to the <see cref="Debug"/> log.

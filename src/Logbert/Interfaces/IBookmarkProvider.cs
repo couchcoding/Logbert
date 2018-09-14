@@ -29,9 +29,9 @@
 #endregion
 
 using System.Collections.Generic;
-using Com.Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Logging;
 
-namespace Com.Couchcoding.Logbert.Interfaces
+namespace Couchcoding.Logbert.Interfaces
 {
   public interface IBookmarkProvider
   {

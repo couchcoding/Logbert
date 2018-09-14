@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Com.Couchcoding.Logbert.Properties {
+namespace Couchcoding.Logbert.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Com.Couchcoding.Logbert.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Com.Couchcoding.Logbert.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Couchcoding.Logbert.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -73,39 +73,9 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap action_Cancel_16xLG {
-            get {
-                object obj = ResourceManager.GetObject("action_Cancel_16xLG", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap add_filter {
-            get {
-                object obj = ResourceManager.GetObject("add_filter", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap arrow_Down_16xLG {
             get {
                 object obj = ResourceManager.GetObject("arrow_Down_16xLG", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap arrow_run_16xLG {
-            get {
-                object obj = ResourceManager.GetObject("arrow_run_16xLG", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +93,9 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bookmark_002_16xMD {
+        internal static System.Drawing.Bitmap Debug_Light {
             get {
-                object obj = ResourceManager.GetObject("bookmark_002_16xMD", resourceCulture);
+                object obj = ResourceManager.GetObject("Debug_Light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,129 +103,9 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Bookmark_5776 {
+        internal static System.Drawing.Bitmap Error_Light {
             get {
-                object obj = ResourceManager.GetObject("Bookmark_5776", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Bookmark_6986 {
-            get {
-                object obj = ResourceManager.GetObject("Bookmark_6986", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap BookmarkClear_2381 {
-            get {
-                object obj = ResourceManager.GetObject("BookmarkClear_2381", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap BookmarkNext_2389 {
-            get {
-                object obj = ResourceManager.GetObject("BookmarkNext_2389", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap BookmarkPrevious_2391 {
-            get {
-                object obj = ResourceManager.GetObject("BookmarkPrevious_2391", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Clearwindowcontent_6304 {
-            get {
-                object obj = ResourceManager.GetObject("Clearwindowcontent_6304", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap clock_16xLG {
-            get {
-                object obj = ResourceManager.GetObject("clock_16xLG", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Copy_6524 {
-            get {
-                object obj = ResourceManager.GetObject("Copy_6524", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Cut_6523 {
-            get {
-                object obj = ResourceManager.GetObject("Cut_6523", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap debug {
-            get {
-                object obj = ResourceManager.GetObject("debug", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap DebugStop {
-            get {
-                object obj = ResourceManager.GetObject("DebugStop", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap edit_filter {
-            get {
-                object obj = ResourceManager.GetObject("edit_filter", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap error {
-            get {
-                object obj = ResourceManager.GetObject("error", resourceCulture);
+                object obj = ResourceManager.GetObject("Error_Light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,29 +123,9 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap fatal {
+        internal static System.Drawing.Bitmap Fatal_Light {
             get {
-                object obj = ResourceManager.GetObject("fatal", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap filter_16xLG {
-            get {
-                object obj = ResourceManager.GetObject("filter_16xLG", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Find_5650 {
-            get {
-                object obj = ResourceManager.GetObject("Find_5650", resourceCulture);
+                object obj = ResourceManager.GetObject("Fatal_Light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -313,16 +143,6 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap folder_Open_16xLG {
-            get {
-                object obj = ResourceManager.GetObject("folder_Open_16xLG", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap font_color {
             get {
                 object obj = ResourceManager.GetObject("font_color", resourceCulture);
@@ -333,39 +153,9 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FrmLogStatistic {
+        internal static System.Drawing.Bitmap Info_Light {
             get {
-                object obj = ResourceManager.GetObject("FrmLogStatistic", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap FrmStatisticShowLegend {
-            get {
-                object obj = ResourceManager.GetObject("FrmStatisticShowLegend", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap info {
-            get {
-                object obj = ResourceManager.GetObject("info", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap lines_Text_code_16xMD {
-            get {
-                object obj = ResourceManager.GetObject("lines_Text_code_16xMD", resourceCulture);
+                object obj = ResourceManager.GetObject("Info_Light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -403,16 +193,6 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LoggerTree {
-            get {
-                object obj = ResourceManager.GetObject("LoggerTree", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap LogLevel_16x {
             get {
                 object obj = ResourceManager.GetObject("LogLevel_16x", resourceCulture);
@@ -423,109 +203,9 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MesageDetails {
-            get {
-                object obj = ResourceManager.GetObject("MesageDetails", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap mnuMainAbout {
-            get {
-                object obj = ResourceManager.GetObject("mnuMainAbout", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap mnuMainCloseAll {
-            get {
-                object obj = ResourceManager.GetObject("mnuMainCloseAll", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap mnuMainFind {
-            get {
-                object obj = ResourceManager.GetObject("mnuMainFind", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap mnuMainNewLogger {
-            get {
-                object obj = ResourceManager.GetObject("mnuMainNewLogger", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap mnuMainOpen {
-            get {
-                object obj = ResourceManager.GetObject("mnuMainOpen", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap mnuMainSettings {
-            get {
-                object obj = ResourceManager.GetObject("mnuMainSettings", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap move_to_bottom {
-            get {
-                object obj = ResourceManager.GetObject("move_to_bottom", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap move_to_top {
-            get {
-                object obj = ResourceManager.GetObject("move_to_top", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap NoBookmark {
             get {
                 object obj = ResourceManager.GetObject("NoBookmark", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Paste_6520 {
-            get {
-                object obj = ResourceManager.GetObject("Paste_6520", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -553,26 +233,6 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Redo_16x {
-            get {
-                object obj = ResourceManager.GetObject("Redo_16x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap refresh_16xLG {
-            get {
-                object obj = ResourceManager.GetObject("refresh_16xLG", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Remove_16xMD {
             get {
                 object obj = ResourceManager.GetObject("Remove_16xMD", resourceCulture);
@@ -583,39 +243,9 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap remove_filter {
-            get {
-                object obj = ResourceManager.GetObject("remove_filter", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap RunTests_8790 {
             get {
                 object obj = ResourceManager.GetObject("RunTests_8790", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap save_16xLG {
-            get {
-                object obj = ResourceManager.GetObject("save_16xLG", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap save_as {
-            get {
-                object obj = ResourceManager.GetObject("save_as", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -636,16 +266,6 @@ namespace Com.Couchcoding.Logbert.Properties {
         internal static System.Drawing.Bitmap StatusAnnotations_Information_16xLG {
             get {
                 object obj = ResourceManager.GetObject("StatusAnnotations_Information_16xLG", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap StatusAnnotations_Play_16xLG {
-            get {
-                object obj = ResourceManager.GetObject("StatusAnnotations_Play_16xLG", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1188,6 +808,15 @@ namespace Com.Couchcoding.Logbert.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update Available.
+        /// </summary>
+        internal static string strMainUpdateAvailable {
+            get {
+                return ResourceManager.GetString("strMainUpdateAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy {0} Details to the Clipboard.
         /// </summary>
         internal static string strMessageDetailsCopyButtonTooltip {
@@ -1360,6 +989,15 @@ namespace Com.Couchcoding.Logbert.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to adjust the level back- and foreground colors to match the new selected application theme &quot;{0}&quot;?.
+        /// </summary>
+        internal static string strOptionPanelFontColorApplyColorScheme {
+            get {
+                return ResourceManager.GetString("strOptionPanelFontColorApplyColorScheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Custom.
         /// </summary>
         internal static string strOptionPanelFontColorCustomColor {
@@ -1515,49 +1153,9 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Symbols_Stop_16xLG {
+        internal static System.Drawing.Bitmap Trace_Light {
             get {
-                object obj = ResourceManager.GetObject("Symbols_Stop_16xLG", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap sync_16 {
-            get {
-                object obj = ResourceManager.GetObject("sync_16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap to_bottom {
-            get {
-                object obj = ResourceManager.GetObject("to_bottom", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap trace {
-            get {
-                object obj = ResourceManager.GetObject("trace", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Undo_16x {
-            get {
-                object obj = ResourceManager.GetObject("Undo_16x", resourceCulture);
+                object obj = ResourceManager.GetObject("Trace_Light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1575,49 +1173,9 @@ namespace Com.Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap warn {
+        internal static System.Drawing.Bitmap Warn_Light {
             get {
-                object obj = ResourceManager.GetObject("warn", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap WordWrap_6774 {
-            get {
-                object obj = ResourceManager.GetObject("WordWrap_6774", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap WordWrap_67741 {
-            get {
-                object obj = ResourceManager.GetObject("WordWrap_67741", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap zoom_16xLG {
-            get {
-                object obj = ResourceManager.GetObject("zoom_16xLG", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ZoomOut_16xLG {
-            get {
-                object obj = ResourceManager.GetObject("ZoomOut_16xLG", resourceCulture);
+                object obj = ResourceManager.GetObject("Warn_Light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

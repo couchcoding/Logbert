@@ -30,7 +30,7 @@
 
 using System;
 
-namespace Com.Couchcoding.Logbert.Logging
+namespace Couchcoding.Logbert.Logging
 {
   /// <summary>
   /// All supported <see cref="LogLevel"/>s of a <see cref="LogMessage"/>.

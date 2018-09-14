@@ -1,4 +1,4 @@
-﻿namespace Com.Couchcoding.Logbert.Dialogs
+﻿namespace Couchcoding.Logbert.Dialogs
 {
   partial class FrmAbout
   {
@@ -46,12 +46,12 @@
       this.lblVersion = new System.Windows.Forms.Label();
       this.lblCopyright = new System.Windows.Forms.Label();
       this.tpComponents = new System.Windows.Forms.TabPage();
-      this.lstComponents = new Com.Couchcoding.GuiLibrary.Controls.ListViewEx();
+      this.lstComponents = new Couchcoding.Logbert.Gui.Controls.ListViewEx();
       this.clmComponent = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.clmLicense = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.clmWebsite = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.tpLicense = new System.Windows.Forms.TabPage();
-      this.linkLabelEx1 = new Com.Couchcoding.GuiLibrary.Controls.LinkLabelEx();
+      this.linkLabelEx1 = new Couchcoding.Logbert.Gui.Controls.LinkLabelEx();
       this.txtLicense = new System.Windows.Forms.TextBox();
       this.btnClose = new System.Windows.Forms.Button();
       this.tcAbout.SuspendLayout();
@@ -77,7 +77,7 @@
       // tpAbout
       // 
       this.tpAbout.BackColor = System.Drawing.Color.White;
-      this.tpAbout.BackgroundImage = global::Com.Couchcoding.Logbert.Properties.Resources.logbert_about;
+      this.tpAbout.BackgroundImage = global::Couchcoding.Logbert.Properties.Resources.logbert_about;
       this.tpAbout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
       this.tpAbout.Controls.Add(this.lblVersion);
       this.tpAbout.Controls.Add(this.lblCopyright);
@@ -247,8 +247,8 @@
     private System.Windows.Forms.TabPage tpLicense;
     private System.Windows.Forms.Button btnClose;
     private System.Windows.Forms.TextBox txtLicense;
-    private GuiLibrary.Controls.LinkLabelEx linkLabelEx1;
-    private GuiLibrary.Controls.ListViewEx lstComponents;
+    private Gui.Controls.LinkLabelEx linkLabelEx1;
+    private Gui.Controls.ListViewEx lstComponents;
     private System.Windows.Forms.ColumnHeader clmComponent;
     private System.Windows.Forms.ColumnHeader clmLicense;
     private System.Windows.Forms.ColumnHeader clmWebsite;

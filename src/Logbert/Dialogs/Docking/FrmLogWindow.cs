@@ -35,20 +35,24 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Logging;
-using Com.Couchcoding.Logbert.Logging.Filter;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Theme.Palettes;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Logging.Filter;
+using Couchcoding.Logbert.Properties;
 
 using WeifenLuo.WinFormsUI.Docking;
+using Couchcoding.Logbert.Theme.Interfaces;
+using Couchcoding.Logbert.Theme;
+using Couchcoding.Logbert.Theme.Themes;
 
-namespace Com.Couchcoding.Logbert.Dialogs.Docking
+namespace Couchcoding.Logbert.Dialogs.Docking
 {
   /// <summary>
   /// Implements the <see cref="DockContent"/> of the log message window.
   /// </summary>
-  public partial class FrmLogWindow : DockContent, ILogPresenter, ILogFilterHandler, IBookmarkProvider, ISearchable
+  public partial class FrmLogWindow : DockContent, ILogPresenter, ILogFilterHandler, IBookmarkProvider, ISearchable, IThemable
   {
     #region Private Consts
 
@@ -111,7 +115,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     protected static readonly Image[] mBookmarkImages = 
     {
         Resources.NoBookmark
-      , Resources.bookmark_002_16xMD
+      , ThemeManager.CurrentApplicationTheme.Resources.Images["FrmLogBookmark"]
     };
 
     #endregion
@@ -1199,6 +1203,37 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       return columnLayout;
     }
 
+    /// <summary>
+    /// Applies the current theme to the <see cref="Control"/>.
+    /// </summary>
+    /// <param name="theme">The <see cref="BaseTheme"/> instance to apply.</param>
+    public void ApplyTheme(BaseTheme theme)
+    {
+      ThemeManager.ApplyTo(cmColumns);
+      ThemeManager.ApplyTo(cmLogMessage);
+
+      cmdcopytoclipboard.Image = theme.Resources.Images["FrmScriptTbCopy"];
+      cmsToggleBookmark.Image  = theme.Resources.Images["FrmMainTbBookmark"];
+      cmsSynchronizeTree.Image = theme.Resources.Images["FrmMainTbSync"];
+      
+      dtgLogMessages.EnableHeadersVisualStyles             = theme.Metrics.PreferSystemRendering;
+      dtgLogMessages.ColumnHeadersDefaultCellStyle.Padding = theme.Metrics.DataGridViewHeaderColumnPadding;
+
+      dtgLogMessages.BackgroundColor          = theme.ColorPalette.ContentBackground;
+      dtgLogMessages.ForeColor                = theme.ColorPalette.ContentForeground;
+      dtgLogMessages.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+      dtgLogMessages.GridColor                = theme.ColorPalette.DividerColor;
+
+      dtgLogMessages.ColumnHeadersDefaultCellStyle.BackColor          = theme.ColorPalette.ContentBackground;
+      dtgLogMessages.ColumnHeadersDefaultCellStyle.ForeColor          = theme.ColorPalette.ContentForeground;
+      dtgLogMessages.ColumnHeadersDefaultCellStyle.SelectionBackColor = theme.ColorPalette.SelectionBackgroundFocused;
+      dtgLogMessages.ColumnHeadersDefaultCellStyle.SelectionForeColor = theme.ColorPalette.SelectionForegroundFocused;
+
+      dtgLogMessages.CellBorderStyle            = DataGridViewCellBorderStyle.Single;
+      dtgLogMessages.DefaultCellStyle.BackColor = theme.ColorPalette.ContentBackground;
+      dtgLogMessages.DefaultCellStyle.ForeColor = theme.ColorPalette.ContentForeground;
+    }
+
     #endregion
 
     #region Constructor
@@ -1223,8 +1258,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         cmLogMessage.Items.Remove(cmsSeperator);
       }
 
-      ThemeManager.CurrentApplicationTheme.ApplyTo(cmColumns);
-      ThemeManager.CurrentApplicationTheme.ApplyTo(cmLogMessage);
+      ThemeManager.ApplyTo(this);
 
       if (!string.IsNullOrEmpty(Settings.Default.LogMessagesFontName))
       {

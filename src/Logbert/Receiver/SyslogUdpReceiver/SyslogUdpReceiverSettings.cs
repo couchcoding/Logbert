@@ -33,15 +33,15 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Properties;
 using System.Net.Sockets;
 
-using Com.Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Helper;
 using System.Drawing;
 using System.Text;
 
-namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
+namespace Couchcoding.Logbert.Receiver.SyslogUdpReceiver
 {
   /// <summary>
   /// Implements the <see cref="ILogSettingsCtrl"/> control for the Syslog UDP receiver.
@@ -271,28 +271,24 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
     }
 
     /// <summary>
-    /// Handles the Click event of a timestamp help <see cref="MenuItem"/>.
-    /// </summary>
-    private void MnuTimestampClick(object sender, System.EventArgs e)
-    {
-      ToolStripMenuItem mnuCtrl = sender as ToolStripMenuItem;
-
-      if (mnuCtrl != null && mnuCtrl.Tag != null)
-      {
-        txtTimestampFormat.SelectedText = mnuCtrl.Tag.ToString();
-      }
-    }
-
-    /// <summary>
     /// Handles the Click event of a timestamp preset <see cref="MenuItem"/>.
     /// </summary>
     private void MnuTimestampPresetClick(object sender, System.EventArgs e)
     {
-      ToolStripMenuItem mnuCtrl = sender as ToolStripMenuItem;
-
-      if (mnuCtrl != null && mnuCtrl.Tag != null)
+      if (sender is MenuItem mnuCtrl && mnuCtrl.Tag != null)
       {
         txtTimestampFormat.Text = mnuCtrl.Tag.ToString();
+      }
+    }
+
+    /// <summary>
+    /// Handles the Click event of a timestamp help <see cref="MenuItem"/>.
+    /// </summary>
+    private void MnuTimestampClick(object sender, System.EventArgs e)
+    {
+      if (sender is MenuItem mnuCtrl && mnuCtrl.Tag != null)
+      {
+        txtTimestampFormat.SelectedText = mnuCtrl.Tag.ToString();
       }
     }
 
@@ -387,8 +383,6 @@ namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
     {
       InitializeComponent();
       
-      ThemeManager.CurrentApplicationTheme.ApplyTo(mnuTimestamp);
-
       // Initialize the controls.
       EnumerateAndAddNetworkInterfaces();
     }

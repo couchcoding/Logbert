@@ -28,7 +28,7 @@
 
 #endregion
 
-namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver
+namespace Couchcoding.Logbert.Receiver.CustomReceiver
 {
   /// <summary>
   /// All supported <see cref="LogColumn"/> types.

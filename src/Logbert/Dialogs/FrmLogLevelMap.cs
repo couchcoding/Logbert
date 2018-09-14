@@ -28,12 +28,12 @@
 
 #endregion
 
-using Com.Couchcoding.GuiLibrary.Dialogs;
-using Com.Couchcoding.Logbert.Logging;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Gui.Dialogs;
+using Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Properties;
 using System.Collections.Generic;
 
-namespace Com.Couchcoding.Logbert.Dialogs
+namespace Couchcoding.Logbert.Dialogs
 {
   /// <summary>
   /// Implements a dialog to edit <see cref="LogLevel"/> mappings for a <see cref="Columnizer"/>.
@@ -81,12 +81,12 @@ namespace Com.Couchcoding.Logbert.Dialogs
     {
       InitializeComponent();
 
-      dgvLogLevel.Rows.Add(@"(?i)TRACE(?-i)",        Resources.trace, LogLevel.Trace.ToString()  );
-      dgvLogLevel.Rows.Add(@"(?i)DEBUG(?-i)",        Resources.debug, LogLevel.Debug.ToString()  );
-      dgvLogLevel.Rows.Add(@"(?i)INFO(?-i)",         Resources.info,  LogLevel.Info.ToString()   );
-      dgvLogLevel.Rows.Add(@"(?i)WARN|WARNING(?-i)", Resources.warn,  LogLevel.Warning.ToString());
-      dgvLogLevel.Rows.Add(@"(?i)ERROR(?-i)",        Resources.error, LogLevel.Error.ToString()  );
-      dgvLogLevel.Rows.Add(@"(?i)FATAL(?-i)",        Resources.fatal, LogLevel.Fatal.ToString()  );
+      dgvLogLevel.Rows.Add(@"(?i)TRACE(?-i)",        Resources.Trace_Light, LogLevel.Trace.ToString()  );
+      dgvLogLevel.Rows.Add(@"(?i)DEBUG(?-i)",        Resources.Debug_Light, LogLevel.Debug.ToString()  );
+      dgvLogLevel.Rows.Add(@"(?i)INFO(?-i)",         Resources.Info_Light,  LogLevel.Info.ToString()   );
+      dgvLogLevel.Rows.Add(@"(?i)WARN|WARNING(?-i)", Resources.Warn_Light,  LogLevel.Warning.ToString());
+      dgvLogLevel.Rows.Add(@"(?i)ERROR(?-i)",        Resources.Error_Light, LogLevel.Error.ToString()  );
+      dgvLogLevel.Rows.Add(@"(?i)FATAL(?-i)",        Resources.Fatal_Light, LogLevel.Fatal.ToString()  );
 
       foreach (KeyValuePair<LogLevel, string> mapping in logLevels)
       {

@@ -35,17 +35,21 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Logging;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Theme.Palettes;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Theme.Interfaces;
+using Couchcoding.Logbert.Theme;
+using Couchcoding.Logbert.Theme.Themes;
 
-namespace Com.Couchcoding.Logbert.Controls
+namespace Couchcoding.Logbert.Controls
 {
   /// <summary>
   /// Implements a <see cref="UserControl"/> to display details of a selected <see cref="LogMessage"/>.
   /// </summary>
-  public partial class SyslogDetailsControl : UserControl, ILogPresenter
+  public partial class SyslogDetailsControl : UserControl, ILogPresenter, IThemable
   {
     #region Private Consts
 
@@ -153,7 +157,7 @@ namespace Com.Couchcoding.Logbert.Controls
       if (e.Row > 0)
       {
         e.Graphics.DrawLine(
-            SystemPens.Control
+            GdiCache.GetPenFromColor(ThemeManager.CurrentApplicationTheme.ColorPalette.DividerColor)
           , new Point(e.CellBounds.Left,  e.CellBounds.Top)
           , new Point(e.CellBounds.Right, e.CellBounds.Top));
       }
@@ -442,6 +446,43 @@ namespace Com.Couchcoding.Logbert.Controls
       return false;
     }
 
+    /// <summary>
+    /// Applies the current theme to the <see cref="Control"/>.
+    /// </summary>
+    /// <param name="theme">The <see cref="BaseTheme"/> instance to apply.</param>
+    public void ApplyTheme(BaseTheme theme)
+    {
+      tsbZoomIn.Image  = theme.Resources.Images["FrmMainTbZoomIn"];
+      tsbZoomOut.Image = theme.Resources.Images["FrmMainTbZoomOut"];
+      tsbCopy.Image    = theme.Resources.Images["FrmScriptTbCopy"];
+
+      pbxCopyNumber.Image           = theme.Resources.Images["FrmScriptTbCopy"];
+      pbxCopySeverity.Image         = theme.Resources.Images["FrmScriptTbCopy"];
+      pbxCopyLocalMachineTime.Image = theme.Resources.Images["FrmScriptTbCopy"];
+      pbxCopyTime.Image             = theme.Resources.Images["FrmScriptTbCopy"];
+      pbxCopyFacility.Image         = theme.Resources.Images["FrmScriptTbCopy"];
+      pbxCopySender.Image           = theme.Resources.Images["FrmScriptTbCopy"];
+      pbxCopyMessage.Image          = theme.Resources.Images["FrmScriptTbCopy"];
+
+      LogMessagePanel.BackColor  = theme.ColorPalette.ContentBackground;
+      LogMessagePanel.ForeColor  = theme.ColorPalette.ContentForeground;
+      
+      txtDataNumber.BackColor           = theme.ColorPalette.ContentBackground;
+      txtDataNumber.ForeColor           = theme.ColorPalette.ContentForeground;
+      txtDataSeverity.BackColor         = theme.ColorPalette.ContentBackground;
+      txtDataSeverity.ForeColor         = theme.ColorPalette.ContentForeground;
+      txtDataLocalMachineTime.BackColor = theme.ColorPalette.ContentBackground;
+      txtDataLocalMachineTime.ForeColor = theme.ColorPalette.ContentForeground;
+      txtDataTime.BackColor             = theme.ColorPalette.ContentBackground;
+      txtDataTime.ForeColor             = theme.ColorPalette.ContentForeground;
+      txtDataFacility.BackColor         = theme.ColorPalette.ContentBackground;
+      txtDataFacility.ForeColor         = theme.ColorPalette.ContentForeground;
+      txtDataSender.BackColor           = theme.ColorPalette.ContentBackground;
+      txtDataSender.ForeColor           = theme.ColorPalette.ContentForeground;
+      txtDataMessage.BackColor          = theme.ColorPalette.ContentBackground;
+      txtDataMessage.ForeColor          = theme.ColorPalette.ContentForeground;
+    }
+
     #endregion
 
     #region Constructor
@@ -454,7 +495,7 @@ namespace Com.Couchcoding.Logbert.Controls
       InitializeComponent();
 
       // Apply the current application theme to the control.
-      ThemeManager.CurrentApplicationTheme.ApplyTo(logDetailToolStrip);
+      ThemeManager.ApplyTo(this);
 
       mBoldCaptionFont = FontCache.GetFontFromIdentifier(
           Font.Name

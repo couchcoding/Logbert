@@ -1,4 +1,4 @@
-﻿namespace Com.Couchcoding.Logbert.Dialogs.Docking
+﻿namespace Couchcoding.Logbert.Dialogs.Docking
 {
   partial class FrmLogWindow
   {
@@ -17,14 +17,14 @@
     {
       this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogWindow));
-      this.dtgLogMessages = new Com.Couchcoding.GuiLibrary.Controls.DataGridViewEx();
+      this.dtgLogMessages = new Couchcoding.Logbert.Gui.Controls.DataGridViewEx();
       this.imlBookmark = new System.Windows.Forms.ImageList(this.components);
       this.cmColumns = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.cmLogMessage = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.cmsSynchronizeTree = new System.Windows.Forms.ToolStripMenuItem();
       this.cmdcopytoclipboard = new System.Windows.Forms.ToolStripMenuItem();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-      this.colorMap1 = new Com.Couchcoding.Logbert.Controls.ColorMap((Interfaces.ILogPresenter)this);
+      this.colorMap1 = new Couchcoding.Logbert.Controls.ColorMap((Interfaces.ILogPresenter)this);
       this.cmsSeperator = new System.Windows.Forms.ToolStripSeparator();
       this.cmsToggleBookmark = new System.Windows.Forms.ToolStripMenuItem();
       ((System.ComponentModel.ISupportInitialize)(this.dtgLogMessages)).BeginInit();
@@ -90,7 +90,6 @@
       // 
       // cmsSynchronizeTree
       // 
-      this.cmsSynchronizeTree.Image = global::Com.Couchcoding.Logbert.Properties.Resources.sync_16;
       this.cmsSynchronizeTree.Name = "cmsSynchronizeTree";
       this.cmsSynchronizeTree.Size = new System.Drawing.Size(213, 22);
       this.cmsSynchronizeTree.Text = "Synchronize Tree";
@@ -98,7 +97,6 @@
       // 
       // cmdcopytoclipboard
       // 
-      this.cmdcopytoclipboard.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Copy_6524;
       this.cmdcopytoclipboard.Name = "cmdcopytoclipboard";
       this.cmdcopytoclipboard.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
       this.cmdcopytoclipboard.Size = new System.Drawing.Size(213, 22);
@@ -137,7 +135,6 @@
       // 
       // cmsToggleBookmark
       // 
-      this.cmsToggleBookmark.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Bookmark_6986;
       this.cmsToggleBookmark.Name = "cmsToggleBookmark";
       this.cmsToggleBookmark.Size = new System.Drawing.Size(213, 22);
       this.cmsToggleBookmark.Text = "Toggle Bookmark";
@@ -167,7 +164,7 @@
 
     #endregion
 
-    private GuiLibrary.Controls.DataGridViewEx dtgLogMessages;
+    private Gui.Controls.DataGridViewEx dtgLogMessages;
     private System.Windows.Forms.ImageList imlBookmark;
     private System.Windows.Forms.ContextMenuStrip cmColumns;
     private System.Windows.Forms.ContextMenuStrip cmLogMessage;

@@ -31,9 +31,9 @@
 using System;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Receiver;
+using Couchcoding.Logbert.Receiver;
 
-namespace Com.Couchcoding.Logbert.Interfaces
+namespace Couchcoding.Logbert.Interfaces
 {
   /// <summary>
   /// Interface for all <see cref="ILogProvider"/> settings <see cref="Control"/>s.

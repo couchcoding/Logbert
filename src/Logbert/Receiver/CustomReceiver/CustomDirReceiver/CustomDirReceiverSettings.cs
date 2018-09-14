@@ -32,18 +32,18 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Properties;
 using System.IO;
 
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Receiver.CustomReceiver;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Receiver.CustomReceiver;
 using System.Collections.Generic;
 using System.Xml;
-using Com.Couchcoding.Logbert.Dialogs;
+using Couchcoding.Logbert.Dialogs;
 using System.Text;
 
-namespace Com.Couchcoding.Logbert.Receiver.Log4NetDirReceiver
+namespace Couchcoding.Logbert.Receiver.Log4NetDirReceiver
 {
   /// <summary>
   /// Implements the <see cref="ILogSettingsCtrl"/> control for the custom file receiver.
@@ -329,15 +329,24 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetDirReceiver
     }
 
     /// <summary>
-    /// Handles the Click event of a file pattern preset <see cref="ToolStripMenuItem"/>.
+    /// Handles the Click event of a file pattern preset <see cref="MenuItem"/>.
+    /// </summary>
+    private void MnuFilePatternPresetClick(object sender, EventArgs e)
+    {
+      if (sender is MenuItem mnuCtrl && mnuCtrl.Tag != null)
+      {
+        txtLogFilePattern.Text = mnuCtrl.Tag.ToString();
+      }
+    }
+
+    /// <summary>
+    /// Handles the Click event of a file pattern preset <see cref="MenuItem"/>.
     /// </summary>
     private void MnuFilePatternClick(object sender, EventArgs e)
     {
-      ToolStripMenuItem mnuCtrl = sender as ToolStripMenuItem;
-
-      if (mnuCtrl?.Tag != null)
+      if (sender is MenuItem mnuCtrl && mnuCtrl.Tag != null)
       {
-        txtLogFilePattern.Text = mnuCtrl.Tag.ToString();
+        txtLogFilePattern.SelectedText = mnuCtrl.Tag.ToString();
       }
     }
 
@@ -453,8 +462,6 @@ namespace Com.Couchcoding.Logbert.Receiver.Log4NetDirReceiver
     public CustomDirReceiverSettings()
     {
       InitializeComponent();
-
-      ThemeManager.CurrentApplicationTheme.ApplyTo(mnuFilePattern);
     }
 
     #endregion

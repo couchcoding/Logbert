@@ -31,14 +31,14 @@
 using System;
 using System.Collections.Generic;
 
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Logging;
 using System.Diagnostics;
 
-using Com.Couchcoding.Logbert.Controls;
-using Com.Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Controls;
+using Couchcoding.Logbert.Helper;
 
-namespace Com.Couchcoding.Logbert.Receiver.EventlogReceiver
+namespace Couchcoding.Logbert.Receiver.EventlogReceiver
 {
   /// <summary>
   /// Implements a <see cref="ILogProvider"/> for the event log service.

@@ -35,11 +35,11 @@ using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Properties;
 
-namespace Com.Couchcoding.Logbert.Controls.OptionPanels
+namespace Couchcoding.Logbert.Controls.OptionPanels
 {
   /// <summary>
   /// Implements a <see cref="IOptionPanel"/> for general application settings.

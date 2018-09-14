@@ -1,4 +1,4 @@
-﻿namespace Com.Couchcoding.Logbert.Controls
+﻿namespace Couchcoding.Logbert.Controls
 {
   partial class ColorMap
   {

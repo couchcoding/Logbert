@@ -1,4 +1,4 @@
-﻿namespace Com.Couchcoding.Logbert.Controls.OptionPanels
+﻿namespace Couchcoding.Logbert.Controls.OptionPanels
 {
   partial class OptionPanelFontColor
   {
@@ -46,24 +46,24 @@
             this.lblTrace = new System.Windows.Forms.Label();
             this.cmbFont = new System.Windows.Forms.ComboBox();
             this.cmbFontSize = new System.Windows.Forms.ComboBox();
-            this.clrDrpDwnForeTrace = new Com.Couchcoding.Logbert.Controls.ColorPickerCtrl();
-            this.clrDrpDwnForeDebug = new Com.Couchcoding.Logbert.Controls.ColorPickerCtrl();
-            this.clrDrpDwnForeInfo = new Com.Couchcoding.Logbert.Controls.ColorPickerCtrl();
-            this.clrDrpDwnForeWarning = new Com.Couchcoding.Logbert.Controls.ColorPickerCtrl();
-            this.clrDrpDwnForeError = new Com.Couchcoding.Logbert.Controls.ColorPickerCtrl();
-            this.clrDrpDwnForeFatal = new Com.Couchcoding.Logbert.Controls.ColorPickerCtrl();
-            this.clrDrpDwnBackTrace = new Com.Couchcoding.Logbert.Controls.ColorPickerCtrl();
-            this.clrDrpDwnBackDebug = new Com.Couchcoding.Logbert.Controls.ColorPickerCtrl();
-            this.clrDrpDwnBackInfo = new Com.Couchcoding.Logbert.Controls.ColorPickerCtrl();
-            this.clrDrpDwnBackWarning = new Com.Couchcoding.Logbert.Controls.ColorPickerCtrl();
-            this.clrDrpDwnBackError = new Com.Couchcoding.Logbert.Controls.ColorPickerCtrl();
-            this.clrDrpDwnBackFatal = new Com.Couchcoding.Logbert.Controls.ColorPickerCtrl();
+            this.clrDrpDwnForeTrace = new Couchcoding.Logbert.Controls.ColorPickerCtrl();
+            this.clrDrpDwnForeDebug = new Couchcoding.Logbert.Controls.ColorPickerCtrl();
+            this.clrDrpDwnForeInfo = new Couchcoding.Logbert.Controls.ColorPickerCtrl();
+            this.clrDrpDwnForeWarning = new Couchcoding.Logbert.Controls.ColorPickerCtrl();
+            this.clrDrpDwnForeError = new Couchcoding.Logbert.Controls.ColorPickerCtrl();
+            this.clrDrpDwnForeFatal = new Couchcoding.Logbert.Controls.ColorPickerCtrl();
+            this.clrDrpDwnBackTrace = new Couchcoding.Logbert.Controls.ColorPickerCtrl();
+            this.clrDrpDwnBackDebug = new Couchcoding.Logbert.Controls.ColorPickerCtrl();
+            this.clrDrpDwnBackInfo = new Couchcoding.Logbert.Controls.ColorPickerCtrl();
+            this.clrDrpDwnBackWarning = new Couchcoding.Logbert.Controls.ColorPickerCtrl();
+            this.clrDrpDwnBackError = new Couchcoding.Logbert.Controls.ColorPickerCtrl();
+            this.clrDrpDwnBackFatal = new Couchcoding.Logbert.Controls.ColorPickerCtrl();
             this.lblFontSize = new System.Windows.Forms.Label();
             this.lblFont = new System.Windows.Forms.Label();
             this.chkDrawGrid = new System.Windows.Forms.CheckBox();
             this.lblApplicationTheme = new System.Windows.Forms.Label();
             this.cmbApplicationTheme = new System.Windows.Forms.ComboBox();
-            this.nfoPanel = new Com.Couchcoding.GuiLibrary.Controls.InfoPanel();
+            this.nfoPanel = new Couchcoding.Logbert.Gui.Controls.InfoPanel();
             this.tblLayout.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -523,11 +523,13 @@
             this.cmbApplicationTheme.FormattingEnabled = true;
             this.cmbApplicationTheme.Items.AddRange(new object[] {
             "Visual Studio Light",
+            "Visual Studio Dark",
             "Visual Studio Blue"});
             this.cmbApplicationTheme.Location = new System.Drawing.Point(3, 295);
             this.cmbApplicationTheme.Name = "cmbApplicationTheme";
             this.cmbApplicationTheme.Size = new System.Drawing.Size(474, 21);
             this.cmbApplicationTheme.TabIndex = 3;
+            this.cmbApplicationTheme.SelectionChangeCommitted += new System.EventHandler(this.CmbApplicationTheme_SelectionChangeCommitted);
             // 
             // nfoPanel
             // 
@@ -535,7 +537,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.nfoPanel.BackColor = System.Drawing.Color.WhiteSmoke;
             this.nfoPanel.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.nfoPanel.InfoIcon = global::Com.Couchcoding.Logbert.Properties.Resources.StatusAnnotations_Information_16xLG;
+            this.nfoPanel.InfoIcon = global::Couchcoding.Logbert.Properties.Resources.StatusAnnotations_Information_16xLG;
             this.nfoPanel.Location = new System.Drawing.Point(3, 322);
             this.nfoPanel.Name = "nfoPanel";
             this.nfoPanel.ShowInfoIcon = true;
@@ -602,6 +604,6 @@
     private System.Windows.Forms.CheckBox chkDrawGrid;
         private System.Windows.Forms.Label lblApplicationTheme;
         private System.Windows.Forms.ComboBox cmbApplicationTheme;
-        private GuiLibrary.Controls.InfoPanel nfoPanel;
+        private Gui.Controls.InfoPanel nfoPanel;
     }
 }

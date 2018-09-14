@@ -28,9 +28,9 @@
 
 #endregion
 
-using Com.Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Logging;
 
-namespace Com.Couchcoding.Logbert.Interfaces
+namespace Couchcoding.Logbert.Interfaces
 {
   /// <summary>
   /// Interface for all searchable content.

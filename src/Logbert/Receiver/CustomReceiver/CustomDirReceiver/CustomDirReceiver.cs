@@ -34,14 +34,14 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Com.Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Interfaces;
 
-using Com.Couchcoding.Logbert.Controls;
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Logging;
-using Com.Couchcoding.Logbert.Receiver.CustomReceiver;
+using Couchcoding.Logbert.Controls;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Receiver.CustomReceiver;
 
-namespace Com.Couchcoding.Logbert.Receiver.Log4NetDirReceiver
+namespace Couchcoding.Logbert.Receiver.Log4NetDirReceiver
 {
   /// <summary>
   /// Implements a <see cref="ILogProvider"/> for the custom file service.

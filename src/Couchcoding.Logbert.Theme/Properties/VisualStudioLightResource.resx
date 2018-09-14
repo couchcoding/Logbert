@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="FrmBookmarksTbNext_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmBookmarksTbNext_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmBookmarksTbPrevious_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmBookmarksTbPrevious_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmBookmarksTbRemove_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmBookmarksTbRemove_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmBookmarks_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmBookmarks_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmFilterTbAdd_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmFilterTbAdd_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmFilterTbEdit_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmFilterTbEdit_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmFilterTbRemove_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmFilterTbRemove_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmLogBookmark_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmLogBookmark_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmLogTreeNodeCollapsed_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmLogTreeNodeCollapsed_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmLogTreeNodeExpanded_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmLogTreeNodeExpanded_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbAbout_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbAbout_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbBookmark_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbBookmark_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbBottom_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbBottom_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbClear_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbClear_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbCloseAll_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbCloseAll_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbDebug_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbDebug_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbDetails_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbDetails_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbError_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbError_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbFatal_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbFatal_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbFilter_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbFilter_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbInfo_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbInfo_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbLogtree_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbLogtree_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbNew_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbNew_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbOpen_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbOpen_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbRefresh_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbRefresh_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbSave_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbSave_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbSearch_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbSearch_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbSettings_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbSettings_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbStart_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbStart_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbStatistic_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbStatistic_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbSync_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbSync_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbTimeshift_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbTimeshift_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbTop_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbTop_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbTraceLog_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbTraceLog_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbTrace_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbTrace_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbWarn_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbWarn_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbZoomIn_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbZoomIn_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmMainTbZoomOut_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmMainTbZoomOut_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmOptionsFontAndColor_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmOptionsFontAndColor_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmScriptTbClearLog_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmScriptTbClearLog_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmScriptTbCopy_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmScriptTbCopy_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmScriptTbCut_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmScriptTbCut_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmScriptTbPaste_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmScriptTbPaste_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmScriptTbRedo_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmScriptTbRedo_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmScriptTbStart_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmScriptTbStart_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmScriptTbStop_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmScriptTbStop_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmScriptTbUndo_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmScriptTbUndo_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmScriptTbWordWrap_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmScriptTbWordWrap_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmSearchOptions_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmSearchOptions_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrmStatisticTbLegend_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrmStatisticTbLegend_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+</root>

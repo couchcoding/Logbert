@@ -33,20 +33,24 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Logging;
 using WeifenLuo.WinFormsUI.Docking;
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Logging.Filter;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Logging.Filter;
 using System;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Theme.Palettes;
+using Couchcoding.Logbert.Theme.Interfaces;
+using Couchcoding.Logbert.Theme;
+using Couchcoding.Logbert.Theme.Themes;
 
-namespace Com.Couchcoding.Logbert.Dialogs.Docking
+namespace Couchcoding.Logbert.Dialogs.Docking
 {
   /// <summary>
   /// Implements a <see cref="DockContent"/> to create, configure enable and disable filter.
   /// </summary>
-  public partial class FrmLogFilter : DockContent, ILogPresenter, ILogFilterProvider
+  public partial class FrmLogFilter : DockContent, ILogPresenter, ILogFilterProvider, IThemable
   {
     #region Private Consts
 
@@ -82,7 +86,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// <summary>
     /// The <see cref="Image"/> to use for <see cref=LogFilter"/>s.
     /// </summary>
-    private static readonly Image mFilterImage = Properties.Resources.filter_16xLG;
+    private static readonly Image mFilterImage = ThemeManager.CurrentApplicationTheme.Resources.Images["FrmMainTbFilter"];
 
     #endregion
 
@@ -459,6 +463,34 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       return false;
     }
 
+    /// <summary>
+    /// Applies the current theme to the <see cref="Control"/>.
+    /// </summary>
+    /// <param name="theme">The <see cref="BaseTheme"/> instance to apply.</param>
+    public void ApplyTheme(BaseTheme theme)
+    {
+      tsbAddFilter.Image    = theme.Resources.Images["FrmFilterTbAdd"];
+      tsbEditFilter.Image   = theme.Resources.Images["FrmFilterTbEdit"];
+      tsbRemoveFilter.Image = theme.Resources.Images["FrmFilterTbRemove"];
+      tsbZoomIn.Image       = theme.Resources.Images["FrmMainTbZoomIn"];
+      tsbZoomOut.Image      = theme.Resources.Images["FrmMainTbZoomOut"];
+
+      dgvFilter.EnableHeadersVisualStyles             = theme.Metrics.PreferSystemRendering;
+      dgvFilter.ColumnHeadersDefaultCellStyle.Padding = theme.Metrics.DataGridViewHeaderColumnPadding;
+
+      dgvFilter.BackgroundColor          = theme.ColorPalette.ContentBackground;
+      dgvFilter.ForeColor                = theme.ColorPalette.ContentForeground;
+      dgvFilter.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+      dgvFilter.GridColor                = theme.ColorPalette.DividerColor;
+
+      dgvFilter.ColumnHeadersDefaultCellStyle.BackColor = theme.ColorPalette.ContentBackground;
+      dgvFilter.ColumnHeadersDefaultCellStyle.ForeColor = theme.ColorPalette.ContentForeground;
+
+      dgvFilter.CellBorderStyle            = DataGridViewCellBorderStyle.Single;
+      dgvFilter.DefaultCellStyle.BackColor = theme.ColorPalette.ContentBackground;
+      dgvFilter.DefaultCellStyle.ForeColor = theme.ColorPalette.ContentForeground;
+    }
+
     #endregion
 
     #region Constructor
@@ -473,7 +505,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       InitializeComponent();
 
       // Apply the current application theme to the control.
-      ThemeManager.CurrentApplicationTheme.ApplyTo(tsFilter);
+      ThemeManager.ApplyTo(this);
 
       mLogProvider      = logProvider;
       mLogFilterHandler = filterHandler;

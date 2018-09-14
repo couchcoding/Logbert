@@ -31,7 +31,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Com.Couchcoding.Logbert.Helper
+namespace Couchcoding.Logbert.Helper
 {
   /// <summary>
   /// Implements several Win32 API method calls.
@@ -45,9 +45,28 @@ namespace Com.Couchcoding.Logbert.Helper
     /// </summary>
     public const short SW_RESTORE = 9;
 
+    /// <summary>
+    /// Retrieves the window styles. 
+    /// </summary>
+    public const int GWL_STYLE = -16;
+
+    /// <summary>
+    /// The window has a vertical scroll bar.
+    /// </summary>
+    public const int WS_VSCROLL = 0x00200000;
+
     #endregion
 
     #region Public Methods
+
+    /// <summary>
+    /// Retrieves information about the specified window. The function also retrieves the 32-bit (DWORD) value at the specified offset into the extra window memory. 
+    /// </summary>
+    /// <param name="hWnd">A handle to the window and, indirectly, the class to which the window belongs.</param>
+    /// <param name="nIndex">The zero-based offset to the value to be retrieved.</param>
+    /// <returns>If the function succeeds, the return value is the requested value.</returns>
+    [DllImport("user32.dll", ExactSpelling = false, CharSet = CharSet.Auto)]
+    public static extern int GetWindowLong(IntPtr hWnd, int nIndex);
 
     /// <summary>
     /// Sets the specified window's show state. 

@@ -32,13 +32,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-using Com.Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Interfaces;
 
-using Com.Couchcoding.Logbert.Controls;
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Controls;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Logging;
 
-namespace Com.Couchcoding.Logbert.Receiver.NLogFileReceiver
+namespace Couchcoding.Logbert.Receiver.NLogFileReceiver
 {
   /// <summary>
   /// Implements a <see cref="ILogProvider"/> for the NLog file service.

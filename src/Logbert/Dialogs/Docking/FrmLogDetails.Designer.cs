@@ -1,4 +1,4 @@
-﻿namespace Com.Couchcoding.Logbert.Dialogs.Docking
+﻿namespace Couchcoding.Logbert.Dialogs.Docking
 {
   partial class FrmMessageDetails
   {

@@ -1,4 +1,4 @@
-﻿namespace Com.Couchcoding.Logbert.Dialogs.Docking
+﻿namespace Couchcoding.Logbert.Dialogs.Docking
 {
   partial class FrmLogStatistic
   {
@@ -22,7 +22,7 @@
       System.Windows.Forms.DataVisualization.Charting.LegendCellColumn legendCellColumn3 = new System.Windows.Forms.DataVisualization.Charting.LegendCellColumn();
       System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogStatistic));
-      this.toolStrip1 = new Com.Couchcoding.GuiLibrary.Controls.ToolStripEx();
+      this.toolStrip1 = new Couchcoding.Logbert.Gui.Controls.ToolStripEx();
       this.tsbShowLegend = new System.Windows.Forms.ToolStripButton();
       this.chrtOverview = new System.Windows.Forms.DataVisualization.Charting.Chart();
       this.toolStrip1.SuspendLayout();
@@ -45,7 +45,6 @@
       // 
       this.tsbShowLegend.CheckOnClick = true;
       this.tsbShowLegend.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.tsbShowLegend.Image = global::Com.Couchcoding.Logbert.Properties.Resources.FrmStatisticShowLegend;
       this.tsbShowLegend.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbShowLegend.Margin = new System.Windows.Forms.Padding(2, 1, 0, 2);
       this.tsbShowLegend.Name = "tsbShowLegend";
@@ -117,7 +116,7 @@
 
     #endregion
 
-    private GuiLibrary.Controls.ToolStripEx toolStrip1;
+    private Gui.Controls.ToolStripEx toolStrip1;
     private System.Windows.Forms.ToolStripButton tsbShowLegend;
     private System.Windows.Forms.DataVisualization.Charting.Chart chrtOverview;
   }

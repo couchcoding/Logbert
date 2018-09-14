@@ -31,14 +31,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Logging;
 using System;
 
-using Com.Couchcoding.Logbert.Controls;
+using Couchcoding.Logbert.Controls;
 
-namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
+namespace Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
 {
   /// <summary>
   /// Implements a <see cref="ILogProvider"/> for the custom log file service.

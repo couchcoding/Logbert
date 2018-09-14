@@ -1,4 +1,4 @@
-﻿namespace Com.Couchcoding.Logbert.Receiver.EventlogReceiver
+﻿namespace Couchcoding.Logbert.Receiver.EventlogReceiver
 {
   partial class EventlogReceiverSettings
   {
@@ -34,7 +34,7 @@
             this.txtMachineName = new System.Windows.Forms.TextBox();
             this.txtSourceName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.nfoPanel = new Com.Couchcoding.GuiLibrary.Controls.InfoPanel();
+            this.nfoPanel = new Couchcoding.Logbert.Gui.Controls.InfoPanel();
             this.SuspendLayout();
             // 
             // lblLogName
@@ -103,7 +103,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.nfoPanel.BackColor = System.Drawing.Color.WhiteSmoke;
             this.nfoPanel.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.nfoPanel.InfoIcon = global::Com.Couchcoding.Logbert.Properties.Resources.StatusAnnotations_Information_16xLG;
+            this.nfoPanel.InfoIcon = global::Couchcoding.Logbert.Properties.Resources.StatusAnnotations_Information_16xLG;
             this.nfoPanel.Location = new System.Drawing.Point(0, 89);
             this.nfoPanel.Name = "nfoPanel";
             this.nfoPanel.ShowInfoIcon = true;
@@ -142,6 +142,6 @@
     private System.Windows.Forms.TextBox txtMachineName;
     private System.Windows.Forms.TextBox txtSourceName;
     private System.Windows.Forms.Label label1;
-    private GuiLibrary.Controls.InfoPanel nfoPanel;
+    private Gui.Controls.InfoPanel nfoPanel;
   }
 }

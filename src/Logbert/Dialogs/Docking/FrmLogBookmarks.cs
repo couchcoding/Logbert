@@ -32,18 +32,22 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Theme.Palettes;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Logging;
 
 using WeifenLuo.WinFormsUI.Docking;
+using Couchcoding.Logbert.Theme.Interfaces;
+using Couchcoding.Logbert.Theme;
+using Couchcoding.Logbert.Theme.Themes;
 
-namespace Com.Couchcoding.Logbert.Dialogs.Docking
+namespace Couchcoding.Logbert.Dialogs.Docking
 {
   /// <summary>
   /// Implements a <see cref="DockContent"/> to display and manage bookmarked <see cref="LogMessage"/>s.
   /// </summary>
-  public partial class FrmLogBookmarks : DockContent, ILogPresenter, IBookmarkObserver
+  public partial class FrmLogBookmarks : DockContent, ILogPresenter, IBookmarkObserver, IThemable
   {
     #region Private Consts
 
@@ -69,7 +73,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     /// <summary>
     /// The <see cref="Image"/> to use for bookmarks.
     /// </summary>
-    private static readonly Image mBookmarkImage = Properties.Resources.bookmark_002_16xMD;
+    private static readonly Image mBookmarkImage = ThemeManager.CurrentApplicationTheme.Resources.Images["FrmLogBookmark"];
 
     #endregion
 
@@ -384,6 +388,34 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       return false;
     }
 
+    /// <summary>
+    /// Applies the current theme to the <see cref="Control"/>.
+    /// </summary>
+    /// <param name="theme">The <see cref="BaseTheme"/> instance to apply.</param>
+    public void ApplyTheme(BaseTheme theme)
+    {
+      tsbRemoveBookmark.Image   = theme.Resources.Images["FrmBookmarksTbRemove"];
+      tsbPreviousBookmark.Image = theme.Resources.Images["FrmBookmarksTbPrevious"];
+      tsbNextBookmark.Image     = theme.Resources.Images["FrmBookmarksTbNext"];
+      tsbZoomIn.Image           = theme.Resources.Images["FrmMainTbZoomIn"];
+      tsbZoomOut.Image          = theme.Resources.Images["FrmMainTbZoomOut"];
+
+      dgvBookmarks.EnableHeadersVisualStyles             = theme.Metrics.PreferSystemRendering;
+      dgvBookmarks.ColumnHeadersDefaultCellStyle.Padding = theme.Metrics.DataGridViewHeaderColumnPadding;
+
+      dgvBookmarks.BackgroundColor          = theme.ColorPalette.ContentBackground;
+      dgvBookmarks.ForeColor                = theme.ColorPalette.ContentForeground;
+      dgvBookmarks.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+      dgvBookmarks.GridColor                = theme.ColorPalette.DividerColor;
+
+      dgvBookmarks.ColumnHeadersDefaultCellStyle.BackColor = theme.ColorPalette.ContentBackground;
+      dgvBookmarks.ColumnHeadersDefaultCellStyle.ForeColor = theme.ColorPalette.ContentForeground;
+
+      dgvBookmarks.CellBorderStyle            = DataGridViewCellBorderStyle.Single;
+      dgvBookmarks.DefaultCellStyle.BackColor = theme.ColorPalette.ContentBackground;
+      dgvBookmarks.DefaultCellStyle.ForeColor = theme.ColorPalette.ContentForeground;
+    }
+
     #endregion
 
     #region Constructor
@@ -402,7 +434,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       InitializeComponent();
 
       // Apply the current application theme to the control.
-      ThemeManager.CurrentApplicationTheme.ApplyTo(toolStrip1);
+      ThemeManager.ApplyTo(this);
     }
 
     #endregion

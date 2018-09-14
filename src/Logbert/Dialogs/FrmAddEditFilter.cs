@@ -28,14 +28,14 @@
 
 #endregion
 
-using Com.Couchcoding.GuiLibrary.Dialogs;
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Logging.Filter;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Gui.Dialogs;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Logging.Filter;
+using Couchcoding.Logbert.Properties;
 using System.ComponentModel;
 
-namespace Com.Couchcoding.Logbert.Dialogs
+namespace Couchcoding.Logbert.Dialogs
 {
   /// <summary>
   /// Implements the add and edit filter dialog.

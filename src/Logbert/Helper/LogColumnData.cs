@@ -28,7 +28,7 @@
 
 #endregion
 
-namespace Com.Couchcoding.Logbert.Helper
+namespace Couchcoding.Logbert.Helper
 {
   /// <summary>
   /// Implements a class to store log column specific data.

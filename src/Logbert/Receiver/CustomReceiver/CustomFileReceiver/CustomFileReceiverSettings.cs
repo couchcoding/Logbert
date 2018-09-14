@@ -29,18 +29,18 @@
 #endregion
 
 using System.Windows.Forms;
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Properties;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml;
 
-using Com.Couchcoding.Logbert.Dialogs;
-using Com.Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Dialogs;
+using Couchcoding.Logbert.Helper;
 
-namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
+namespace Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
 {
   /// <summary>
   /// Implements the <see cref="ILogSettingsCtrl"/> control for the custom file receiver.

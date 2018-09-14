@@ -31,7 +31,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Com.Couchcoding.Logbert.Helper
+namespace Couchcoding.Logbert.Helper
 {
   /// <summary>
   /// Implements a <see cref="Color"/> table used for flat toolStrip rendering.

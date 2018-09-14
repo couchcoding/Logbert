@@ -32,10 +32,10 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-using Com.Couchcoding.GuiLibrary.Controls;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Gui.Controls;
+using Couchcoding.Logbert.Properties;
 
-namespace Com.Couchcoding.Logbert.Controls
+namespace Couchcoding.Logbert.Controls
 {
   /// <summary>
   /// Implements a <see cref="UserControl"/> to select predefined and custom <see cref="Color"/>s.

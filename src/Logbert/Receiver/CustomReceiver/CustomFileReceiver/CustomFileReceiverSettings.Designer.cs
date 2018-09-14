@@ -1,4 +1,4 @@
-namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
+namespace Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
 {
   partial class CustomFileReceiverSettings
   {
@@ -29,7 +29,7 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
     private void InitializeComponent()
     {
             this.chkStartFromBeginning = new System.Windows.Forms.CheckBox();
-            this.txtLogFile = new Com.Couchcoding.GuiLibrary.Controls.TextBoxEx();
+            this.txtLogFile = new Couchcoding.Logbert.Gui.Controls.TextBoxEx();
             this.lblNetworkInterface = new System.Windows.Forms.Label();
             this.lblColumnizer = new System.Windows.Forms.Label();
             this.cmbColumnizer = new System.Windows.Forms.ComboBox();
@@ -100,7 +100,7 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
             // 
             this.btnEditColumnizer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditColumnizer.Enabled = false;
-            this.btnEditColumnizer.Image = global::Com.Couchcoding.Logbert.Properties.Resources.PencilAngled_16xMD_color;
+            this.btnEditColumnizer.Image = global::Couchcoding.Logbert.Properties.Resources.PencilAngled_16xMD_color;
             this.btnEditColumnizer.Location = new System.Drawing.Point(377, 84);
             this.btnEditColumnizer.Name = "btnEditColumnizer";
             this.btnEditColumnizer.Size = new System.Drawing.Size(23, 22);
@@ -111,7 +111,7 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
             // btnAddColumnizer
             // 
             this.btnAddColumnizer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddColumnizer.Image = global::Com.Couchcoding.Logbert.Properties.Resources.action_add_16xMD;
+            this.btnAddColumnizer.Image = global::Couchcoding.Logbert.Properties.Resources.action_add_16xMD;
             this.btnAddColumnizer.Location = new System.Drawing.Point(319, 84);
             this.btnAddColumnizer.Name = "btnAddColumnizer";
             this.btnAddColumnizer.Size = new System.Drawing.Size(23, 22);
@@ -122,7 +122,7 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
             // btnRemoveColumnizer
             // 
             this.btnRemoveColumnizer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemoveColumnizer.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Remove_16xMD;
+            this.btnRemoveColumnizer.Image = global::Couchcoding.Logbert.Properties.Resources.Remove_16xMD;
             this.btnRemoveColumnizer.Location = new System.Drawing.Point(348, 84);
             this.btnRemoveColumnizer.Name = "btnRemoveColumnizer";
             this.btnRemoveColumnizer.Size = new System.Drawing.Size(23, 22);
@@ -178,7 +178,7 @@ namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
     #endregion
 
     private System.Windows.Forms.CheckBox chkStartFromBeginning;
-    private GuiLibrary.Controls.TextBoxEx txtLogFile;
+    private Gui.Controls.TextBoxEx txtLogFile;
     private System.Windows.Forms.Label lblNetworkInterface;
     private System.Windows.Forms.Label lblColumnizer;
     private System.Windows.Forms.ComboBox cmbColumnizer;

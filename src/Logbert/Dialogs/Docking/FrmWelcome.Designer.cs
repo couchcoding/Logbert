@@ -1,4 +1,4 @@
-﻿namespace Com.Couchcoding.Logbert.Dialogs.Docking
+﻿namespace Couchcoding.Logbert.Dialogs.Docking
 {
     partial class FrmWelcome
     {
@@ -34,17 +34,17 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lblOnlineRecources = new System.Windows.Forms.Label();
             this.flOnlineResources = new System.Windows.Forms.FlowLayoutPanel();
-            this.lnkLogbertHomepage = new Com.Couchcoding.GuiLibrary.Controls.LinkLabelEx();
-            this.lnkLog4NetExamples = new Com.Couchcoding.GuiLibrary.Controls.LinkLabelEx();
-            this.lnkNlogExamples = new Com.Couchcoding.GuiLibrary.Controls.LinkLabelEx();
+            this.lnkLogbertHomepage = new Couchcoding.Logbert.Gui.Controls.LinkLabelEx();
+            this.lnkLog4NetExamples = new Couchcoding.Logbert.Gui.Controls.LinkLabelEx();
+            this.lnkNlogExamples = new Couchcoding.Logbert.Gui.Controls.LinkLabelEx();
             this.tblWelcomeLogger = new System.Windows.Forms.TableLayoutPanel();
-            this.lstLogger = new Com.Couchcoding.GuiLibrary.Controls.ListBoxEx();
+            this.lstLogger = new Controls.ThemedListBoxEx();
             this.lblNewLogger = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblRecentFiles = new System.Windows.Forms.Label();
             this.flRecentFiles = new System.Windows.Forms.FlowLayoutPanel();
             this.tlTip = new System.Windows.Forms.ToolTip(this.components);
-            this.nfoBgPanel = new Com.Couchcoding.GuiLibrary.Controls.InfoPanel();
+            this.nfoBgPanel = new Couchcoding.Logbert.Gui.Controls.InfoPanel();
             this.tblWelcome.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.flOnlineResources.SuspendLayout();
@@ -272,7 +272,7 @@
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(640, 480);
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::Com.Couchcoding.Logbert.Properties.Resources.Logbert_Logo_Background;
+            this.BackgroundImage = global::Couchcoding.Logbert.Properties.Resources.Logbert_Logo_Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.nfoBgPanel);
@@ -303,17 +303,17 @@
         private System.Windows.Forms.TableLayoutPanel tblWelcome;
         private System.Windows.Forms.TableLayoutPanel tblWelcomeLogger;
         private System.Windows.Forms.Label lblNewLogger;
-        private GuiLibrary.Controls.ListBoxEx lstLogger;
+        private Controls.ThemedListBoxEx lstLogger;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label lblOnlineRecources;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label lblRecentFiles;
         private System.Windows.Forms.FlowLayoutPanel flOnlineResources;
-        private GuiLibrary.Controls.LinkLabelEx lnkLogbertHomepage;
-        private GuiLibrary.Controls.LinkLabelEx lnkLog4NetExamples;
-        private GuiLibrary.Controls.LinkLabelEx lnkNlogExamples;
+        private Gui.Controls.LinkLabelEx lnkLogbertHomepage;
+        private Gui.Controls.LinkLabelEx lnkLog4NetExamples;
+        private Gui.Controls.LinkLabelEx lnkNlogExamples;
         private System.Windows.Forms.FlowLayoutPanel flRecentFiles;
         private System.Windows.Forms.ToolTip tlTip;
-        private GuiLibrary.Controls.InfoPanel nfoBgPanel;
+        private Gui.Controls.InfoPanel nfoBgPanel;
     }
 }

@@ -30,26 +30,26 @@
 
 using System.Windows.Forms;
 
-using Com.Couchcoding.GuiLibrary.Dialogs;
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Properties;
-using Com.Couchcoding.Logbert.Receiver;
-using Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver;
-using Com.Couchcoding.Logbert.Receiver.Log4NetUdpReceiver;
-using Com.Couchcoding.Logbert.Receiver.Log4NetFileReceiver;
-using Com.Couchcoding.Logbert.Receiver.NlogTcpReceiver;
-using Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver;
-using Com.Couchcoding.Logbert.Receiver.NLogFileReceiver;
-using Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver;
-using Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver;
-using Com.Couchcoding.Logbert.Receiver.EventlogReceiver;
-using Com.Couchcoding.Logbert.Receiver.Log4NetDirReceiver;
-using Com.Couchcoding.Logbert.Receiver.NLogDirReceiver;
-using Com.Couchcoding.Logbert.Receiver.WinDebugReceiver;
-using Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomUdpReceiver;
+using Couchcoding.Logbert.Gui.Dialogs;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Receiver;
+using Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver;
+using Couchcoding.Logbert.Receiver.Log4NetUdpReceiver;
+using Couchcoding.Logbert.Receiver.Log4NetFileReceiver;
+using Couchcoding.Logbert.Receiver.NlogTcpReceiver;
+using Couchcoding.Logbert.Receiver.NLogUdpReceiver;
+using Couchcoding.Logbert.Receiver.NLogFileReceiver;
+using Couchcoding.Logbert.Receiver.SyslogFileReceiver;
+using Couchcoding.Logbert.Receiver.SyslogUdpReceiver;
+using Couchcoding.Logbert.Receiver.EventlogReceiver;
+using Couchcoding.Logbert.Receiver.Log4NetDirReceiver;
+using Couchcoding.Logbert.Receiver.NLogDirReceiver;
+using Couchcoding.Logbert.Receiver.WinDebugReceiver;
+using Couchcoding.Logbert.Receiver.CustomReceiver.CustomUdpReceiver;
 
-namespace Com.Couchcoding.Logbert.Dialogs
+namespace Couchcoding.Logbert.Dialogs
 {
   /// <summary>
   /// Implements the new logger dialog.

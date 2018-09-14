@@ -28,7 +28,7 @@
 
 #endregion
 
-namespace Com.Couchcoding.Logbert.Logging.Filter
+namespace Couchcoding.Logbert.Logging.Filter
 {
   /// <summary>
   /// Implements base vlass to filter for <see cref="LogMessage"/>s.

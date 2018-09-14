@@ -1,4 +1,4 @@
-﻿namespace Com.Couchcoding.Logbert.Dialogs
+﻿namespace Couchcoding.Logbert.Dialogs
 {
   partial class FrmLogLevelMap
   {
@@ -34,12 +34,12 @@
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
       this.btnCancel = new System.Windows.Forms.Button();
       this.btnOk = new System.Windows.Forms.Button();
-      this.pnlGrid = new Com.Couchcoding.GuiLibrary.Controls.InfoPanel();
-      this.dgvLogLevel = new Com.Couchcoding.GuiLibrary.Controls.DataGridViewEx();
+      this.pnlGrid = new Couchcoding.Logbert.Gui.Controls.InfoPanel();
+      this.dgvLogLevel = new Couchcoding.Logbert.Gui.Controls.DataGridViewEx();
       this.clmValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.clmImage = new System.Windows.Forms.DataGridViewImageColumn();
       this.clmLogLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.nfoPanel = new Com.Couchcoding.GuiLibrary.Controls.InfoPanel();
+      this.nfoPanel = new Couchcoding.Logbert.Gui.Controls.InfoPanel();
       this.pnlGrid.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgvLogLevel)).BeginInit();
       this.SuspendLayout();
@@ -156,7 +156,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.nfoPanel.BackColor = System.Drawing.Color.WhiteSmoke;
       this.nfoPanel.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-      this.nfoPanel.InfoIcon = global::Com.Couchcoding.Logbert.Properties.Resources.StatusAnnotations_Information_16xLG;
+      this.nfoPanel.InfoIcon = global::Couchcoding.Logbert.Properties.Resources.StatusAnnotations_Information_16xLG;
       this.nfoPanel.Location = new System.Drawing.Point(8, 68);
       this.nfoPanel.Name = "nfoPanel";
       this.nfoPanel.ShowInfoIcon = true;
@@ -195,11 +195,11 @@
 
     private System.Windows.Forms.Button btnCancel;
     private System.Windows.Forms.Button btnOk;
-    private GuiLibrary.Controls.InfoPanel pnlGrid;
-    private GuiLibrary.Controls.DataGridViewEx dgvLogLevel;
+    private Gui.Controls.InfoPanel pnlGrid;
+    private Gui.Controls.DataGridViewEx dgvLogLevel;
     private System.Windows.Forms.DataGridViewTextBoxColumn clmValue;
     private System.Windows.Forms.DataGridViewImageColumn clmImage;
     private System.Windows.Forms.DataGridViewTextBoxColumn clmLogLevel;
-    private GuiLibrary.Controls.InfoPanel nfoPanel;
+    private Gui.Controls.InfoPanel nfoPanel;
   }
 }

@@ -30,7 +30,7 @@
 
 using System.Text;
 
-namespace Com.Couchcoding.Logbert.Helper
+namespace Couchcoding.Logbert.Helper
 {
   /// <summary>
   /// Class to wrap <see cref="Encoding"/> information.

@@ -31,10 +31,10 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Logging;
-using Com.Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Helper;
 
-namespace Com.Couchcoding.Logbert.Interfaces
+namespace Couchcoding.Logbert.Interfaces
 {
   /// <summary>
   /// Interface for all <see cref="ILogProvider"/> implementations.

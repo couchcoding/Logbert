@@ -32,11 +32,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Logging;
-using Com.Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Helper;
 
-namespace Com.Couchcoding.Logbert.Receiver
+namespace Couchcoding.Logbert.Receiver
 {
   /// <summary>
   /// Implements the base class for all <see cref="ILogProvider"/> implementations.

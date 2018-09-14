@@ -29,9 +29,9 @@
 #endregion
 
 using System.Collections.Generic;
-using Com.Couchcoding.Logbert.Logging.Filter;
+using Couchcoding.Logbert.Logging.Filter;
 
-namespace Com.Couchcoding.Logbert.Interfaces
+namespace Couchcoding.Logbert.Interfaces
 {
   /// <summary>
   /// Interface for all <see cref="LogFilter"/> provider.

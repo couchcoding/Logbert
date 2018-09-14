@@ -1,4 +1,4 @@
-﻿namespace Com.Couchcoding.Logbert.Dialogs.Docking
+﻿namespace Couchcoding.Logbert.Dialogs.Docking
 {
   partial class FrmLogFilter
   {
@@ -18,7 +18,7 @@
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogFilter));
-      this.tsFilter = new Com.Couchcoding.GuiLibrary.Controls.ToolStripEx();
+      this.tsFilter = new Couchcoding.Logbert.Gui.Controls.ToolStripEx();
       this.tsbAddFilter = new System.Windows.Forms.ToolStripButton();
       this.tsbEditFilter = new System.Windows.Forms.ToolStripButton();
       this.tsbRemoveFilter = new System.Windows.Forms.ToolStripButton();
@@ -54,7 +54,6 @@
       // tsbAddFilter
       // 
       this.tsbAddFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.tsbAddFilter.Image = global::Com.Couchcoding.Logbert.Properties.Resources.add_filter;
       this.tsbAddFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbAddFilter.Margin = new System.Windows.Forms.Padding(2, 1, 0, 2);
       this.tsbAddFilter.Name = "tsbAddFilter";
@@ -66,7 +65,6 @@
       // 
       this.tsbEditFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.tsbEditFilter.Enabled = false;
-      this.tsbEditFilter.Image = global::Com.Couchcoding.Logbert.Properties.Resources.edit_filter;
       this.tsbEditFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbEditFilter.Name = "tsbEditFilter";
       this.tsbEditFilter.Size = new System.Drawing.Size(23, 22);
@@ -77,7 +75,6 @@
       // 
       this.tsbRemoveFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.tsbRemoveFilter.Enabled = false;
-      this.tsbRemoveFilter.Image = global::Com.Couchcoding.Logbert.Properties.Resources.remove_filter;
       this.tsbRemoveFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbRemoveFilter.Name = "tsbRemoveFilter";
       this.tsbRemoveFilter.Size = new System.Drawing.Size(23, 22);
@@ -92,7 +89,6 @@
       // tsbZoomIn
       // 
       this.tsbZoomIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.tsbZoomIn.Image = global::Com.Couchcoding.Logbert.Properties.Resources.zoom_16xLG;
       this.tsbZoomIn.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbZoomIn.Name = "tsbZoomIn";
       this.tsbZoomIn.Size = new System.Drawing.Size(23, 22);
@@ -102,7 +98,6 @@
       // tsbZoomOut
       // 
       this.tsbZoomOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.tsbZoomOut.Image = global::Com.Couchcoding.Logbert.Properties.Resources.ZoomOut_16xLG;
       this.tsbZoomOut.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbZoomOut.Name = "tsbZoomOut";
       this.tsbZoomOut.Size = new System.Drawing.Size(23, 22);
@@ -220,7 +215,7 @@
 
     #endregion
 
-    private GuiLibrary.Controls.ToolStripEx tsFilter;
+    private Gui.Controls.ToolStripEx tsFilter;
     private System.Windows.Forms.ToolStripButton tsbAddFilter;
     private System.Windows.Forms.ToolStripButton tsbRemoveFilter;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;

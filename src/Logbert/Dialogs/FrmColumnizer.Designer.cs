@@ -1,4 +1,4 @@
-﻿namespace Com.Couchcoding.Logbert.Dialogs
+﻿namespace Couchcoding.Logbert.Dialogs
 {
   partial class FrmColumnizer
   {
@@ -34,13 +34,13 @@
       this.lblName = new System.Windows.Forms.Label();
       this.txtName = new System.Windows.Forms.TextBox();
       this.label1 = new System.Windows.Forms.Label();
-      this.dgvColumns = new Com.Couchcoding.GuiLibrary.Controls.DataGridViewEx();
+      this.dgvColumns = new Couchcoding.Logbert.Gui.Controls.DataGridViewEx();
       this.clmName = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.clmRegex = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.clmOptional = new System.Windows.Forms.DataGridViewCheckBoxColumn();
       this.clmType = new System.Windows.Forms.DataGridViewComboBoxColumn();
-      this.pnlGrid = new Com.Couchcoding.GuiLibrary.Controls.InfoPanel();
-      this.tsColumns = new Com.Couchcoding.GuiLibrary.Controls.ToolStripEx();
+      this.pnlGrid = new Couchcoding.Logbert.Gui.Controls.InfoPanel();
+      this.tsColumns = new Couchcoding.Logbert.Gui.Controls.ToolStripEx();
       this.tsbAddColumn = new System.Windows.Forms.ToolStripButton();
       this.tsbRemoveColumn = new System.Windows.Forms.ToolStripButton();
       this.tsbEditColumn = new System.Windows.Forms.ToolStripButton();
@@ -52,7 +52,7 @@
       this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
       this.tsbEditLogLevels = new System.Windows.Forms.ToolStripButton();
       this.tsbEditDateTimeFormat = new System.Windows.Forms.ToolStripButton();
-      this.nfoPanel = new Com.Couchcoding.GuiLibrary.Controls.InfoPanel();
+      this.nfoPanel = new Couchcoding.Logbert.Gui.Controls.InfoPanel();
       ((System.ComponentModel.ISupportInitialize)(this.dgvColumns)).BeginInit();
       this.pnlGrid.SuspendLayout();
       this.tsColumns.SuspendLayout();
@@ -222,7 +222,7 @@
       // tsbAddColumn
       // 
       this.tsbAddColumn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.tsbAddColumn.Image = global::Com.Couchcoding.Logbert.Properties.Resources.action_add_16xMD;
+      this.tsbAddColumn.Image = global::Couchcoding.Logbert.Properties.Resources.action_add_16xMD;
       this.tsbAddColumn.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbAddColumn.Name = "tsbAddColumn";
       this.tsbAddColumn.Size = new System.Drawing.Size(23, 22);
@@ -233,7 +233,7 @@
       // 
       this.tsbRemoveColumn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.tsbRemoveColumn.Enabled = false;
-      this.tsbRemoveColumn.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Remove_16xMD;
+      this.tsbRemoveColumn.Image = global::Couchcoding.Logbert.Properties.Resources.Remove_16xMD;
       this.tsbRemoveColumn.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbRemoveColumn.Margin = new System.Windows.Forms.Padding(0, 1, 1, 2);
       this.tsbRemoveColumn.Name = "tsbRemoveColumn";
@@ -245,7 +245,7 @@
       // 
       this.tsbEditColumn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.tsbEditColumn.Enabled = false;
-      this.tsbEditColumn.Image = global::Com.Couchcoding.Logbert.Properties.Resources.PencilAngled_16xMD_color;
+      this.tsbEditColumn.Image = global::Couchcoding.Logbert.Properties.Resources.PencilAngled_16xMD_color;
       this.tsbEditColumn.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbEditColumn.Name = "tsbEditColumn";
       this.tsbEditColumn.Size = new System.Drawing.Size(23, 22);
@@ -261,7 +261,7 @@
       // 
       this.tsbMoveUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.tsbMoveUp.Enabled = false;
-      this.tsbMoveUp.Image = global::Com.Couchcoding.Logbert.Properties.Resources.arrow_Up_16xLG;
+      this.tsbMoveUp.Image = global::Couchcoding.Logbert.Properties.Resources.arrow_Up_16xLG;
       this.tsbMoveUp.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbMoveUp.Name = "tsbMoveUp";
       this.tsbMoveUp.Size = new System.Drawing.Size(23, 22);
@@ -272,7 +272,7 @@
       // 
       this.tsbMoveDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.tsbMoveDown.Enabled = false;
-      this.tsbMoveDown.Image = global::Com.Couchcoding.Logbert.Properties.Resources.arrow_Down_16xLG;
+      this.tsbMoveDown.Image = global::Couchcoding.Logbert.Properties.Resources.arrow_Down_16xLG;
       this.tsbMoveDown.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbMoveDown.Name = "tsbMoveDown";
       this.tsbMoveDown.Size = new System.Drawing.Size(23, 22);
@@ -288,7 +288,7 @@
       // 
       this.tsbTestColumnizer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.tsbTestColumnizer.Enabled = false;
-      this.tsbTestColumnizer.Image = global::Com.Couchcoding.Logbert.Properties.Resources.RunTests_8790;
+      this.tsbTestColumnizer.Image = global::Couchcoding.Logbert.Properties.Resources.RunTests_8790;
       this.tsbTestColumnizer.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbTestColumnizer.Name = "tsbTestColumnizer";
       this.tsbTestColumnizer.Size = new System.Drawing.Size(23, 22);
@@ -303,7 +303,7 @@
       // tsbEditLogLevels
       // 
       this.tsbEditLogLevels.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.tsbEditLogLevels.Image = global::Com.Couchcoding.Logbert.Properties.Resources.LogLevel_16x;
+      this.tsbEditLogLevels.Image = global::Couchcoding.Logbert.Properties.Resources.LogLevel_16x;
       this.tsbEditLogLevels.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbEditLogLevels.Name = "tsbEditLogLevels";
       this.tsbEditLogLevels.Size = new System.Drawing.Size(23, 22);
@@ -313,7 +313,7 @@
       // tsbEditDateTimeFormat
       // 
       this.tsbEditDateTimeFormat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.tsbEditDateTimeFormat.Image = global::Com.Couchcoding.Logbert.Properties.Resources.VSO_Time_16x;
+      this.tsbEditDateTimeFormat.Image = global::Couchcoding.Logbert.Properties.Resources.VSO_Time_16x;
       this.tsbEditDateTimeFormat.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbEditDateTimeFormat.Name = "tsbEditDateTimeFormat";
       this.tsbEditDateTimeFormat.Size = new System.Drawing.Size(23, 22);
@@ -326,7 +326,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.nfoPanel.BackColor = System.Drawing.Color.WhiteSmoke;
       this.nfoPanel.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-      this.nfoPanel.InfoIcon = global::Com.Couchcoding.Logbert.Properties.Resources.StatusAnnotations_Information_16xLG;
+      this.nfoPanel.InfoIcon = global::Couchcoding.Logbert.Properties.Resources.StatusAnnotations_Information_16xLG;
       this.nfoPanel.Location = new System.Drawing.Point(8, 353);
       this.nfoPanel.Name = "nfoPanel";
       this.nfoPanel.ShowInfoIcon = true;
@@ -374,9 +374,9 @@
     private System.Windows.Forms.Label lblName;
     private System.Windows.Forms.TextBox txtName;
     private System.Windows.Forms.Label label1;
-    private GuiLibrary.Controls.DataGridViewEx dgvColumns;
-    private GuiLibrary.Controls.InfoPanel pnlGrid;
-    private GuiLibrary.Controls.ToolStripEx tsColumns;
+    private Gui.Controls.DataGridViewEx dgvColumns;
+    private Gui.Controls.InfoPanel pnlGrid;
+    private Gui.Controls.ToolStripEx tsColumns;
     private System.Windows.Forms.ToolStripButton tsbAddColumn;
     private System.Windows.Forms.ToolStripButton tsbEditColumn;
     private System.Windows.Forms.ToolStripButton tsbRemoveColumn;
@@ -385,7 +385,7 @@
     private System.Windows.Forms.ToolStripButton tsbMoveUp;
     private System.Windows.Forms.ToolStripButton tsbMoveDown;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-    private GuiLibrary.Controls.InfoPanel nfoPanel;
+    private Gui.Controls.InfoPanel nfoPanel;
     private System.Windows.Forms.DataGridViewTextBoxColumn clmName;
     private System.Windows.Forms.DataGridViewTextBoxColumn clmRegex;
     private System.Windows.Forms.DataGridViewCheckBoxColumn clmOptional;

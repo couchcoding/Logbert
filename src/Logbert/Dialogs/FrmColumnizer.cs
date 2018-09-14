@@ -30,14 +30,14 @@
 
 using System.Windows.Forms;
 
-using Com.Couchcoding.GuiLibrary.Controls;
-using Com.Couchcoding.GuiLibrary.Dialogs;
-using Com.Couchcoding.Logbert.Receiver.CustomReceiver;
+using Couchcoding.Logbert.Gui.Controls;
+using Couchcoding.Logbert.Gui.Dialogs;
+using Couchcoding.Logbert.Receiver.CustomReceiver;
 using System.Collections.Generic;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Properties;
 using System.Text.RegularExpressions;
 
-namespace Com.Couchcoding.Logbert.Dialogs
+namespace Couchcoding.Logbert.Dialogs
 {
   /// <summary>
   /// Implements a dialog to edit <see cref="LogColumn"/>s for a custom receiver.
