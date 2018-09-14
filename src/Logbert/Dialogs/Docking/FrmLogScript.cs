@@ -36,23 +36,27 @@ using System.IO;
 using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Logging;
 
 using ScintillaNET;
 
 using WeifenLuo.WinFormsUI.Docking;
 using MoonSharp.Interpreter;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Properties;
 using System.Configuration;
+using Couchcoding.Logbert.Theme.Palettes;
+using Couchcoding.Logbert.Theme.Interfaces;
+using Couchcoding.Logbert.Theme;
+using Couchcoding.Logbert.Theme.Themes;
 
-namespace Com.Couchcoding.Logbert.Dialogs.Docking
+namespace Couchcoding.Logbert.Dialogs.Docking
 {
   /// <summary>
   /// Implements the <see cref="DockContent"/> of the script window.
   /// </summary>
-  public partial class FrmLogScript : DockContent, ILogPresenter, IBookmarkObserver
+  public partial class FrmLogScript : DockContent, ILogPresenter, IBookmarkObserver, IThemable
   {
     #region Private Consts
 
@@ -1232,6 +1236,32 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       BeginInvoke(new Action(Script.WarmUp));
     }
 
+    /// <summary>
+    /// Applies the current theme to the <see cref="Control"/>.
+    /// </summary>
+    /// <param name="theme">The <see cref="BaseTheme"/> instance to apply.</param>
+    public void ApplyTheme(BaseTheme theme)
+    {
+      ThemeManager.ApplyTo(cmsLuaEdit);
+
+      txtOutput.BackColor = theme.ColorPalette.ContentBackground;
+      txtOutput.ForeColor = theme.ColorPalette.ContentForeground;
+
+      tsbLoadScript.Image     = theme.Resources.Images["FrmMainTbOpen"];
+      tsbSaveScript.Image     = theme.Resources.Images["FrmMainTbSave"];
+      tsbCopy.Image           = theme.Resources.Images["FrmScriptTbCopy"];
+      tsbCut.Image            = theme.Resources.Images["FrmScriptTbCut"];
+      tsbPaste.Image          = theme.Resources.Images["FrmScriptTbPaste"];
+      tsbUndo.Image           = theme.Resources.Images["FrmScriptTbUndo"];
+      tsbRedo.Image           = theme.Resources.Images["FrmScriptTbRedo"];
+      tsbStart.Image          = theme.Resources.Images["FrmScriptTbStart"];
+      tsbStop.Image           = theme.Resources.Images["FrmScriptTbStop"];
+      tsbZoomIn.Image         = theme.Resources.Images["FrmMainTbZoomIn"];
+      tsbZoomOut.Image        = theme.Resources.Images["FrmMainTbZoomOut"];
+      tsbOutputClear.Image    = theme.Resources.Images["FrmScriptTbClear"];
+      tsbOutputWordWrap.Image = theme.Resources.Images["FrmScriptTbWordWrap"];
+    }
+
     #endregion
 
     #region Constructor
@@ -1246,9 +1276,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       InitializeComponent();
 
       // Apply the current application theme to the control.
-      ThemeManager.CurrentApplicationTheme.ApplyTo(tsCuCommands);
-      ThemeManager.CurrentApplicationTheme.ApplyTo(tsOutput);
-      ThemeManager.CurrentApplicationTheme.ApplyTo(cmsLuaEdit);
+      ThemeManager.ApplyTo(this);
 
       DockHandler.CloseButton        = false;
       DockHandler.CloseButtonVisible = false;

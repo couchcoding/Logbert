@@ -1,4 +1,4 @@
-﻿namespace Com.Couchcoding.Logbert.Dialogs
+﻿namespace Couchcoding.Logbert.Dialogs
 {
   partial class FrmLogSearch
   {
@@ -31,7 +31,7 @@
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogSearch));
       this.btnFindPrevious = new System.Windows.Forms.Button();
       this.btnFindNext = new System.Windows.Forms.Button();
-      this.grpOptions = new Com.Couchcoding.GuiLibrary.Controls.GroupBoxEx();
+      this.grpOptions = new Couchcoding.Logbert.Gui.Controls.GroupBoxEx();
       this.cmbRegexWildcard = new System.Windows.Forms.ComboBox();
       this.chkUse = new System.Windows.Forms.CheckBox();
       this.chkMatchWholeWord = new System.Windows.Forms.CheckBox();
@@ -77,7 +77,7 @@
       this.grpOptions.Controls.Add(this.chkUse);
       this.grpOptions.Controls.Add(this.chkMatchWholeWord);
       this.grpOptions.Controls.Add(this.chkMatchCase);
-      this.grpOptions.GroupImage = global::Com.Couchcoding.Logbert.Properties.Resources.FindSymbol_6263;
+      this.grpOptions.GroupImage = global::Couchcoding.Logbert.Properties.Resources.FindSymbol_6263;
       this.grpOptions.Location = new System.Drawing.Point(12, 104);
       this.grpOptions.Name = "grpOptions";
       this.grpOptions.Padding = new System.Windows.Forms.Padding(3, 20, 3, 3);
@@ -221,7 +221,7 @@
 
     private System.Windows.Forms.Button btnFindPrevious;
     private System.Windows.Forms.Button btnFindNext;
-    private GuiLibrary.Controls.GroupBoxEx grpOptions;
+    private Gui.Controls.GroupBoxEx grpOptions;
     private System.Windows.Forms.ComboBox cmbRegexWildcard;
     private System.Windows.Forms.CheckBox chkUse;
     private System.Windows.Forms.CheckBox chkMatchWholeWord;

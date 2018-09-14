@@ -8,7 +8,7 @@
     <ProjectGuid>{EE81C506-55E4-417E-B1D6-09453F89C7CD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Com.Couchcoding.Logbert</RootNamespace>
+    <RootNamespace>Couchcoding.Logbert</RootNamespace>
     <AssemblyName>Logbert</AssemblyName>
     <ApplicationIcon>Logbert.ico</ApplicationIcon>
     <SccProjectName>
@@ -132,6 +132,9 @@
     </Compile>
     <Compile Include="Controls\CustomDetailsControl.Designer.cs">
       <DependentUpon>CustomDetailsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ThemedListBoxEx.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\WinDebugDetailsControl.cs">
       <SubType>UserControl</SubType>
@@ -284,7 +287,6 @@
     <Compile Include="Helper\Logger.cs" />
     <Compile Include="Helper\LogMessageSelectedEventArgs.cs" />
     <Compile Include="Helper\MruManager.cs" />
-    <Compile Include="Helper\ThemeManager.cs" />
     <Compile Include="Helper\WaitCursor.cs" />
     <Compile Include="Helper\DelayedCallback.cs" />
     <Compile Include="Helper\ThreadAttachedDelayedCallback.cs" />
@@ -591,72 +593,26 @@
     <BaseApplicationManifest Include="Properties\app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Info_Light.png" />
+    <None Include="Resources\Trace_Light.png" />
+    <None Include="Resources\Warn_Light.png" />
+    <None Include="Resources\Debug_Light.png" />
+    <None Include="Resources\Error_Light.png" />
+    <None Include="Resources\Fatal_Light.png" />
     <None Include="Resources\Logbert Logo Background.png" />
     <None Include="Resources\VSO_Time_16x.png" />
     <None Include="Resources\LogLevel_16x.png" />
-    <None Include="Resources\FrmStatisticShowLegend.png" />
-    <None Include="Resources\FrmLogStatistic.png" />
     <None Include="Resources\Script_16x.png" />
-    <None Include="Resources\mnuMainAbout.png" />
-    <None Include="Resources\mnuMainSettings.png" />
-    <None Include="Resources\mnuMainFind.png" />
-    <None Include="Resources\mnuMainOpen.png" />
-    <None Include="Resources\mnuMainNewLogger.png" />
-    <None Include="Resources\mnuMainCloseAll.png" />
-    <None Include="Resources\sync_16.png" />
     <None Include="Resources\arrow_Down_16xLG.png" />
     <None Include="Resources\arrow_Up_16xLG.png" />
     <None Include="Resources\RunTests_8790.png" />
     <None Include="Resources\Remove_16xMD.png" />
     <None Include="Resources\PencilAngled_16xMD_color.png" />
     <None Include="Resources\action_add_16xMD.png" />
-    <None Include="Resources\edit_filter.png" />
-    <None Include="Resources\remove_filter.png" />
-    <None Include="Resources\add_filter.png" />
-    <None Include="Resources\lines_Text_code_16xMD.png" />
-    <None Include="Resources\DebugStop.png" />
-    <None Include="Resources\WordWrap_67741.png" />
-    <None Include="Resources\Clearwindowcontent_6304.png" />
-    <None Include="Resources\Symbols_Stop_16xLG.png" />
-    <None Include="Resources\arrow_run_16xLG.png" />
-    <None Include="Resources\Redo_16x.png" />
-    <None Include="Resources\Undo_16x.png" />
-    <None Include="Resources\Paste_6520.png" />
-    <None Include="Resources\Cut_6523.png" />
-    <None Include="Resources\folder_Open_16xLG.png" />
-    <None Include="Resources\Bookmark_6986.png" />
     <None Include="Resources\eyedropper_16xLG.png" />
-    <None Include="Resources\clock_16xLG.png" />
-    <None Include="Resources\Find_5650.png" />
     <None Include="Resources\FindSymbol_6263.png" />
-    <None Include="Resources\refresh_16xLG.png" />
     <None Include="Resources\font_color.png" />
-    <None Include="Resources\filter_16xLG.png" />
-    <None Include="Resources\save_as.png" />
-    <None Include="Resources\Bookmark_5776.png" />
-    <None Include="Resources\BookmarkPrevious_2391.png" />
-    <None Include="Resources\BookmarkNext_2389.png" />
-    <None Include="Resources\BookmarkClear_2381.png" />
-    <None Include="Resources\bookmark_002_16xMD.png" />
     <None Include="Resources\NoBookmark.png" />
-    <None Include="Resources\zoom_16xLG.png" />
-    <None Include="Resources\ZoomOut_16xLG.png" />
-    <None Include="Resources\Copy_6524.png" />
-    <None Include="Resources\WordWrap_6774.png" />
-    <None Include="Resources\debug.png" />
-    <None Include="Resources\error.png" />
-    <None Include="Resources\fatal.png" />
-    <None Include="Resources\info.png" />
-    <None Include="Resources\trace.png" />
-    <None Include="Resources\warn.png" />
-    <None Include="Resources\StatusAnnotations_Play_16xLG.png" />
-    <None Include="Resources\move_to_top.png" />
-    <None Include="Resources\move_to_bottom.png" />
-    <None Include="Resources\to_bottom.png" />
-    <None Include="Resources\save_16xLG.png" />
-    <None Include="Resources\action_Cancel_16xLG.png" />
-    <None Include="Resources\LoggerTree.png" />
-    <None Include="Resources\MesageDetails.png" />
     <None Include="Resources\properties_16xLG.png" />
     <None Include="Resources\StatusAnnotations_Information_16xLG.png" />
     <None Include="Resources\Logbert Start Screen.png" />
@@ -667,11 +623,14 @@
     <Content Include="Logbert.ico" />
     <None Include="Resources\logbert.about.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\GuiLibrary\GuiLibrary.csproj">
+    <ProjectReference Include="..\Couchcoding.Logbert.Gui\Couchcoding.Logbert.Gui.csproj">
       <Project>{0d9d135f-9d7a-4d90-8810-903450fd4245}</Project>
-      <Name>GuiLibrary</Name>
+      <Name>Couchcoding.Logbert.Gui</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Couchcoding.Logbert.Theme\Couchcoding.Logbert.Theme.csproj">
+      <Project>{de30d0ed-e29f-4779-a057-c7c1f1ef4f59}</Project>
+      <Name>Couchcoding.Logbert.Theme</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

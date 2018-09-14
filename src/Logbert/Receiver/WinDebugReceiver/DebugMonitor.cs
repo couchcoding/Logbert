@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Threading;
 
-namespace Com.Couchcoding.Logbert.Receiver.WinDebugReceiver
+namespace Couchcoding.Logbert.Receiver.WinDebugReceiver
 {
   /// <summary>
 	/// Delegate used when firing DebugMonitor.OnOutputDebug event

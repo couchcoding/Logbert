@@ -31,9 +31,9 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using Com.Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Interfaces;
 
-namespace Com.Couchcoding.Logbert.Controls.OptionPanels
+namespace Couchcoding.Logbert.Controls.OptionPanels
 {
   /// <summary>
   /// Implements the base class for all <see cref="IOptionPanel"/> instances.

@@ -28,10 +28,10 @@
 
 #endregion
 
-using Com.Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Logging;
 using System.Collections.Generic;
 
-namespace Com.Couchcoding.Logbert.Interfaces
+namespace Couchcoding.Logbert.Interfaces
 {
   /// <summary>
   /// Interface for all <see cref="LogMessage"/> presenter.

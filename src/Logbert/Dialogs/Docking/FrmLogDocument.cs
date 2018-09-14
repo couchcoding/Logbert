@@ -36,21 +36,25 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Logging;
-using Com.Couchcoding.Logbert.Logging.Filter;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Logging.Filter;
+using Couchcoding.Logbert.Properties;
 
 using WeifenLuo.WinFormsUI.Docking;
-using Com.Couchcoding.GuiLibrary.Helper;
+using Couchcoding.Logbert.Gui.Helper;
+using Couchcoding.Logbert.Theme.Palettes;
+using Couchcoding.Logbert.Theme.Interfaces;
+using Couchcoding.Logbert.Theme;
+using Couchcoding.Logbert.Theme.Themes;
 
-namespace Com.Couchcoding.Logbert.Dialogs.Docking
+namespace Couchcoding.Logbert.Dialogs.Docking
 {
   /// <summary>
   /// Implements the main <see cref="DockContent"/> for the logger windows.
   /// </summary>
-  public partial class FrmLogDocument : DockContent, ILogHandler, ILogContainer, ILogFilterProvider, ISearchable
+  public partial class FrmLogDocument : DockContent, ILogHandler, ILogContainer, ILogFilterProvider, ISearchable, IThemable
   {
     #region Private Fields
 
@@ -322,25 +326,25 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     {
       switch (persistString)
       {
-        case "Com.Couchcoding.Logbert.Dialogs.Docking.FrmLogWindow":
+        case "Couchcoding.Logbert.Dialogs.Docking.FrmLogWindow":
           return mLogWindow;
 
-        case "Com.Couchcoding.Logbert.Dialogs.Docking.FrmLogScript":
+        case "Couchcoding.Logbert.Dialogs.Docking.FrmLogScript":
           return mLogScript;
 
-        case "Com.Couchcoding.Logbert.Dialogs.Docking.FrmMessageDetails":
+        case "Couchcoding.Logbert.Dialogs.Docking.FrmMessageDetails":
           return mMessageDetails;
 
-        case "Com.Couchcoding.Logbert.Dialogs.Docking.FrmLogBookmarks":
+        case "Couchcoding.Logbert.Dialogs.Docking.FrmLogBookmarks":
           return mBookmarks;
 
-        case "Com.Couchcoding.Logbert.Dialogs.Docking.FrmLogFilter":
+        case "Couchcoding.Logbert.Dialogs.Docking.FrmLogFilter":
           return mFilter;
 
-        case "Com.Couchcoding.Logbert.Dialogs.Docking.FrmLogTree":
+        case "Couchcoding.Logbert.Dialogs.Docking.FrmLogTree":
           return mLoggerTree;
 
-        case "Com.Couchcoding.Logbert.Dialogs.Docking.FrmLogStatistic":
+        case "Couchcoding.Logbert.Dialogs.Docking.FrmLogStatistic":
           return mLogStatistic;
       }
 
@@ -1162,6 +1166,36 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       }
     }
 
+    /// <summary>
+    /// Applies the current theme to the <see cref="Control"/>.
+    /// </summary>
+    /// <param name="theme">The <see cref="BaseTheme"/> instance to apply.</param>
+    public void ApplyTheme(BaseTheme theme)
+    {
+      tsbShowTrace.Image          = theme.Resources.Images["FrmMainTbTrace"];
+      tsbShowDebug.Image          = theme.Resources.Images["FrmMainTbDebug"];
+      tsbShowInfo.Image           = theme.Resources.Images["FrmMainTbInfo"];
+      tsbShowWarn.Image           = theme.Resources.Images["FrmMainTbWarn"];
+      tsbShowError.Image          = theme.Resources.Images["FrmMainTbError"];
+      tsbShowFatal.Image          = theme.Resources.Images["FrmMainTbFatal"];
+      tsbStartPause.Image         = theme.Resources.Images["FrmMainTbStart"];
+      tsbGotoFirstMessage.Image   = theme.Resources.Images["FrmMainTbTop"];
+      tsbGotoLastMessage.Image    = theme.Resources.Images["FrmMainTbBottom"];
+      tsbTraceLastMessage.Image   = theme.Resources.Images["FrmMainTbTraceLog"];
+      tsbToggleBookmark.Image     = theme.Resources.Images["FrmMainTbBookmark"];
+      tsbZoomIn.Image             = theme.Resources.Images["FrmMainTbZoomIn"];
+      tsbZoomOut.Image            = theme.Resources.Images["FrmMainTbZoomOut"];
+      tsbReload.Image             = theme.Resources.Images["FrmMainTbReload"];
+      tsbClearMessages.Image      = theme.Resources.Images["FrmMainTbClear"];
+      tsbSaveMessages.Image       = theme.Resources.Images["FrmMainTbSave"];
+      tsbShowMessageDetails.Image = theme.Resources.Images["FrmMainTbDetails"];
+      tsbShowLoggerTree.Image     = theme.Resources.Images["FrmMainTbLogTree"];
+      tsbShowBookmarks.Image      = theme.Resources.Images["FrmMainTbBookmarks"];
+      tsbShowFilter.Image         = theme.Resources.Images["FrmMainTbFilter"];
+      tsbShowStatistic.Image      = theme.Resources.Images["FrmMainTbStatistic"];
+      tsbTimeShift.Image          = theme.Resources.Images["FrmMainTbTimeshift"];
+    }
+
     #endregion
 
     #region Constructor
@@ -1174,6 +1208,9 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     {
       InitializeComponent();
 
+      // Apply the current application theme to the control.
+      ThemeManager.ApplyTo(this);
+      
       mLogProvider = logProvider;
       
       ToolTipText = logProvider != null 
@@ -1247,12 +1284,9 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
 
       ((FrmLogWindow)mLogWindow).OnLogMessageSelected += OnLogMessageSelected;
 
-      LogDockPanel.Theme = ThemeManager.CurrentApplicationTheme;
+      LogDockPanel.Theme = ThemeManager.CurrentApplicationTheme.DockingTheme;
 
       SetTimeshiftValue();
-
-      ThemeManager.CurrentApplicationTheme.ApplyTo(tsMessages);
-      ThemeManager.CurrentApplicationTheme.ApplyTo(stBar);
     }
 
     #endregion

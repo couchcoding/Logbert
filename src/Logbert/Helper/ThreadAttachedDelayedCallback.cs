@@ -31,9 +31,9 @@
 using System;
 using System.Runtime.InteropServices;
 
-using Com.Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Interfaces;
 
-namespace Com.Couchcoding.Logbert.Helper
+namespace Couchcoding.Logbert.Helper
 {
 	/// <summary>
 	/// Base class for StDelayedCallback classes that require ThreadInput from the Main thread

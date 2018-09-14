@@ -31,11 +31,10 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-using Com.Couchcoding.GuiLibrary.Dialogs;
-using Com.Couchcoding.Logbert.Receiver.CustomReceiver;
-using Com.Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Gui.Dialogs;
+using Couchcoding.Logbert.Receiver.CustomReceiver;
 
-namespace Com.Couchcoding.Logbert.Dialogs
+namespace Couchcoding.Logbert.Dialogs
 {
   /// <summary>
   /// Implements a dialog to edit the timestamp format to parse.
@@ -69,13 +68,22 @@ namespace Com.Couchcoding.Logbert.Dialogs
     }
 
     /// <summary>
+    /// Handles the Click event of a timestamp preset <see cref="MenuItem"/>.
+    /// </summary>
+    private void MnuTimestampPresetClick(object sender, System.EventArgs e)
+    {
+      if (sender is MenuItem mnuCtrl && mnuCtrl.Tag != null)
+      {
+        txtTimestampFormat.Text = mnuCtrl.Tag.ToString();
+      }
+    }
+
+    /// <summary>
     /// Handles the Click event of a timestamp help <see cref="MenuItem"/>.
     /// </summary>
     private void MnuTimestampClick(object sender, System.EventArgs e)
     {
-      ToolStripMenuItem mnuCtrl = sender as ToolStripMenuItem;
-
-      if (mnuCtrl?.Tag != null)
+      if (sender is MenuItem mnuCtrl && mnuCtrl.Tag != null)
       {
         txtTimestampFormat.SelectedText = mnuCtrl.Tag.ToString();
       }
@@ -100,8 +108,6 @@ namespace Com.Couchcoding.Logbert.Dialogs
     public FrmEditTimeStampFormat(string format)
     {
       InitializeComponent();
-
-      ThemeManager.CurrentApplicationTheme.ApplyTo(mnuTimestamp);
 
       txtTimestampFormat.Text = format ?? Columnizer.DefaultDateTimeFormat;
     }

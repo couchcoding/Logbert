@@ -33,14 +33,14 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Properties;
 using System.Net.Sockets;
 
-using Com.Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Helper;
 using System.Text;
 
-namespace Com.Couchcoding.Logbert.Receiver.NLogUdpReceiver
+namespace Couchcoding.Logbert.Receiver.NLogUdpReceiver
 {
   /// <summary>
   /// Implements the <see cref="ILogSettingsCtrl"/> control for the NLog UDP receiver.

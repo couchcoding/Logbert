@@ -31,11 +31,11 @@
 using System;
 using System.Windows.Forms;
 
-using Com.Couchcoding.GuiLibrary.Dialogs;
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Gui.Dialogs;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Properties;
 
-namespace Com.Couchcoding.Logbert.Dialogs
+namespace Couchcoding.Logbert.Dialogs
 {
   /// <summary>
   /// Implements the about dialog.

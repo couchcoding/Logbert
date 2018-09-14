@@ -33,12 +33,12 @@ using System.Text.RegularExpressions;
 
 using System.Globalization;
 
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Properties;
 
 using MoonSharp.Interpreter;
 
-namespace Com.Couchcoding.Logbert.Logging
+namespace Couchcoding.Logbert.Logging
 {
   /// <summary>
   /// Implements a <see cref="LogMessage"/> class for Syslog messages.

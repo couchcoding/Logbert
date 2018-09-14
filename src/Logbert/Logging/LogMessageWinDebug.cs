@@ -28,13 +28,13 @@
 
 #endregion
 
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Properties;
 using MoonSharp.Interpreter;
 using System;
 using System.Globalization;
 
-namespace Com.Couchcoding.Logbert.Logging
+namespace Couchcoding.Logbert.Logging
 {
   /// <summary>
   /// Implements a <see cref="LogMessage"/> class for windows debug messages.

@@ -33,16 +33,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-using Com.Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Interfaces;
 
-using Com.Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Logging;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Controls;
-using Com.Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Controls;
+using Couchcoding.Logbert.Helper;
 
-namespace Com.Couchcoding.Logbert.Receiver.SyslogFileReceiver
+namespace Couchcoding.Logbert.Receiver.SyslogFileReceiver
 {
   /// <summary>
   /// Implements a <see cref="ILogProvider"/> for the Log4Net file service.

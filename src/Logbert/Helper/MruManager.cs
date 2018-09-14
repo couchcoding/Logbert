@@ -30,11 +30,11 @@
 
 using System;
 
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Properties;
 using System.Collections.Specialized;
 using System.IO;
 
-namespace Com.Couchcoding.Logbert.Helper
+namespace Couchcoding.Logbert.Helper
 {
   /// <summary>
   /// Implements a class to manage the recently used files.

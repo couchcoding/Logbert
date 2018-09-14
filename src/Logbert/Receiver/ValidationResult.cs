@@ -28,9 +28,9 @@
 
 #endregion
 
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Properties;
 
-namespace Com.Couchcoding.Logbert.Receiver
+namespace Couchcoding.Logbert.Receiver
 {
   /// <summary>
   /// Implements a type to represent a validation result.

@@ -31,7 +31,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace Com.Couchcoding.Logbert.Helper
+namespace Couchcoding.Logbert.Helper
 {
   /// <summary>
   /// Implements a cache for <see cref="Brushes"/> and <see cref="Pen"/>s.

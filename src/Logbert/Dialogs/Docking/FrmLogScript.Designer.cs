@@ -1,4 +1,4 @@
-﻿namespace Com.Couchcoding.Logbert.Dialogs.Docking
+﻿namespace Couchcoding.Logbert.Dialogs.Docking
 {
   partial class FrmLogScript
   {
@@ -28,7 +28,7 @@
       this.cmsLuaEditPaste = new System.Windows.Forms.ToolStripMenuItem();
       this.cmsLuaEditDelete = new System.Windows.Forms.ToolStripMenuItem();
       this.cmsLuaEditSelectAll = new System.Windows.Forms.ToolStripMenuItem();
-      this.tsCuCommands = new Com.Couchcoding.GuiLibrary.Controls.ToolStripEx();
+      this.tsCuCommands = new Couchcoding.Logbert.Gui.Controls.ToolStripEx();
       this.tsbLoadScript = new System.Windows.Forms.ToolStripButton();
       this.tsbSaveScript = new System.Windows.Forms.ToolStripButton();
       this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -46,10 +46,10 @@
       this.tsbZoomOut = new System.Windows.Forms.ToolStripButton();
       this.splitContainer1 = new System.Windows.Forms.SplitContainer();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-      this.tsOutput = new Com.Couchcoding.GuiLibrary.Controls.ToolStripEx();
+      this.tsOutput = new Couchcoding.Logbert.Gui.Controls.ToolStripEx();
       this.tsbOutputClear = new System.Windows.Forms.ToolStripButton();
       this.tsbOutputWordWrap = new System.Windows.Forms.ToolStripButton();
-      this.bgPanel = new Com.Couchcoding.GuiLibrary.Controls.InfoPanel();
+      this.bgPanel = new Couchcoding.Logbert.Gui.Controls.InfoPanel();
       this.txtOutput = new System.Windows.Forms.TextBox();
       cmsLuaEditSeperator1 = new System.Windows.Forms.ToolStripSeparator();
       cmsLuaEditSeperator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -190,7 +190,6 @@
       // tsbLoadScript
       // 
       this.tsbLoadScript.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.tsbLoadScript.Image = global::Com.Couchcoding.Logbert.Properties.Resources.folder_Open_16xLG;
       this.tsbLoadScript.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbLoadScript.Name = "tsbLoadScript";
       this.tsbLoadScript.Size = new System.Drawing.Size(23, 22);
@@ -201,7 +200,6 @@
       // 
       this.tsbSaveScript.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.tsbSaveScript.Enabled = false;
-      this.tsbSaveScript.Image = global::Com.Couchcoding.Logbert.Properties.Resources.save_16xLG;
       this.tsbSaveScript.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbSaveScript.Name = "tsbSaveScript";
       this.tsbSaveScript.Size = new System.Drawing.Size(23, 22);
@@ -217,7 +215,6 @@
       // 
       this.tsbCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.tsbCopy.Enabled = false;
-      this.tsbCopy.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Copy_6524;
       this.tsbCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbCopy.Name = "tsbCopy";
       this.tsbCopy.Size = new System.Drawing.Size(23, 22);
@@ -228,7 +225,6 @@
       // 
       this.tsbCut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.tsbCut.Enabled = false;
-      this.tsbCut.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Cut_6523;
       this.tsbCut.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbCut.Name = "tsbCut";
       this.tsbCut.Size = new System.Drawing.Size(23, 22);
@@ -239,7 +235,6 @@
       // 
       this.tsbPaste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.tsbPaste.Enabled = false;
-      this.tsbPaste.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Paste_6520;
       this.tsbPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbPaste.Name = "tsbPaste";
       this.tsbPaste.Size = new System.Drawing.Size(23, 22);
@@ -255,7 +250,6 @@
       // 
       this.tsbUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.tsbUndo.Enabled = false;
-      this.tsbUndo.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Undo_16x;
       this.tsbUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbUndo.Name = "tsbUndo";
       this.tsbUndo.Size = new System.Drawing.Size(23, 22);
@@ -266,7 +260,6 @@
       // 
       this.tsbRedo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.tsbRedo.Enabled = false;
-      this.tsbRedo.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Redo_16x;
       this.tsbRedo.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbRedo.Name = "tsbRedo";
       this.tsbRedo.Size = new System.Drawing.Size(23, 22);
@@ -282,7 +275,6 @@
       // 
       this.tsbStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.tsbStart.Enabled = false;
-      this.tsbStart.Image = global::Com.Couchcoding.Logbert.Properties.Resources.arrow_run_16xLG;
       this.tsbStart.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbStart.Name = "tsbStart";
       this.tsbStart.Size = new System.Drawing.Size(23, 22);
@@ -293,7 +285,6 @@
       // 
       this.tsbStop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.tsbStop.Enabled = false;
-      this.tsbStop.Image = global::Com.Couchcoding.Logbert.Properties.Resources.DebugStop;
       this.tsbStop.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbStop.Name = "tsbStop";
       this.tsbStop.Size = new System.Drawing.Size(23, 22);
@@ -308,7 +299,6 @@
       // tsbZoomIn
       // 
       this.tsbZoomIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.tsbZoomIn.Image = global::Com.Couchcoding.Logbert.Properties.Resources.zoom_16xLG;
       this.tsbZoomIn.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbZoomIn.Name = "tsbZoomIn";
       this.tsbZoomIn.Size = new System.Drawing.Size(23, 22);
@@ -318,7 +308,6 @@
       // tsbZoomOut
       // 
       this.tsbZoomOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.tsbZoomOut.Image = global::Com.Couchcoding.Logbert.Properties.Resources.ZoomOut_16xLG;
       this.tsbZoomOut.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbZoomOut.Name = "tsbZoomOut";
       this.tsbZoomOut.Size = new System.Drawing.Size(23, 22);
@@ -378,7 +367,6 @@
       // 
       this.tsbOutputClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.tsbOutputClear.Enabled = false;
-      this.tsbOutputClear.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Clearwindowcontent_6304;
       this.tsbOutputClear.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbOutputClear.Name = "tsbOutputClear";
       this.tsbOutputClear.Size = new System.Drawing.Size(23, 22);
@@ -388,7 +376,6 @@
       // tsbOutputWordWrap
       // 
       this.tsbOutputWordWrap.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.tsbOutputWordWrap.Image = global::Com.Couchcoding.Logbert.Properties.Resources.WordWrap_67741;
       this.tsbOutputWordWrap.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbOutputWordWrap.Name = "tsbOutputWordWrap";
       this.tsbOutputWordWrap.Size = new System.Drawing.Size(23, 22);
@@ -463,7 +450,7 @@
     #endregion
 
     private ScintillaNET.Scintilla scintilla;
-    private Com.Couchcoding.GuiLibrary.Controls.ToolStripEx tsCuCommands;
+    private Couchcoding.Logbert.Gui.Controls.ToolStripEx tsCuCommands;
     private System.Windows.Forms.ToolStripButton tsbLoadScript;
     private System.Windows.Forms.ToolStripButton tsbSaveScript;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
@@ -478,10 +465,10 @@
     private System.Windows.Forms.ToolStripButton tsbStop;
     private System.Windows.Forms.SplitContainer splitContainer1;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-    private Com.Couchcoding.GuiLibrary.Controls.ToolStripEx tsOutput;
+    private Couchcoding.Logbert.Gui.Controls.ToolStripEx tsOutput;
     private System.Windows.Forms.ToolStripButton tsbOutputClear;
     private System.Windows.Forms.ToolStripButton tsbOutputWordWrap;
-    private GuiLibrary.Controls.InfoPanel bgPanel;
+    private Gui.Controls.InfoPanel bgPanel;
     private System.Windows.Forms.TextBox txtOutput;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     private System.Windows.Forms.ToolStripButton tsbZoomIn;

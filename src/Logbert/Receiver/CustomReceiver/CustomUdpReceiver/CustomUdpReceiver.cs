@@ -31,15 +31,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Interfaces;
 using System.Net;
 using System.Net.Sockets;
-using Com.Couchcoding.Logbert.Receiver.Log4NetUdpReceiver;
-using Com.Couchcoding.Logbert.Logging;
-using Com.Couchcoding.Logbert.Controls;
+using Couchcoding.Logbert.Receiver.Log4NetUdpReceiver;
+using Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Controls;
 
-namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomUdpReceiver
+namespace Couchcoding.Logbert.Receiver.CustomReceiver.CustomUdpReceiver
 {
   public sealed class CustomUdpReceiver : ReceiverBase
   {

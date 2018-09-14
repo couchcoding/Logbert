@@ -28,7 +28,7 @@
 
 #endregion
 
-namespace Com.Couchcoding.Logbert.Interfaces
+namespace Couchcoding.Logbert.Interfaces
 {
   /// <summary>
   /// Interface for all bookmark observer.

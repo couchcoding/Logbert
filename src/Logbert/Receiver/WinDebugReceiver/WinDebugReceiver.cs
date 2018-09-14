@@ -30,13 +30,13 @@
 
 using System;
 using System.Collections.Generic;
-using Com.Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Interfaces;
 using System.Diagnostics;
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Logging;
-using Com.Couchcoding.Logbert.Controls;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Controls;
 
-namespace Com.Couchcoding.Logbert.Receiver.WinDebugReceiver
+namespace Couchcoding.Logbert.Receiver.WinDebugReceiver
 {
   /// <summary>
   /// Implements a <see cref="ILogProvider"/> for the windows debugger service.

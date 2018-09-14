@@ -28,12 +28,12 @@
 
 #endregion
 
-using Com.Couchcoding.Logbert.Logging;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Properties;
 using System.Collections.Generic;
 using System.Xml;
 
-namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver
+namespace Couchcoding.Logbert.Receiver.CustomReceiver
 {
   /// <summary>
   /// Implements a <see cref="Columnizer"/> for custom <see cref="LogMessage"/>s.

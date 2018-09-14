@@ -33,12 +33,12 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 
-using Com.Couchcoding.Logbert.Controls;
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Controls;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Logging;
 
-namespace Com.Couchcoding.Logbert.Receiver.SyslogUdpReceiver
+namespace Couchcoding.Logbert.Receiver.SyslogUdpReceiver
 {
   /// <summary>
   /// Implements a <see cref="ILogProvider"/> for the Syslog service.

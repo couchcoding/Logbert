@@ -28,10 +28,10 @@
 
 #endregion
 
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Properties;
 using System.Xml;
 
-namespace Com.Couchcoding.Logbert.Receiver.CustomReceiver
+namespace Couchcoding.Logbert.Receiver.CustomReceiver
 {
   /// <summary>
   /// Implements a column of a custom log.

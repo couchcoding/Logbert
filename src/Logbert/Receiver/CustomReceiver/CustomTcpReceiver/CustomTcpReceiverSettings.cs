@@ -32,20 +32,20 @@ using System;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Properties;
 using System.Net.Sockets;
 
-using Com.Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Helper;
 using System.Net;
 using System.Collections.Generic;
-using Com.Couchcoding.Logbert.Receiver.CustomReceiver;
+using Couchcoding.Logbert.Receiver.CustomReceiver;
 using System.IO;
 using System.Xml;
 using System.Text;
-using Com.Couchcoding.Logbert.Dialogs;
+using Couchcoding.Logbert.Dialogs;
 
-namespace Com.Couchcoding.Logbert.Receiver.NlogTcpReceiver
+namespace Couchcoding.Logbert.Receiver.NlogTcpReceiver
 {
   /// <summary>
   /// Implements the <see cref="ILogSettingsCtrl"/> control for the custom TCP receiver.

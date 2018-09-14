@@ -28,7 +28,7 @@
 
 #endregion
 
-namespace Com.Couchcoding.Logbert.Logging.Filter
+namespace Couchcoding.Logbert.Logging.Filter
 {
   /// <summary>
   /// Implements a simple <see cref="LogLevel"/> comparing <see cref="LogFilter"/>s logger value for <see cref="LogMessage"/>s.

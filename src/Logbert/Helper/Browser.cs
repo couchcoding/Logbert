@@ -28,12 +28,11 @@
 
 #endregion
 
-using Com.Couchcoding.Logbert.Properties;
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace Com.Couchcoding.Logbert.Helper
+namespace Couchcoding.Logbert.Helper
 {
   /// <summary>
   /// Implements helper methods to access the system browser.
@@ -73,7 +72,7 @@ namespace Com.Couchcoding.Logbert.Helper
           {
             MessageBox.Show(
                 owner
-              , string.Format(Resources.strMainUnableToOpenUri, URI)
+              , string.Format(Properties.Resources.strMainUnableToOpenUri, URI)
               , Application.ProductName
               , MessageBoxButtons.OK
               , MessageBoxIcon.Error);

@@ -34,18 +34,22 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms.DataVisualization.Charting;
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Logging;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Theme.Palettes;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Properties;
 using WeifenLuo.WinFormsUI.Docking;
+using Couchcoding.Logbert.Theme.Interfaces;
+using Couchcoding.Logbert.Theme;
+using Couchcoding.Logbert.Theme.Themes;
 
-namespace Com.Couchcoding.Logbert.Dialogs.Docking
+namespace Couchcoding.Logbert.Dialogs.Docking
 {
   /// <summary>
   /// Implements the <see cref="DockContent"/> of the statistic window.
   /// </summary>
-  public partial class FrmLogStatistic : DockContent, ILogPresenter
+  public partial class FrmLogStatistic : DockContent, ILogPresenter, IThemable
   {
     #region Public Properties
 
@@ -217,6 +221,26 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       return false;
     }
 
+    /// <summary>
+    /// Applies the current theme to the <see cref="Control"/>.
+    /// </summary>
+    /// <param name="theme">The <see cref="BaseTheme"/> instance to apply.</param>
+    public void ApplyTheme(BaseTheme theme)
+    {
+      tsbShowLegend.Image = theme.Resources.Images["FrmStatisticTbLegend"];
+
+      chrtOverview.BackColor = theme.ColorPalette.ContentBackground;
+      chrtOverview.ForeColor = theme.ColorPalette.ContentForeground;
+
+      chrtOverview.ChartAreas[0].BackColor = theme.ColorPalette.ContentBackground;
+      
+      chrtOverview.Series[0].LabelBackColor = theme.ColorPalette.ContentBackground;
+      chrtOverview.Series[0].LabelForeColor = theme.ColorPalette.ContentForeground;
+
+      chrtOverview.Legends[0].BackColor = theme.ColorPalette.ContentBackground;
+      chrtOverview.Legends[0].ForeColor = theme.ColorPalette.ContentForeground;
+    }
+
     #endregion
 
     #region Private Methods
@@ -297,7 +321,9 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
             {
               DataPoint pieDataPoint = new DataPoint
               {
-                Color             = (Color)Settings.Default["BackgroundColor" + level],
+                Color             = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground.Equals((Color)Settings.Default["BackgroundColor" + level]) 
+                                      ? (Color)Settings.Default["ForegroundColor" + level] 
+                                      : (Color)Settings.Default["BackgroundColor" + level],
                 Label             = string.Empty,
                 XValue            = 0,
                 YValues           = new double[1],
@@ -329,7 +355,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       InitPieChart(logProvider);
 
       // Apply the current application theme to the control.
-      ThemeManager.CurrentApplicationTheme.ApplyTo(toolStrip1);
+      ThemeManager.ApplyTo(this);
     }
 
     #endregion

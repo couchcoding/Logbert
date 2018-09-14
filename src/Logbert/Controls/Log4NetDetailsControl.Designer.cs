@@ -1,4 +1,4 @@
-﻿namespace Com.Couchcoding.Logbert.Controls
+﻿namespace Couchcoding.Logbert.Controls
 {
   partial class Log4NetDetailsControl
   {
@@ -16,20 +16,20 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      this.logDetailToolStrip = new Com.Couchcoding.GuiLibrary.Controls.ToolStripEx();
+      this.logDetailToolStrip = new Couchcoding.Logbert.Gui.Controls.ToolStripEx();
       this.tsbZoomIn = new System.Windows.Forms.ToolStripButton();
       this.tsbZoomOut = new System.Windows.Forms.ToolStripButton();
       this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
       this.tsbCopy = new System.Windows.Forms.ToolStripButton();
       this.tltTip = new System.Windows.Forms.ToolTip(this.components);
-      this.pbxCopyMessage = new Com.Couchcoding.GuiLibrary.Controls.PictureBoxEx();
-      this.pbxCopyThread = new Com.Couchcoding.GuiLibrary.Controls.PictureBoxEx();
-      this.pbxCopyDateTime = new Com.Couchcoding.GuiLibrary.Controls.PictureBoxEx();
-      this.pbxCopyLevel = new Com.Couchcoding.GuiLibrary.Controls.PictureBoxEx();
-      this.pbxCopyLogger = new Com.Couchcoding.GuiLibrary.Controls.PictureBoxEx();
-      this.pbxCopyLocation = new Com.Couchcoding.GuiLibrary.Controls.PictureBoxEx();
-      this.pbxCopyProperties = new Com.Couchcoding.GuiLibrary.Controls.PictureBoxEx();
-      this.LogMessagePanel = new Com.Couchcoding.GuiLibrary.Controls.InfoPanel();
+      this.pbxCopyMessage = new Couchcoding.Logbert.Gui.Controls.PictureBoxEx();
+      this.pbxCopyThread = new Couchcoding.Logbert.Gui.Controls.PictureBoxEx();
+      this.pbxCopyDateTime = new Couchcoding.Logbert.Gui.Controls.PictureBoxEx();
+      this.pbxCopyLevel = new Couchcoding.Logbert.Gui.Controls.PictureBoxEx();
+      this.pbxCopyLogger = new Couchcoding.Logbert.Gui.Controls.PictureBoxEx();
+      this.pbxCopyLocation = new Couchcoding.Logbert.Gui.Controls.PictureBoxEx();
+      this.pbxCopyProperties = new Couchcoding.Logbert.Gui.Controls.PictureBoxEx();
+      this.LogMessagePanel = new Couchcoding.Logbert.Gui.Controls.InfoPanel();
       this.tblLogMessage = new System.Windows.Forms.TableLayoutPanel();
       this.lblCaptionProperties = new System.Windows.Forms.Label();
       this.txtDataProperties = new System.Windows.Forms.TextBox();
@@ -76,7 +76,6 @@
       // tsbZoomIn
       // 
       this.tsbZoomIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.tsbZoomIn.Image = global::Com.Couchcoding.Logbert.Properties.Resources.zoom_16xLG;
       this.tsbZoomIn.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbZoomIn.Margin = new System.Windows.Forms.Padding(2, 1, 0, 2);
       this.tsbZoomIn.Name = "tsbZoomIn";
@@ -88,7 +87,6 @@
       // tsbZoomOut
       // 
       this.tsbZoomOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.tsbZoomOut.Image = global::Com.Couchcoding.Logbert.Properties.Resources.ZoomOut_16xLG;
       this.tsbZoomOut.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbZoomOut.Name = "tsbZoomOut";
       this.tsbZoomOut.Size = new System.Drawing.Size(23, 22);
@@ -103,7 +101,6 @@
       // 
       // tsbCopy
       // 
-      this.tsbCopy.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Copy_6524;
       this.tsbCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.tsbCopy.Name = "tsbCopy";
       this.tsbCopy.Size = new System.Drawing.Size(93, 22);
@@ -114,7 +111,6 @@
       // 
       this.pbxCopyMessage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
       this.pbxCopyMessage.Cursor = System.Windows.Forms.Cursors.Hand;
-      this.pbxCopyMessage.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Copy_6524;
       this.pbxCopyMessage.Location = new System.Drawing.Point(405, 94);
       this.pbxCopyMessage.Margin = new System.Windows.Forms.Padding(2, 2, 1, 1);
       this.pbxCopyMessage.Name = "pbxCopyMessage";
@@ -130,7 +126,6 @@
       // 
       this.pbxCopyThread.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
       this.pbxCopyThread.Cursor = System.Windows.Forms.Cursors.Hand;
-      this.pbxCopyThread.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Copy_6524;
       this.pbxCopyThread.Location = new System.Drawing.Point(405, 71);
       this.pbxCopyThread.Margin = new System.Windows.Forms.Padding(2, 2, 1, 1);
       this.pbxCopyThread.Name = "pbxCopyThread";
@@ -146,7 +141,6 @@
       // 
       this.pbxCopyDateTime.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
       this.pbxCopyDateTime.Cursor = System.Windows.Forms.Cursors.Hand;
-      this.pbxCopyDateTime.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Copy_6524;
       this.pbxCopyDateTime.Location = new System.Drawing.Point(405, 48);
       this.pbxCopyDateTime.Margin = new System.Windows.Forms.Padding(2, 2, 1, 1);
       this.pbxCopyDateTime.Name = "pbxCopyDateTime";
@@ -162,7 +156,6 @@
       // 
       this.pbxCopyLevel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
       this.pbxCopyLevel.Cursor = System.Windows.Forms.Cursors.Hand;
-      this.pbxCopyLevel.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Copy_6524;
       this.pbxCopyLevel.Location = new System.Drawing.Point(405, 25);
       this.pbxCopyLevel.Margin = new System.Windows.Forms.Padding(2, 2, 1, 1);
       this.pbxCopyLevel.Name = "pbxCopyLevel";
@@ -178,7 +171,6 @@
       // 
       this.pbxCopyLogger.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
       this.pbxCopyLogger.Cursor = System.Windows.Forms.Cursors.Hand;
-      this.pbxCopyLogger.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Copy_6524;
       this.pbxCopyLogger.Location = new System.Drawing.Point(405, 2);
       this.pbxCopyLogger.Margin = new System.Windows.Forms.Padding(2, 2, 1, 1);
       this.pbxCopyLogger.Name = "pbxCopyLogger";
@@ -194,7 +186,6 @@
       // 
       this.pbxCopyLocation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
       this.pbxCopyLocation.Cursor = System.Windows.Forms.Cursors.Hand;
-      this.pbxCopyLocation.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Copy_6524;
       this.pbxCopyLocation.Location = new System.Drawing.Point(405, 117);
       this.pbxCopyLocation.Margin = new System.Windows.Forms.Padding(2, 2, 1, 1);
       this.pbxCopyLocation.Name = "pbxCopyLocation";
@@ -210,7 +201,6 @@
       // 
       this.pbxCopyProperties.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
       this.pbxCopyProperties.Cursor = System.Windows.Forms.Cursors.Hand;
-      this.pbxCopyProperties.Image = global::Com.Couchcoding.Logbert.Properties.Resources.Copy_6524;
       this.pbxCopyProperties.Location = new System.Drawing.Point(405, 140);
       this.pbxCopyProperties.Margin = new System.Windows.Forms.Padding(2, 2, 1, 1);
       this.pbxCopyProperties.Name = "pbxCopyProperties";
@@ -473,13 +463,13 @@
 
     #endregion
 
-    private Com.Couchcoding.GuiLibrary.Controls.ToolStripEx logDetailToolStrip;
+    private Couchcoding.Logbert.Gui.Controls.ToolStripEx logDetailToolStrip;
     private System.Windows.Forms.ToolStripButton tsbZoomIn;
     private System.Windows.Forms.ToolStripButton tsbZoomOut;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     private System.Windows.Forms.ToolStripButton tsbCopy;
     private System.Windows.Forms.TableLayoutPanel tblLogMessage;
-    private GuiLibrary.Controls.InfoPanel LogMessagePanel;
+    private Gui.Controls.InfoPanel LogMessagePanel;
     private System.Windows.Forms.Label lblCaptionLogger;
     private System.Windows.Forms.Label lblCaptionLevel;
     private System.Windows.Forms.Label lblCaptionDateTime;
@@ -490,17 +480,17 @@
     private System.Windows.Forms.TextBox txtDataDateTime;
     private System.Windows.Forms.TextBox txtDataThread;
     private System.Windows.Forms.TextBox txtDataMessage;
-    private GuiLibrary.Controls.PictureBoxEx pbxCopyLogger;
-    private GuiLibrary.Controls.PictureBoxEx pbxCopyMessage;
-    private GuiLibrary.Controls.PictureBoxEx pbxCopyThread;
-    private GuiLibrary.Controls.PictureBoxEx pbxCopyDateTime;
-    private GuiLibrary.Controls.PictureBoxEx pbxCopyLevel;
+    private Gui.Controls.PictureBoxEx pbxCopyLogger;
+    private Gui.Controls.PictureBoxEx pbxCopyMessage;
+    private Gui.Controls.PictureBoxEx pbxCopyThread;
+    private Gui.Controls.PictureBoxEx pbxCopyDateTime;
+    private Gui.Controls.PictureBoxEx pbxCopyLevel;
     private System.Windows.Forms.ToolTip tltTip;
     private System.Windows.Forms.Label lblCaptionLocation;
     private System.Windows.Forms.TextBox txtDataLocation;
-    private GuiLibrary.Controls.PictureBoxEx pbxCopyLocation;
+    private Gui.Controls.PictureBoxEx pbxCopyLocation;
     private System.Windows.Forms.Label lblCaptionProperties;
     private System.Windows.Forms.TextBox txtDataProperties;
-    private GuiLibrary.Controls.PictureBoxEx pbxCopyProperties;
+    private Gui.Controls.PictureBoxEx pbxCopyProperties;
   }
 }

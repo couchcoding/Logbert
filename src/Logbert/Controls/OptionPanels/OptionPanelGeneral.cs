@@ -31,12 +31,12 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Logging;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Properties;
 
-namespace Com.Couchcoding.Logbert.Controls.OptionPanels
+namespace Couchcoding.Logbert.Controls.OptionPanels
 {
   /// <summary>
   /// Implements a <see cref="IOptionPanel"/> for general application settings.
@@ -87,28 +87,24 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
     }
 
     /// <summary>
-    /// Handles the Click event of a timestamp help <see cref="MenuItem"/>.
-    /// </summary>
-    private void MnuTimestampClick(object sender, System.EventArgs e)
-    {
-      ToolStripMenuItem mnuCtrl = sender as ToolStripMenuItem;
-
-      if (mnuCtrl != null && mnuCtrl.Tag != null)
-      {
-        txtTimestampFormat.SelectedText = mnuCtrl.Tag.ToString();
-      }
-    }
-
-    /// <summary>
     /// Handles the Click event of a timestamp preset <see cref="MenuItem"/>.
     /// </summary>
     private void MnuTimestampPresetClick(object sender, System.EventArgs e)
     {
-      ToolStripMenuItem mnuCtrl = sender as ToolStripMenuItem;
-
-      if (mnuCtrl != null && mnuCtrl.Tag != null)
+      if (sender is MenuItem mnuCtrl && mnuCtrl.Tag != null)
       {
         txtTimestampFormat.Text = mnuCtrl.Tag.ToString();
+      }
+    }
+
+    /// <summary>
+    /// Handles the Click event of a timestamp help <see cref="MenuItem"/>.
+    /// </summary>
+    private void MnuTimestampClick(object sender, System.EventArgs e)
+    {
+      if (sender is MenuItem mnuCtrl && mnuCtrl.Tag != null)
+      {
+        txtTimestampFormat.SelectedText = mnuCtrl.Tag.ToString();
       }
     }
 
@@ -187,8 +183,6 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
     public OptionPanelGeneral()
     {
       InitializeComponent();
-
-      ThemeManager.CurrentApplicationTheme.ApplyTo(mnuTimestamp);
 
       nudMaxLogMessages.Minimum = 0;
       nudMaxLogMessages.Maximum = int.MaxValue;

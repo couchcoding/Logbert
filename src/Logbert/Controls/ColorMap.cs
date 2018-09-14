@@ -33,17 +33,21 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Logging;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Theme.Palettes;
+using Couchcoding.Logbert.Theme.Interfaces;
+using Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Theme;
+using Couchcoding.Logbert.Theme.Themes;
 
-namespace Com.Couchcoding.Logbert.Controls
+namespace Couchcoding.Logbert.Controls
 {
   /// <summary>
   /// Implements a control to show a line mapping.
   /// </summary>
-  public partial class ColorMap : UserControl
+  public partial class ColorMap : UserControl, IThemable
   {
     #region Private Consts
 
@@ -151,55 +155,60 @@ namespace Com.Couchcoding.Logbert.Controls
 
       Pen drawPen = null;
 
-      try
+      foreach (KeyValuePair<int, LogMessage> keyVal in mColoredLines)
       {
-        foreach (KeyValuePair<int, LogMessage> keyVal in mColoredLines)
+        if ((keyVal.Value.Level & (LogLevel)Settings.Default.ColorMapAnnotation) != keyVal.Value.Level)
         {
-          if ((keyVal.Value.Level & (LogLevel)Settings.Default.ColorMapAnnotation) != keyVal.Value.Level)
-          {
-            continue;
-          }
-
-          switch (keyVal.Value.Level)
-          {
-            case LogLevel.Fatal:
-              drawPen = new Pen(Settings.Default.BackgroundColorFatal);
-              break;
-
-            case LogLevel.Error:
-              drawPen = new Pen(Settings.Default.BackgroundColorError);
-              break;
-
-            case LogLevel.Warning:
-              drawPen = new Pen(Settings.Default.BackgroundColorWarning);
-              break;
-
-            case LogLevel.Info:
-              drawPen = new Pen(Settings.Default.BackgroundColorInfo);
-              break;
-
-            case LogLevel.Debug:
-              drawPen = new Pen(Settings.Default.BackgroundColorDebug);
-              break;
-
-            case LogLevel.Trace:
-              drawPen = new Pen(Settings.Default.BackgroundColorTrace);
-              break;
-
-            default:
-              drawPen = null;
-              break;
-          }
-
-          if (drawPen != null)
-          {
-            e.Graphics.DrawLine(drawPen, 0, keyVal.Key, Width, keyVal.Key);
-          }
+          continue;
         }
-      }
-      finally
-      {
-        drawPen?.Dispose();
+
+        switch (keyVal.Value.Level)
+        {
+          case LogLevel.Fatal:
+            drawPen = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground.Equals(Settings.Default.BackgroundColorFatal) 
+              ? GdiCache.GetPenFromColor(Settings.Default.ForegroundColorFatal) 
+              : GdiCache.GetPenFromColor(Settings.Default.BackgroundColorFatal);
+            break;
+
+          case LogLevel.Error:
+            drawPen = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground.Equals(Settings.Default.BackgroundColorError) 
+              ? GdiCache.GetPenFromColor(Settings.Default.ForegroundColorError) 
+              : GdiCache.GetPenFromColor(Settings.Default.BackgroundColorError);
+            break;
+
+          case LogLevel.Warning:
+            drawPen = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground.Equals(Settings.Default.BackgroundColorWarning) 
+              ? GdiCache.GetPenFromColor(Settings.Default.ForegroundColorWarning) 
+              : GdiCache.GetPenFromColor(Settings.Default.BackgroundColorWarning);
+            break;
+
+          case LogLevel.Info:
+            drawPen = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground.Equals(Settings.Default.BackgroundColorInfo) 
+              ? GdiCache.GetPenFromColor(Settings.Default.ForegroundColorInfo) 
+              : GdiCache.GetPenFromColor(Settings.Default.BackgroundColorInfo);
+            break;
+
+          case LogLevel.Debug:
+            drawPen = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground.Equals(Settings.Default.BackgroundColorDebug) 
+              ? GdiCache.GetPenFromColor(Settings.Default.ForegroundColorDebug) 
+              : GdiCache.GetPenFromColor(Settings.Default.BackgroundColorDebug);
+            break;
+
+          case LogLevel.Trace:
+            drawPen = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground.Equals(Settings.Default.BackgroundColorTrace) 
+              ? GdiCache.GetPenFromColor(Settings.Default.ForegroundColorTrace) 
+              : GdiCache.GetPenFromColor(Settings.Default.BackgroundColorTrace);
+            break;
+
+          default:
+            drawPen = null;
+            break;
+        }
+
+        if (drawPen != null)
+        {
+          e.Graphics.DrawLine(drawPen, 0, keyVal.Key, Width, keyVal.Key);
+        }
       }
     }
 
@@ -315,6 +324,15 @@ namespace Com.Couchcoding.Logbert.Controls
       }
     }
 
+    /// <summary>
+    /// Applies the current theme to the <see cref="Control"/>.
+    /// </summary>
+    /// <param name="theme">The <see cref="BaseTheme"/> instance to apply.</param>
+    public void ApplyTheme(BaseTheme theme)
+    {
+      BackColor = theme.ColorPalette.ContentBackground;
+    }
+
     #endregion
 
     #region Constructor
@@ -331,7 +349,7 @@ namespace Com.Couchcoding.Logbert.Controls
 
       InitializeComponent();
 
-      BackColor = ThemeManager.CurrentApplicationTheme.ColorPalette.MainWindowActive.Background;
+      ThemeManager.ApplyTo(this);
 
       mLogPresenter    = logPresenter;
       mViewRectPadding = new Padding(

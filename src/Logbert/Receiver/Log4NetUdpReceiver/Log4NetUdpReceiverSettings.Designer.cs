@@ -1,4 +1,4 @@
-﻿namespace Com.Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
+﻿namespace Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
 {
   partial class Log4NetUdpReceiverSettings
   {
@@ -32,7 +32,7 @@
             this.cmbNetworkInterface = new System.Windows.Forms.ComboBox();
             this.lblPort = new System.Windows.Forms.Label();
             this.nudPort = new System.Windows.Forms.NumericUpDown();
-            this.nfoPanel = new Com.Couchcoding.GuiLibrary.Controls.InfoPanel();
+            this.nfoPanel = new Couchcoding.Logbert.Gui.Controls.InfoPanel();
             this.txtMulticastIp = new System.Windows.Forms.TextBox();
             this.chkMulticastGroup = new System.Windows.Forms.CheckBox();
             this.cmbEncoding = new System.Windows.Forms.ComboBox();
@@ -98,7 +98,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.nfoPanel.BackColor = System.Drawing.Color.WhiteSmoke;
             this.nfoPanel.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.nfoPanel.InfoIcon = global::Com.Couchcoding.Logbert.Properties.Resources.StatusAnnotations_Information_16xLG;
+            this.nfoPanel.InfoIcon = global::Couchcoding.Logbert.Properties.Resources.StatusAnnotations_Information_16xLG;
             this.nfoPanel.Location = new System.Drawing.Point(0, 43);
             this.nfoPanel.Name = "nfoPanel";
             this.nfoPanel.ShowInfoIcon = true;
@@ -182,7 +182,7 @@
     private System.Windows.Forms.ComboBox cmbNetworkInterface;
     private System.Windows.Forms.Label lblPort;
     private System.Windows.Forms.NumericUpDown nudPort;
-    private GuiLibrary.Controls.InfoPanel nfoPanel;
+    private Gui.Controls.InfoPanel nfoPanel;
     private System.Windows.Forms.TextBox txtMulticastIp;
     private System.Windows.Forms.CheckBox chkMulticastGroup;
     private System.Windows.Forms.ComboBox cmbEncoding;

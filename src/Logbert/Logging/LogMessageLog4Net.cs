@@ -28,18 +28,18 @@
 
 #endregion
 
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Properties;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Xml;
 
-using Com.Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Helper;
 
 using MoonSharp.Interpreter;
 using System.Globalization;
 
-namespace Com.Couchcoding.Logbert.Logging
+namespace Couchcoding.Logbert.Logging
 {
   /// <summary>
   /// Implements a <see cref="LogMessage"/> class for Log4Net logger messages.

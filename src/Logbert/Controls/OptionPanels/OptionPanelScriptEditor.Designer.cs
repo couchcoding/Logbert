@@ -1,4 +1,4 @@
-﻿namespace Com.Couchcoding.Logbert.Controls.OptionPanels
+﻿namespace Couchcoding.Logbert.Controls.OptionPanels
 {
   partial class OptionPanelScriptEditor
   {
@@ -36,8 +36,8 @@
       this.lstElements = new System.Windows.Forms.ListBox();
       this.lblElement = new System.Windows.Forms.Label();
       this.lblForeColor = new System.Windows.Forms.Label();
-      this.clrDrpDwnFore = new Com.Couchcoding.Logbert.Controls.ColorPickerCtrl();
-      this.clrDrpDwnBack = new Com.Couchcoding.Logbert.Controls.ColorPickerCtrl();
+      this.clrDrpDwnFore = new Couchcoding.Logbert.Controls.ColorPickerCtrl();
+      this.clrDrpDwnBack = new Couchcoding.Logbert.Controls.ColorPickerCtrl();
       this.lblBackColor = new System.Windows.Forms.Label();
       this.lblFontStyle = new System.Windows.Forms.Label();
       this.cmbFontStyle = new System.Windows.Forms.ComboBox();

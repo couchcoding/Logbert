@@ -30,25 +30,29 @@
 
 using System;
 
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Logging;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Helper;
 
 using WeifenLuo.WinFormsUI.Docking;
 using System.Drawing;
 
-using Com.Couchcoding.Logbert.Logging.Filter;
+using Couchcoding.Logbert.Logging.Filter;
+using Couchcoding.Logbert.Theme.Palettes;
+using Couchcoding.Logbert.Theme.Interfaces;
+using Couchcoding.Logbert.Theme;
+using Couchcoding.Logbert.Theme.Themes;
 
-namespace Com.Couchcoding.Logbert.Dialogs.Docking
+namespace Couchcoding.Logbert.Dialogs.Docking
 {
   /// <summary>
   /// Implements the <see cref="DockContent"/> of the logger tree.
   /// </summary>
-  public partial class FrmLogTree : DockContent, ILogPresenter, ILogFilterProvider
+  public partial class FrmLogTree : DockContent, ILogPresenter, ILogFilterProvider, IThemable
   {
     #region Private Consts
 
@@ -137,7 +141,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     private static void PopulateTreeView(TreeView treeView, string path)
     {
       TreeNode lastNode = null;
-      var subPathAgg    = string.Empty;
+      string subPathAgg = string.Empty;
 
       foreach (string subPath in path.Split(new [] { treeView.PathSeparator }, StringSplitOptions.None))
       {
@@ -169,6 +173,13 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       {
         // Initial select the very first node popupulated.
         treeView.SelectedNode = treeView.Nodes[0];
+
+        SetNodeColor(
+            treeView.Nodes[0]
+          , ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForeground
+          , ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionForeground
+          , ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionForegroundFocused
+          , false);
       }
     }
 
@@ -189,17 +200,21 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       }
     }
 
-    private void SetNodeColor(TreeNode startNode, Color nodeColor, bool recursive)
+    private static void SetNodeColor(TreeNode startNode, Color nodeColor, Color nodeColorSelected, Color nodeColorSelectedFocused, bool recursive)
     {
       if (startNode != null)
       {
-        startNode.ForeColor = nodeColor;
+        startNode.ForeColor = startNode.IsSelected 
+          ? startNode.TreeView.Focused
+            ? nodeColorSelectedFocused
+            : nodeColorSelected
+          : nodeColor;
 
         if (recursive)
         {
           foreach (TreeNode childNode in startNode.Nodes)
           {
-            SetNodeColor(childNode, nodeColor, true);
+            SetNodeColor(childNode, nodeColor, nodeColorSelected, nodeColorSelectedFocused, true);
           }
         }
       }
@@ -212,27 +227,27 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         return;
       }
 
-      tvLoggerTree.SuspendDrawing();
-
       try
       {
         SetNodeColor(
             tvLoggerTree.Nodes[0]
-          , SystemColors.ControlDarkDark
+          , ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed
+            , ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionForeground
+            , ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionForegroundFocused
           , true);
 
         if (e.Node != null)
         {
           SetNodeColor(
               e.Node
-            , SystemColors.ControlText
+            , ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForeground
+            , ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionForeground
+            , ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionForegroundFocused
             , tsbFilterRecursive.Checked);
         }
       }
       finally
       {
-        tvLoggerTree.ResumeDrawing();
-
         if (mLogFilterHandler != null)
         {
           mLogFilter = tvLoggerTree.SelectedNode.Parent == null 
@@ -339,7 +354,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
         if (newLogMessages.Count > 0)
         {
           // Avoid partial visible tree nodes.
-          tvLoggerTree.SuspendDrawing();
+          //tvLoggerTree.SuspendDrawing();
         }
 
         foreach (LogMessage message in newLogMessages)
@@ -354,7 +369,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       finally
       {
         tvLoggerTree.AfterSelect += TvLoggerTreeAfterSelect;
-        tvLoggerTree.ResumeDrawing();
+        //tvLoggerTree.ResumeDrawing();
       }
     }
 
@@ -428,6 +443,110 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
     }
 
     /// <summary>
+    /// Handles the DrawNode event oft the logger <see cref="TreeView"/>.
+    /// </summary>
+    private void TvLoggerTreeDrawNode(object sender, DrawTreeNodeEventArgs e)
+    {
+      e.DrawDefault = false;
+
+      if (e.Node.Bounds.IsEmpty)
+      {
+        return;
+      }
+
+      Rectangle bounds = new Rectangle(
+          0
+        , e.Node.Bounds.Y
+        , Width - 1
+        , e.Node.Bounds.Height - 1);
+
+        e.Graphics.FillRectangle(
+            GdiCache.GetBrushFromColor(ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground)
+          , bounds);
+
+      DrawNodeFocusedHighlight(e, bounds);
+      DrawPlusMinus(e);
+      DrawNodeText(e);
+    }
+
+    private void DrawNodeFocusedHighlight(DrawTreeNodeEventArgs e, Rectangle bounds)
+    {
+      if ((e.State & TreeNodeStates.Selected) != TreeNodeStates.Selected)
+      {
+        return;
+      }
+
+      int scrollWidth = tvLoggerTree.IsVerticalScrollbarvisible() 
+        ? SystemInformation.VerticalScrollBarWidth 
+        : 0;
+
+      Brush nodeBackgroundBrush = (e.State & TreeNodeStates.Focused) == TreeNodeStates.Focused
+        ? GdiCache.GetBrushFromColor(ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionBackgroundFocused)
+        : GdiCache.GetBrushFromColor(ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionBackground);
+
+      e.Graphics.FillRectangle(nodeBackgroundBrush, bounds);
+    }
+
+    private void DrawPlusMinus(DrawTreeNodeEventArgs e)
+    {
+      if (e.Node.Nodes.Count == 0)
+      {
+        return;
+      }
+
+      int indent   = (e.Node.Level * tvLoggerTree.Indent) + tvLoggerTree.Margin.Size.Width;
+      int iconLeft = indent + tvLoggerTree.Indent;
+
+      Image img = e.Node.IsExpanded 
+        ? ThemeManager.CurrentApplicationTheme.Resources.Images["FrmLogTreeNodeExpanded"]
+        : ThemeManager.CurrentApplicationTheme.Resources.Images["FrmLogTreeNodeCollapsed"];
+
+      e.Graphics.DrawImage(img
+        , iconLeft - img.Width - 2
+        , (e.Bounds.Y + (e.Bounds.Height >> 1)) - (img.Height >> 1) - 1);
+    }
+
+    private void DrawNodeText(DrawTreeNodeEventArgs e)
+    {
+      if (e.Node.Bounds.IsEmpty)
+      {
+        return;
+      }
+
+      Rectangle bounds = e.Node.Bounds;
+
+      Font font = FontCache.GetFontFromIdentifier(
+          tvLoggerTree.Font.Name
+        , tvLoggerTree.Font.Size
+        , tvLoggerTree.Font.Style);
+
+      bounds.Width = TextRenderer.MeasureText(e.Node.Text, font).Width;
+      bounds.Y -= 1;
+      bounds.X += 1;
+
+      if (e.Node.Level == 0 && e.Node.PrevNode == null)
+      {
+        bounds = new Rectangle(
+            tvLoggerTree.Margin.Size.Width + ThemeManager.CurrentApplicationTheme.Resources.Images["FrmLogTreeNodeExpanded"].Width + 9
+          , 0
+          , bounds.Width
+          , bounds.Height);
+      }
+
+      TextRenderer.DrawText(e.Graphics, e.Node.Text, font, bounds, e.Node.ForeColor);
+    }
+
+    /// <summary>
+    /// Handles the Dispose event oft the logger <see cref="TreeView"/>.
+    /// </summary>
+    private void TvLoggerTreeDisposed(object sender, EventArgs e)
+    {
+      tvLoggerTree.DrawNode -= TvLoggerTreeDrawNode;
+      tvLoggerTree.MouseDown-= TvLoggerTreeMouseDown;
+      tvLoggerTree.Disposed -= TvLoggerTreeDisposed;
+    }
+
+    /// <summary>
     /// Increases the size of the <see cref="ILogPresenter"/> content.
     /// </summary>
     /// <returns><c>True</c> if further increasing is possible, otherwise <c>false</c>.</returns>
@@ -483,6 +602,49 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       return false;
     }
 
+    /// <summary>
+    /// Applies the current theme to the <see cref="Control"/>.
+    /// </summary>
+    /// <param name="theme">The <see cref="BaseTheme"/> instance to apply.</param>
+    public void ApplyTheme(BaseTheme theme)
+    {
+      tsbFilterRecursive.Image = theme.Resources.Images["FrmMainTbFilter"];
+      tsbZoomIn.Image          = theme.Resources.Images["FrmMainTbZoomIn"];
+      tsbZoomOut.Image         = theme.Resources.Images["FrmMainTbZoomOut"];
+
+      if (theme.Metrics.PreferSystemRendering)
+      {
+        tvLoggerTree.UseNativeSystemRendering(false);
+      }
+      else
+      {
+        tvLoggerTree.HotTracking = false;
+
+        tvLoggerTree.DrawMode  = TreeViewDrawMode.OwnerDrawAll;
+        tvLoggerTree.BackColor = theme.ColorPalette.ContentBackground;
+        tvLoggerTree.ForeColor = theme.ColorPalette.ContentForeground;
+
+        tvLoggerTree.DrawNode  += TvLoggerTreeDrawNode;
+        tvLoggerTree.MouseDown += TvLoggerTreeMouseDown;
+        tvLoggerTree.Disposed  += TvLoggerTreeDisposed;
+
+        tvLoggerTree.NodeMouseClick -= TvLoggerTreeNodeMouseClick;
+      }
+    }
+
+    private void TvLoggerTreeMouseDown(object sender, MouseEventArgs e)
+    {
+      if (e.Button == MouseButtons.Left || e.Button == MouseButtons.Right)
+      {
+        TreeNode node = tvLoggerTree.GetNodeAt(e.X, e.Y);
+
+        if (node != null)
+        {
+          tvLoggerTree.SelectedNode = node;
+        }
+      }
+    }
+
     #endregion
 
     #region Constructor
@@ -497,7 +659,7 @@ namespace Com.Couchcoding.Logbert.Dialogs.Docking
       InitializeComponent();
 
       // Apply the current application theme to the control.
-      ThemeManager.CurrentApplicationTheme.ApplyTo(tsLoggerTree);
+      ThemeManager.ApplyTo(this);
 
       mLogFilterHandler = filterHandler;
       Font              = SystemFonts.MessageBoxFont;

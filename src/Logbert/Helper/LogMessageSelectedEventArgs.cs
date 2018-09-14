@@ -28,10 +28,10 @@
 
 #endregion
 
-using Com.Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Logging;
 using System;
 
-namespace Com.Couchcoding.Logbert.Helper
+namespace Couchcoding.Logbert.Helper
 {
   /// <summary>
   /// Implements a custom <see cref="EventHandler"/> for <see cref="LogMessage"/> selection.

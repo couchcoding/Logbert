@@ -31,9 +31,9 @@
 using System;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Properties;
 
-namespace Com.Couchcoding.Logbert.Helper
+namespace Couchcoding.Logbert.Helper
 {
 	/// <summary>
 	/// Utility class to make showing (usually) a Wait Cursor much simpler and to remove the

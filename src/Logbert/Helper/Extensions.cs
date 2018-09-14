@@ -38,7 +38,7 @@ using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace Com.Couchcoding.Logbert.Helper
+namespace Couchcoding.Logbert.Helper
 {
   /// <summary>
   /// Implements some <see cref="Control"/> extensions.
@@ -288,6 +288,16 @@ namespace Com.Couchcoding.Logbert.Helper
       unixTimestamp /= TimeSpan.TicksPerSecond;
       
       return unixTimestamp;
+    }
+    
+    /// <summary>
+    /// Determines whether the vertical <see cref="Scrollbar"/> of the specified <paramref name="ctrl"/> is visible or not.
+    /// </summary>
+    /// <param name="ctrl">the <see cref="Control"/> to check if it vertical <see cref="Scrollbar"/> is visible.</param>
+    /// <returns><c>True</c> if the vertical <see cref="Scrollbar"/> of the <see cref="Control"/> is visible; otherwise <c>false</c>.</returns>
+    public static bool IsVerticalScrollbarvisible(this Control ctrl)
+    {
+      return ((Win32.GetWindowLong(ctrl.Handle, Win32.GWL_STYLE) & Win32.WS_VSCROLL) != 0);
     }
 
     #endregion

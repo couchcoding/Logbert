@@ -30,11 +30,11 @@
 
 using System.Windows.Forms;
 
-using Com.Couchcoding.GuiLibrary.Dialogs;
-using Com.Couchcoding.Logbert.Receiver.CustomReceiver;
+using Couchcoding.Logbert.Gui.Dialogs;
+using Couchcoding.Logbert.Receiver.CustomReceiver;
 using System.Text.RegularExpressions;
 
-namespace Com.Couchcoding.Logbert.Dialogs
+namespace Couchcoding.Logbert.Dialogs
 {
   /// <summary>
   /// Imnplements a dialog to test a spezified <see cref="Columnizer"/>.

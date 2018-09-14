@@ -32,14 +32,14 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Properties;
 using System.IO;
 using System.Text;
 
-using Com.Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Helper;
 
-namespace Com.Couchcoding.Logbert.Receiver.NLogDirReceiver
+namespace Couchcoding.Logbert.Receiver.NLogDirReceiver
 {
   /// <summary>
   /// Implements the <see cref="ILogSettingsCtrl"/> control for the NLog file receiver.
@@ -82,15 +82,24 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogDirReceiver
     }
 
     /// <summary>
-    /// Handles the Click event of a file pattern preset <see cref="ToolStripMenuItem"/>.
+    /// Handles the Click event of a file pattern preset <see cref="MenuItem"/>.
+    /// </summary>
+    private void MnuFilePatternPresetClick(object sender, EventArgs e)
+    {
+      if (sender is MenuItem mnuCtrl && mnuCtrl.Tag != null)
+      {
+        txtLogFilePattern.Text = mnuCtrl.Tag.ToString();
+      }
+    }
+
+    /// <summary>
+    /// Handles the Click event of a file pattern preset <see cref="MenuItem"/>.
     /// </summary>
     private void MnuFilePatternClick(object sender, EventArgs e)
     {
-      ToolStripMenuItem mnuCtrl = sender as ToolStripMenuItem;
-
-      if (mnuCtrl?.Tag != null)
+      if (sender is MenuItem mnuCtrl && mnuCtrl.Tag != null)
       {
-        txtLogFilePattern.Text = mnuCtrl.Tag.ToString();
+        txtLogFilePattern.SelectedText = mnuCtrl.Tag.ToString();
       }
     }
 
@@ -194,8 +203,6 @@ namespace Com.Couchcoding.Logbert.Receiver.NLogDirReceiver
     public NLogDirReceiverSettings()
     {
       InitializeComponent();
-
-      ThemeManager.CurrentApplicationTheme.ApplyTo(mnuFilePattern);
     }
 
     #endregion

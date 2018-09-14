@@ -31,9 +31,9 @@
 using System;
 using System.Collections.Generic;
 
-using Com.Couchcoding.Logbert.Logging;
+using Couchcoding.Logbert.Logging;
 
-namespace Com.Couchcoding.Logbert.Interfaces
+namespace Couchcoding.Logbert.Interfaces
 {
   /// <summary>
   /// Interface for all <see cref="LogMessage"/> container.

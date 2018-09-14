@@ -1,0 +1,566 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DE30D0ED-E29F-4779-A057-C7C1F1EF4F59}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Couchcoding.Logbert.Theme</RootNamespace>
+    <AssemblyName>Couchcoding.Logbert.Theme</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>..\Logbert\Libraries\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking.ThemeVS2015">
+      <HintPath>..\Logbert\Libraries\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Interfaces\IThemable.cs" />
+    <Compile Include="Metrics\ThemeMetrics.cs" />
+    <Compile Include="Metrics\VisualStudioBlueMetrics.cs" />
+    <Compile Include="Metrics\VisualStudioDarkMetrics.cs" />
+    <Compile Include="Metrics\VisualStudioLightMetrics.cs" />
+    <Compile Include="Palettes\ThemeColorPalette.cs" />
+    <Compile Include="Palettes\VisualStudioBluePalette.cs" />
+    <Compile Include="Palettes\VisualStudioDarkPalette.cs" />
+    <Compile Include="Palettes\VisualStudioLightPalette.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\VisualStudioBlueResource.Designer.cs">
+      <DependentUpon>VisualStudioBlueResource.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\VisualStudioDarkResource.Designer.cs">
+      <DependentUpon>VisualStudioDarkResource.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\VisualStudioLightResource.Designer.cs">
+      <DependentUpon>VisualStudioLightResource.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ThemeResources.cs" />
+    <Compile Include="Resources\VisualStudioBlueResources.cs" />
+    <Compile Include="Resources\VisualStudioDarkResources.cs" />
+    <Compile Include="Resources\VisualStudioLightResources.cs" />
+    <Compile Include="Theme.cs" />
+    <Compile Include="ThemeManager.cs" />
+    <Compile Include="Themes\BaseTheme.cs" />
+    <Compile Include="Themes\VisualStudioBlueTheme.cs" />
+    <Compile Include="Themes\VisualStudioDarkTheme.cs" />
+    <Compile Include="Themes\VisualStudioLightTheme.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Couchcoding.Logbert.Gui\Couchcoding.Logbert.Gui.csproj">
+      <Project>{0d9d135f-9d7a-4d90-8810-903450fd4245}</Project>
+      <Name>Couchcoding.Logbert.Gui</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".editorconfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\VisualStudioBlueResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>VisualStudioBlueResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\VisualStudioDarkResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>VisualStudioDarkResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\VisualStudioLightResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>VisualStudioLightResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmStatisticTbLegend_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbWordWrap_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmSearchOptions_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbUndo_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbStop_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbStart_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbRedo_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbPaste_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbCut_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbCopy_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbClearLog_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmOptionsFontAndColor_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbDetails_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbZoomOut_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbZoomIn_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbWarn_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbTraceLog_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbTrace_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbTop_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbTimeshift_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbSync_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbStatistic_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbStart_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbSettings_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbSearch_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbSave_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbRefresh_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbOpen_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbNew_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbLogtree_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbInfo_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbFilter_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbFatal_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbError_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbDebug_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbCloseAll_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbClear_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbBottom_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbBookmark_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbAbout_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmLogTreeNodeExpanded_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmLogTreeNodeCollapsed_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmLogBookmark_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmFilterTbRemove_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmFilterTbEdit_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmFilterTbAdd_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmBookmarksTbRemove_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmBookmarksTbPrevious_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmBookmarksTbNext_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmBookmarks_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbTrace_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmStatisticTbLegend_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbWordWrap_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmSearchOptions_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbUndo_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbStop_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbStart_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbRedo_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbPaste_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbCut_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbCopy_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbClearLog_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmOptionsFontAndColor_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbDetails_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbZoomOut_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbZoomIn_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbWarn_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbTraceLog_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbTop_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbTimeshift_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbSync_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbStatistic_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbStart_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbSettings_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbSearch_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbSave_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbRefresh_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbOpen_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbNew_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbLogtree_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbInfo_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbFilter_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbFatal_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbError_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbDebug_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbCloseAll_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbClear_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbBottom_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbBookmark_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbAbout_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmLogTreeNodeExpanded_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmLogTreeNodeCollapsed_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmLogBookmark_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmFilterTbRemove_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmFilterTbEdit_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmFilterTbAdd_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmBookmarksTbRemove_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmBookmarksTbPrevious_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmBookmarksTbNext_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmBookmarks_Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmStatisticTbLegend_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbWordWrap_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmSearchOptions_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbUndo_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbStop_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbStart_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbRedo_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbPaste_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbCut_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbCopy_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmScriptTbClearLog_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmOptionsFontAndColor_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbDetails_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbZoomOut_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbZoomIn_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbWarn_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbTraceLog_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbTrace_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbTop_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbTimeshift_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbSync_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbStatistic_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbStart_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbSettings_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbSearch_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbSave_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbRefresh_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbOpen_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbNew_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbLogtree_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbInfo_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbFilter_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbFatal_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbError_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbDebug_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbCloseAll_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbClear_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbBottom_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbBookmark_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmMainTbAbout_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmLogTreeNodeExpanded_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmLogTreeNodeCollapsed_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmLogBookmark_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmFilterTbRemove_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmFilterTbEdit_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmFilterTbAdd_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmBookmarksTbRemove_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmBookmarksTbPrevious_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmBookmarksTbNext_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FrmBookmarks_Light.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

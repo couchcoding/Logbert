@@ -35,11 +35,12 @@ using System.Globalization;
 using System.Windows.Forms;
 using System.ComponentModel;
 
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Theme.Palettes;
 
-namespace Com.Couchcoding.Logbert.Controls.OptionPanels
+namespace Couchcoding.Logbert.Controls.OptionPanels
 {
   /// <summary>
   /// Implements a <see cref="IOptionPanel"/> to setup font and colors.
@@ -57,6 +58,15 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
     /// Defines the default font size for the log window.
     /// </summary>
     private const int DEFAULT_FONT_SIZE = 9;
+
+    #endregion
+
+    #region Private Fields
+
+    /// <summary>
+    /// Holds the last selected theme name.
+    /// </summary>
+    private string mLastSelectedTheme;
 
     #endregion
 
@@ -131,6 +141,73 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
       }
     }
 
+    /// <summary>
+    /// Handles the SelectionChangeComitted event of the application theme <see cref="ComboBox"/>.
+    /// </summary>
+    private void CmbApplicationTheme_SelectionChangeCommitted(object sender, EventArgs e)
+    {
+      if (cmbApplicationTheme.Text.Equals(mLastSelectedTheme))
+      {
+        return;
+      }
+
+      mLastSelectedTheme = cmbApplicationTheme.Text;
+
+      DialogResult applyColorSchemeResult = MessageBox.Show(this
+        , string.Format(Resources.strOptionPanelFontColorApplyColorScheme, cmbApplicationTheme.Text)
+        , Application.ProductName
+        , MessageBoxButtons.YesNo
+        , MessageBoxIcon.Question);
+
+      if (applyColorSchemeResult == DialogResult.Yes)
+      {
+        this.SuspendDrawing();
+
+        try
+        {
+          switch (cmbApplicationTheme.Text)
+          {
+            case "Visual Studio Light":
+            case "Visual Studio Blue":
+              clrDrpDwnForeTrace.AddColors(VisualStudioLightPalette.LevelForeColor["Trace"]);
+              clrDrpDwnForeDebug.AddColors(VisualStudioLightPalette.LevelForeColor["Debug"]);
+              clrDrpDwnForeInfo.AddColors(VisualStudioLightPalette.LevelForeColor["Info"]);
+              clrDrpDwnForeWarning.AddColors(VisualStudioLightPalette.LevelForeColor["Warn"]);
+              clrDrpDwnForeError.AddColors(VisualStudioLightPalette.LevelForeColor["Error"]);
+              clrDrpDwnForeFatal.AddColors(VisualStudioLightPalette.LevelForeColor["Fatal"]);
+
+              clrDrpDwnBackTrace.AddColors(VisualStudioLightPalette.LevelBackColor["Trace"]);
+              clrDrpDwnBackDebug.AddColors(VisualStudioLightPalette.LevelBackColor["Debug"]);
+              clrDrpDwnBackInfo.AddColors(VisualStudioLightPalette.LevelBackColor["Info"]);
+              clrDrpDwnBackWarning.AddColors(VisualStudioLightPalette.LevelBackColor["Warn"]);
+              clrDrpDwnBackError.AddColors(VisualStudioLightPalette.LevelBackColor["Error"]);
+              clrDrpDwnBackFatal.AddColors(VisualStudioLightPalette.LevelBackColor["Fatal"]);
+              break;
+
+            case "Visual Studio Dark":
+              clrDrpDwnForeTrace.AddColors(VisualStudioDarkPalette.LevelForeColor["Trace"]);
+              clrDrpDwnForeDebug.AddColors(VisualStudioDarkPalette.LevelForeColor["Debug"]);
+              clrDrpDwnForeInfo.AddColors(VisualStudioDarkPalette.LevelForeColor["Info"]);
+              clrDrpDwnForeWarning.AddColors(VisualStudioDarkPalette.LevelForeColor["Warn"]);
+              clrDrpDwnForeError.AddColors(VisualStudioDarkPalette.LevelForeColor["Error"]);
+              clrDrpDwnForeFatal.AddColors(VisualStudioDarkPalette.LevelForeColor["Fatal"]);
+
+              clrDrpDwnBackTrace.AddColors(VisualStudioDarkPalette.LevelBackColor["Trace"]);
+              clrDrpDwnBackDebug.AddColors(VisualStudioDarkPalette.LevelBackColor["Debug"]);
+              clrDrpDwnBackInfo.AddColors(VisualStudioDarkPalette.LevelBackColor["Info"]);
+              clrDrpDwnBackWarning.AddColors(VisualStudioDarkPalette.LevelBackColor["Warn"]);
+              clrDrpDwnBackError.AddColors(VisualStudioDarkPalette.LevelBackColor["Error"]);
+              clrDrpDwnBackFatal.AddColors(VisualStudioDarkPalette.LevelBackColor["Fatal"]);
+              break;
+          }
+        }
+        finally
+        {
+          this.ResumeDrawing();
+        }
+      }
+    }
+
     #endregion
 
     #region Public Methods
@@ -163,8 +240,7 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
         cmbFont.SelectedItem = DEFAULT_FONT_NAME;
       }
 
-      cmbFontSize.Text = Settings.Default.LogMessagesFontSize.
-        ToString(CultureInfo.InvariantCulture);
+      cmbFontSize.Text = Settings.Default.LogMessagesFontSize.ToString(CultureInfo.InvariantCulture);
 
       clrDrpDwnForeTrace.AddColors(Settings.Default.ForegroundColorTrace);
       clrDrpDwnForeDebug.AddColors(Settings.Default.ForegroundColorDebug);
@@ -186,9 +262,11 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
       cmbFontStyleWarning.SelectedIndex = Settings.Default.FontStyleWarning == FontStyle.Regular ? 0 : 1;
       cmbFontStyleError.SelectedIndex   = Settings.Default.FontStyleError   == FontStyle.Regular ? 0 : 1;
       cmbFontStyleFatal.SelectedIndex   = Settings.Default.FontStyleFatal   == FontStyle.Regular ? 0 : 1;
-
+      
       cmbApplicationTheme.SelectedItem = Settings.Default.ApplicationTheme;
-      chkDrawGrid.Checked = Settings.Default.LogWindowDrawGrid;
+      chkDrawGrid.Checked              = Settings.Default.LogWindowDrawGrid;
+
+      mLastSelectedTheme = cmbApplicationTheme.Text;
     }
 
     /// <summary>
@@ -205,29 +283,29 @@ namespace Com.Couchcoding.Logbert.Controls.OptionPanels
           ? textSize
           : DEFAULT_FONT_SIZE;
 
-        Settings.Default.BackgroundColorTrace = clrDrpDwnBackTrace.SelectedValue;
-        Settings.Default.BackgroundColorDebug = clrDrpDwnBackDebug.SelectedValue;
-        Settings.Default.BackgroundColorInfo = clrDrpDwnBackInfo.SelectedValue;
+        Settings.Default.BackgroundColorTrace   = clrDrpDwnBackTrace.SelectedValue;
+        Settings.Default.BackgroundColorDebug   = clrDrpDwnBackDebug.SelectedValue;
+        Settings.Default.BackgroundColorInfo    = clrDrpDwnBackInfo.SelectedValue;
         Settings.Default.BackgroundColorWarning = clrDrpDwnBackWarning.SelectedValue;
-        Settings.Default.BackgroundColorError = clrDrpDwnBackError.SelectedValue;
-        Settings.Default.BackgroundColorFatal = clrDrpDwnBackFatal.SelectedValue;
+        Settings.Default.BackgroundColorError   = clrDrpDwnBackError.SelectedValue;
+        Settings.Default.BackgroundColorFatal   = clrDrpDwnBackFatal.SelectedValue;
 
-        Settings.Default.ForegroundColorTrace = clrDrpDwnForeTrace.SelectedValue;
-        Settings.Default.ForegroundColorDebug = clrDrpDwnForeDebug.SelectedValue;
-        Settings.Default.ForegroundColorInfo = clrDrpDwnForeInfo.SelectedValue;
+        Settings.Default.ForegroundColorTrace   = clrDrpDwnForeTrace.SelectedValue;
+        Settings.Default.ForegroundColorDebug   = clrDrpDwnForeDebug.SelectedValue;
+        Settings.Default.ForegroundColorInfo    = clrDrpDwnForeInfo.SelectedValue;
         Settings.Default.ForegroundColorWarning = clrDrpDwnForeWarning.SelectedValue;
-        Settings.Default.ForegroundColorError = clrDrpDwnForeError.SelectedValue;
-        Settings.Default.ForegroundColorFatal = clrDrpDwnForeFatal.SelectedValue;
+        Settings.Default.ForegroundColorError   = clrDrpDwnForeError.SelectedValue;
+        Settings.Default.ForegroundColorFatal   = clrDrpDwnForeFatal.SelectedValue;
 
-        Settings.Default.FontStyleTrace = cmbFontStyleTrace.SelectedIndex == 0 ? FontStyle.Regular : FontStyle.Bold;
-        Settings.Default.FontStyleDebug = cmbFontStyleDebug.SelectedIndex == 0 ? FontStyle.Regular : FontStyle.Bold;
-        Settings.Default.FontStyleInfo = cmbFontStyleInfo.SelectedIndex == 0 ? FontStyle.Regular : FontStyle.Bold;
+        Settings.Default.FontStyleTrace   = cmbFontStyleTrace.SelectedIndex == 0 ? FontStyle.Regular : FontStyle.Bold;
+        Settings.Default.FontStyleDebug   = cmbFontStyleDebug.SelectedIndex == 0 ? FontStyle.Regular : FontStyle.Bold;
+        Settings.Default.FontStyleInfo    = cmbFontStyleInfo.SelectedIndex == 0 ? FontStyle.Regular : FontStyle.Bold;
         Settings.Default.FontStyleWarning = cmbFontStyleWarning.SelectedIndex == 0 ? FontStyle.Regular : FontStyle.Bold;
-        Settings.Default.FontStyleError = cmbFontStyleError.SelectedIndex == 0 ? FontStyle.Regular : FontStyle.Bold;
-        Settings.Default.FontStyleFatal = cmbFontStyleFatal.SelectedIndex == 0 ? FontStyle.Regular : FontStyle.Bold;
+        Settings.Default.FontStyleError   = cmbFontStyleError.SelectedIndex == 0 ? FontStyle.Regular : FontStyle.Bold;
+        Settings.Default.FontStyleFatal   = cmbFontStyleFatal.SelectedIndex == 0 ? FontStyle.Regular : FontStyle.Bold;
 
         Settings.Default.LogWindowDrawGrid = chkDrawGrid.Checked;
-        Settings.Default.ApplicationTheme = cmbApplicationTheme.Text;
+        Settings.Default.ApplicationTheme  = cmbApplicationTheme.Text;
 
         Settings.Default.SaveSettings();
       }

@@ -33,20 +33,20 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
 
-using Com.Couchcoding.Logbert.Interfaces;
-using Com.Couchcoding.Logbert.Properties;
+using Couchcoding.Logbert.Interfaces;
+using Couchcoding.Logbert.Properties;
 using System.Net.Sockets;
 
-using Com.Couchcoding.Logbert.Helper;
-using Com.Couchcoding.Logbert.Receiver.CustomReceiver.CustomUdpReceiver;
-using Com.Couchcoding.Logbert.Dialogs;
-using Com.Couchcoding.Logbert.Receiver.CustomReceiver;
+using Couchcoding.Logbert.Helper;
+using Couchcoding.Logbert.Receiver.CustomReceiver.CustomUdpReceiver;
+using Couchcoding.Logbert.Dialogs;
+using Couchcoding.Logbert.Receiver.CustomReceiver;
 using System.Xml;
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
 
-namespace Com.Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
+namespace Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
 {
   /// <summary>
   /// Implements the <see cref="ILogSettingsCtrl"/> control for the custom UDP receiver.
