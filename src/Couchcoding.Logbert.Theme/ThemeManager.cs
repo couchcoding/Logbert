@@ -56,11 +56,6 @@ namespace Couchcoding.Logbert.Theme
     /// </summary>
     private static BaseTheme mApplicationTheme;
 
-    /// <summary>
-    /// Holds the current active <see cref="BaseTheme"/> index.
-    /// </summary>
-    private static Theme mActiveApplicationTheme;
-
     #endregion
 
     #region Public Properties
@@ -74,18 +69,7 @@ namespace Couchcoding.Logbert.Theme
       {
         if (mApplicationTheme == null)
         {
-            switch (mActiveApplicationTheme)
-            {
-                case Theme.VisualStudioBlue:
-                    mApplicationTheme = new VisualStudioBlueTheme();
-                    break;
-                case Theme.VisualStudioLight:
-                    mApplicationTheme = new VisualStudioDarkTheme();
-                  break;
-                default:
-                    mApplicationTheme = new VisualStudioLightTheme();
-                    break;
-            }
+          mApplicationTheme = new VisualStudioLightTheme();
         }
 
         return mApplicationTheme;
@@ -132,12 +116,12 @@ namespace Couchcoding.Logbert.Theme
     }
 
     /// <summary>
-    /// Sets the current active <see cref="BaseTheme"/> by the specified <see cref="Theme"/>.
+    /// Sets the current active <see cref="BaseTheme"/> by the specified one.
     /// </summary>
     /// <param name="themeName">The name of the Theme to apply.</param>
-    public static void SetActiveApplicationTheme(Theme theme)
+    public static void SetActiveApplicationTheme(BaseTheme theme)
     {
-      mActiveApplicationTheme = theme;
+      mApplicationTheme = theme;
     }
 
     #endregion

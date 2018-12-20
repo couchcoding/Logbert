@@ -521,5 +521,8 @@
     <Setting Name="PnlCustomDirSettingsEncoding" Type="System.String" Scope="User">
       <Value Profile="(Default)">1252</Value>
     </Setting>
+    <Setting Name="UseInvertedColorForSelection" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

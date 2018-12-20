@@ -45,7 +45,7 @@ namespace Couchcoding.Logbert.Theme.Themes
     /// <summary>
     /// Gets the name of the <see cref="BaseTheme"/> instance.
     /// </summary>
-    public override string Name => "Visual Studio Light";
+    public override string Name => VisualStudioThemeLightName;
 
     #endregion
 

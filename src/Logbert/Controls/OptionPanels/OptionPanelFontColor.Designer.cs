@@ -64,6 +64,7 @@
             this.lblApplicationTheme = new System.Windows.Forms.Label();
             this.cmbApplicationTheme = new System.Windows.Forms.ComboBox();
             this.nfoPanel = new Couchcoding.Logbert.Gui.Controls.InfoPanel();
+            this.chkUseInvertedColors = new System.Windows.Forms.CheckBox();
             this.tblLayout.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -508,10 +509,10 @@
             // 
             this.lblApplicationTheme.AutoSize = true;
             this.lblApplicationTheme.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblApplicationTheme.Location = new System.Drawing.Point(3, 279);
+            this.lblApplicationTheme.Location = new System.Drawing.Point(3, 303);
             this.lblApplicationTheme.Name = "lblApplicationTheme";
             this.lblApplicationTheme.Size = new System.Drawing.Size(98, 13);
-            this.lblApplicationTheme.TabIndex = 2;
+            this.lblApplicationTheme.TabIndex = 3;
             this.lblApplicationTheme.Text = "Application Theme:";
             // 
             // cmbApplicationTheme
@@ -521,14 +522,14 @@
             this.cmbApplicationTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbApplicationTheme.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmbApplicationTheme.FormattingEnabled = true;
-            this.cmbApplicationTheme.Items.AddRange(new object[] {
+      this.cmbApplicationTheme.Items.AddRange(new object[] {
             "Visual Studio Light",
             "Visual Studio Dark",
             "Visual Studio Blue"});
-            this.cmbApplicationTheme.Location = new System.Drawing.Point(3, 295);
+      this.cmbApplicationTheme.Location = new System.Drawing.Point(0, 319);
             this.cmbApplicationTheme.Name = "cmbApplicationTheme";
             this.cmbApplicationTheme.Size = new System.Drawing.Size(474, 21);
-            this.cmbApplicationTheme.TabIndex = 3;
+            this.cmbApplicationTheme.TabIndex = 4;
             this.cmbApplicationTheme.SelectionChangeCommitted += new System.EventHandler(this.CmbApplicationTheme_SelectionChangeCommitted);
             // 
             // nfoPanel
@@ -538,28 +539,40 @@
             this.nfoPanel.BackColor = System.Drawing.Color.WhiteSmoke;
             this.nfoPanel.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.nfoPanel.InfoIcon = global::Couchcoding.Logbert.Properties.Resources.StatusAnnotations_Information_16xLG;
-            this.nfoPanel.Location = new System.Drawing.Point(3, 322);
+            this.nfoPanel.Location = new System.Drawing.Point(0, 346);
             this.nfoPanel.Name = "nfoPanel";
             this.nfoPanel.ShowInfoIcon = true;
             this.nfoPanel.ShowTitle = false;
             this.nfoPanel.Size = new System.Drawing.Size(474, 28);
-            this.nfoPanel.TabIndex = 4;
+            this.nfoPanel.TabIndex = 5;
             this.nfoPanel.Text = "Note: A restart of Logbert is required to apply a new theme.";
             this.nfoPanel.TextPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
             this.nfoPanel.Title = "";
+            // 
+            // chkUseInvertedColors
+            // 
+            this.chkUseInvertedColors.AutoSize = true;
+            this.chkUseInvertedColors.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.chkUseInvertedColors.Location = new System.Drawing.Point(3, 276);
+            this.chkUseInvertedColors.Name = "chkUseInvertedColors";
+            this.chkUseInvertedColors.Size = new System.Drawing.Size(183, 18);
+            this.chkUseInvertedColors.TabIndex = 2;
+            this.chkUseInvertedColors.Text = "Use inverted &colors for selection";
+            this.chkUseInvertedColors.UseVisualStyleBackColor = true;
             // 
             // OptionPanelFontColor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.chkUseInvertedColors);
             this.Controls.Add(this.nfoPanel);
             this.Controls.Add(this.cmbApplicationTheme);
             this.Controls.Add(this.lblApplicationTheme);
             this.Controls.Add(this.chkDrawGrid);
             this.Controls.Add(this.tblLayout);
-            this.MinimumSize = new System.Drawing.Size(320, 354);
+            this.MinimumSize = new System.Drawing.Size(320, 381);
             this.Name = "OptionPanelFontColor";
-            this.Size = new System.Drawing.Size(480, 354);
+            this.Size = new System.Drawing.Size(480, 381);
             this.tblLayout.ResumeLayout(false);
             this.tblLayout.PerformLayout();
             this.ResumeLayout(false);
@@ -605,5 +618,6 @@
         private System.Windows.Forms.Label lblApplicationTheme;
         private System.Windows.Forms.ComboBox cmbApplicationTheme;
         private Gui.Controls.InfoPanel nfoPanel;
-    }
+    private System.Windows.Forms.CheckBox chkUseInvertedColors;
+  }
 }

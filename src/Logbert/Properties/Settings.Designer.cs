@@ -2093,5 +2093,17 @@ namespace Couchcoding.Logbert.Properties {
                 this["PnlCustomDirSettingsEncoding"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseInvertedColorForSelection {
+            get {
+                return ((bool)(this["UseInvertedColorForSelection"]));
+            }
+            set {
+                this["UseInvertedColorForSelection"] = value;
+            }
+        }
     }
 }

@@ -265,6 +265,7 @@ namespace Couchcoding.Logbert.Controls.OptionPanels
       
       cmbApplicationTheme.SelectedItem = Settings.Default.ApplicationTheme;
       chkDrawGrid.Checked              = Settings.Default.LogWindowDrawGrid;
+      chkUseInvertedColors.Checked     = Settings.Default.UseInvertedColorForSelection;
 
       mLastSelectedTheme = cmbApplicationTheme.Text;
     }
@@ -304,8 +305,9 @@ namespace Couchcoding.Logbert.Controls.OptionPanels
         Settings.Default.FontStyleError   = cmbFontStyleError.SelectedIndex == 0 ? FontStyle.Regular : FontStyle.Bold;
         Settings.Default.FontStyleFatal   = cmbFontStyleFatal.SelectedIndex == 0 ? FontStyle.Regular : FontStyle.Bold;
 
-        Settings.Default.LogWindowDrawGrid = chkDrawGrid.Checked;
-        Settings.Default.ApplicationTheme  = cmbApplicationTheme.Text;
+        Settings.Default.LogWindowDrawGrid            = chkDrawGrid.Checked;
+        Settings.Default.ApplicationTheme             = cmbApplicationTheme.Text;
+        Settings.Default.UseInvertedColorForSelection = chkUseInvertedColors.Checked;
 
         Settings.Default.SaveSettings();
       }
