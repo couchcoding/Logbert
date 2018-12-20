@@ -905,13 +905,19 @@ namespace Logbert
 
       MainMenuStrip.Items.Add(mUpdateLabel);
 
-      if (Enum.TryParse<Theme>(Settings.Default.ApplicationTheme, out Theme theme))
+      switch (Settings.Default.ApplicationTheme)
       {
-        ThemeManager.SetActiveApplicationTheme(theme);
-      }
-      else 
-      {
-         ThemeManager.SetActiveApplicationTheme(Theme.VisualStudioLight); 
+        case BaseTheme.VisualStudioThemeDarkName:
+          ThemeManager.SetActiveApplicationTheme(new VisualStudioDarkTheme()); 
+          break;
+
+        case BaseTheme.VisualStudioThemeBlueName:
+          ThemeManager.SetActiveApplicationTheme(new VisualStudioBlueTheme()); 
+          break;
+
+        default:
+          ThemeManager.SetActiveApplicationTheme(new VisualStudioLightTheme()); 
+          break;
       }
 
       ThemeManager.ApplyTo(this);

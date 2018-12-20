@@ -39,7 +39,26 @@ namespace Couchcoding.Logbert.Theme.Themes
   /// Implements the base class for all themes.
   /// </summary>
   public abstract class BaseTheme
-  {    
+  {
+    #region Public Consts
+
+    /// <summary>
+    /// Defines the name of the <see cref="VisualStudioLightTheme"/>.
+    /// </summary>
+    public const string VisualStudioThemeLightName = "Visual Studio Light";
+
+    /// <summary>
+    /// Defines the name of the <see cref="VisualStudioBlueTheme"/>.
+    /// </summary>
+    public const string VisualStudioThemeBlueName = "Visual Studio Blue";
+
+    /// <summary>
+    /// Defines the name of the <see cref="VisualStudioDarkTheme"/>.
+    /// </summary>
+    public const string VisualStudioThemeDarkName = "Visual Studio Dark";
+
+    #endregion
+
     #region Private Fields
 
     /// <summary>

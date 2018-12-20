@@ -79,7 +79,6 @@
     <Compile Include="Resources\VisualStudioBlueResources.cs" />
     <Compile Include="Resources\VisualStudioDarkResources.cs" />
     <Compile Include="Resources\VisualStudioLightResources.cs" />
-    <Compile Include="Theme.cs" />
     <Compile Include="ThemeManager.cs" />
     <Compile Include="Themes\BaseTheme.cs" />
     <Compile Include="Themes\VisualStudioBlueTheme.cs" />

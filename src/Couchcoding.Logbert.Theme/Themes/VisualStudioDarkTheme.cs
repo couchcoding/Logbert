@@ -45,7 +45,7 @@ namespace Couchcoding.Logbert.Theme.Themes
     /// <summary>
     /// Gets the name of the <see cref="BaseTheme"/> instance.
     /// </summary>
-    public override string Name => "Visual Studio Dark";
+    public override string Name => VisualStudioThemeDarkName;
 
     #endregion
 

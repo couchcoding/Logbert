@@ -401,52 +401,63 @@ namespace Couchcoding.Logbert.Dialogs.Docking
       Brush backgroundBrush = null;
       FontStyle fontStyle   = FontStyle.Regular;
 
+      switch (mFilteredLogMessages[e.RowIndex].Level)
+      {
+        case LogLevel.Trace:
+          foreColor = Settings.Default.ForegroundColorTrace;
+          backColor = Settings.Default.BackgroundColorTrace;
+          fontStyle = Settings.Default.FontStyleTrace;
+          backgroundBrush = GdiCache.GetBrushFromColor(backColor);
+          break;
+        case LogLevel.Debug:
+          foreColor = Settings.Default.ForegroundColorDebug;
+          backColor = Settings.Default.BackgroundColorDebug;
+          fontStyle = Settings.Default.FontStyleDebug;
+          backgroundBrush = GdiCache.GetBrushFromColor(backColor);
+          break;
+        case LogLevel.Info:
+          foreColor = Settings.Default.ForegroundColorInfo;
+          backColor = Settings.Default.BackgroundColorInfo;
+          fontStyle = Settings.Default.FontStyleInfo;
+          backgroundBrush = GdiCache.GetBrushFromColor(backColor);
+          break;
+        case LogLevel.Warning:
+          foreColor = Settings.Default.ForegroundColorWarning;
+          backColor = Settings.Default.BackgroundColorWarning;
+          fontStyle = Settings.Default.FontStyleWarning;
+          backgroundBrush = GdiCache.GetBrushFromColor(backColor);
+          break;
+        case LogLevel.Error:
+          foreColor = Settings.Default.ForegroundColorError;
+          backColor = Settings.Default.BackgroundColorError;
+          fontStyle = Settings.Default.FontStyleError;
+          backgroundBrush = GdiCache.GetBrushFromColor(backColor);
+          break;
+        case LogLevel.Fatal:
+          foreColor = Settings.Default.ForegroundColorFatal;
+          backColor = Settings.Default.BackgroundColorFatal;
+          fontStyle = Settings.Default.FontStyleFatal;
+          backgroundBrush = GdiCache.GetBrushFromColor(backColor);
+          break;
+      }
+
       if ((e.State & DataGridViewElementStates.Selected) == DataGridViewElementStates.Selected)
       {
-        foreColor       = SystemColors.HighlightText;
-        backColor       = SystemColors.MenuHighlight;
-        backgroundBrush = GdiCache.GetBrushFromColor(backColor);
-      }
-      else
-      {
-        switch (mFilteredLogMessages[e.RowIndex].Level)
+        if (Settings.Default.UseInvertedColorForSelection)
         {
-          case LogLevel.Trace:
-            foreColor = Settings.Default.ForegroundColorTrace;
-            backColor = Settings.Default.BackgroundColorTrace;
-            fontStyle = Settings.Default.FontStyleTrace;
-            backgroundBrush = GdiCache.GetBrushFromColor(backColor);
-            break;
-          case LogLevel.Debug:
-            foreColor = Settings.Default.ForegroundColorDebug;
-            backColor = Settings.Default.BackgroundColorDebug;
-            fontStyle = Settings.Default.FontStyleDebug;
-            backgroundBrush = GdiCache.GetBrushFromColor(backColor);
-            break;
-          case LogLevel.Info:
-            foreColor = Settings.Default.ForegroundColorInfo;
-            backColor = Settings.Default.BackgroundColorInfo;
-            fontStyle = Settings.Default.FontStyleInfo;
-            backgroundBrush = GdiCache.GetBrushFromColor(backColor);
-            break;
-          case LogLevel.Warning:
-            foreColor = Settings.Default.ForegroundColorWarning;
-            backColor = Settings.Default.BackgroundColorWarning;
-            fontStyle = Settings.Default.FontStyleWarning;
-            backgroundBrush = GdiCache.GetBrushFromColor(backColor);
-            break;
-          case LogLevel.Error:
-            foreColor = Settings.Default.ForegroundColorError;
-            backColor = Settings.Default.BackgroundColorError;
-            fontStyle = Settings.Default.FontStyleError;
-            backgroundBrush = GdiCache.GetBrushFromColor(backColor);
-            break;
-          case LogLevel.Fatal:
-            foreColor = Settings.Default.ForegroundColorFatal;
-            backColor = Settings.Default.BackgroundColorFatal;
-            fontStyle = Settings.Default.FontStyleFatal;
-            backgroundBrush = GdiCache.GetBrushFromColor(backColor);
-            break;
+          // Invert the colors for selected items.
+          Color tmpForecolor = foreColor;
+
+          foreColor       = backColor;
+          backColor       = tmpForecolor;
+          backgroundBrush = GdiCache.GetBrushFromColor(tmpForecolor);
+        }
+        else
+        {
+          // Use the default system colors for selected items.
+          foreColor       = SystemColors.HighlightText;
+          backColor       = SystemColors.MenuHighlight;
+          backgroundBrush = GdiCache.GetBrushFromColor(backColor);
         }
       }
 
