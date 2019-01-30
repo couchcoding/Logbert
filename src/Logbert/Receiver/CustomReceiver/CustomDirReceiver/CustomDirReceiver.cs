@@ -265,17 +265,21 @@ namespace Couchcoding.Logbert.Receiver.Log4NetDirReceiver
           mLastFileOffset
         , SeekOrigin.Begin);
 
-      string line;
+      string currentLine;
+      string messageLines = string.Empty;
+
       List<LogMessage> messages = new List<LogMessage>();
 
-      while ((line = mFileReader.ReadLine()) != null)
+      while ((currentLine = mFileReader.ReadLine()) != null)
       {
         LogMessageCustom cstmLgMsg;
 
         try
         {
+          messageLines += currentLine;
+
           cstmLgMsg = new LogMessageCustom(
-              line
+              messageLines
             , mLogNumber + 1
             , mColumnizer);
         }
@@ -284,6 +288,8 @@ namespace Couchcoding.Logbert.Receiver.Log4NetDirReceiver
           Logger.Warn(ex.Message);
           continue;
         }
+
+        messageLines = string.Empty;
 
         mLogNumber++;
         messages.Add(cstmLgMsg);

@@ -126,7 +126,7 @@ namespace Couchcoding.Logbert.Logging
     {
       for (int i = 0; i < mColumnizer.Columns.Count; ++i)
       {
-        Match mtc = Regex.Match(data, mColumnizer.Columns[i].Expression);
+        Match mtc = Regex.Match(data, mColumnizer.Columns[i].Expression, RegexOptions.Multiline);
 
         if (!mtc.Success && !mColumnizer.Columns[i].Optional)
         {

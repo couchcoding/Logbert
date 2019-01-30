@@ -98,15 +98,24 @@ namespace Couchcoding.Logbert.Dialogs.Docking
       lstLogger.Items.Add(new CustomTcpReceiver());
       lstLogger.Items.Add(new CustomFileReceiver());
       lstLogger.Items.Add(new CustomDirReceiver());
-
-      RebuildMruList();
-
-      MruManager.MruListChanged += (_, __) => RebuildMruList();
     }
 
     #endregion
 
     #region Private Methods
+
+    /// <summary>
+    /// Raises the <see cref="E:System.Windows.Forms.Form.Shown"/> event.
+    /// </summary>
+    /// <param name="e">A <see cref="T:System.EventArgs"/> that contains the event data. </param>
+    protected override void OnShown(EventArgs e)
+    {
+      base.OnShown(e);
+
+      RebuildMruList();
+
+      MruManager.MruListChanged += (_, __) => RebuildMruList();
+    }
 
     /// <summary>Calculates the scroll offset to the specified child control. </summary>
     /// <returns>The upper-left hand <see cref="T:System.Drawing.Point" /> of the display area relative to the client area required to scroll the control into view.</returns>
@@ -194,7 +203,9 @@ namespace Couchcoding.Logbert.Dialogs.Docking
           DisabledLinkColor = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed,
           LinkBehavior      = LinkBehavior.HoverUnderline,
           Padding           = new Padding(0, 0, 0, 10),
-          AutoSize          = true
+          AutoSize          = false,
+          Width             = flRecentFiles.Width - (flRecentFiles.Padding.Left + flRecentFiles.Padding.Right),
+          Height            = 26
         };
 
         recentFileLink.LinkClicked += RecentFileClicked;
