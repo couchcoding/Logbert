@@ -94,7 +94,7 @@ namespace Couchcoding.Logbert.Receiver.SyslogFileReceiver
 
         cmbEncoding.Items.Add(encWrapper);
 
-        if (encoding.CodePage == (ModifierKeys != Keys.Shift ? Settings.Default.PnlSyslogUdpSettingsEncoding : Encoding.Default.CodePage))
+        if (encoding.CodePage == (ModifierKeys != Keys.Shift ? Settings.Default.PnlSyslogFileSettingsEncoding : Encoding.Default.CodePage))
         {
           cmbEncoding.SelectedItem = encWrapper;
         }

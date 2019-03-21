@@ -92,7 +92,7 @@ namespace Couchcoding.Logbert.Receiver.NLogFileReceiver
 
         cmbEncoding.Items.Add(encWrapper);
 
-        if (encoding.CodePage == (ModifierKeys != Keys.Shift ? Settings.Default.PnlSyslogUdpSettingsEncoding : Encoding.Default.CodePage))
+        if (encoding.CodePage == (ModifierKeys != Keys.Shift ? Settings.Default.PnlNLogFileSettingsEncoding : Encoding.Default.CodePage))
         {
           cmbEncoding.SelectedItem = encWrapper;
         }

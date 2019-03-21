@@ -180,25 +180,32 @@ namespace Couchcoding.Logbert.Logging
 
       Table msgData = new Table(owner);
               
-      msgData["Index"]           = Index;
-      msgData["Level"]           = Level;
-      msgData["Logger"]          = Logger;
-      msgData["Message"]         = Message;
-      msgData["RawData"]         = RawData;
-      msgData["TimeShiftOffset"] = TimeShiftOffset;
+      msgData["Index"]   = Index;
+      msgData["Level"]   = Level;
+      msgData["Logger"]  = Logger;
+      msgData["Message"] = Message;
+      msgData["RawData"] = RawData;
 
-      Table timeTable = new Table(owner);
-              
-      timeTable["Day"]         = Timestamp.Day;
-      timeTable["Month"]       = Timestamp.Month;
-      timeTable["Year"]        = Timestamp.Year;
-      timeTable["Hour"]        = Timestamp.Hour;
-      timeTable["Minute"]      = Timestamp.Minute;
-      timeTable["Second"]      = Timestamp.Second;
-      timeTable["Millisecond"] = Timestamp.Millisecond;
-      timeTable["Timestamp"]   = Timestamp.ToUnixTimestamp();
+      msgData["TimeShift"] = new Table(owner)
+      {
+        ["Days"]         = TimeShiftOffset.Days,
+        ["Hours"]        = TimeShiftOffset.Hours,
+        ["Minutes"]      = TimeShiftOffset.Minutes,
+        ["Seconds"]      = TimeShiftOffset.Seconds,
+        ["Milliseconds"] = TimeShiftOffset.Milliseconds
+      };
 
-      msgData["Timestamp"] = timeTable;
+      msgData["Timestamp"] = new Table(owner)
+      {
+        ["Day"]         = Timestamp.Day,
+        ["Month"]       = Timestamp.Month,
+        ["Year"]        = Timestamp.Year,
+        ["Hour"]        = Timestamp.Hour,
+        ["Minute"]      = Timestamp.Minute,
+        ["Second"]      = Timestamp.Second,
+        ["Millisecond"] = Timestamp.Millisecond,
+        ["Timestamp"]   = Timestamp.ToUnixTimestamp()
+      };
               
      return msgData;
     }

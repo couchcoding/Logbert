@@ -92,26 +92,19 @@ namespace Couchcoding.Logbert.Theme
         return;
       }
 
-      if (control is ContextMenuStrip contextMenuStripControl)
-      {
-        CurrentApplicationTheme.DockingTheme.ApplyTo(contextMenuStripControl);
-        return;
-      }
-
       if (control is DockPanel dockPanelControl)
       {
         CurrentApplicationTheme.DockingTheme.ApplyTo(dockPanelControl);
-        return;
       }
 
       if (control is IThemable themableControl)
       {
         themableControl.ApplyTheme(CurrentApplicationTheme);
+      }
 
-        foreach (Control childControl in themableControl.Controls)
-        {
-          ApplyTo(childControl);
-        }
+      foreach (Control childControl in control.Controls)
+      {
+        ApplyTo(childControl);
       }
     }
 

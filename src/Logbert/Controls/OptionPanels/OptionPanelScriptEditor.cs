@@ -130,11 +130,13 @@ namespace Couchcoding.Logbert.Controls.OptionPanels
       /// <param name="key">The settings key used to load existing values.</param>
       public static CodeElement Load(string name, string key)
       {
-        CodeElement newElement = new CodeElement(name, key);
+        CodeElement newElement = new CodeElement(name, key)
+        {
+          Forecolor = (Color)Settings.Default["CodeElement_"     + key + "_ForegroundColor"],
+          Backcolor = (Color)Settings.Default["CodeElement_"     + key + "_BackgroundColor"],
+          Style     = (FontStyle)Settings.Default["CodeElement_" + key + "_FontStyle"]
+        };
 
-        newElement.Forecolor = (Color)    Settings.Default["CodeElement_" + key + "_ForegroundColor"];
-        newElement.Backcolor = (Color)    Settings.Default["CodeElement_" + key + "_BackgroundColor"];
-        newElement.Style     = (FontStyle)Settings.Default["CodeElement_" + key + "_FontStyle"];
 
         return newElement;
       }
@@ -328,6 +330,7 @@ namespace Couchcoding.Logbert.Controls.OptionPanels
       lstElements.Items.Add(CodeElement.Load("Bracket",          "Bracket"        ));
       lstElements.Items.Add(CodeElement.Load("Comment",          "Comment"        ));
       lstElements.Items.Add(CodeElement.Load("Default Text",     "DefaultText"    ));
+      lstElements.Items.Add(CodeElement.Load("Identifier",       "Identifier"     ));
       lstElements.Items.Add(CodeElement.Load("Keyword",          "Keyword"        ));
       lstElements.Items.Add(CodeElement.Load("Logbert Function", "LogbertFunction"));
       lstElements.Items.Add(CodeElement.Load("Lua Function",     "LuaFunction"    ));
