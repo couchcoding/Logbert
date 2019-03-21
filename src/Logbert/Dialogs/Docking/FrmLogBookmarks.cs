@@ -209,14 +209,14 @@ namespace Couchcoding.Logbert.Dialogs.Docking
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
     protected override void Dispose(bool disposing)
     {
-      if (disposing && (components != null))
+      if (disposing)
       {
-        components.Dispose();
-      }
+        components?.Dispose();
 
-      if (mBookmarkProvider != null)
-      {
-        mBookmarkProvider.RegisterBookmarkObserver(this);
+        if (mBookmarkProvider != null)
+        {
+          mBookmarkProvider.UnregisterBookmarkObserver(this);
+        }
       }
 
       base.Dispose(disposing);

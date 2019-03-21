@@ -728,13 +728,16 @@ namespace Couchcoding.Logbert.Dialogs.Docking
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
     protected override void Dispose(bool disposing)
     {
-      if (disposing && (components != null))
+      if (disposing)
       {
         components.Dispose();
-      }
 
-      // Remove the settings change event handler.
-      Settings.Default.SettingChanging -= DefaultSettingChanging;
+        mFilteredLogMessages?.Clear();
+        mFilteredLogMessages = null;
+
+        // Remove the settings change event handler.
+        Settings.Default.SettingChanging -= DefaultSettingChanging;
+      }
 
       base.Dispose(disposing);
     }

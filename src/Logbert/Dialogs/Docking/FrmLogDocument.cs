@@ -43,8 +43,6 @@ using Couchcoding.Logbert.Logging.Filter;
 using Couchcoding.Logbert.Properties;
 
 using WeifenLuo.WinFormsUI.Docking;
-using Couchcoding.Logbert.Gui.Helper;
-using Couchcoding.Logbert.Theme.Palettes;
 using Couchcoding.Logbert.Theme.Interfaces;
 using Couchcoding.Logbert.Theme;
 using Couchcoding.Logbert.Theme.Themes;
@@ -888,57 +886,59 @@ namespace Couchcoding.Logbert.Dialogs.Docking
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
     protected override void Dispose(bool disposing)
     {
-      if (disposing && components != null)
+      if (disposing)
       {
-        components.Dispose();
-      }
+        components?.Dispose();
 
-      if (mLogProvider != null)
-      {
-        // Shutdown the logger functionality.
-        mLogProvider.Shutdown();
-
-        try
+        if (mLogProvider != null)
         {
-          // Save the current docking layout.
-          using (MemoryStream memStream = new MemoryStream())
+          // Shutdown the logger functionality.
+          mLogProvider.Shutdown();
+
+          try
           {
-            LogDockPanel.SaveAsXml(
-                memStream
-              , Encoding.UTF8);
-
-            memStream.Flush();
-
-            memStream.Seek(
-                0
-              , SeekOrigin.Begin);
-
-            if (memStream.Length > 0)
+            // Save the current docking layout.
+            using (MemoryStream memStream = new MemoryStream())
             {
-              mLogProvider.SaveLayout(
-                  Encoding.UTF8.GetString(memStream.ToArray())
-                , ((FrmLogWindow)mLogWindow).GetColumnLayout());
+              LogDockPanel.SaveAsXml(
+                  memStream
+                , Encoding.UTF8);
+
+              memStream.Flush();
+
+              memStream.Seek(
+                  0
+                , SeekOrigin.Begin);
+
+              if (memStream.Length > 0)
+              {
+                mLogProvider.SaveLayout(
+                    Encoding.UTF8.GetString(memStream.ToArray())
+                  , ((FrmLogWindow)mLogWindow).GetColumnLayout());
+              }
             }
           }
+          catch (Exception ex)
+          {
+            Logger.Error(
+                "An error occured while saving the current docking layout: {0}"
+              , ex.Message);
+          }
         }
-        catch (Exception ex)
+
+        if (tmrUpdate != null && tmrUpdate.Enabled)
         {
-          Logger.Error(
-              "An error occured while saving the current docking layout: {0}"
-            , ex.Message);
+          tmrUpdate.Tick -= TmrUpdateTick;
+
+          tmrUpdate.Stop();
+          tmrUpdate.Dispose();
         }
+
+        ((ILogFilterHandler)mLogWindow).UnregisterFilterProvider(this);
+        ((FrmLogWindow)mLogWindow).OnLogMessageSelected -= OnLogMessageSelected;
+
+        mLogMessages?.Clear();
       }
-
-      if (tmrUpdate != null && tmrUpdate.Enabled)
-      {
-        tmrUpdate.Tick -= TmrUpdateTick;
-
-        tmrUpdate.Stop();
-        tmrUpdate.Dispose();
-      }
-
-      ((ILogFilterHandler)mLogWindow).UnregisterFilterProvider(this);
-      ((FrmLogWindow)mLogWindow).OnLogMessageSelected -= OnLogMessageSelected;
 
       base.Dispose(disposing);
     }
@@ -1172,6 +1172,9 @@ namespace Couchcoding.Logbert.Dialogs.Docking
     /// <param name="theme">The <see cref="BaseTheme"/> instance to apply.</param>
     public void ApplyTheme(BaseTheme theme)
     {
+      txtTimeShift.BackColor = theme.ColorPalette.ContentBackground;
+      txtTimeShift.ForeColor = theme.ColorPalette.ContentForeground;
+
       tsbShowTrace.Image          = theme.Resources.Images["FrmMainTbTrace"];
       tsbShowDebug.Image          = theme.Resources.Images["FrmMainTbDebug"];
       tsbShowInfo.Image           = theme.Resources.Images["FrmMainTbInfo"];

@@ -211,7 +211,11 @@ Callback Functions:
       msgs.Logger                       -- The Logger of the log message.
       msgs.Message                      -- The received log message.
       msgs.RawData                      -- The unformatted raw data. May be XML or a simple string.
-      msgs.TimeShiftOffset              -- The current time shift offset of the log message.
+      msgs.TimeShift.Days               -- The current time shift offset of the log message in days.
+      msgs.TimeShift.Hours              -- The current time shift offset of the log message in hours.
+      msgs.TimeShift.Minutes            -- The current time shift offset of the log message in minutes.
+      msgs.TimeShift.Seconds            -- The current time shift offset of the log message in seconds.
+      msgs.TimeShift.Milliseconds       -- The current time shift offset of the log message in milliseconds.
       msgs.Timestamp.Day                -- The day, Logbert received the log message.
       msgs.Timestamp.Month              -- The month, Logbert received the log message.
       msgs.Timestamp.Year               -- The year, Logbert received the log message.

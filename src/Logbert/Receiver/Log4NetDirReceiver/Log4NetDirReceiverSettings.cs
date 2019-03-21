@@ -118,7 +118,7 @@ namespace Couchcoding.Logbert.Receiver.Log4NetDirReceiver
           txtLogDirectory.Text = Settings.Default.PnlLog4NetDirectorySettingsDirectory;
         }
 
-        txtLogFilePattern.Text    = Settings.Default.PnlLog4NetDirectorySettingsPattern ;
+        txtLogFilePattern.Text    = Settings.Default.PnlLog4NetDirectorySettingsPattern;
         chkInitialReadAll.Checked = Settings.Default.PnlLog4NetDirectorySettingsReadAllExisting;
       }
 
@@ -128,7 +128,7 @@ namespace Couchcoding.Logbert.Receiver.Log4NetDirReceiver
 
         cmbEncoding.Items.Add(encWrapper);
 
-        if (encoding.CodePage == (ModifierKeys != Keys.Shift ? Settings.Default.PnlSyslogUdpSettingsEncoding : Encoding.Default.CodePage))
+        if (encoding.CodePage == (ModifierKeys != Keys.Shift ? Settings.Default.PnlLog4NetDirectorySettingsEncoding : Encoding.Default.CodePage))
         {
           cmbEncoding.SelectedItem = encWrapper;
         }

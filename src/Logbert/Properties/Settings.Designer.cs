@@ -12,7 +12,7 @@ namespace Couchcoding.Logbert.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.8.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -2103,6 +2103,42 @@ namespace Couchcoding.Logbert.Properties {
             }
             set {
                 this["UseInvertedColorForSelection"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Blue")]
+        public global::System.Drawing.Color CodeElement_Identifier_ForegroundColor {
+            get {
+                return ((global::System.Drawing.Color)(this["CodeElement_Identifier_ForegroundColor"]));
+            }
+            set {
+                this["CodeElement_Identifier_ForegroundColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public global::System.Drawing.Color CodeElement_Identifier_BackgroundColor {
+            get {
+                return ((global::System.Drawing.Color)(this["CodeElement_Identifier_BackgroundColor"]));
+            }
+            set {
+                this["CodeElement_Identifier_BackgroundColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Regular")]
+        public global::System.Drawing.FontStyle CodeElement_Identifier_FontStyle {
+            get {
+                return ((global::System.Drawing.FontStyle)(this["CodeElement_Identifier_FontStyle"]));
+            }
+            set {
+                this["CodeElement_Identifier_FontStyle"] = value;
             }
         }
     }

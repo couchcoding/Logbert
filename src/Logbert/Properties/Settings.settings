@@ -524,5 +524,14 @@
     <Setting Name="UseInvertedColorForSelection" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="CodeElement_Identifier_ForegroundColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Blue</Value>
+    </Setting>
+    <Setting Name="CodeElement_Identifier_BackgroundColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="CodeElement_Identifier_FontStyle" Type="System.Drawing.FontStyle" Scope="User">
+      <Value Profile="(Default)">Regular</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

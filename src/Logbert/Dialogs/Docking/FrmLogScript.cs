@@ -1,4 +1,4 @@
-﻿#region Copyright © 2015 Couchcoding
+﻿  #region Copyright © 2015 Couchcoding
 
 // File:    FrmLogScript.cs
 // Package: Logbert
@@ -400,11 +400,15 @@ namespace Couchcoding.Logbert.Dialogs.Docking
       scintilla.Margins[(int)MarginType.BackColor].Sensitive = true;
       scintilla.Margins[(int)MarginType.BackColor].Width     = 20;
 
+      scintilla.Styles[Style.LineNumber].ForeColor = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+      scintilla.Styles[Style.LineNumber].BackColor = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground;
+      scintilla.Styles[Style.Default].BackColor    = Settings.Default.CodeElement_DefaultText_BackgroundColor;
+
       // Set colors for all folding markers.
-      for (int i = 25; i <= 31; ++i)
+      for (int i = 0; i <= scintilla.Markers.Count; ++i)
       {
-        scintilla.Markers[i].SetForeColor(SystemColors.ControlLightLight);
-        scintilla.Markers[i].SetBackColor(SystemColors.ControlDark);
+        scintilla.Markers[i].SetForeColor(ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground);
+        scintilla.Markers[i].SetBackColor(ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed);
       }
 
       // Configure folding markers with respective symbols.
@@ -418,11 +422,11 @@ namespace Couchcoding.Logbert.Dialogs.Docking
 
       scintilla.SetFoldMarginColor(
           true
-        , SystemColors.Window);
+        , ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground);
 
       scintilla.SetFoldMarginHighlightColor(
           true
-        , SystemColors.Window);
+        , ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground);
 
       // Enable automatic folding.
       scintilla.AutoCIgnoreCase = true;
@@ -454,6 +458,8 @@ namespace Couchcoding.Logbert.Dialogs.Docking
       {
         scintilla.SuspendDrawing();
 
+        scintilla.Styles[Style.Default].BackColor         = Settings.Default.CodeElement_DefaultText_BackgroundColor;
+
         // Configure braced hightlighting.
         scintilla.Styles[Style.BraceLight].ForeColor      = Settings.Default.CodeElement_Bracket_ForegroundColor;
         scintilla.Styles[Style.BraceLight].BackColor      = Settings.Default.CodeElement_Bracket_BackgroundColor;
@@ -461,72 +467,96 @@ namespace Couchcoding.Logbert.Dialogs.Docking
         scintilla.Styles[Style.BraceBad].ForeColor        = Color.Red;
 
         // Configure the Lua lexer styles
-        scintilla.Styles[Style.Lua.Default].ForeColor     = Settings.Default.CodeElement_DefaultText_ForegroundColor;
-        scintilla.Styles[Style.Lua.Comment].ForeColor     = Settings.Default.CodeElement_Comment_ForegroundColor;
-        scintilla.Styles[Style.Lua.CommentLine].ForeColor = Settings.Default.CodeElement_Comment_ForegroundColor;
-        scintilla.Styles[Style.Lua.CommentDoc].ForeColor  = Settings.Default.CodeElement_Comment_ForegroundColor;
-        scintilla.Styles[Style.Lua.Number].ForeColor      = Settings.Default.CodeElement_Number_ForegroundColor;
-        scintilla.Styles[Style.Lua.Word].ForeColor        = Settings.Default.CodeElement_Keyword_ForegroundColor;
-        scintilla.Styles[Style.Lua.Word2].ForeColor       = Settings.Default.CodeElement_LuaFunction_ForegroundColor;
-        scintilla.Styles[Style.Lua.Word3].ForeColor       = Settings.Default.CodeElement_LogbertFunction_ForegroundColor;
-        scintilla.Styles[Style.Lua.String].ForeColor      = Settings.Default.CodeElement_String_ForegroundColor;
-        scintilla.Styles[Style.Lua.Character].ForeColor   = Settings.Default.CodeElement_String_ForegroundColor;
-        scintilla.Styles[Style.Lua.StringEol].ForeColor   = Settings.Default.CodeElement_String_ForegroundColor;
-        scintilla.Styles[Style.Lua.Operator].ForeColor    = Settings.Default.CodeElement_Operator_ForegroundColor;
+        scintilla.Styles[Style.Lua.Default].ForeColor       = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+        scintilla.Styles[Style.Lua.Comment].ForeColor       = Settings.Default.CodeElement_Comment_ForegroundColor;
+        scintilla.Styles[Style.Lua.CommentLine].ForeColor   = Settings.Default.CodeElement_Comment_ForegroundColor;
+        scintilla.Styles[Style.Lua.CommentDoc].ForeColor    = Settings.Default.CodeElement_Comment_ForegroundColor;
+        scintilla.Styles[Style.Lua.Number].ForeColor        = Settings.Default.CodeElement_Number_ForegroundColor;
+        scintilla.Styles[Style.Lua.Word].ForeColor          = Settings.Default.CodeElement_Keyword_ForegroundColor;
+        scintilla.Styles[Style.Lua.Word2].ForeColor         = Settings.Default.CodeElement_LuaFunction_ForegroundColor;
+        scintilla.Styles[Style.Lua.Word3].ForeColor         = Settings.Default.CodeElement_LogbertFunction_ForegroundColor;
+        scintilla.Styles[Style.Lua.Word4].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+        scintilla.Styles[Style.Lua.Word5].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+        scintilla.Styles[Style.Lua.Word6].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+        scintilla.Styles[Style.Lua.Word7].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+        scintilla.Styles[Style.Lua.Word8].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+        scintilla.Styles[Style.Lua.String].ForeColor        = Settings.Default.CodeElement_String_ForegroundColor;
+        scintilla.Styles[Style.Lua.Character].ForeColor     = Settings.Default.CodeElement_String_ForegroundColor;
+        scintilla.Styles[Style.Lua.StringEol].ForeColor     = Settings.Default.CodeElement_String_ForegroundColor;
+        scintilla.Styles[Style.Lua.Operator].ForeColor      = Settings.Default.CodeElement_Operator_ForegroundColor;
+        scintilla.Styles[Style.Lua.Identifier].ForeColor    = Settings.Default.CodeElement_Identifier_ForegroundColor;
+        scintilla.Styles[Style.Lua.Label].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+        scintilla.Styles[Style.Lua.LiteralString].ForeColor = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+        scintilla.Styles[Style.Lua.Preprocessor].ForeColor  = Settings.Default.CodeElement_DefaultText_ForegroundColor;
 
-        scintilla.Styles[Style.Lua.Default].BackColor     = Settings.Default.CodeElement_DefaultText_BackgroundColor;
-        scintilla.Styles[Style.Lua.Comment].BackColor     = Settings.Default.CodeElement_Comment_BackgroundColor;
-        scintilla.Styles[Style.Lua.CommentLine].BackColor = Settings.Default.CodeElement_Comment_BackgroundColor;
-        scintilla.Styles[Style.Lua.CommentDoc].BackColor  = Settings.Default.CodeElement_Comment_BackgroundColor;
-        scintilla.Styles[Style.Lua.Number].BackColor      = Settings.Default.CodeElement_Number_BackgroundColor;
-        scintilla.Styles[Style.Lua.Word].BackColor        = Settings.Default.CodeElement_Keyword_BackgroundColor;
-        scintilla.Styles[Style.Lua.Word2].BackColor       = Settings.Default.CodeElement_LuaFunction_BackgroundColor;
-        scintilla.Styles[Style.Lua.Word3].BackColor       = Settings.Default.CodeElement_LogbertFunction_BackgroundColor;
-        scintilla.Styles[Style.Lua.String].BackColor      = Settings.Default.CodeElement_String_BackgroundColor;
-        scintilla.Styles[Style.Lua.Character].BackColor   = Settings.Default.CodeElement_String_BackgroundColor;
-        scintilla.Styles[Style.Lua.StringEol].BackColor   = Settings.Default.CodeElement_String_BackgroundColor;
-        scintilla.Styles[Style.Lua.Operator].BackColor    = Settings.Default.CodeElement_Operator_BackgroundColor;
+        scintilla.Styles[Style.Lua.Default].BackColor       = Settings.Default.CodeElement_DefaultText_BackgroundColor;
+        scintilla.Styles[Style.Lua.Comment].BackColor       = Settings.Default.CodeElement_Comment_BackgroundColor;
+        scintilla.Styles[Style.Lua.CommentLine].BackColor   = Settings.Default.CodeElement_Comment_BackgroundColor;
+        scintilla.Styles[Style.Lua.CommentDoc].BackColor    = Settings.Default.CodeElement_Comment_BackgroundColor;
+        scintilla.Styles[Style.Lua.Number].BackColor        = Settings.Default.CodeElement_Number_BackgroundColor;
+        scintilla.Styles[Style.Lua.Word].BackColor          = Settings.Default.CodeElement_Keyword_BackgroundColor;
+        scintilla.Styles[Style.Lua.Word2].BackColor         = Settings.Default.CodeElement_LuaFunction_BackgroundColor;
+        scintilla.Styles[Style.Lua.Word3].BackColor         = Settings.Default.CodeElement_LogbertFunction_BackgroundColor;
+        scintilla.Styles[Style.Lua.String].BackColor        = Settings.Default.CodeElement_String_BackgroundColor;
+        scintilla.Styles[Style.Lua.Character].BackColor     = Settings.Default.CodeElement_String_BackgroundColor;
+        scintilla.Styles[Style.Lua.StringEol].BackColor     = Settings.Default.CodeElement_String_BackgroundColor;
+        scintilla.Styles[Style.Lua.Operator].BackColor      = Settings.Default.CodeElement_Operator_BackgroundColor;
+        scintilla.Styles[Style.Lua.Identifier].BackColor    = Settings.Default.CodeElement_Identifier_BackgroundColor;
+        scintilla.Styles[Style.Lua.Label].BackColor         = Settings.Default.CodeElement_DefaultText_BackgroundColor;
+        scintilla.Styles[Style.Lua.LiteralString].BackColor = Settings.Default.CodeElement_DefaultText_BackgroundColor;
+        scintilla.Styles[Style.Lua.Preprocessor].BackColor  = Settings.Default.CodeElement_DefaultText_BackgroundColor;
 
-        scintilla.Styles[Style.Lua.Default].Bold     = Settings.Default.CodeElement_DefaultText_FontStyle     == FontStyle.Bold;
-        scintilla.Styles[Style.Lua.Comment].Bold     = Settings.Default.CodeElement_Comment_FontStyle         == FontStyle.Bold;
-        scintilla.Styles[Style.Lua.CommentLine].Bold = Settings.Default.CodeElement_Comment_FontStyle         == FontStyle.Bold;
-        scintilla.Styles[Style.Lua.CommentDoc].Bold  = Settings.Default.CodeElement_Comment_FontStyle         == FontStyle.Bold;
-        scintilla.Styles[Style.Lua.Number].Bold      = Settings.Default.CodeElement_Number_FontStyle          == FontStyle.Bold;
-        scintilla.Styles[Style.Lua.Word].Bold        = Settings.Default.CodeElement_Keyword_FontStyle         == FontStyle.Bold;
-        scintilla.Styles[Style.Lua.Word2].Bold       = Settings.Default.CodeElement_LuaFunction_FontStyle     == FontStyle.Bold;
-        scintilla.Styles[Style.Lua.Word3].Bold       = Settings.Default.CodeElement_LogbertFunction_FontStyle == FontStyle.Bold;
-        scintilla.Styles[Style.Lua.String].Bold      = Settings.Default.CodeElement_String_FontStyle          == FontStyle.Bold;
-        scintilla.Styles[Style.Lua.Character].Bold   = Settings.Default.CodeElement_String_FontStyle          == FontStyle.Bold;
-        scintilla.Styles[Style.Lua.StringEol].Bold   = Settings.Default.CodeElement_String_FontStyle          == FontStyle.Bold;
-        scintilla.Styles[Style.Lua.Operator].Bold    = Settings.Default.CodeElement_Operator_FontStyle        == FontStyle.Bold;
+        scintilla.Styles[Style.Lua.Default].Bold       = Settings.Default.CodeElement_DefaultText_FontStyle     == FontStyle.Bold;
+        scintilla.Styles[Style.Lua.Comment].Bold       = Settings.Default.CodeElement_Comment_FontStyle         == FontStyle.Bold;
+        scintilla.Styles[Style.Lua.CommentLine].Bold   = Settings.Default.CodeElement_Comment_FontStyle         == FontStyle.Bold;
+        scintilla.Styles[Style.Lua.CommentDoc].Bold    = Settings.Default.CodeElement_Comment_FontStyle         == FontStyle.Bold;
+        scintilla.Styles[Style.Lua.Number].Bold        = Settings.Default.CodeElement_Number_FontStyle          == FontStyle.Bold;
+        scintilla.Styles[Style.Lua.Word].Bold          = Settings.Default.CodeElement_Keyword_FontStyle         == FontStyle.Bold;
+        scintilla.Styles[Style.Lua.Word2].Bold         = Settings.Default.CodeElement_LuaFunction_FontStyle     == FontStyle.Bold;
+        scintilla.Styles[Style.Lua.Word3].Bold         = Settings.Default.CodeElement_LogbertFunction_FontStyle == FontStyle.Bold;
+        scintilla.Styles[Style.Lua.String].Bold        = Settings.Default.CodeElement_String_FontStyle          == FontStyle.Bold;
+        scintilla.Styles[Style.Lua.Character].Bold     = Settings.Default.CodeElement_String_FontStyle          == FontStyle.Bold;
+        scintilla.Styles[Style.Lua.StringEol].Bold     = Settings.Default.CodeElement_String_FontStyle          == FontStyle.Bold;
+        scintilla.Styles[Style.Lua.Operator].Bold      = Settings.Default.CodeElement_Operator_FontStyle        == FontStyle.Bold;
+        scintilla.Styles[Style.Lua.Identifier].Bold    = Settings.Default.CodeElement_Identifier_FontStyle          == FontStyle.Bold;
+        scintilla.Styles[Style.Lua.Label].Bold         = Settings.Default.CodeElement_String_FontStyle          == FontStyle.Bold;
+        scintilla.Styles[Style.Lua.LiteralString].Bold = Settings.Default.CodeElement_String_FontStyle          == FontStyle.Bold;
+        scintilla.Styles[Style.Lua.Preprocessor].Bold  = Settings.Default.CodeElement_String_FontStyle          == FontStyle.Bold;
 
         if (mLuaScriptRunning)
         {
-          scintilla.Styles[Style.Default].BackColor           = SystemColors.Control;
-          scintilla.Styles[Style.Lua.Default].BackColor       = SystemColors.Control;
-          scintilla.Styles[Style.Lua.Identifier].BackColor    = SystemColors.Control;
-          scintilla.Styles[Style.Lua.Label].BackColor         = SystemColors.Control;
-          scintilla.Styles[Style.Lua.LiteralString].BackColor = SystemColors.Control;
-          scintilla.Styles[Style.Lua.CommentDoc].BackColor    = SystemColors.Control;
-          scintilla.Styles[Style.Lua.Comment].BackColor       = SystemColors.Control;
-          scintilla.Styles[Style.Lua.CommentLine].BackColor   = SystemColors.Control;
-          scintilla.Styles[Style.Lua.Number].BackColor        = SystemColors.Control;
-          scintilla.Styles[Style.Lua.Word].BackColor          = SystemColors.Control;
-          scintilla.Styles[Style.Lua.Word2].BackColor         = SystemColors.Control;
-          scintilla.Styles[Style.Lua.Word3].BackColor         = SystemColors.Control;
-          scintilla.Styles[Style.Lua.String].BackColor        = SystemColors.Control;
-          scintilla.Styles[Style.Lua.Character].BackColor     = SystemColors.Control;
-          scintilla.Styles[Style.Lua.StringEol].BackColor     = SystemColors.Control;
-          scintilla.Styles[Style.Lua.Operator].BackColor      = SystemColors.Control;
-          scintilla.Styles[Style.Lua.Preprocessor].BackColor  = SystemColors.Control;
+          scintilla.Styles[Style.Lua.Default].ForeColor       = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.Comment].ForeColor       = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.CommentLine].ForeColor   = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.CommentDoc].ForeColor    = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.Number].ForeColor        = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.Word].ForeColor          = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.Word2].ForeColor         = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.Word3].ForeColor         = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.Word4].ForeColor         = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.Word5].ForeColor         = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.Word6].ForeColor         = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.Word7].ForeColor         = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.Word8].ForeColor         = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.String].ForeColor        = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.Character].ForeColor     = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.StringEol].ForeColor     = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.Operator].ForeColor      = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.Identifier].ForeColor    = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.Label].ForeColor         = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.LiteralString].ForeColor = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+          scintilla.Styles[Style.Lua.Preprocessor].ForeColor  = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+
+
+
 
           scintilla.SetFoldMarginColor(
               true
-            , SystemColors.Control);
+            , ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground);
 
           scintilla.SetFoldMarginHighlightColor(
               true
-            , SystemColors.Control);
+            , ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground);
         }
       }
       finally
@@ -765,31 +795,35 @@ namespace Couchcoding.Logbert.Dialogs.Docking
         tsbStop.Enabled       = true;
         scintilla.ReadOnly    = true;
 
-        scintilla.Styles[Style.Default].BackColor            = SystemColors.Control;
-        scintilla.Styles[Style.Lua.Default].BackColor        = SystemColors.Control;
-        scintilla.Styles[Style.Lua.Identifier].BackColor     = SystemColors.Control;
-        scintilla.Styles[Style.Lua.Label].BackColor          = SystemColors.Control;
-        scintilla.Styles[Style.Lua.LiteralString].BackColor  = SystemColors.Control;
-        scintilla.Styles[Style.Lua.CommentDoc].BackColor     = SystemColors.Control;
-        scintilla.Styles[Style.Lua.Comment].BackColor        = SystemColors.Control;
-        scintilla.Styles[Style.Lua.CommentLine].BackColor    = SystemColors.Control;
-        scintilla.Styles[Style.Lua.Number].BackColor         = SystemColors.Control;
-        scintilla.Styles[Style.Lua.Word].BackColor           = SystemColors.Control;
-        scintilla.Styles[Style.Lua.Word2].BackColor          = SystemColors.Control;
-        scintilla.Styles[Style.Lua.Word3].BackColor          = SystemColors.Control;
-        scintilla.Styles[Style.Lua.String].BackColor         = SystemColors.Control;
-        scintilla.Styles[Style.Lua.Character].BackColor      = SystemColors.Control;
-        scintilla.Styles[Style.Lua.StringEol].BackColor      = SystemColors.Control;
-        scintilla.Styles[Style.Lua.Operator].BackColor       = SystemColors.Control;
-        scintilla.Styles[Style.Lua.Preprocessor].BackColor   = SystemColors.Control;
+        scintilla.Styles[Style.Lua.Default].ForeColor       = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.Comment].ForeColor       = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.CommentLine].ForeColor   = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.CommentDoc].ForeColor    = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.Number].ForeColor        = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.Word].ForeColor          = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.Word2].ForeColor         = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.Word3].ForeColor         = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.Word4].ForeColor         = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.Word5].ForeColor         = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.Word6].ForeColor         = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.Word7].ForeColor         = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.Word8].ForeColor         = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.String].ForeColor        = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.Character].ForeColor     = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.StringEol].ForeColor     = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.Operator].ForeColor      = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.Identifier].ForeColor    = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.Label].ForeColor         = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.LiteralString].ForeColor = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
+        scintilla.Styles[Style.Lua.Preprocessor].ForeColor  = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
 
         scintilla.SetFoldMarginColor(
             true
-          , SystemColors.Control);
+          , ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground);
 
         scintilla.SetFoldMarginHighlightColor(
             true
-          , SystemColors.Control);
+          , ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground);
 
         AsyncOperation async = AsyncOperationManager.CreateOperation(null);
 
@@ -884,31 +918,36 @@ namespace Couchcoding.Logbert.Dialogs.Docking
       tsbRedo.Enabled       = scintilla.CanRedo;
       scintilla.ReadOnly    = false;
 
-      scintilla.Styles[Style.Default].BackColor            = SystemColors.Window;
-      scintilla.Styles[Style.Lua.Default].BackColor        = SystemColors.Window;
-      scintilla.Styles[Style.Lua.Identifier].BackColor     = SystemColors.Window;
-      scintilla.Styles[Style.Lua.Label].BackColor          = SystemColors.Window;
-      scintilla.Styles[Style.Lua.LiteralString].BackColor  = SystemColors.Window;
-      scintilla.Styles[Style.Lua.CommentDoc].BackColor     = SystemColors.Window;
-      scintilla.Styles[Style.Lua.Comment].BackColor        = SystemColors.Window;
-      scintilla.Styles[Style.Lua.CommentLine].BackColor    = SystemColors.Window;
-      scintilla.Styles[Style.Lua.Number].BackColor         = SystemColors.Window;
-      scintilla.Styles[Style.Lua.Word].BackColor           = SystemColors.Window;
-      scintilla.Styles[Style.Lua.Word2].BackColor          = SystemColors.Window;
-      scintilla.Styles[Style.Lua.Word3].BackColor          = SystemColors.Window;
-      scintilla.Styles[Style.Lua.String].BackColor         = SystemColors.Window;
-      scintilla.Styles[Style.Lua.Character].BackColor      = SystemColors.Window;
-      scintilla.Styles[Style.Lua.StringEol].BackColor      = SystemColors.Window;
-      scintilla.Styles[Style.Lua.Operator].BackColor       = SystemColors.Window;
-      scintilla.Styles[Style.Lua.Preprocessor].BackColor   = SystemColors.Window;
+      scintilla.Styles[Style.Default].BackColor         = Settings.Default.CodeElement_DefaultText_BackgroundColor;
+        scintilla.Styles[Style.Lua.Default].ForeColor       = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+        scintilla.Styles[Style.Lua.Comment].ForeColor       = Settings.Default.CodeElement_Comment_ForegroundColor;
+        scintilla.Styles[Style.Lua.CommentLine].ForeColor   = Settings.Default.CodeElement_Comment_ForegroundColor;
+        scintilla.Styles[Style.Lua.CommentDoc].ForeColor    = Settings.Default.CodeElement_Comment_ForegroundColor;
+        scintilla.Styles[Style.Lua.Number].ForeColor        = Settings.Default.CodeElement_Number_ForegroundColor;
+        scintilla.Styles[Style.Lua.Word].ForeColor          = Settings.Default.CodeElement_Keyword_ForegroundColor;
+        scintilla.Styles[Style.Lua.Word2].ForeColor         = Settings.Default.CodeElement_LuaFunction_ForegroundColor;
+        scintilla.Styles[Style.Lua.Word3].ForeColor         = Settings.Default.CodeElement_LogbertFunction_ForegroundColor;
+        scintilla.Styles[Style.Lua.Word4].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+        scintilla.Styles[Style.Lua.Word5].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+        scintilla.Styles[Style.Lua.Word6].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+        scintilla.Styles[Style.Lua.Word7].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+        scintilla.Styles[Style.Lua.Word8].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+        scintilla.Styles[Style.Lua.String].ForeColor        = Settings.Default.CodeElement_String_ForegroundColor;
+        scintilla.Styles[Style.Lua.Character].ForeColor     = Settings.Default.CodeElement_String_ForegroundColor;
+        scintilla.Styles[Style.Lua.StringEol].ForeColor     = Settings.Default.CodeElement_String_ForegroundColor;
+        scintilla.Styles[Style.Lua.Operator].ForeColor      = Settings.Default.CodeElement_Operator_ForegroundColor;
+        scintilla.Styles[Style.Lua.Identifier].ForeColor    = Settings.Default.CodeElement_Identifier_ForegroundColor;
+        scintilla.Styles[Style.Lua.Label].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+        scintilla.Styles[Style.Lua.LiteralString].ForeColor = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+        scintilla.Styles[Style.Lua.Preprocessor].ForeColor  = Settings.Default.CodeElement_DefaultText_ForegroundColor;
 
       scintilla.SetFoldMarginColor(
           true
-        , SystemColors.Window);
+        , ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground);
 
       scintilla.SetFoldMarginHighlightColor(
           true
-        , SystemColors.Window);
+        , ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground);
     }
 
     private void AppendOutput(string message)
@@ -941,13 +980,15 @@ namespace Couchcoding.Logbert.Dialogs.Docking
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
     protected override void Dispose(bool disposing)
     {
-      if (disposing && (components != null))
+      if (disposing)
       {
-        components.Dispose();
-      }
+        components?.Dispose();
 
-      // Remove the settings change event handler.
-      Settings.Default.SettingChanging -= DefaultSettingChanging;
+        StopLuaScript();
+
+        // Remove the settings change event handler.
+        Settings.Default.SettingChanging -= DefaultSettingChanging;
+      }
 
       base.Dispose(disposing);
     }
@@ -1244,6 +1285,8 @@ namespace Couchcoding.Logbert.Dialogs.Docking
     {
       ThemeManager.ApplyTo(cmsLuaEdit);
 
+      splitContainer1.BackColor = theme.ColorPalette.ContentBackground;
+
       txtOutput.BackColor = theme.ColorPalette.ContentBackground;
       txtOutput.ForeColor = theme.ColorPalette.ContentForeground;
 
@@ -1284,10 +1327,7 @@ namespace Couchcoding.Logbert.Dialogs.Docking
       mLogContainer     = logContainer;
       mBookmarkProvider = bookmarkProvider;
 
-      if (mBookmarkProvider != null)
-      {
-        mBookmarkProvider.RegisterBookmarkObserver(this);
-      }
+      mBookmarkProvider?.RegisterBookmarkObserver(this);
 
       // Intialize the edit control.
       InitializeScintilaCtrl();

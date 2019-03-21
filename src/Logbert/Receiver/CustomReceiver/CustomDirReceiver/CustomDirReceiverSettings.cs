@@ -382,7 +382,7 @@ namespace Couchcoding.Logbert.Receiver.Log4NetDirReceiver
 
         cmbEncoding.Items.Add(encWrapper);
 
-        if (encoding.CodePage == (ModifierKeys != Keys.Shift ? Settings.Default.PnlSyslogUdpSettingsEncoding : Encoding.Default.CodePage))
+        if (encoding.CodePage == (ModifierKeys != Keys.Shift ? Settings.Default.PnlCustomDirectorySettingsEncoding : Encoding.Default.CodePage))
         {
           cmbEncoding.SelectedItem = encWrapper;
         }

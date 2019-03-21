@@ -40,7 +40,6 @@ using Couchcoding.Logbert.Interfaces;
 using Couchcoding.Logbert.Logging.Filter;
 using System;
 using Couchcoding.Logbert.Properties;
-using Couchcoding.Logbert.Theme.Palettes;
 using Couchcoding.Logbert.Theme.Interfaces;
 using Couchcoding.Logbert.Theme;
 using Couchcoding.Logbert.Theme.Themes;
@@ -140,14 +139,16 @@ namespace Couchcoding.Logbert.Dialogs.Docking
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
     protected override void Dispose(bool disposing)
     {
-      if (disposing && (components != null))
+      if (disposing)
       {
-        components.Dispose();
-      }
+        components?.Dispose();
 
-      if (mLogFilterHandler != null)
-      {
-        mLogFilterHandler.UnregisterFilterProvider(this);
+        if (mLogFilterHandler != null)
+        {
+          mLogFilterHandler.UnregisterFilterProvider(this);
+        }
+
+        mLogFilter.Clear();
       }
 
       base.Dispose(disposing);
