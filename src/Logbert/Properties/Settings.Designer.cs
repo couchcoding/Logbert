@@ -2141,5 +2141,17 @@ namespace Couchcoding.Logbert.Properties {
                 this["CodeElement_Identifier_FontStyle"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FrmMainShowWelcomePage {
+            get {
+                return ((bool)(this["FrmMainShowWelcomePage"]));
+            }
+            set {
+                this["FrmMainShowWelcomePage"] = value;
+            }
+        }
     }
 }

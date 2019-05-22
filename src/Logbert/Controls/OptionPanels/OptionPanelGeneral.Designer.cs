@@ -28,7 +28,6 @@
     /// </summary>
     private void InitializeComponent()
     {
-            this.components = new System.ComponentModel.Container();
             this.lblUpdateRate = new System.Windows.Forms.Label();
             this.nudUpdateRate = new System.Windows.Forms.NumericUpDown();
             this.nfoPanel = new Couchcoding.Logbert.Gui.Controls.InfoPanel();
@@ -82,6 +81,7 @@
             this.chkAnnotateError = new System.Windows.Forms.CheckBox();
             this.chkAnnotateFatal = new System.Windows.Forms.CheckBox();
             this.chkCheckForUpdate = new System.Windows.Forms.CheckBox();
+            this.chkShowWelcomePage = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudUpdateRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxLogMessages)).BeginInit();
             this.SuspendLayout();
@@ -193,250 +193,249 @@
             this.mnuTimestamp_colon,
             this.mnuTimestamp_slash,
             this.mnuTimestamp_backslash});
-            this.mnuTimestamp.Name = "mnuTimestamp";
             // 
             // mnuTimestampPresets
             // 
+            this.mnuTimestampPresets.Index = 0;
             this.mnuTimestampPresets.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.mnuTimestampPreset1,
             this.mnuTimestampPreset2,
             this.mnuTimestampPreset3,
             this.mnuTimestampPreset4});
-            this.mnuTimestampPresets.Name = "mnuTimestampPresets";
             this.mnuTimestampPresets.Text = "Presets";
             // 
             // mnuTimestampPreset1
             // 
-            this.mnuTimestampPreset1.Name = "mnuTimestampPreset1";
+            this.mnuTimestampPreset1.Index = 0;
             this.mnuTimestampPreset1.Tag = "HH:mm:ss";
             this.mnuTimestampPreset1.Text = "HH:mm:ss";
             this.mnuTimestampPreset1.Click += new System.EventHandler(this.MnuTimestampPresetClick);
             // 
             // mnuTimestampPreset2
             // 
-            this.mnuTimestampPreset2.Name = "mnuTimestampPreset2";
+            this.mnuTimestampPreset2.Index = 1;
             this.mnuTimestampPreset2.Tag = "HH:mm:ss.fff";
             this.mnuTimestampPreset2.Text = "HH:mm:ss.fff";
             this.mnuTimestampPreset2.Click += new System.EventHandler(this.MnuTimestampPresetClick);
             // 
             // mnuTimestampPreset3
             // 
-            this.mnuTimestampPreset3.Name = "mnuTimestampPreset3";
+            this.mnuTimestampPreset3.Index = 2;
             this.mnuTimestampPreset3.Tag = "MM/dd/yy HH:mm:ss";
             this.mnuTimestampPreset3.Text = "MM/dd/yy HH:mm:ss";
             this.mnuTimestampPreset3.Click += new System.EventHandler(this.MnuTimestampPresetClick);
             // 
             // mnuTimestampPreset4
             // 
-            this.mnuTimestampPreset4.Name = "mnuTimestampPreset4";
+            this.mnuTimestampPreset4.Index = 3;
             this.mnuTimestampPreset4.Tag = "MM/dd/yy HH:mm:ss.fff";
             this.mnuTimestampPreset4.Text = "MM/dd/yy HH:mm:ss.fff";
             this.mnuTimestampPreset4.Click += new System.EventHandler(this.MnuTimestampPresetClick);
             // 
             // menuItem2
             // 
-            this.menuItem2.Name = "menuItem2";
+            this.menuItem2.Index = 1;
             this.menuItem2.Text = "-";
             // 
             // mnuTimestamp_d
             // 
-            this.mnuTimestamp_d.Name = "mnuTimestamp_d";
+            this.mnuTimestamp_d.Index = 2;
             this.mnuTimestamp_d.Tag = "d";
             this.mnuTimestamp_d.Text = "d\tThe day of the month, from 1 through 31";
             this.mnuTimestamp_d.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_dd
             // 
-            this.mnuTimestamp_dd.Name = "mnuTimestamp_dd";
+            this.mnuTimestamp_dd.Index = 3;
             this.mnuTimestamp_dd.Tag = "dd";
             this.mnuTimestamp_dd.Text = "dd\tThe day of the month, from 01 through 31";
             this.mnuTimestamp_dd.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_ddd
             // 
-            this.mnuTimestamp_ddd.Name = "mnuTimestamp_ddd";
+            this.mnuTimestamp_ddd.Index = 4;
             this.mnuTimestamp_ddd.Tag = "ddd";
             this.mnuTimestamp_ddd.Text = "ddd\tThe abbreviated name of the day of the week";
             this.mnuTimestamp_ddd.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_dddd
             // 
-            this.mnuTimestamp_dddd.Name = "mnuTimestamp_dddd";
+            this.mnuTimestamp_dddd.Index = 5;
             this.mnuTimestamp_dddd.Tag = "dddd";
             this.mnuTimestamp_dddd.Text = "dddd\tThe full name of the day of the week";
             this.mnuTimestamp_dddd.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_f
             // 
-            this.mnuTimestamp_f.Name = "mnuTimestamp_f";
+            this.mnuTimestamp_f.Index = 6;
             this.mnuTimestamp_f.Tag = "f";
             this.mnuTimestamp_f.Text = "f\tThe tenths of a second in a date and time value";
             this.mnuTimestamp_f.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_ff
             // 
-            this.mnuTimestamp_ff.Name = "mnuTimestamp_ff";
+            this.mnuTimestamp_ff.Index = 7;
             this.mnuTimestamp_ff.Tag = "ff";
             this.mnuTimestamp_ff.Text = "ff\tThe hundredths of a second in a date and time value";
             this.mnuTimestamp_ff.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_fff
             // 
-            this.mnuTimestamp_fff.Name = "mnuTimestamp_fff";
+            this.mnuTimestamp_fff.Index = 8;
             this.mnuTimestamp_fff.Tag = "fff";
             this.mnuTimestamp_fff.Text = "fff\tThe milliseconds in a date and time value.";
             this.mnuTimestamp_fff.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_h
             // 
-            this.mnuTimestamp_h.Name = "mnuTimestamp_h";
+            this.mnuTimestamp_h.Index = 9;
             this.mnuTimestamp_h.Tag = "h";
             this.mnuTimestamp_h.Text = "h\tThe hour, using a 12-hour clock from 1 to 12";
             this.mnuTimestamp_h.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_hh
             // 
-            this.mnuTimestamp_hh.Name = "mnuTimestamp_hh";
+            this.mnuTimestamp_hh.Index = 10;
             this.mnuTimestamp_hh.Tag = "hh";
             this.mnuTimestamp_hh.Text = "hh\tThe hour, using a 12-hour clock from 01 to 12";
             this.mnuTimestamp_hh.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_hhh
             // 
-            this.mnuTimestamp_hhh.Name = "mnuTimestamp_hhh";
+            this.mnuTimestamp_hhh.Index = 11;
             this.mnuTimestamp_hhh.Tag = "H";
             this.mnuTimestamp_hhh.Text = "H\tThe hour, using a 24-hour clock from 0 to 23";
             this.mnuTimestamp_hhh.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_hhhh
             // 
-            this.mnuTimestamp_hhhh.Name = "mnuTimestamp_hhhh";
+            this.mnuTimestamp_hhhh.Index = 12;
             this.mnuTimestamp_hhhh.Tag = "HH";
             this.mnuTimestamp_hhhh.Text = "HH\tThe hour, using a 24-hour clock from 00 to 23";
             this.mnuTimestamp_hhhh.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_m
             // 
-            this.mnuTimestamp_m.Name = "mnuTimestamp_m";
+            this.mnuTimestamp_m.Index = 13;
             this.mnuTimestamp_m.Tag = "m";
             this.mnuTimestamp_m.Text = "m\tThe minute, from 0 through 59";
             this.mnuTimestamp_m.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_mm
             // 
-            this.mnuTimestamp_mm.Name = "mnuTimestamp_mm";
+            this.mnuTimestamp_mm.Index = 14;
             this.mnuTimestamp_mm.Tag = "mm";
             this.mnuTimestamp_mm.Text = "mm\tThe minute, from 00 through 59";
             this.mnuTimestamp_mm.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_mmm
             // 
-            this.mnuTimestamp_mmm.Name = "mnuTimestamp_mmm";
+            this.mnuTimestamp_mmm.Index = 15;
             this.mnuTimestamp_mmm.Tag = "M";
             this.mnuTimestamp_mmm.Text = "M\tThe month, from 1 through 12";
             this.mnuTimestamp_mmm.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_mmmm
             // 
-            this.mnuTimestamp_mmmm.Name = "mnuTimestamp_mmmm";
+            this.mnuTimestamp_mmmm.Index = 16;
             this.mnuTimestamp_mmmm.Tag = "MM";
             this.mnuTimestamp_mmmm.Text = "MM\tThe month, from 01 through 12";
             this.mnuTimestamp_mmmm.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_s
             // 
-            this.mnuTimestamp_s.Name = "mnuTimestamp_s";
+            this.mnuTimestamp_s.Index = 17;
             this.mnuTimestamp_s.Tag = "s";
             this.mnuTimestamp_s.Text = "s\tThe second, from 0 through 59";
             this.mnuTimestamp_s.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_ss
             // 
-            this.mnuTimestamp_ss.Name = "mnuTimestamp_ss";
+            this.mnuTimestamp_ss.Index = 18;
             this.mnuTimestamp_ss.Tag = "ss";
             this.mnuTimestamp_ss.Text = "ss\tThe second, from 00 through 59";
             this.mnuTimestamp_ss.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_t
             // 
-            this.mnuTimestamp_t.Name = "mnuTimestamp_t";
+            this.mnuTimestamp_t.Index = 19;
             this.mnuTimestamp_t.Tag = "t";
             this.mnuTimestamp_t.Text = "t\tThe first character of the AM/PM designator";
             this.mnuTimestamp_t.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_tt
             // 
-            this.mnuTimestamp_tt.Name = "mnuTimestamp_tt";
+            this.mnuTimestamp_tt.Index = 20;
             this.mnuTimestamp_tt.Tag = "tt";
             this.mnuTimestamp_tt.Text = "tt\tThe AM/PM designator";
             this.mnuTimestamp_tt.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_y
             // 
-            this.mnuTimestamp_y.Name = "mnuTimestamp_y";
+            this.mnuTimestamp_y.Index = 21;
             this.mnuTimestamp_y.Tag = "y";
             this.mnuTimestamp_y.Text = "y\tThe year, from 0 to 99";
             this.mnuTimestamp_y.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_yy
             // 
-            this.mnuTimestamp_yy.Name = "mnuTimestamp_yy";
+            this.mnuTimestamp_yy.Index = 22;
             this.mnuTimestamp_yy.Tag = "yy";
             this.mnuTimestamp_yy.Text = "yy\tThe year, from 00 to 99";
             this.mnuTimestamp_yy.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_yyy
             // 
-            this.mnuTimestamp_yyy.Name = "mnuTimestamp_yyy";
+            this.mnuTimestamp_yyy.Index = 23;
             this.mnuTimestamp_yyy.Tag = "yyy";
             this.mnuTimestamp_yyy.Text = "yyy\tThe year, with a minimum of three digits";
             this.mnuTimestamp_yyy.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_yyyy
             // 
-            this.mnuTimestamp_yyyy.Name = "mnuTimestamp_yyyy";
+            this.mnuTimestamp_yyyy.Index = 24;
             this.mnuTimestamp_yyyy.Tag = "yyyy";
             this.mnuTimestamp_yyyy.Text = "yyyy\tThe year as a four-digit number";
             this.mnuTimestamp_yyyy.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_z
             // 
-            this.mnuTimestamp_z.Name = "mnuTimestamp_z";
+            this.mnuTimestamp_z.Index = 25;
             this.mnuTimestamp_z.Tag = "z";
             this.mnuTimestamp_z.Text = "z\tHours offset from UTC, with no leading zeros";
             this.mnuTimestamp_z.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_zz
             // 
-            this.mnuTimestamp_zz.Name = "mnuTimestamp_zz";
+            this.mnuTimestamp_zz.Index = 26;
             this.mnuTimestamp_zz.Tag = "zz";
             this.mnuTimestamp_zz.Text = "zz\tHours offset from UTC, with a leading zero for a single-digit value";
             this.mnuTimestamp_zz.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_zzz
             // 
-            this.mnuTimestamp_zzz.Name = "mnuTimestamp_zzz";
+            this.mnuTimestamp_zzz.Index = 27;
             this.mnuTimestamp_zzz.Tag = "zzz";
             this.mnuTimestamp_zzz.Text = "zzz\tHours and minutes offset from UTC";
             this.mnuTimestamp_zzz.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_colon
             // 
-            this.mnuTimestamp_colon.Name = "mnuTimestamp_colon";
+            this.mnuTimestamp_colon.Index = 28;
             this.mnuTimestamp_colon.Tag = ":";
             this.mnuTimestamp_colon.Text = ":\tThe time separator";
             this.mnuTimestamp_colon.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_slash
             // 
-            this.mnuTimestamp_slash.Name = "mnuTimestamp_slash";
+            this.mnuTimestamp_slash.Index = 29;
             this.mnuTimestamp_slash.Tag = "/";
             this.mnuTimestamp_slash.Text = "/\tThe date separator";
             this.mnuTimestamp_slash.Click += new System.EventHandler(this.MnuTimestampClick);
             // 
             // mnuTimestamp_backslash
             // 
-            this.mnuTimestamp_backslash.Name = "mnuTimestamp_backslash";
+            this.mnuTimestamp_backslash.Index = 30;
             this.mnuTimestamp_backslash.Tag = "\\";
             this.mnuTimestamp_backslash.Text = "\\\tThe escape character";
             this.mnuTimestamp_backslash.Click += new System.EventHandler(this.MnuTimestampClick);
@@ -467,7 +466,7 @@
             // 
             this.lblMaxLogMessages.AutoSize = true;
             this.lblMaxLogMessages.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblMaxLogMessages.Location = new System.Drawing.Point(3, 228);
+            this.lblMaxLogMessages.Location = new System.Drawing.Point(3, 252);
             this.lblMaxLogMessages.Name = "lblMaxLogMessages";
             this.lblMaxLogMessages.Size = new System.Drawing.Size(204, 13);
             this.lblMaxLogMessages.TabIndex = 8;
@@ -477,7 +476,7 @@
             // 
             this.nudMaxLogMessages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudMaxLogMessages.Location = new System.Drawing.Point(3, 244);
+            this.nudMaxLogMessages.Location = new System.Drawing.Point(3, 268);
             this.nudMaxLogMessages.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -496,7 +495,7 @@
             // 
             this.chkEnableColorMap.AutoSize = true;
             this.chkEnableColorMap.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkEnableColorMap.Location = new System.Drawing.Point(3, 276);
+            this.chkEnableColorMap.Location = new System.Drawing.Point(3, 300);
             this.chkEnableColorMap.Name = "chkEnableColorMap";
             this.chkEnableColorMap.Size = new System.Drawing.Size(255, 18);
             this.chkEnableColorMap.TabIndex = 10;
@@ -509,7 +508,7 @@
             this.chkAnnotateTrace.AutoSize = true;
             this.chkAnnotateTrace.Enabled = false;
             this.chkAnnotateTrace.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkAnnotateTrace.Location = new System.Drawing.Point(18, 300);
+            this.chkAnnotateTrace.Location = new System.Drawing.Point(18, 324);
             this.chkAnnotateTrace.Name = "chkAnnotateTrace";
             this.chkAnnotateTrace.Size = new System.Drawing.Size(152, 18);
             this.chkAnnotateTrace.TabIndex = 11;
@@ -521,7 +520,7 @@
             this.chkAnnotateDebug.AutoSize = true;
             this.chkAnnotateDebug.Enabled = false;
             this.chkAnnotateDebug.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkAnnotateDebug.Location = new System.Drawing.Point(18, 323);
+            this.chkAnnotateDebug.Location = new System.Drawing.Point(18, 347);
             this.chkAnnotateDebug.Name = "chkAnnotateDebug";
             this.chkAnnotateDebug.Size = new System.Drawing.Size(158, 18);
             this.chkAnnotateDebug.TabIndex = 12;
@@ -533,7 +532,7 @@
             this.chkAnnotateInfo.AutoSize = true;
             this.chkAnnotateInfo.Enabled = false;
             this.chkAnnotateInfo.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkAnnotateInfo.Location = new System.Drawing.Point(18, 346);
+            this.chkAnnotateInfo.Location = new System.Drawing.Point(18, 370);
             this.chkAnnotateInfo.Name = "chkAnnotateInfo";
             this.chkAnnotateInfo.Size = new System.Drawing.Size(145, 18);
             this.chkAnnotateInfo.TabIndex = 13;
@@ -545,7 +544,7 @@
             this.chkAnnotateWarning.AutoSize = true;
             this.chkAnnotateWarning.Enabled = false;
             this.chkAnnotateWarning.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkAnnotateWarning.Location = new System.Drawing.Point(18, 369);
+            this.chkAnnotateWarning.Location = new System.Drawing.Point(18, 393);
             this.chkAnnotateWarning.Name = "chkAnnotateWarning";
             this.chkAnnotateWarning.Size = new System.Drawing.Size(165, 18);
             this.chkAnnotateWarning.TabIndex = 14;
@@ -557,7 +556,7 @@
             this.chkAnnotateError.AutoSize = true;
             this.chkAnnotateError.Enabled = false;
             this.chkAnnotateError.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkAnnotateError.Location = new System.Drawing.Point(18, 392);
+            this.chkAnnotateError.Location = new System.Drawing.Point(18, 416);
             this.chkAnnotateError.Name = "chkAnnotateError";
             this.chkAnnotateError.Size = new System.Drawing.Size(149, 18);
             this.chkAnnotateError.TabIndex = 15;
@@ -569,7 +568,7 @@
             this.chkAnnotateFatal.AutoSize = true;
             this.chkAnnotateFatal.Enabled = false;
             this.chkAnnotateFatal.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkAnnotateFatal.Location = new System.Drawing.Point(18, 415);
+            this.chkAnnotateFatal.Location = new System.Drawing.Point(18, 439);
             this.chkAnnotateFatal.Name = "chkAnnotateFatal";
             this.chkAnnotateFatal.Size = new System.Drawing.Size(148, 18);
             this.chkAnnotateFatal.TabIndex = 16;
@@ -587,10 +586,22 @@
             this.chkCheckForUpdate.Text = "Check for a new version of Logbert on startup.";
             this.chkCheckForUpdate.UseVisualStyleBackColor = true;
             // 
+            // chkShowWelcomePage
+            // 
+            this.chkShowWelcomePage.AutoSize = true;
+            this.chkShowWelcomePage.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.chkShowWelcomePage.Location = new System.Drawing.Point(3, 225);
+            this.chkShowWelcomePage.Name = "chkShowWelcomePage";
+            this.chkShowWelcomePage.Size = new System.Drawing.Size(184, 18);
+            this.chkShowWelcomePage.TabIndex = 17;
+            this.chkShowWelcomePage.Text = "Show welcome page on startup.";
+            this.chkShowWelcomePage.UseVisualStyleBackColor = true;
+            // 
             // OptionPanelGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.chkShowWelcomePage);
             this.Controls.Add(this.chkCheckForUpdate);
             this.Controls.Add(this.chkAnnotateFatal);
             this.Controls.Add(this.chkAnnotateError);
@@ -608,9 +619,9 @@
             this.Controls.Add(this.nfoPanel);
             this.Controls.Add(this.nudUpdateRate);
             this.Controls.Add(this.lblUpdateRate);
-            this.MinimumSize = new System.Drawing.Size(320, 440);
+            this.MinimumSize = new System.Drawing.Size(320, 464);
             this.Name = "OptionPanelGeneral";
-            this.Size = new System.Drawing.Size(480, 440);
+            this.Size = new System.Drawing.Size(480, 464);
             ((System.ComponentModel.ISupportInitialize)(this.nudUpdateRate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxLogMessages)).EndInit();
             this.ResumeLayout(false);
@@ -673,5 +684,6 @@
     private System.Windows.Forms.CheckBox chkAnnotateError;
     private System.Windows.Forms.CheckBox chkAnnotateFatal;
     private System.Windows.Forms.CheckBox chkCheckForUpdate;
+    private System.Windows.Forms.CheckBox chkShowWelcomePage;
   }
 }

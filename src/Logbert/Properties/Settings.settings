@@ -533,5 +533,8 @@
     <Setting Name="CodeElement_Identifier_FontStyle" Type="System.Drawing.FontStyle" Scope="User">
       <Value Profile="(Default)">Regular</Value>
     </Setting>
+    <Setting Name="FrmMainShowWelcomePage" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
