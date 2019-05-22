@@ -908,15 +908,15 @@ namespace Logbert
       switch (Settings.Default.ApplicationTheme)
       {
         case BaseTheme.VisualStudioThemeDarkName:
-          ThemeManager.SetActiveApplicationTheme(new VisualStudioDarkTheme()); 
+          ThemeManager.SetActiveApplicationTheme(new VisualStudioDarkTheme());
           break;
 
         case BaseTheme.VisualStudioThemeBlueName:
-          ThemeManager.SetActiveApplicationTheme(new VisualStudioBlueTheme()); 
+          ThemeManager.SetActiveApplicationTheme(new VisualStudioBlueTheme());
           break;
 
         default:
-          ThemeManager.SetActiveApplicationTheme(new VisualStudioLightTheme()); 
+          ThemeManager.SetActiveApplicationTheme(new VisualStudioLightTheme());
           break;
       }
 
@@ -935,8 +935,11 @@ namespace Logbert
       // Create the one and only find window instance.
       mFindWindow = new FrmLogSearch(this);
 
-      // Initialize and show the welcome page.
-      new FrmWelcome(this).Show(mainDockPanel);
+      if (Settings.Default.FrmMainShowWelcomePage)
+      {
+        // Initialize and show the welcome page.
+        new FrmWelcome(this).Show(mainDockPanel);
+      }
 
       LoadFileIntoLogger(logFileToLoad);
     }

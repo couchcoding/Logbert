@@ -23,7 +23,7 @@ namespace Logbert
             this.loggerColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.threadColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.msgColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.mainDockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.mainDockPanel = new Couchcoding.Logbert.Controls.DockPanelEx();
             this.mnuMain = new Couchcoding.Logbert.Gui.Controls.MenuStripEx();
             this.mnuMainFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMainFileNewLogger = new System.Windows.Forms.ToolStripMenuItem();
@@ -216,19 +216,19 @@ namespace Logbert
             // mnuMainHelpHomepage
             // 
             this.mnuMainHelpHomepage.Name = "mnuMainHelpHomepage";
-            this.mnuMainHelpHomepage.Size = new System.Drawing.Size(180, 22);
+            this.mnuMainHelpHomepage.Size = new System.Drawing.Size(177, 22);
             this.mnuMainHelpHomepage.Text = "Logbert &Homepage";
             this.mnuMainHelpHomepage.Click += new System.EventHandler(this.MnuMainHomepageClick);
             // 
             // mnuMainAboutSeperator1
             // 
             this.mnuMainAboutSeperator1.Name = "mnuMainAboutSeperator1";
-            this.mnuMainAboutSeperator1.Size = new System.Drawing.Size(177, 6);
+            this.mnuMainAboutSeperator1.Size = new System.Drawing.Size(174, 6);
             // 
             // mnuMainHelpAbout
             // 
             this.mnuMainHelpAbout.Name = "mnuMainHelpAbout";
-            this.mnuMainHelpAbout.Size = new System.Drawing.Size(180, 22);
+            this.mnuMainHelpAbout.Size = new System.Drawing.Size(177, 22);
             this.mnuMainHelpAbout.Text = "&About...";
             this.mnuMainHelpAbout.Click += new System.EventHandler(this.MnuMainHelpAboutClick);
             // 
@@ -262,7 +262,7 @@ namespace Logbert
     private System.Windows.Forms.ColumnHeader loggerColumnHeader;
     private System.Windows.Forms.ColumnHeader threadColumnHeader;
     private System.Windows.Forms.ColumnHeader msgColumnHeader;
-    private WeifenLuo.WinFormsUI.Docking.DockPanel mainDockPanel;
+    private Couchcoding.Logbert.Controls.DockPanelEx mainDockPanel;
     private Couchcoding.Logbert.Gui.Controls.MenuStripEx mnuMain;
     private ToolStripMenuItem mnuMainFile;
     private ToolStripMenuItem mnuMainFileNewLogger;

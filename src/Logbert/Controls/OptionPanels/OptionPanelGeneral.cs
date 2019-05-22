@@ -137,6 +137,7 @@ namespace Couchcoding.Logbert.Controls.OptionPanels
       nudMaxLogMessages.Value         = Settings.Default.MaxLogMessages;
       chkEnableColorMap.Checked       = Settings.Default.EnableColorMap;
       chkCheckForUpdate.Checked       = Settings.Default.FrmMainCheckForUpdateOnStartup;
+      chkShowWelcomePage.Checked      = Settings.Default.FrmMainShowWelcomePage;
 
       chkAnnotateTrace.Checked        = ((LogLevel)Settings.Default.ColorMapAnnotation & LogLevel.Trace)   == LogLevel.Trace;
       chkAnnotateDebug.Checked        = ((LogLevel)Settings.Default.ColorMapAnnotation & LogLevel.Debug)   == LogLevel.Debug;
@@ -160,6 +161,7 @@ namespace Couchcoding.Logbert.Controls.OptionPanels
         Settings.Default.MaxLogMessages                      = (int)nudMaxLogMessages.Value;
         Settings.Default.EnableColorMap                      = chkEnableColorMap.Checked;
         Settings.Default.FrmMainCheckForUpdateOnStartup      = chkCheckForUpdate.Checked;
+        Settings.Default.FrmMainShowWelcomePage              = chkShowWelcomePage.Checked;
 
         Settings.Default.ColorMapAnnotation = 0;
         Settings.Default.ColorMapAnnotation |= chkAnnotateTrace.Checked   ? (int)LogLevel.Trace   : 0;
