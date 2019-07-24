@@ -43,6 +43,7 @@ using WeifenLuo.WinFormsUI.Docking;
 using Couchcoding.Logbert.Theme.Interfaces;
 using Couchcoding.Logbert.Theme;
 using Couchcoding.Logbert.Theme.Themes;
+using System.Windows.Forms;
 
 namespace Couchcoding.Logbert.Dialogs.Docking
 {
@@ -51,6 +52,21 @@ namespace Couchcoding.Logbert.Dialogs.Docking
   /// </summary>
   public partial class FrmLogStatistic : DockContent, ILogPresenter, IThemable
   {
+    #region Private Fields
+
+    private Point mMousePoint = Point.Empty;
+    private int   mStartInclination = 0;
+    private int   mStartRotation    = 0;
+
+    /// <summary>
+    /// Simple object for thread synchronization.
+    /// </summary>
+    private static object mSyncRoot = new object();
+    private volatile bool mInUpdate;
+    private delegate void UpdateChartDelegate(List<LogMessage> messages);
+
+    #endregion
+
     #region Public Properties
 
     /// <summary>
@@ -100,11 +116,104 @@ namespace Couchcoding.Logbert.Dialogs.Docking
     }
 
     /// <summary>
-    /// Simple object for thread synchronization.
+    /// Selects the given <paramref name="message"/>.
     /// </summary>
-    private static object mSyncRoot = new object();
-    private volatile bool mInUpdate;
-    private delegate void UpdateChartDelegate(List<LogMessage> messages);
+    /// <param name="message">The <see cref="LogMessage"/> o select</param>
+    /// <returns><c>True</c> if the given <paramref name="message"/> was selected successfully, otherwise <c>false</c>.</returns>
+    public bool SelectLogMessage(LogMessage message)
+    {
+      // Nothing to do here.
+      return true;
+    }
+
+    /// <summary>
+    /// Selects the <see cref="LogMessage"/> on the given <paramref name="index"/>.
+    /// </summary>
+    /// <param name="index">The index of the <see cref="LogMessage"/> to select.</param>
+    /// <returns><c>True</c> if the <see cref="LogMessage"/> of the given <paramref name="index"/> was selected successfully, otherwise <c>false</c>.</returns>
+    public bool SelectLogMessage(int index)
+    {
+      // Nothing to do here.
+      return true;
+    }
+
+    /// <summary>
+    /// Increases the size of the <see cref="ILogPresenter"/> content.
+    /// </summary>
+    /// <returns><c>True</c> if further increasing is possible, otherwise <c>false</c>.</returns>
+    public bool ZoomIn()
+    {
+      return false;
+    }
+
+    /// <summary>
+    /// Decreases the size of the <see cref="ILogPresenter"/> content.
+    /// </summary>
+    /// <returns><c>True</c> if further decreasing is possible, otherwise <c>false</c>.</returns>
+    public bool ZoomOut()
+    {
+      return false;
+    }
+
+    /// <summary>
+    /// Applies the current theme to the <see cref="Control"/>.
+    /// </summary>
+    /// <param name="theme">The <see cref="BaseTheme"/> instance to apply.</param>
+    public void ApplyTheme(BaseTheme theme)
+    {
+      tsbShowLegend.Image = theme.Resources.Images["FrmStatisticTbLegend"];
+
+      chrtOverview.BackColor = theme.ColorPalette.ContentBackground;
+      chrtOverview.ForeColor = theme.ColorPalette.ContentForeground;
+
+      chrtOverview.ChartAreas[0].BackColor = theme.ColorPalette.ContentBackground;
+      
+      chrtOverview.Series[0].LabelBackColor = theme.ColorPalette.ContentBackground;
+      chrtOverview.Series[0].LabelForeColor = theme.ColorPalette.ContentForeground;
+
+      chrtOverview.Legends[0].BackColor = theme.ColorPalette.ContentBackground;
+      chrtOverview.Legends[0].ForeColor = theme.ColorPalette.ContentForeground;
+    }
+
+    #endregion
+
+    #region Private Methods
+
+    private void ChrtOverviewMouseMove(object sender, MouseEventArgs e)
+    {
+      if (e.Button == MouseButtons.Left)
+      {
+        int newValY = mStartInclination - (e.Location.Y - mMousePoint.Y);
+        int newValX = mStartRotation    - (e.Location.X - mMousePoint.X);
+
+        chrtOverview.ChartAreas[0].Area3DStyle.Inclination = newValY < -90  ? -90  : newValY > 90  ? 90  : newValY;
+        chrtOverview.ChartAreas[0].Area3DStyle.Rotation    = newValX < -180 ? -180 : newValX > 180 ? 180 : newValX;
+      }
+    }
+
+    private void ChrtOverviewMouseDown(object sender, MouseEventArgs e)
+    {
+      if (e.Button == MouseButtons.Left)
+      {
+        mMousePoint       = e.Location;
+        mStartInclination = chrtOverview.ChartAreas[0].Area3DStyle.Inclination;
+        mStartRotation    = chrtOverview.ChartAreas[0].Area3DStyle.Rotation;
+
+        chrtOverview.Cursor = Cursors.SizeAll;
+      }
+    }
+
+    private void ChrtOverviewMouseUp(object sender, MouseEventArgs e)
+    {
+      if (e.Button == MouseButtons.Left)
+      {
+        mMousePoint       = Point.Empty;
+        mStartInclination = 0;
+        mStartRotation    = 0;
+
+        chrtOverview.Cursor = Cursors.Default;
+      }
+    }
 
     private void StartUpdateChart(List<LogMessage> messages)
     {
@@ -180,70 +289,6 @@ namespace Couchcoding.Logbert.Dialogs.Docking
 
       BeginInvoke(new Action(EndUpdateChart));
     }
-
-    /// <summary>
-    /// Selects the given <paramref name="message"/>.
-    /// </summary>
-    /// <param name="message">The <see cref="LogMessage"/> o select</param>
-    /// <returns><c>True</c> if the given <paramref name="message"/> was selected successfully, otherwise <c>false</c>.</returns>
-    public bool SelectLogMessage(LogMessage message)
-    {
-      // Nothing to do here.
-      return true;
-    }
-
-    /// <summary>
-    /// Selects the <see cref="LogMessage"/> on the given <paramref name="index"/>.
-    /// </summary>
-    /// <param name="index">The index of the <see cref="LogMessage"/> to select.</param>
-    /// <returns><c>True</c> if the <see cref="LogMessage"/> of the given <paramref name="index"/> was selected successfully, otherwise <c>false</c>.</returns>
-    public bool SelectLogMessage(int index)
-    {
-      // Nothing to do here.
-      return true;
-    }
-
-    /// <summary>
-    /// Increases the size of the <see cref="ILogPresenter"/> content.
-    /// </summary>
-    /// <returns><c>True</c> if further increasing is possible, otherwise <c>false</c>.</returns>
-    public bool ZoomIn()
-    {
-      return false;
-    }
-
-    /// <summary>
-    /// Decreases the size of the <see cref="ILogPresenter"/> content.
-    /// </summary>
-    /// <returns><c>True</c> if further decreasing is possible, otherwise <c>false</c>.</returns>
-    public bool ZoomOut()
-    {
-      return false;
-    }
-
-    /// <summary>
-    /// Applies the current theme to the <see cref="Control"/>.
-    /// </summary>
-    /// <param name="theme">The <see cref="BaseTheme"/> instance to apply.</param>
-    public void ApplyTheme(BaseTheme theme)
-    {
-      tsbShowLegend.Image = theme.Resources.Images["FrmStatisticTbLegend"];
-
-      chrtOverview.BackColor = theme.ColorPalette.ContentBackground;
-      chrtOverview.ForeColor = theme.ColorPalette.ContentForeground;
-
-      chrtOverview.ChartAreas[0].BackColor = theme.ColorPalette.ContentBackground;
-      
-      chrtOverview.Series[0].LabelBackColor = theme.ColorPalette.ContentBackground;
-      chrtOverview.Series[0].LabelForeColor = theme.ColorPalette.ContentForeground;
-
-      chrtOverview.Legends[0].BackColor = theme.ColorPalette.ContentBackground;
-      chrtOverview.Legends[0].ForeColor = theme.ColorPalette.ContentForeground;
-    }
-
-    #endregion
-
-    #region Private Methods
 
     /// <summary>
     /// Gets the <see cref="DataPoint"/> that represents the specified <paramref name="level"/>.

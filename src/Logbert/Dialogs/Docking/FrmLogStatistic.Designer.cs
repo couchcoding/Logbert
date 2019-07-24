@@ -92,6 +92,9 @@
       this.chrtOverview.Size = new System.Drawing.Size(464, 256);
       this.chrtOverview.SuppressExceptions = true;
       this.chrtOverview.TabIndex = 2;
+      this.chrtOverview.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ChrtOverviewMouseDown);
+      this.chrtOverview.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ChrtOverviewMouseMove);
+      this.chrtOverview.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ChrtOverviewMouseUp);
       // 
       // FrmLogStatistic
       // 
@@ -113,7 +116,6 @@
       this.PerformLayout();
 
     }
-
     #endregion
 
     private Gui.Controls.ToolStripEx toolStrip1;

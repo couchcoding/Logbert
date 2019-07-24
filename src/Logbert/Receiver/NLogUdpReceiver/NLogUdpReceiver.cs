@@ -251,10 +251,9 @@ namespace Couchcoding.Logbert.Receiver.NLogUdpReceiver
     {
       UdpClient client = ((UdpState)ar.AsyncState).Client;
 
-      IPEndPoint wantedIpEndPoint   = ((UdpState)(ar.AsyncState)).EndPoint;
       IPEndPoint receivedIpEndPoint = new IPEndPoint(IPAddress.Any, 0);
 
-      Byte[] receiveBytes;
+      byte[] receiveBytes;
 
       try
       {
@@ -268,10 +267,7 @@ namespace Couchcoding.Logbert.Receiver.NLogUdpReceiver
         return;
       }
 
-      bool isRightHost = (wantedIpEndPoint.Address.Equals(receivedIpEndPoint.Address)) 
-                       || wantedIpEndPoint.Address.Equals(IPAddress.Any);
-
-      if (isRightHost && receiveBytes != null)
+      if (receiveBytes != null)
       {
         try
         {
