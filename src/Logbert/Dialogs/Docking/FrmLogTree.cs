@@ -159,7 +159,7 @@ namespace Couchcoding.Logbert.Dialogs.Docking
 
           if (lastNode.Parent != null)
           {
-            lastNode.ForeColor = lastNode.Parent.ForeColor;
+            lastNode.ForeColor = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForeground;
             lastNode.Parent.Expand();
           }
         }
@@ -169,10 +169,13 @@ namespace Couchcoding.Logbert.Dialogs.Docking
         }
       }
 
-      if (treeView.SelectedNode == null && treeView.Nodes.Count > 0)
+      if (treeView.Nodes.Count > 0)
       {
-        // Initial select the very first node popupulated.
-        treeView.SelectedNode = treeView.Nodes[0];
+        if (treeView.SelectedNode == null)
+        {
+          // Initial select the very first node popupulated.
+          treeView.SelectedNode = treeView.Nodes[0];
+        }
 
         SetNodeColor(treeView.Nodes[0]
           , ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForeground

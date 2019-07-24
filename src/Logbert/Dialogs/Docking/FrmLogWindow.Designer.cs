@@ -39,7 +39,7 @@
       this.dtgLogMessages.AllowUserToResizeRows = false;
       this.dtgLogMessages.BackgroundColor = System.Drawing.SystemColors.Window;
       this.dtgLogMessages.BorderStyle = System.Windows.Forms.BorderStyle.None;
-      this.dtgLogMessages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+      this.dtgLogMessages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dtgLogMessages.Dock = System.Windows.Forms.DockStyle.Fill;
       this.dtgLogMessages.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
       this.dtgLogMessages.Location = new System.Drawing.Point(0, 0);
