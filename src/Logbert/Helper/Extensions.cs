@@ -52,6 +52,11 @@ namespace Couchcoding.Logbert.Helper
     /// </summary>
     private const int WM_SETREDRAW = 0xB;
 
+    /// <summary>
+    /// The line count of a textbox control.
+    /// </summary>
+    private const int EM_GETLINECOUNT = 0xba;
+
     #endregion
 
     #region External Methods
@@ -135,15 +140,12 @@ namespace Couchcoding.Logbert.Helper
     /// <param name="txtBox">The <see cref="TextBox"/> to adjust the height of.</param>
     public static void AdjustHeightToContent(this TextBox txtBox)
     {
-      if (txtBox != null && txtBox.ClientSize.Width > 1)
+      if (txtBox != null && txtBox.IsHandleCreated && txtBox.ClientSize.Width > 1)
       {
-        Size sz = TextRenderer.MeasureText(
-            txtBox.Text ?? " "
-          , txtBox.Font
-          , new Size(txtBox.ClientSize.Width, int.MaxValue)
-          , TextFormatFlags.WordBreak);
-
-        txtBox.Height = sz.Height + (txtBox.Height - txtBox.ClientSize.Height);
+        txtBox.Height = (txtBox.Font.Height) * SendMessage(txtBox.Handle
+          , EM_GETLINECOUNT
+          , 0
+          , 0) + txtBox.Margin.Bottom;
       }
     }
 

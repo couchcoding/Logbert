@@ -259,6 +259,17 @@ namespace Couchcoding.Logbert.Controls
       base.Dispose(disposing);
     }
 
+    /// <summary>
+    /// Handles the size changed event of the <see cref="Control"/>.
+    /// </summary>
+    protected override void OnSizeChanged(EventArgs e)
+    {
+      base.OnSizeChanged(e);
+
+      txtDataFacility.AdjustHeightToContent();
+      txtDataMessage.AdjustHeightToContent();
+    }
+
     #endregion
 
     #region Public Methods

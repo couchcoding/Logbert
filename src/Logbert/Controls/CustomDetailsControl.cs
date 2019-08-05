@@ -237,6 +237,22 @@ namespace Couchcoding.Logbert.Controls
     }
 
     /// <summary>
+    /// Handles the size changed event of the <see cref="Control"/>.
+    /// </summary>
+    protected override void OnSizeChanged(EventArgs e)
+    {
+      base.OnSizeChanged(e);
+
+      foreach (Control ctrl in tblLogMessage.Controls)
+      {
+        if (ctrl is TextBox txtBox)
+        {
+           txtBox.AdjustHeightToContent();
+        }
+      }
+    }
+
+    /// <summary>
     /// Adds a new log message row to the message window.
     /// </summary>
     /// <param name="column">The <see cref="LogColumn"/> that should be represented by the new row.</param>
@@ -360,6 +376,7 @@ namespace Couchcoding.Logbert.Controls
             }
 
             txtBox.Text = logMessage.GetValueForColumn(mColumnizer.Columns.IndexOf((LogColumn)txtBox.Tag) + 2).ToString();
+            txtBox.AdjustHeightToContent();
           }
         }
         else
@@ -379,6 +396,7 @@ namespace Couchcoding.Logbert.Controls
             }
 
             txtBox.Text = string.Empty;
+            txtBox.AdjustHeightToContent();
           }
         }
 
