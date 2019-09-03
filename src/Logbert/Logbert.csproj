@@ -258,6 +258,12 @@
     <Compile Include="Dialogs\FrmOptions.Designer.cs">
       <DependentUpon>FrmOptions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\FrmTimestamps.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FrmTimestamps.Designer.cs">
+      <DependentUpon>FrmTimestamps.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper\Browser.cs" />
     <Compile Include="Helper\EncodingWrapper.cs" />
     <Compile Include="Helper\FontCache.cs" />
@@ -501,6 +507,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\FrmOptions.resx">
       <DependentUpon>FrmOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FrmTimestamps.resx">
+      <DependentUpon>FrmTimestamps.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <SubType>Designer</SubType>

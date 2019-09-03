@@ -76,6 +76,7 @@ namespace Logbert
             this.mainDockPanel.BackgroundImage = global::Couchcoding.Logbert.Properties.Resources.Logbert_Start_Screen;
             this.mainDockPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.mainDockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainDockPanel.Theme = new WeifenLuo.WinFormsUI.Docking.VS2015LightTheme();
             this.mainDockPanel.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingWindow;
             this.mainDockPanel.Location = new System.Drawing.Point(0, 24);
             this.mainDockPanel.Name = "mainDockPanel";

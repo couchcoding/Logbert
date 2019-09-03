@@ -636,4 +636,7 @@ Maybe the data the file contains is not yet supported by Logbert.</value>
   <data name="strMainUpdateAvailable" xml:space="preserve">
     <value>Update Available</value>
   </data>
+  <data name="strSyslogReceiverCountOfTimestampsDefined" xml:space="preserve">
+    <value>{0} timestamp formats defined. (Click '...' to edit)</value>
+  </data>
 </root>
