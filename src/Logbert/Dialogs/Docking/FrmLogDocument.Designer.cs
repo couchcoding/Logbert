@@ -69,6 +69,7 @@
             // LogDockPanel
             // 
             this.LogDockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LogDockPanel.Theme = new WeifenLuo.WinFormsUI.Docking.VS2015LightTheme();
             this.LogDockPanel.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingWindow;
             this.LogDockPanel.Location = new System.Drawing.Point(0, 26);
             this.LogDockPanel.Name = "LogDockPanel";

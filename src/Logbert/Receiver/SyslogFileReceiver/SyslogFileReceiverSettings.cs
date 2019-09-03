@@ -36,8 +36,9 @@ using Couchcoding.Logbert.Properties;
 using System.IO;
 
 using Couchcoding.Logbert.Helper;
-using System.Drawing;
 using System.Text;
+
+using Couchcoding.Logbert.Dialogs;
 
 namespace Couchcoding.Logbert.Receiver.SyslogFileReceiver
 {
@@ -85,7 +86,19 @@ namespace Couchcoding.Logbert.Receiver.SyslogFileReceiver
         }
 
         chkStartFromBeginning.Checked = Settings.Default.PnlSyslogFileSettingsStartFromBeginning;
-        txtTimestampFormat.Text       = Settings.Default.PnlSyslogFileSettingsTimestampFormat;
+
+        int timeStampCount = Settings.Default.PnlSyslogFileSettingsTimestampFormat.Split(
+          new [] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries ).Length;
+
+        txtTimestampFormat.Text = timeStampCount > 1
+          ? string.Format(Resources.strSyslogReceiverCountOfTimestampsDefined, timeStampCount)
+          : Settings.Default.PnlSyslogFileSettingsTimestampFormat;
+
+        txtTimestampFormat.Tag = Settings.Default.PnlSyslogFileSettingsTimestampFormat;
+      }
+      else
+      {
+        txtTimestampFormat.Tag = FrmTimestamps.DefaultDateTimeFormat;
       }
 
       foreach (EncodingInfo encoding in Encoding.GetEncodings())
@@ -111,38 +124,22 @@ namespace Couchcoding.Logbert.Receiver.SyslogFileReceiver
     /// </summary>
     private void TxtTimestampFormatButtonClick(object sender, EventArgs e)
     {
-      Control btnTimestamp = sender as Control;
-
-      if (btnTimestamp != null)
+      using (FrmTimestamps timestampEditor = new FrmTimestamps((string)txtTimestampFormat.Tag))
       {
-        mnuTimestamp.Show(
-            btnTimestamp
-          , new Point(btnTimestamp.Width, btnTimestamp.Top));
+        if (timestampEditor.ShowDialog(this) == DialogResult.OK)
+        {
+          int timeStampCount = timestampEditor.Timestamps.Split(
+            new [] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries ).Length;
+
+          txtTimestampFormat.Text = timeStampCount > 1
+            ? string.Format(Resources.strSyslogReceiverCountOfTimestampsDefined, timeStampCount)
+            : timestampEditor.Timestamps;
+
+          txtTimestampFormat.Tag = timestampEditor.Timestamps;
+        }
       }
     }
-
-    /// <summary>
-    /// Handles the Click event of a timestamp preset <see cref="MenuItem"/>.
-    /// </summary>
-    private void MnuTimestampPresetClick(object sender, System.EventArgs e)
-    {
-      if (sender is MenuItem mnuCtrl && mnuCtrl.Tag != null)
-      {
-        txtTimestampFormat.Text = mnuCtrl.Tag.ToString();
-      }
-    }
-
-    /// <summary>
-    /// Handles the Click event of a timestamp help <see cref="MenuItem"/>.
-    /// </summary>
-    private void MnuTimestampClick(object sender, System.EventArgs e)
-    {
-      if (sender is MenuItem mnuCtrl && mnuCtrl.Tag != null)
-      {
-        txtTimestampFormat.SelectedText = mnuCtrl.Tag.ToString();
-      }
-    }
-
+    
     #endregion
 
     #region Public Methods
@@ -180,7 +177,7 @@ namespace Couchcoding.Logbert.Receiver.SyslogFileReceiver
         // Save the current settings as new default values.
         Settings.Default.PnlSyslogFileSettingsFile               = txtLogFile.Text;
         Settings.Default.PnlSyslogFileSettingsStartFromBeginning = chkStartFromBeginning.Checked;
-        Settings.Default.PnlSyslogFileSettingsTimestampFormat    = txtTimestampFormat.Text;
+        Settings.Default.PnlSyslogFileSettingsTimestampFormat    = (string)txtTimestampFormat.Tag;
         Settings.Default.PnlSyslogFileSettingsEncoding           = ((EncodingWrapper)cmbEncoding.SelectedItem).Codepage;
         
         Settings.Default.SaveSettings();
@@ -189,7 +186,7 @@ namespace Couchcoding.Logbert.Receiver.SyslogFileReceiver
       return new SyslogFileReceiver(
           txtLogFile.Text
         , chkStartFromBeginning.Checked
-        , txtTimestampFormat.Text
+        , (string)txtTimestampFormat.Tag
         , Settings.Default.PnlSyslogFileSettingsEncoding);
     }
 

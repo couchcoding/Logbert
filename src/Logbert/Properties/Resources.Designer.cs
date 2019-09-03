@@ -1115,6 +1115,15 @@ namespace Couchcoding.Logbert.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} timestamp formats defined. (Click &apos;...&apos; to edit).
+        /// </summary>
+        internal static string strSyslogReceiverCountOfTimestampsDefined {
+            get {
+                return ResourceManager.GetString("strSyslogReceiverCountOfTimestampsDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The given IP address is invalid..
         /// </summary>
         internal static string strSyslogReceiverInvalidIpAddress {

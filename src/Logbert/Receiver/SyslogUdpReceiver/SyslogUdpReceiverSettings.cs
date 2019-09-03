@@ -38,8 +38,9 @@ using Couchcoding.Logbert.Properties;
 using System.Net.Sockets;
 
 using Couchcoding.Logbert.Helper;
-using System.Drawing;
 using System.Text;
+
+using Couchcoding.Logbert.Dialogs;
 
 namespace Couchcoding.Logbert.Receiver.SyslogUdpReceiver
 {
@@ -234,7 +235,19 @@ namespace Couchcoding.Logbert.Receiver.SyslogUdpReceiver
         nudPort.Value             = Settings.Default.PnlSyslogSettingsPort;
         txtMulticastIp.Text       = Settings.Default.PnlSyslogSettingsMulticastAddress;
         chkMulticastGroup.Checked = Settings.Default.PnlSyslogSettingsJoinMulticast;
-        txtTimestampFormat.Text   = Settings.Default.PnlSyslogUdpSettingsTimestampFormat;
+
+        int timeStampCount = Settings.Default.PnlSyslogUdpSettingsTimestampFormat.Split(
+          new [] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries ).Length;
+
+        txtTimestampFormat.Text = timeStampCount > 1
+          ? string.Format(Resources.strSyslogReceiverCountOfTimestampsDefined, timeStampCount)
+          : Settings.Default.PnlSyslogUdpSettingsTimestampFormat;
+
+        txtTimestampFormat.Tag = Settings.Default.PnlSyslogUdpSettingsTimestampFormat;
+      }
+      else
+      {
+        txtTimestampFormat.Tag = FrmTimestamps.DefaultDateTimeFormat;
       }
 
       foreach (EncodingInfo encoding in Encoding.GetEncodings())
@@ -260,35 +273,19 @@ namespace Couchcoding.Logbert.Receiver.SyslogUdpReceiver
     /// </summary>
     private void TxtTimestampFormatButtonClick(object sender, EventArgs e)
     {
-      Control btnTimestamp = sender as Control;
-
-      if (btnTimestamp != null)
+      using (FrmTimestamps timestampEditor = new FrmTimestamps((string)txtTimestampFormat.Tag))
       {
-        mnuTimestamp.Show(
-            btnTimestamp
-          , new Point(btnTimestamp.Width, btnTimestamp.Top));
-      }
-    }
+        if (timestampEditor.ShowDialog(this) == DialogResult.OK)
+        {
+          int timeStampCount = timestampEditor.Timestamps.Split(
+            new [] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries ).Length;
 
-    /// <summary>
-    /// Handles the Click event of a timestamp preset <see cref="MenuItem"/>.
-    /// </summary>
-    private void MnuTimestampPresetClick(object sender, System.EventArgs e)
-    {
-      if (sender is MenuItem mnuCtrl && mnuCtrl.Tag != null)
-      {
-        txtTimestampFormat.Text = mnuCtrl.Tag.ToString();
-      }
-    }
+          txtTimestampFormat.Text = timeStampCount > 1
+            ? string.Format(Resources.strSyslogReceiverCountOfTimestampsDefined, timeStampCount)
+            : timestampEditor.Timestamps;
 
-    /// <summary>
-    /// Handles the Click event of a timestamp help <see cref="MenuItem"/>.
-    /// </summary>
-    private void MnuTimestampClick(object sender, System.EventArgs e)
-    {
-      if (sender is MenuItem mnuCtrl && mnuCtrl.Tag != null)
-      {
-        txtTimestampFormat.SelectedText = mnuCtrl.Tag.ToString();
+          txtTimestampFormat.Tag = timestampEditor.Timestamps;
+        }
       }
     }
 
@@ -352,7 +349,7 @@ namespace Couchcoding.Logbert.Receiver.SyslogUdpReceiver
                 Settings.Default.PnlSyslogSettingsPort               = (int)nudPort.Value;
                 Settings.Default.PnlSyslogSettingsJoinMulticast      = chkMulticastGroup.Checked;
                 Settings.Default.PnlSyslogSettingsMulticastAddress   = txtMulticastIp.Text;
-                Settings.Default.PnlSyslogUdpSettingsTimestampFormat = txtTimestampFormat.Text;
+                Settings.Default.PnlSyslogUdpSettingsTimestampFormat = (string)txtTimestampFormat.Tag;
                 Settings.Default.PnlSyslogUdpSettingsEncoding        = ((EncodingWrapper)cmbEncoding.SelectedItem).Codepage;
 
                 Settings.Default.SaveSettings();
@@ -362,7 +359,7 @@ namespace Couchcoding.Logbert.Receiver.SyslogUdpReceiver
                   ? IPAddress.Parse(txtMulticastIp.Text.Trim()) 
                   : null
                 , new IPEndPoint(ipAddress.Address, (int)nudPort.Value)
-                , txtTimestampFormat.Text
+                , (string)txtTimestampFormat.Tag
                 , Settings.Default.PnlSyslogUdpSettingsEncoding);
             }
           }

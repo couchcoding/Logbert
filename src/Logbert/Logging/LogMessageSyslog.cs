@@ -241,7 +241,7 @@ namespace Couchcoding.Logbert.Logging
         return false;
       }
 
-      uint priMatrix = UInt32.Parse(msgMtc.Groups[1].Value);
+      uint priMatrix = uint.Parse(msgMtc.Groups[1].Value);
 
       mSeverity       = (Severity)((int)priMatrix & 0x07);
       mFacility       = (Facility)((int)priMatrix >> 3);
@@ -249,35 +249,42 @@ namespace Couchcoding.Logbert.Logging
 
       string syslogMessage = data.Substring(msgMtc.Groups[0].Length).TrimStart();
       int hostIndex = 0;
+      bool dtParseResult = false;
 
-      if (syslogMessage.Length > timestampFormat.Length)
-      { 
-        string strTimeStamp = syslogMessage.Substring(hostIndex, timestampFormat.Length);
+      foreach (string possibleTimeStamp in timestampFormat.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
+      {
+        if (syslogMessage.Length <= possibleTimeStamp.Length || string.IsNullOrEmpty(timestampFormat))
+        {
+          continue;
+        }
 
-        bool dtParseResult = !string.IsNullOrEmpty(timestampFormat) && DateTime.TryParseExact(
-            strTimeStamp
-          , timestampFormat
+        string strTimeStamp = syslogMessage.Substring(hostIndex, possibleTimeStamp.Replace("\'", string.Empty).Length);
+
+        dtParseResult = DateTime.TryParseExact(strTimeStamp
+          , possibleTimeStamp
           , CultureInfo.InvariantCulture
           , DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.AssumeLocal
           , out mTimestamp);
 
         if (dtParseResult)
         {
-          hostIndex += timestampFormat.Length + 1;
-        }
-        else
-        {
-          mTimestamp = DateTime.Now;
+          hostIndex += strTimeStamp.Length;
+          break;
         }
       }
 
+      if (!dtParseResult)
+      {
+        mTimestamp = DateTime.Now;
+      }
+      
       syslogMessage = syslogMessage.Substring(hostIndex);
       mLogger       = syslogMessage.Split(' ')[0];
       mMessage      = syslogMessage.Substring(mLogger.Length + 1);
 
       return true;
     }
-
+    
     #endregion
 
     #region Public Methods
