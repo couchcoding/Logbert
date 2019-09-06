@@ -519,7 +519,7 @@ namespace Couchcoding.Logbert.Dialogs.Docking
       bounds.Y -= 1;
       bounds.X += 1;
 
-      if (e.Node.Level == 0 && e.Node.PrevNode == null)
+      if (e.Node.Level == 0 && e.Node.Parent == null)
       {
         bounds = new Rectangle(
             tvLoggerTree.Margin.Size.Width + ThemeManager.CurrentApplicationTheme.Resources.Images["FrmLogTreeNodeExpanded"].Width + 9
