@@ -467,6 +467,8 @@ namespace Couchcoding.Logbert.Logging
       XmlNamespaceManager namespaceManager = 
         new XmlNamespaceManager(new NameTable());
 
+      namespaceManager.AddNamespace("nlog", "urn:ignore");
+
       namespaceManager.AddNamespace(
           "log4j"
         , "http://jakarta.apache.org/log4j/");
