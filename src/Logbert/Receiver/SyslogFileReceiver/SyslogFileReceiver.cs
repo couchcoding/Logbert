@@ -277,12 +277,13 @@ namespace Couchcoding.Logbert.Receiver.SyslogFileReceiver
       }
 
       mFileReader.BaseStream.Seek(
-          mLastFileOffset
+        mLastFileOffset
         , SeekOrigin.Begin);
 
       string line;
 
-      List<LogMessage> messages = new List<LogMessage>();
+      FixedSizedQueue<LogMessage> messages = new FixedSizedQueue<LogMessage>(
+        Properties.Settings.Default.MaxLogMessages);
 
       while ((line = mFileReader.ReadLine()) != null)
       {
@@ -293,7 +294,7 @@ namespace Couchcoding.Logbert.Receiver.SyslogFileReceiver
 
         try
         {
-          messages.Add(new LogMessageSyslog(
+          messages.Enqueue(new LogMessageSyslog(
             line
             , ++mLogNumber
             , mTimestampFormat));
@@ -301,15 +302,12 @@ namespace Couchcoding.Logbert.Receiver.SyslogFileReceiver
         catch (Exception ex)
         {
           Logger.Warn(ex.Message);
+        }
       }
-    }
 
       mLastFileOffset = mFileReader.BaseStream.Position;
 
-      if (mLogHandler != null)
-      {
-        mLogHandler.HandleMessage(messages.ToArray());
-      }
+      mLogHandler?.HandleMessage(messages.ToArray());
     }
 
     #endregion

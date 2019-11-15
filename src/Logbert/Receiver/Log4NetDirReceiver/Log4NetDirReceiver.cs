@@ -258,7 +258,8 @@ namespace Couchcoding.Logbert.Receiver.Log4NetDirReceiver
       string line;
       string dataToParse = string.Empty;
 
-      List<LogMessage> messages = new List<LogMessage>();
+      FixedSizedQueue<LogMessage> messages = new FixedSizedQueue<LogMessage>(
+        Properties.Settings.Default.MaxLogMessages);
 
       while ((line = mFileReader.ReadLine()) != null)
       {
@@ -284,7 +285,7 @@ namespace Couchcoding.Logbert.Receiver.Log4NetDirReceiver
             continue;
           }
 
-          messages.Add(newLogMsg);
+          messages.Enqueue(newLogMsg);
 
           dataToParse = dataToParse.Substring(
               log4NetEndTag

@@ -266,6 +266,7 @@
     </Compile>
     <Compile Include="Helper\Browser.cs" />
     <Compile Include="Helper\EncodingWrapper.cs" />
+    <Compile Include="Helper\FixedSizedQueue.cs" />
     <Compile Include="Helper\FontCache.cs" />
     <Compile Include="Helper\GdiCache.cs" />
     <Compile Include="Helper\Extensions.cs" />
