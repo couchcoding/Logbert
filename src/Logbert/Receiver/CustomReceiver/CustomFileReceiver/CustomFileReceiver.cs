@@ -244,7 +244,8 @@ namespace Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
       string currentLine;
       string messageLines = string.Empty;
 
-      List<LogMessage> messages = new List<LogMessage>();
+      FixedSizedQueue<LogMessage> messages = new FixedSizedQueue<LogMessage>(
+        Properties.Settings.Default.MaxLogMessages);
 
       while ((currentLine = mFileReader.ReadLine()) != null)
       {
@@ -268,15 +269,12 @@ namespace Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
         messageLines = string.Empty;
 
         mLogNumber++;
-        messages.Add(cstmLgMsg);
+        messages.Enqueue(cstmLgMsg);
       }
 
       mLastFileOffset = mFileReader.BaseStream.Position;
 
-      if (mLogHandler != null)
-      {
-        mLogHandler.HandleMessage(messages.ToArray());
-      }
+      mLogHandler?.HandleMessage(messages.ToArray());
     }
 
     #endregion
