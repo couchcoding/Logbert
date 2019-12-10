@@ -35,7 +35,7 @@
   <!-- Define the installation directories on the target machine. -->
   <Directory Id="TARGETDIR" Name="SourceDir">
 
-    <Directory Id="ProgramFilesFolder">
+    <Directory Id="$(var.PlatformProgramFilesFolder)">
       <Directory Id="ManufacturerName" Name="$(var.Manufacturer)">
         <Directory Id="INSTALLDIR" Name="$(var.ProductName)" />
       </Directory>

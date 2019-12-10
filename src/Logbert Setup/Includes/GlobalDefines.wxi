@@ -34,14 +34,16 @@
 
   <?if $(var.Platform) = x64 ?>
   <?define Win64 = "yes" ?>
+  <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
   <?else ?>
   <?define Win64 = "no" ?>
+  <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
   <?endif ?>
 
-  <?define Manufacturer   = "Couchcoding" ?>
-  <?define ProductName    = "Logbert" ?>
+  <?define Manufacturer = "Couchcoding" ?>
+  <?define ProductName  = "Logbert" ?>
 
-  <?define ReleaseDir  = "..\Logbert\bin\x86\Release" ?>
+  <?define ReleaseDir  = "..\Logbert\bin\Release" ?>
 
   <?define UpgradeCode = "12B94D27-128D-4498-ADBF-A90DA2122854"?>
 
