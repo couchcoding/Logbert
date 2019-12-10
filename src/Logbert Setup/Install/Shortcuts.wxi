@@ -52,7 +52,7 @@
       <?if $(var.Platform) = x64 ?>
       <Shortcut Id          = "UninstallShortCut"
                 Name        = "!(loc.ShortcutUninstall)"
-                Descroption = "!(loc.ShortcutDescUninstall)"
+                Description = "!(loc.ShortcutDescUninstall)"
                 Target      = "[System64Folder]msiexec.exe"
                 Arguments   = "/x [ProductCode]"/>
       <?else?>
