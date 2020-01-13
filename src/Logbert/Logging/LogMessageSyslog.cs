@@ -75,7 +75,7 @@ namespace Couchcoding.Logbert.Logging
     /// <summary>
     /// The <see cref="Regex"/> to parse a syslog <see cref="LogMessage"/>.
     /// </summary>
-    private static readonly Regex mSyslogLineRegex = new Regex(@"<([0-9]{1,3})>", RegexOptions.IgnoreCase);
+    private static readonly Regex mSyslogLineRegex = new Regex(@"<([0-9]{1,3})>([\s]?[\d]+\s)?(.*)", RegexOptions.IgnoreCase);
 
     #endregion
 
@@ -243,11 +243,11 @@ namespace Couchcoding.Logbert.Logging
 
       uint priMatrix = uint.Parse(msgMtc.Groups[1].Value);
 
-      mSeverity       = (Severity)((int)priMatrix & 0x07);
-      mFacility       = (Facility)((int)priMatrix >> 3);
+      mSeverity = (Severity)((int)priMatrix & 0x07);
+      mFacility = (Facility)((int)priMatrix >> 3);
       mLocalTimestamp = DateTime.Now;
 
-      string syslogMessage = data.Substring(msgMtc.Groups[0].Length).TrimStart();
+      string syslogMessage = msgMtc.Groups[3].Value.TrimStart();
       int hostIndex = 0;
       bool dtParseResult = false;
 
@@ -277,14 +277,14 @@ namespace Couchcoding.Logbert.Logging
       {
         mTimestamp = DateTime.Now;
       }
-      
+
       syslogMessage = syslogMessage.Substring(hostIndex);
-      mLogger       = syslogMessage.Split(' ')[0];
-      mMessage      = syslogMessage.Substring(mLogger.Length + 1);
+      mLogger = syslogMessage.TrimStart().Split(' ')[0];
+      mMessage = syslogMessage.Substring(mLogger.Length + 1);
 
       return true;
     }
-    
+
     #endregion
 
     #region Public Methods
@@ -360,17 +360,17 @@ namespace Couchcoding.Logbert.Logging
       }
 
       msgData["Facility"] = LogFacility.ToString();
-      
+
       Table localTimeTable = new Table(owner);
-              
-      localTimeTable["Day"]         = Timestamp.Day;
-      localTimeTable["Month"]       = Timestamp.Month;
-      localTimeTable["Year"]        = Timestamp.Year;
-      localTimeTable["Hour"]        = Timestamp.Hour;
-      localTimeTable["Minute"]      = Timestamp.Minute;
-      localTimeTable["Second"]      = Timestamp.Second;
+
+      localTimeTable["Day"] = Timestamp.Day;
+      localTimeTable["Month"] = Timestamp.Month;
+      localTimeTable["Year"] = Timestamp.Year;
+      localTimeTable["Hour"] = Timestamp.Hour;
+      localTimeTable["Minute"] = Timestamp.Minute;
+      localTimeTable["Second"] = Timestamp.Second;
       localTimeTable["Millisecond"] = Timestamp.Millisecond;
-      localTimeTable["Timestamp"]   = Timestamp.ToUnixTimestamp();
+      localTimeTable["Timestamp"] = Timestamp.ToUnixTimestamp();
 
       msgData["LocalTimestamp"] = localTimeTable;
 
