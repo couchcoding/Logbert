@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" />
   <PropertyGroup>
+	<LangVersion>Latest</LangVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
@@ -30,6 +32,8 @@
     </UpgradeBackupLocation>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -347,6 +351,13 @@
     <Compile Include="Receiver\CustomReceiver\CustomFileReceiver\CustomFileReceiverSettings.Designer.cs">
       <DependentUpon>CustomFileReceiverSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Receiver\CustomReceiver\CustomTcpConnector\CustomTcpConnector.cs" />
+    <Compile Include="Receiver\CustomReceiver\CustomTcpConnector\CustomTcpConnectorSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Receiver\CustomReceiver\CustomTcpConnector\CustomTcpConnectorSettings.designer.cs">
+      <DependentUpon>CustomTcpConnectorSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Receiver\CustomReceiver\CustomTcpReceiver\CustomTcpReceiver.cs" />
     <Compile Include="Receiver\CustomReceiver\CustomTcpReceiver\CustomTcpReceiverSettings.cs">
       <SubType>UserControl</SubType>
@@ -546,6 +557,9 @@
       <DependentUpon>CustomFileReceiverSettings.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Receiver\CustomReceiver\CustomTcpConnector\CustomTcpConnectorSettings.resx">
+      <DependentUpon>CustomTcpConnectorSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Receiver\CustomReceiver\CustomTcpReceiver\CustomTcpReceiverSettings.resx">
       <DependentUpon>CustomTcpReceiverSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -588,6 +602,7 @@
     <None Include=".editorconfig" />
     <None Include="App.config" />
     <Compile Include="Logging\LogMessage.cs" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -643,6 +658,12 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
