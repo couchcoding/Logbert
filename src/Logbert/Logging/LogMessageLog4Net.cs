@@ -38,6 +38,7 @@ using Couchcoding.Logbert.Helper;
 
 using MoonSharp.Interpreter;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace Couchcoding.Logbert.Logging
 {
@@ -249,7 +250,7 @@ namespace Couchcoding.Logbert.Logging
           }
 
           long timestamp;
-          mTimestamp = long.TryParse(reader.GetAttribute("timestamp"), out timestamp) 
+          mTimestamp = long.TryParse(reader.GetAttribute("timestamp"), out timestamp)
             ? mUtcStartDate.AddMilliseconds(timestamp)
             : DateTime.Now;
 
@@ -325,27 +326,29 @@ namespace Couchcoding.Logbert.Logging
     /// <returns>The mapped <see cref="LogLevel"/>.</returns>
     private LogLevel MapLevelType(string levelType)
     {
-       if (!string.IsNullOrEmpty(levelType))
+      if (!string.IsNullOrEmpty(levelType))
       {
-        var level = levelType;
-        if (Settings.Default.LevelTRACE.Split(';').Any(x=>String.Equals(x,level,StringComparison.CurrentCultureIgnoreCase)))
-        {
-          return LogLevel.Trace;
-        }
-        else if (Settings.Default.LevelDEBUG.Split(';').Any(x => String.Equals(x, level, StringComparison.CurrentCultureIgnoreCase)))
-
+        if (Regex.IsMatch(levelType, Settings.Default.Log4NetLevelDebug))
         {
           return LogLevel.Debug;
         }
-        else if (Settings.Default.LevelINFO.Split(';').Any(x => String.Equals(x, level, StringComparison.CurrentCultureIgnoreCase)))
+
+        if (Regex.IsMatch(levelType, Settings.Default.Log4NetLevelInfo))
         {
           return LogLevel.Info;
         }
-        else if (Settings.Default.LevelWARN.Split(';').Any(x => String.Equals(x, level, StringComparison.CurrentCultureIgnoreCase)))
+
+        if (Regex.IsMatch(levelType, Settings.Default.Log4NetLeveLWarning))
         {
           return LogLevel.Warning;
         }
-        else if (Settings.Default.LevelFATAL.Split(';').Any(x => String.Equals(x, level, StringComparison.CurrentCultureIgnoreCase)))
+
+        if (Regex.IsMatch(levelType, Settings.Default.Log4NetLevelError))
+        {
+          return LogLevel.Error;
+        }
+
+        if (Regex.IsMatch(levelType, Settings.Default.Log4NetLevelFatal))
         {
           return LogLevel.Fatal;
         }
