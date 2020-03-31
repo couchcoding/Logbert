@@ -536,23 +536,23 @@
     <Setting Name="FrmMainShowWelcomePage" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="LevelTRACE" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">TRACE;</Value>
+    <Setting Name="Log4NetLevelTrace" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">TRACE</Value>
     </Setting>
-    <Setting Name="LevelDEBUG" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">DEBUG;</Value>
+    <Setting Name="Log4NetLevelDebug" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DEBUG</Value>
     </Setting>
-    <Setting Name="LevelINFO" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">INFO;</Value>
+    <Setting Name="Log4NetLevelInfo" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">INFO</Value>
     </Setting>
-    <Setting Name="LevelWARN" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">WARN;</Value>
+    <Setting Name="Log4NetLeveLWarning" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">WARN</Value>
     </Setting>
-    <Setting Name="LevelERROR" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">ERROR;</Value>
+    <Setting Name="Log4NetLevelError" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ERROR</Value>
     </Setting>
-    <Setting Name="LevelFATAL" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">FATAL;</Value>
+    <Setting Name="Log4NetLevelFatal" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">FATAL</Value>
     </Setting>
   </Settings>
 </SettingsFile>
