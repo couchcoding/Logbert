@@ -38,6 +38,7 @@ using Couchcoding.Logbert.Helper;
 
 using MoonSharp.Interpreter;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace Couchcoding.Logbert.Logging
 {
@@ -249,7 +250,7 @@ namespace Couchcoding.Logbert.Logging
           }
 
           long timestamp;
-          mTimestamp = long.TryParse(reader.GetAttribute("timestamp"), out timestamp) 
+          mTimestamp = long.TryParse(reader.GetAttribute("timestamp"), out timestamp)
             ? mUtcStartDate.AddMilliseconds(timestamp)
             : DateTime.Now;
 
@@ -327,20 +328,29 @@ namespace Couchcoding.Logbert.Logging
     {
       if (!string.IsNullOrEmpty(levelType))
       {
-        switch (levelType.ToUpper())
+        if (Regex.IsMatch(levelType, Settings.Default.Log4NetLevelDebug))
         {
-          case "TRACE":
-            return LogLevel.Trace;
-          case "DEBUG":
-            return LogLevel.Debug;
-          case "INFO":
-            return LogLevel.Info;
-          case "WARN":
-            return LogLevel.Warning;
-          case "ERROR":
-            return LogLevel.Error;
-          case "FATAL":
-            return LogLevel.Fatal;
+          return LogLevel.Debug;
+        }
+
+        if (Regex.IsMatch(levelType, Settings.Default.Log4NetLevelInfo))
+        {
+          return LogLevel.Info;
+        }
+
+        if (Regex.IsMatch(levelType, Settings.Default.Log4NetLeveLWarning))
+        {
+          return LogLevel.Warning;
+        }
+
+        if (Regex.IsMatch(levelType, Settings.Default.Log4NetLevelError))
+        {
+          return LogLevel.Error;
+        }
+
+        if (Regex.IsMatch(levelType, Settings.Default.Log4NetLevelFatal))
+        {
+          return LogLevel.Fatal;
         }
       }
 
