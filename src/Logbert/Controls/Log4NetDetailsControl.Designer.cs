@@ -30,7 +30,7 @@
       this.pbxCopyLocation = new Couchcoding.Logbert.Gui.Controls.PictureBoxEx();
       this.pbxCopyProperties = new Couchcoding.Logbert.Gui.Controls.PictureBoxEx();
       this.LogMessagePanel = new Couchcoding.Logbert.Gui.Controls.InfoPanel();
-      this.tblLogMessage = new System.Windows.Forms.TableLayoutPanel();
+      this.tblLogMessage = new Gui.Controls.TableLayoutPanelEx();
       this.lblCaptionProperties = new System.Windows.Forms.Label();
       this.txtDataProperties = new System.Windows.Forms.TextBox();
       this.lblCaptionLocation = new System.Windows.Forms.Label();
@@ -468,7 +468,7 @@
     private System.Windows.Forms.ToolStripButton tsbZoomOut;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     private System.Windows.Forms.ToolStripButton tsbCopy;
-    private System.Windows.Forms.TableLayoutPanel tblLogMessage;
+    private Gui.Controls.TableLayoutPanelEx tblLogMessage;
     private Gui.Controls.InfoPanel LogMessagePanel;
     private System.Windows.Forms.Label lblCaptionLogger;
     private System.Windows.Forms.Label lblCaptionLevel;

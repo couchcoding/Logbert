@@ -20,7 +20,7 @@ namespace Couchcoding.Logbert.Controls
       this.components = new System.ComponentModel.Container();
       this.cddColor = new Couchcoding.Logbert.Gui.Controls.ColorDropDown();
       this.btnCustomColor = new System.Windows.Forms.Button();
-      this.tblLayout = new System.Windows.Forms.TableLayoutPanel();
+      this.tblLayout = new TableLayoutPanelEx();
       this.tltTip = new System.Windows.Forms.ToolTip(this.components);
       this.tblLayout.SuspendLayout();
       this.SuspendLayout();
@@ -84,7 +84,7 @@ namespace Couchcoding.Logbert.Controls
 
     private Couchcoding.Logbert.Gui.Controls.ColorDropDown cddColor;
     private System.Windows.Forms.Button btnCustomColor;
-    private System.Windows.Forms.TableLayoutPanel tblLayout;
+    private Gui.Controls.TableLayoutPanelEx tblLayout;
     private System.Windows.Forms.ToolTip tltTip;
   }
 }

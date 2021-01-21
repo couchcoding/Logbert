@@ -51,6 +51,11 @@ namespace Couchcoding.Logbert.Helper
     public const int GWL_STYLE = -16;
 
     /// <summary>
+    /// The window has a horizontal scroll bar.
+    /// </summary>
+    public const int WS_HSCROLL = 0x00100000;
+
+    /// <summary>
     /// The window has a vertical scroll bar.
     /// </summary>
     public const int WS_VSCROLL = 0x00200000;

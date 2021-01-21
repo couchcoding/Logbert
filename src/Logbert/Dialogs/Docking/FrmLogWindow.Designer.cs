@@ -23,7 +23,7 @@
       this.cmLogMessage = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.cmsSynchronizeTree = new System.Windows.Forms.ToolStripMenuItem();
       this.cmdcopytoclipboard = new System.Windows.Forms.ToolStripMenuItem();
-      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      this.tableLayoutPanel1 = new Gui.Controls.TableLayoutPanelEx();
       this.colorMap1 = new Couchcoding.Logbert.Controls.ColorMap((Interfaces.ILogPresenter)this);
       this.cmsSeperator = new System.Windows.Forms.ToolStripSeparator();
       this.cmsToggleBookmark = new System.Windows.Forms.ToolStripMenuItem();
@@ -170,7 +170,7 @@
     private System.Windows.Forms.ContextMenuStrip cmLogMessage;
     private System.Windows.Forms.ToolStripMenuItem cmsSynchronizeTree;
     private System.Windows.Forms.ToolStripMenuItem cmdcopytoclipboard;
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+    private Gui.Controls.TableLayoutPanelEx tableLayoutPanel1;
     private Controls.ColorMap colorMap1;
     private System.Windows.Forms.ToolStripSeparator cmsSeperator;
     private System.Windows.Forms.ToolStripMenuItem cmsToggleBookmark;

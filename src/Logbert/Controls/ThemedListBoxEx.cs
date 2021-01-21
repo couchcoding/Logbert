@@ -1,11 +1,11 @@
 ﻿using Couchcoding.Logbert.Gui.Controls;
-using Couchcoding.Logbert.Helper;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
 using Couchcoding.Logbert.Theme.Interfaces;
 using Couchcoding.Logbert.Theme;
 using Couchcoding.Logbert.Theme.Themes;
+using Couchcoding.Logbert.Theme.Helper;
 
 namespace Couchcoding.Logbert.Controls
 {
@@ -86,8 +86,8 @@ namespace Couchcoding.Logbert.Controls
           : ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionBackground)
         , 0
         , e.Bounds.Top
-        , e.Bounds.Width - 0
-        , e.Bounds.Height - 0);
+        , e.Bounds.Width
+        , e.Bounds.Height);
     }
 
     /// <summary>
@@ -101,8 +101,8 @@ namespace Couchcoding.Logbert.Controls
             GdiCache.GetBrushFromColor(ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionBackgroundFocused)
           , 0
           , e.Bounds.Top
-          , e.Bounds.Width - 0
-          , e.Bounds.Height - 0);
+          , e.Bounds.Width
+          , e.Bounds.Height);
     }
 
     /// <summary>

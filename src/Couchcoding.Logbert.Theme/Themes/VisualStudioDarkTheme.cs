@@ -47,6 +47,11 @@ namespace Couchcoding.Logbert.Theme.Themes
     /// </summary>
     public override string Name => VisualStudioThemeDarkName;
 
+    /// <summary>
+    /// Gets the window style to set for this theme.
+    /// </summary>
+    public override string WindowThemeName => "DarkMode_Explorer";
+
     #endregion
 
     #region Constructor

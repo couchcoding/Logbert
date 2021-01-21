@@ -490,6 +490,14 @@ namespace Couchcoding.Logbert.Dialogs.Docking
       dgvFilter.CellBorderStyle            = DataGridViewCellBorderStyle.Single;
       dgvFilter.DefaultCellStyle.BackColor = theme.ColorPalette.ContentBackground;
       dgvFilter.DefaultCellStyle.ForeColor = theme.ColorPalette.ContentForeground;
+
+      if (Gui.Helper.OSHelper.IsWinVista && !string.IsNullOrEmpty(theme.WindowThemeName))
+      {
+        foreach (Control ctrl in dgvFilter.Controls)
+        {
+          Gui.Interop.Win32.SetWindowTheme(ctrl.Handle, theme.WindowThemeName, null);
+        }
+      }
     }
 
     #endregion

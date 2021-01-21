@@ -40,7 +40,7 @@
             this.cmbFontStyleWarning = new System.Windows.Forms.ComboBox();
             this.cmbFontStyleError = new System.Windows.Forms.ComboBox();
             this.cmbFontStyleFatal = new System.Windows.Forms.ComboBox();
-            this.tblLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.tblLayout = new Gui.Controls.TableLayoutPanelEx();
             this.lblFontStyle = new System.Windows.Forms.Label();
             this.lblBackcolor = new System.Windows.Forms.Label();
             this.lblTrace = new System.Windows.Forms.Label();
@@ -594,7 +594,7 @@
     private System.Windows.Forms.ComboBox cmbFontStyleWarning;
     private System.Windows.Forms.ComboBox cmbFontStyleError;
     private System.Windows.Forms.ComboBox cmbFontStyleFatal;
-    private System.Windows.Forms.TableLayoutPanel tblLayout;
+    private Gui.Controls.TableLayoutPanelEx tblLayout;
     private System.Windows.Forms.Label lblTrace;
     private System.Windows.Forms.Label lblFontStyle;
     private System.Windows.Forms.Label lblBackcolor;

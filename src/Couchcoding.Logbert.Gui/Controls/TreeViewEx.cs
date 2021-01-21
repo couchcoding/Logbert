@@ -28,6 +28,8 @@
 
 #endregion
 
+using Couchcoding.Logbert.Gui.Helper;
+using Couchcoding.Logbert.Gui.Interop;
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -74,47 +76,6 @@ namespace Couchcoding.Logbert.Gui.Controls
 
     #endregion
 
-    #region Interop Methods
-
-    /// <summary>
-    /// Causes a window to use a different set of visual style information than its class normally uses.
-    /// </summary>
-    /// <param name="hWnd">Handle to the window whose visual style information is to be changed.</param>
-    /// <param name="pszSubAppName">Pointer to a string that contains the application name to use in place of the calling application's name.</param>
-    /// <param name="pszSubIdList">Pointer to a string that contains a semicolon-separated list of CLSID names to use in place of the actual list passed by the window's class.</param>
-    /// <returns>If this function succeeds, it returns S_OK. Otherwise, it returns an HRESULT error code.</returns>
-    [DllImport("uxtheme.dll", CharSet = CharSet.Unicode)]
-    private extern static int SetWindowTheme(IntPtr hWnd, string pszSubAppName, string pszSubIdList);
-
-    /// <summary>
-    /// Sends the specified message to a window or windows.
-    /// </summary>
-    /// <param name="hWnd">A handle to the window whose window procedure will receive the message.</param>
-    /// <param name="msg">The message to be sent.</param>
-    /// <param name="wParam">Additional message-specific information.</param>
-    /// <param name="lParam">Additional message-specific information.</param>
-    /// <returns>The return value specifies the result of the message processing; it depends on the message sent.</returns>
-    [DllImport("user32.dll")]
-    public static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
-
-    #endregion
-
-    #region Private Properties
-
-    /// <summary>
-    /// Indicates whether we're running on window vista or higher, or not.
-    /// </summary>
-    private static bool IsWinVista
-    {
-      get
-      {
-        OperatingSystem os = Environment.OSVersion;
-        return (os.Platform == PlatformID.Win32NT) && (os.Version.Major >= 6);
-      }
-    }
-
-    #endregion
-
     #region Private Fields
 
     /// <summary>
@@ -128,7 +89,7 @@ namespace Couchcoding.Logbert.Gui.Controls
 
       if (style != 0 && IsHandleCreated)
       {
-        SendMessage(
+        Win32.SendMessage(
             Handle
           , TVM_SETEXTENDEDSTYLE
           , (IntPtr)TVS_EX_DOUBLEBUFFER
@@ -150,9 +111,9 @@ namespace Couchcoding.Logbert.Gui.Controls
       
       UpdateExtendedStyles();
         
-      if (!IsWinVista)
+      if (!OSHelper.IsWinVista)
       {
-        SendMessage(
+        Win32.SendMessage(
             Handle
           , TVM_SETBKCOLOR
           , IntPtr.Zero
@@ -196,14 +157,14 @@ namespace Couchcoding.Logbert.Gui.Controls
         return;
       }
 
-      if (IsWinVista && value)
+      if (OSHelper.IsWinVista && value)
       {
         if (!IsHandleCreated)
         {
           CreateHandle();
         }
 
-        SetWindowTheme(Handle, "explorer", null);
+        //Win32.SetWindowTheme(Handle, "Explorer", null);
       }
     }
 
@@ -221,7 +182,7 @@ namespace Couchcoding.Logbert.Gui.Controls
       SetStyle(ControlStyles.AllPaintingInWmPaint,  true);
 
       // Disable default CommCtrl painting on non-Vista systems
-      if (!IsWinVista)
+      if (!OSHelper.IsWinVista)
       {
         SetStyle(ControlStyles.UserPaint, true);
       }

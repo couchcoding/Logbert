@@ -46,6 +46,7 @@ using Couchcoding.Logbert.Theme.Palettes;
 using Couchcoding.Logbert.Theme.Interfaces;
 using Couchcoding.Logbert.Theme;
 using Couchcoding.Logbert.Theme.Themes;
+using Couchcoding.Logbert.Theme.Helper;
 
 namespace Couchcoding.Logbert.Dialogs.Docking
 {
@@ -471,10 +472,6 @@ namespace Couchcoding.Logbert.Dialogs.Docking
         return;
       }
 
-      int scrollWidth = tvLoggerTree.IsVerticalScrollbarvisible() 
-        ? SystemInformation.VerticalScrollBarWidth 
-        : 0;
-
       Brush nodeBackgroundBrush = (e.State & TreeNodeStates.Focused) == TreeNodeStates.Focused
         ? GdiCache.GetBrushFromColor(ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionBackgroundFocused)
         : GdiCache.GetBrushFromColor(ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionBackground);
@@ -609,7 +606,7 @@ namespace Couchcoding.Logbert.Dialogs.Docking
 
       if (theme.Metrics.PreferSystemRendering)
       {
-        tvLoggerTree.UseNativeSystemRendering(false);
+        tvLoggerTree.UseNativeSystemRendering(true);
       }
       else
       {
@@ -624,6 +621,11 @@ namespace Couchcoding.Logbert.Dialogs.Docking
         tvLoggerTree.Disposed  += TvLoggerTreeDisposed;
 
         tvLoggerTree.NodeMouseClick -= TvLoggerTreeNodeMouseClick;
+      }
+
+      if (Gui.Helper.OSHelper.IsWinVista && !string.IsNullOrEmpty(theme.WindowThemeName))
+      {
+        Gui.Interop.Win32.SetWindowTheme(tvLoggerTree.Handle, theme.WindowThemeName, null);
       }
     }
 

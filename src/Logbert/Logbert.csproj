@@ -126,6 +126,9 @@
     <Compile Include="Controls\ColorPickerCtrl.Designer.cs">
       <DependentUpon>ColorPickerCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\DockContentEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Controls\DockPanelEx.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -301,7 +304,6 @@
     <Compile Include="Helper\EncodingWrapper.cs" />
     <Compile Include="Helper\FixedSizedQueue.cs" />
     <Compile Include="Helper\FontCache.cs" />
-    <Compile Include="Helper\GdiCache.cs" />
     <Compile Include="Helper\Extensions.cs" />
     <Compile Include="Helper\FlatColorTable.cs" />
     <Compile Include="Helper\LogColumnData.cs" />

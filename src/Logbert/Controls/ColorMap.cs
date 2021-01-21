@@ -41,6 +41,7 @@ using Couchcoding.Logbert.Properties;
 using Couchcoding.Logbert.Interfaces;
 using Couchcoding.Logbert.Theme;
 using Couchcoding.Logbert.Theme.Themes;
+using Couchcoding.Logbert.Theme.Helper;
 
 namespace Couchcoding.Logbert.Controls
 {

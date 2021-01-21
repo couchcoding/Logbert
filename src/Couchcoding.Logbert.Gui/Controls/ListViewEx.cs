@@ -28,6 +28,8 @@
 
 #endregion
 
+using Couchcoding.Logbert.Gui.Helper;
+using Couchcoding.Logbert.Gui.Interop;
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -48,48 +50,18 @@ namespace Couchcoding.Logbert.Gui.Controls
 
     #endregion
 
-    #region Interop Methods
-
-    /// <summary>
-    /// Causes a window to use a different set of visual style information than its class normally uses.
-    /// </summary>
-    /// <param name="hWnd">Handle to the window whose visual style information is to be changed.</param>
-    /// <param name="pszSubAppName">Pointer to a string that contains the application name to use in place of the calling application's name.</param>
-    /// <param name="pszSubIdList">Pointer to a string that contains a semicolon-separated list of CLSID names to use in place of the actual list passed by the window's class.</param>
-    /// <returns>If this function succeeds, it returns S_OK. Otherwise, it returns an HRESULT error code.</returns>
-    [DllImport("uxtheme.dll", CharSet = CharSet.Unicode)]
-    private extern static int SetWindowTheme(IntPtr hWnd, string pszSubAppName, string pszSubIdList);
-
-    #endregion
-
-    #region Private Properties
-
-    /// <summary>
-    /// Indicates whether we're running on window vista or higher, or not.
-    /// </summary>
-    public static bool IsWinVista
-    {
-      get
-      {
-        OperatingSystem os = Environment.OSVersion;
-        return (os.Platform == PlatformID.Win32NT) && (os.Version.Major >= 6);
-      }
-    }
-
-    #endregion
-
     #region Private Methods
 
     /// <summary>
-    /// Creates the window handle of the <see cref="TreeViewEx"/> <see cref="Control"/>.
+    /// Creates the window handle of the <see cref="ListViewEx"/> <see cref="Control"/>.
     /// </summary>
     protected override void CreateHandle()
     {
       base.CreateHandle();
 
-      if (IsWinVista)
+      if (OSHelper.IsWinVista)
       {
-        SetWindowTheme(Handle, "explorer", null);
+        Win32.SetWindowTheme(Handle, "Explorer", null);
       }
     }
 

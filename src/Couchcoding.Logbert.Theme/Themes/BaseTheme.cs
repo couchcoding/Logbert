@@ -94,6 +94,14 @@ namespace Couchcoding.Logbert.Theme.Themes
     }
 
     /// <summary>
+    /// Gets the window style to set for this theme.
+    /// </summary>
+    public abstract string WindowThemeName
+    {
+      get;
+    }
+
+    /// <summary>
     /// Gets the docking theme of the <see cref="BaseTheme"/> instance.
     /// </summary>
     public ThemeBase DockingTheme => mApplicationTheme;

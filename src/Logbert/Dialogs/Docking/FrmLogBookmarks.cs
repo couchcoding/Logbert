@@ -414,6 +414,14 @@ namespace Couchcoding.Logbert.Dialogs.Docking
       dgvBookmarks.CellBorderStyle            = DataGridViewCellBorderStyle.Single;
       dgvBookmarks.DefaultCellStyle.BackColor = theme.ColorPalette.ContentBackground;
       dgvBookmarks.DefaultCellStyle.ForeColor = theme.ColorPalette.ContentForeground;
+
+      if (Gui.Helper.OSHelper.IsWinVista && !string.IsNullOrEmpty(theme.WindowThemeName))
+      {
+        foreach (Control ctrl in dgvBookmarks.Controls)
+        {
+          Gui.Interop.Win32.SetWindowTheme(ctrl.Handle, theme.WindowThemeName, null);
+        }
+      }
     }
 
     #endregion

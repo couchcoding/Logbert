@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\GdiCache.cs" />
     <Compile Include="Interfaces\IThemable.cs" />
     <Compile Include="Metrics\ThemeMetrics.cs" />
     <Compile Include="Metrics\VisualStudioBlueMetrics.cs" />
@@ -101,12 +102,6 @@
     <Compile Include="Themes\VisualStudioBlueTheme.cs" />
     <Compile Include="Themes\VisualStudioDarkTheme.cs" />
     <Compile Include="Themes\VisualStudioLightTheme.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Couchcoding.Logbert.Gui\Couchcoding.Logbert.Gui.csproj">
-      <Project>{0d9d135f-9d7a-4d90-8810-903450fd4245}</Project>
-      <Name>Couchcoding.Logbert.Gui</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />

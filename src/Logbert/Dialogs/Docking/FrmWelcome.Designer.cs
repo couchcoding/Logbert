@@ -30,17 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmWelcome));
-            this.tblWelcome = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tblWelcome = new Couchcoding.Logbert.Gui.Controls.TableLayoutPanelEx();
+            this.tableLayoutPanel2 = new Couchcoding.Logbert.Gui.Controls.TableLayoutPanelEx();
             this.lblOnlineRecources = new System.Windows.Forms.Label();
             this.flOnlineResources = new System.Windows.Forms.FlowLayoutPanel();
             this.lnkLogbertHomepage = new Couchcoding.Logbert.Gui.Controls.LinkLabelEx();
             this.lnkLog4NetExamples = new Couchcoding.Logbert.Gui.Controls.LinkLabelEx();
             this.lnkNlogExamples = new Couchcoding.Logbert.Gui.Controls.LinkLabelEx();
-            this.tblWelcomeLogger = new System.Windows.Forms.TableLayoutPanel();
-            this.lstLogger = new Controls.ThemedListBoxEx();
+            this.tblWelcomeLogger = new Couchcoding.Logbert.Gui.Controls.TableLayoutPanelEx();
+            this.lstLogger = new Couchcoding.Logbert.Controls.ThemedListBoxEx();
             this.lblNewLogger = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel1 = new Couchcoding.Logbert.Gui.Controls.TableLayoutPanelEx();
             this.lblRecentFiles = new System.Windows.Forms.Label();
             this.flRecentFiles = new System.Windows.Forms.FlowLayoutPanel();
             this.tlTip = new System.Windows.Forms.ToolTip(this.components);
@@ -186,6 +186,7 @@
             // 
             // lstLogger
             // 
+            this.lstLogger.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
             this.lstLogger.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lstLogger.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstLogger.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
@@ -300,13 +301,13 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tblWelcome;
-        private System.Windows.Forms.TableLayoutPanel tblWelcomeLogger;
+        private Gui.Controls.TableLayoutPanelEx tblWelcome;
+        private Gui.Controls.TableLayoutPanelEx tblWelcomeLogger;
         private System.Windows.Forms.Label lblNewLogger;
         private Controls.ThemedListBoxEx lstLogger;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private Gui.Controls.TableLayoutPanelEx tableLayoutPanel2;
         private System.Windows.Forms.Label lblOnlineRecources;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private Gui.Controls.TableLayoutPanelEx tableLayoutPanel1;
         private System.Windows.Forms.Label lblRecentFiles;
         private System.Windows.Forms.FlowLayoutPanel flOnlineResources;
         private Gui.Controls.LinkLabelEx lnkLogbertHomepage;
