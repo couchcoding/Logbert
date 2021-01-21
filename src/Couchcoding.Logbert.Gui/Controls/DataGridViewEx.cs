@@ -28,6 +28,14 @@
 
 #endregion
 
+using Couchcoding.Logbert.Gui.Helper;
+using Couchcoding.Logbert.Gui.Interop;
+using Couchcoding.Logbert.Theme.Helper;
+using Couchcoding.Logbert.Theme.Interfaces;
+using Couchcoding.Logbert.Theme.Themes;
+using System;
+using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Couchcoding.Logbert.Gui.Controls
@@ -35,7 +43,7 @@ namespace Couchcoding.Logbert.Gui.Controls
   /// <summary>
   /// Implements a double buffered <see cref="DataGridView"/> <see cref="Control"/>.
   /// </summary>
-  public class DataGridViewEx : DataGridView
+  public class DataGridViewEx : DataGridView, IThemable
   {
     #region Constructor
 
@@ -49,5 +57,59 @@ namespace Couchcoding.Logbert.Gui.Controls
     }
 
     #endregion
+
+    /// <summary>
+    /// Creates the window handle of the <see cref="TreeViewEx"/> <see cref="Control"/>.
+    /// </summary>
+    protected override void CreateHandle()
+    {
+      base.CreateHandle();
+
+      foreach (Control ctrl in Controls)
+      {
+        if (ctrl is ScrollBar)
+
+          Win32.SetWindowTheme(Handle, "Explorer", null);
+      }
+    }
+
+    protected override void OnPaint(PaintEventArgs e)
+    {
+      base.OnPaint(e);
+
+      if (ClientRectangle.Width > 0 && ClientRectangle.Height > 0)
+      {
+        var spaceLeft   = VerticalScrollBar.Visible 
+          ? SystemInformation.VerticalScrollBarWidth 
+          : 0;
+
+        var spaceBottom = HorizontalScrollBar.Visible 
+          ? SystemInformation.HorizontalScrollBarHeight 
+          : 0;
+
+        e.Graphics.FillRectangle(GdiCache.GetBrushFromColor(Theme.ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground), new Rectangle(
+          ClientRectangle.Width  - spaceLeft,
+          ClientRectangle.Height - spaceBottom,
+          SystemInformation.VerticalScrollBarWidth,
+          SystemInformation.HorizontalScrollBarHeight));
+      }
+    }
+
+    /// <summary>
+    /// Applies the current theme to the <see cref="Control"/>.
+    /// </summary>
+    /// <param name="theme">The <see cref="BaseTheme"/> instance to apply.</param>
+    public void ApplyTheme(BaseTheme theme)
+    {
+      BackColor = theme.ColorPalette.ContentBackground;
+
+      foreach (Control ctrl in Controls)
+      {
+        if (ctrl is ScrollBar && OSHelper.IsWinVista && !string.IsNullOrEmpty(theme.WindowThemeName))
+        {
+          Win32.SetWindowTheme(ctrl.Handle, theme.WindowThemeName, null);
+        }
+      }
+    }
   }
 }

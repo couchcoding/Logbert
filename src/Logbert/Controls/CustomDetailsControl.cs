@@ -44,6 +44,7 @@ using Couchcoding.Logbert.Theme.Palettes;
 using Couchcoding.Logbert.Theme.Interfaces;
 using Couchcoding.Logbert.Theme;
 using Couchcoding.Logbert.Theme.Themes;
+using Couchcoding.Logbert.Theme.Helper;
 
 namespace Couchcoding.Logbert.Controls
 {
@@ -524,8 +525,13 @@ namespace Couchcoding.Logbert.Controls
       tsbZoomOut.Image = theme.Resources.Images["FrmMainTbZoomOut"];
       tsbCopy.Image    = theme.Resources.Images["FrmScriptTbCopy"];
 
-      LogMessagePanel.BackColor  = theme.ColorPalette.ContentBackground;
-      LogMessagePanel.ForeColor  = theme.ColorPalette.ContentForeground;
+      LogMessagePanel.BackColor = theme.ColorPalette.ContentBackground;
+      LogMessagePanel.ForeColor = theme.ColorPalette.ContentForeground;
+
+      if (Gui.Helper.OSHelper.IsWinVista && !string.IsNullOrEmpty(theme.WindowThemeName))
+      {
+        Gui.Interop.Win32.SetWindowTheme(LogMessagePanel.Handle, theme.WindowThemeName, null);
+      }
 
       foreach (Control ctrl in tblLogMessage.Controls)
       {

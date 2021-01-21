@@ -21,7 +21,7 @@
             this.tsbZoomOut = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbFilterRecursive = new System.Windows.Forms.ToolStripButton();
-            this.tblLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.tblLayout = new Gui.Controls.TableLayoutPanelEx();
             this.bgPanel = new Couchcoding.Logbert.Gui.Controls.InfoPanel();
             this.tvLoggerTree = new Couchcoding.Logbert.Gui.Controls.TreeViewEx();
             this.tsLoggerTree.SuspendLayout();
@@ -162,7 +162,7 @@
     private System.Windows.Forms.ToolStripButton tsbZoomIn;
     private System.Windows.Forms.ToolStripButton tsbZoomOut;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-    private System.Windows.Forms.TableLayoutPanel tblLayout;
+    private Gui.Controls.TableLayoutPanelEx tblLayout;
     private Gui.Controls.InfoPanel bgPanel;
     private Gui.Controls.TreeViewEx tvLoggerTree;
   }

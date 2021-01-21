@@ -24,7 +24,7 @@
             this.tltTip = new System.Windows.Forms.ToolTip(this.components);
             this.pbxCopyNumber = new Couchcoding.Logbert.Gui.Controls.PictureBoxEx();
             this.LogMessagePanel = new Couchcoding.Logbert.Gui.Controls.InfoPanel();
-            this.tblLogMessage = new System.Windows.Forms.TableLayoutPanel();
+            this.tblLogMessage = new Gui.Controls.TableLayoutPanelEx();
             this.lblCaptionNumber = new System.Windows.Forms.Label();
             this.txtDataNumber = new System.Windows.Forms.TextBox();
             this.logDetailToolStrip.SuspendLayout();
@@ -184,7 +184,7 @@
     private System.Windows.Forms.ToolStripButton tsbZoomOut;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     private System.Windows.Forms.ToolStripButton tsbCopy;
-    private System.Windows.Forms.TableLayoutPanel tblLogMessage;
+    private Gui.Controls.TableLayoutPanelEx tblLogMessage;
     private Gui.Controls.InfoPanel LogMessagePanel;
     private System.Windows.Forms.Label lblCaptionNumber;
     private System.Windows.Forms.TextBox txtDataNumber;

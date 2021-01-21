@@ -46,6 +46,7 @@ using WeifenLuo.WinFormsUI.Docking;
 using Couchcoding.Logbert.Theme.Interfaces;
 using Couchcoding.Logbert.Theme;
 using Couchcoding.Logbert.Theme.Themes;
+using Couchcoding.Logbert.Theme.Helper;
 
 namespace Couchcoding.Logbert.Dialogs.Docking
 {
@@ -481,7 +482,7 @@ namespace Couchcoding.Logbert.Dialogs.Docking
 
           TextRenderer.DrawText(
               e.Graphics
-            , e.Value.ToString()
+            , e.Value?.ToString() ?? string.Empty
             , logFont
             , e.CellBounds
             , foreColor

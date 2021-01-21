@@ -46,10 +46,10 @@ using WeifenLuo.WinFormsUI.Docking;
 using MoonSharp.Interpreter;
 using Couchcoding.Logbert.Properties;
 using System.Configuration;
-using Couchcoding.Logbert.Theme.Palettes;
 using Couchcoding.Logbert.Theme.Interfaces;
 using Couchcoding.Logbert.Theme;
 using Couchcoding.Logbert.Theme.Themes;
+using Couchcoding.Logbert.Gui.Helper;
 
 namespace Couchcoding.Logbert.Dialogs.Docking
 {
@@ -292,6 +292,17 @@ namespace Couchcoding.Logbert.Dialogs.Docking
       tsbPaste.Enabled      = Clipboard.ContainsText() && scintilla.Focused && !scintilla.ReadOnly && !mLuaScriptRunning;
       tsbStart.Enabled      = textAvailable;
       tsbStop.Enabled       = mLuaScriptRunning;
+    }
+
+    /// <summary>
+    /// Handles the Layout event of the scintilla <see cref="Control"/>.
+    /// </summary>
+    private void ScintillaLayout(object sender, LayoutEventArgs e)
+    {
+      if (OSHelper.IsWinVista && !string.IsNullOrEmpty(ThemeManager.CurrentApplicationTheme.WindowThemeName))
+      {
+        Gui.Interop.Win32.SetWindowTheme(scintilla.Handle, ThemeManager.CurrentApplicationTheme.WindowThemeName, null);
+      }
     }
 
     /// <summary>
@@ -546,10 +557,7 @@ namespace Couchcoding.Logbert.Dialogs.Docking
           scintilla.Styles[Style.Lua.Label].ForeColor         = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
           scintilla.Styles[Style.Lua.LiteralString].ForeColor = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
           scintilla.Styles[Style.Lua.Preprocessor].ForeColor  = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
-
-
-
-
+          
           scintilla.SetFoldMarginColor(
               true
             , ThemeManager.CurrentApplicationTheme.ColorPalette.ContentBackground);
@@ -721,6 +729,11 @@ namespace Couchcoding.Logbert.Dialogs.Docking
     {
       tsbOutputWordWrap.Checked = !tsbOutputWordWrap.Checked;
       txtOutput.WordWrap        = tsbOutputWordWrap.Checked;
+
+      if (OSHelper.IsWinVista && !string.IsNullOrEmpty(ThemeManager.CurrentApplicationTheme.WindowThemeName))
+      {
+        Gui.Interop.Win32.SetWindowTheme(txtOutput.Handle, ThemeManager.CurrentApplicationTheme.WindowThemeName, null);
+      }
     }
 
     /// <summary>
@@ -918,28 +931,28 @@ namespace Couchcoding.Logbert.Dialogs.Docking
       tsbRedo.Enabled       = scintilla.CanRedo;
       scintilla.ReadOnly    = false;
 
-      scintilla.Styles[Style.Default].BackColor         = Settings.Default.CodeElement_DefaultText_BackgroundColor;
-        scintilla.Styles[Style.Lua.Default].ForeColor       = Settings.Default.CodeElement_DefaultText_ForegroundColor;
-        scintilla.Styles[Style.Lua.Comment].ForeColor       = Settings.Default.CodeElement_Comment_ForegroundColor;
-        scintilla.Styles[Style.Lua.CommentLine].ForeColor   = Settings.Default.CodeElement_Comment_ForegroundColor;
-        scintilla.Styles[Style.Lua.CommentDoc].ForeColor    = Settings.Default.CodeElement_Comment_ForegroundColor;
-        scintilla.Styles[Style.Lua.Number].ForeColor        = Settings.Default.CodeElement_Number_ForegroundColor;
-        scintilla.Styles[Style.Lua.Word].ForeColor          = Settings.Default.CodeElement_Keyword_ForegroundColor;
-        scintilla.Styles[Style.Lua.Word2].ForeColor         = Settings.Default.CodeElement_LuaFunction_ForegroundColor;
-        scintilla.Styles[Style.Lua.Word3].ForeColor         = Settings.Default.CodeElement_LogbertFunction_ForegroundColor;
-        scintilla.Styles[Style.Lua.Word4].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
-        scintilla.Styles[Style.Lua.Word5].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
-        scintilla.Styles[Style.Lua.Word6].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
-        scintilla.Styles[Style.Lua.Word7].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
-        scintilla.Styles[Style.Lua.Word8].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
-        scintilla.Styles[Style.Lua.String].ForeColor        = Settings.Default.CodeElement_String_ForegroundColor;
-        scintilla.Styles[Style.Lua.Character].ForeColor     = Settings.Default.CodeElement_String_ForegroundColor;
-        scintilla.Styles[Style.Lua.StringEol].ForeColor     = Settings.Default.CodeElement_String_ForegroundColor;
-        scintilla.Styles[Style.Lua.Operator].ForeColor      = Settings.Default.CodeElement_Operator_ForegroundColor;
-        scintilla.Styles[Style.Lua.Identifier].ForeColor    = Settings.Default.CodeElement_Identifier_ForegroundColor;
-        scintilla.Styles[Style.Lua.Label].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
-        scintilla.Styles[Style.Lua.LiteralString].ForeColor = Settings.Default.CodeElement_DefaultText_ForegroundColor;
-        scintilla.Styles[Style.Lua.Preprocessor].ForeColor  = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+      scintilla.Styles[Style.Default].BackColor           = Settings.Default.CodeElement_DefaultText_BackgroundColor;
+      scintilla.Styles[Style.Lua.Default].ForeColor       = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+      scintilla.Styles[Style.Lua.Comment].ForeColor       = Settings.Default.CodeElement_Comment_ForegroundColor;
+      scintilla.Styles[Style.Lua.CommentLine].ForeColor   = Settings.Default.CodeElement_Comment_ForegroundColor;
+      scintilla.Styles[Style.Lua.CommentDoc].ForeColor    = Settings.Default.CodeElement_Comment_ForegroundColor;
+      scintilla.Styles[Style.Lua.Number].ForeColor        = Settings.Default.CodeElement_Number_ForegroundColor;
+      scintilla.Styles[Style.Lua.Word].ForeColor          = Settings.Default.CodeElement_Keyword_ForegroundColor;
+      scintilla.Styles[Style.Lua.Word2].ForeColor         = Settings.Default.CodeElement_LuaFunction_ForegroundColor;
+      scintilla.Styles[Style.Lua.Word3].ForeColor         = Settings.Default.CodeElement_LogbertFunction_ForegroundColor;
+      scintilla.Styles[Style.Lua.Word4].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+      scintilla.Styles[Style.Lua.Word5].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+      scintilla.Styles[Style.Lua.Word6].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+      scintilla.Styles[Style.Lua.Word7].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+      scintilla.Styles[Style.Lua.Word8].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+      scintilla.Styles[Style.Lua.String].ForeColor        = Settings.Default.CodeElement_String_ForegroundColor;
+      scintilla.Styles[Style.Lua.Character].ForeColor     = Settings.Default.CodeElement_String_ForegroundColor;
+      scintilla.Styles[Style.Lua.StringEol].ForeColor     = Settings.Default.CodeElement_String_ForegroundColor;
+      scintilla.Styles[Style.Lua.Operator].ForeColor      = Settings.Default.CodeElement_Operator_ForegroundColor;
+      scintilla.Styles[Style.Lua.Identifier].ForeColor    = Settings.Default.CodeElement_Identifier_ForegroundColor;
+      scintilla.Styles[Style.Lua.Label].ForeColor         = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+      scintilla.Styles[Style.Lua.LiteralString].ForeColor = Settings.Default.CodeElement_DefaultText_ForegroundColor;
+      scintilla.Styles[Style.Lua.Preprocessor].ForeColor  = Settings.Default.CodeElement_DefaultText_ForegroundColor;
 
       scintilla.SetFoldMarginColor(
           true
@@ -1289,6 +1302,7 @@ namespace Couchcoding.Logbert.Dialogs.Docking
 
       txtOutput.BackColor = theme.ColorPalette.ContentBackground;
       txtOutput.ForeColor = theme.ColorPalette.ContentForeground;
+      bgPanel.BorderColor = theme.ColorPalette.DividerColor;
 
       tsbLoadScript.Image     = theme.Resources.Images["FrmMainTbOpen"];
       tsbSaveScript.Image     = theme.Resources.Images["FrmMainTbSave"];
@@ -1303,12 +1317,17 @@ namespace Couchcoding.Logbert.Dialogs.Docking
       tsbZoomOut.Image        = theme.Resources.Images["FrmMainTbZoomOut"];
       tsbOutputClear.Image    = theme.Resources.Images["FrmScriptTbClear"];
       tsbOutputWordWrap.Image = theme.Resources.Images["FrmScriptTbWordWrap"];
+
+      if (OSHelper.IsWinVista && !string.IsNullOrEmpty(ThemeManager.CurrentApplicationTheme.WindowThemeName))
+      {
+        Gui.Interop.Win32.SetWindowTheme(txtOutput.Handle, ThemeManager.CurrentApplicationTheme.WindowThemeName, null);
+      }
     }
 
     #endregion
 
     #region Constructor
-    
+
     /// <summary>
     /// Creates a new instance of the <see cref="FrmLogScript"/> window.
     /// </summary>

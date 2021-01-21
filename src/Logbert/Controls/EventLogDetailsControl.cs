@@ -43,6 +43,7 @@ using Couchcoding.Logbert.Properties;
 using Couchcoding.Logbert.Theme.Interfaces;
 using Couchcoding.Logbert.Theme;
 using Couchcoding.Logbert.Theme.Themes;
+using Couchcoding.Logbert.Theme.Helper;
 
 namespace Couchcoding.Logbert.Controls
 {
@@ -512,6 +513,11 @@ namespace Couchcoding.Logbert.Controls
       txtDataMessage.ForeColor     = theme.ColorPalette.ContentForeground;
       txtDataInstaceId.BackColor   = theme.ColorPalette.ContentBackground;
       txtDataInstaceId.ForeColor   = theme.ColorPalette.ContentForeground;
+
+      if (Gui.Helper.OSHelper.IsWinVista && !string.IsNullOrEmpty(theme.WindowThemeName))
+      {
+        Gui.Interop.Win32.SetWindowTheme(LogMessagePanel.Handle, theme.WindowThemeName, null);
+      }
     }
 
     #endregion

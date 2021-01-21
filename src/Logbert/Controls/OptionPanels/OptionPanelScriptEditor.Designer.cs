@@ -28,7 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.tblLayout = new System.Windows.Forms.TableLayoutPanel();
+      this.tblLayout = new Gui.Controls.TableLayoutPanelEx();
       this.cmbFont = new System.Windows.Forms.ComboBox();
       this.lblFont = new System.Windows.Forms.Label();
       this.cmbFontSize = new System.Windows.Forms.ComboBox();
@@ -308,7 +308,7 @@
 
     #endregion
 
-    private System.Windows.Forms.TableLayoutPanel tblLayout;
+    private Gui.Controls.TableLayoutPanelEx tblLayout;
     private System.Windows.Forms.ComboBox cmbFontSize;
     private System.Windows.Forms.Label lblFontSize;
     private System.Windows.Forms.ComboBox cmbFont;

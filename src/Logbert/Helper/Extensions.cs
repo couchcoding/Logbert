@@ -302,6 +302,32 @@ namespace Couchcoding.Logbert.Helper
       return ((Win32.GetWindowLong(ctrl.Handle, Win32.GWL_STYLE) & Win32.WS_VSCROLL) != 0);
     }
 
+    /// <summary>
+    /// Gets the visible scrollbars of the specified <paramref name="ctl"/>.
+    /// </summary>
+    /// <param name="ctl">The <see cref="Control"/> to get the visible scrollbars from.</param>
+    /// <returns>The <see cref="ScrollBars"/> enumeration of visible ones.</returns>
+    public static ScrollBars GetVisibleScrollbars(this Control ctl)
+    {
+      int wndStyle = Win32.GetWindowLong(ctl.Handle, Win32.GWL_STYLE);
+
+      bool hsVisible = (wndStyle & Win32.WS_HSCROLL) != 0;
+      bool vsVisible = (wndStyle & Win32.WS_VSCROLL) != 0;
+
+      if (hsVisible)
+      {
+        return vsVisible 
+          ? ScrollBars.Both 
+          : ScrollBars.Horizontal;
+      }
+      else
+      {
+        return vsVisible 
+          ? ScrollBars.Vertical 
+          : ScrollBars.None;
+      }
+    }
+
     #endregion
   }
 }

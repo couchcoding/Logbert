@@ -47,6 +47,11 @@ namespace Couchcoding.Logbert.Theme.Themes
     /// </summary>
     public override string Name => VisualStudioThemeBlueName;
 
+    /// <summary>
+    /// Gets the window style to set for this theme.
+    /// </summary>
+    public override string WindowThemeName => "Explorer";
+
     #endregion
 
     #region Constructor

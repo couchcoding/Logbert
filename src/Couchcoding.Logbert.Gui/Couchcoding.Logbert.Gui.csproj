@@ -88,6 +88,9 @@
     <Compile Include="Controls\PictureBoxEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\TableLayoutPanelEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\TextBoxEx.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -101,11 +104,18 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Helper\DpiHelper.cs" />
+    <Compile Include="Helper\OSHelper.cs" />
     <Compile Include="Interop\Win32.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Couchcoding.Logbert.Theme\Couchcoding.Logbert.Theme.csproj">
+      <Project>{de30d0ed-e29f-4779-a057-c7c1f1ef4f59}</Project>
+      <Name>Couchcoding.Logbert.Theme</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

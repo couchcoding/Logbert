@@ -54,14 +54,15 @@ using Couchcoding.Logbert.Receiver.WinDebugReceiver;
 using Logbert;
 
 using WeifenLuo.WinFormsUI.Docking;
-using Couchcoding.Logbert.Theme.Palettes;
 using Couchcoding.Logbert.Theme.Interfaces;
 using Couchcoding.Logbert.Theme;
 using Couchcoding.Logbert.Theme.Themes;
+using Couchcoding.Logbert.Gui.Helper;
+using Couchcoding.Logbert.Controls;
 
 namespace Couchcoding.Logbert.Dialogs.Docking
 {
-  public partial class FrmWelcome : DockContent, IThemable
+  public partial class FrmWelcome : DockContentEx, IThemable
   {
     #region Private Fields
 
@@ -104,10 +105,22 @@ namespace Couchcoding.Logbert.Dialogs.Docking
 
     #region Private Methods
 
+    protected override void OnVisibleScrollbarsChanged(ScrollBars newValue)
+    {
+      base.OnVisibleScrollbarsChanged(newValue);
+
+      if (newValue != ScrollBars.None && OSHelper.IsWinVista && !string.IsNullOrEmpty(ThemeManager.CurrentApplicationTheme.WindowThemeName))
+      {
+        this.BeginInvoke(new Action(()=>
+        Gui.Interop.Win32.SetWindowTheme(Handle, ThemeManager.CurrentApplicationTheme.WindowThemeName, null))
+          );
+      }
+    }
+
     /// <summary>
     /// Raises the <see cref="E:System.Windows.Forms.Form.Shown"/> event.
     /// </summary>
-    /// <param name="e">A <see cref="T:System.EventArgs"/> that contains the event data. </param>
+    /// <param name="e">A <see cref="T:System.EventArgs"/> that contains the event data.</param>
     protected override void OnShown(EventArgs e)
     {
       base.OnShown(e);

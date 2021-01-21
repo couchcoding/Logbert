@@ -625,8 +625,11 @@ namespace Logbert
 
       if (Settings.Default.FrmMainCheckForUpdateOnStartup)
       {
-        // Use the security protocol Tls12 for web requests to github.
-        ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+        if (Environment.OSVersion.Version.Major >= 6 && Environment.OSVersion.Version.Minor >= 1)
+        {
+          // Use the security protocol Tls12 for web requests to github (only available on Windows 7 or higher).
+          ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+        }
 
         // Build the web request object for the online update check.
         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(LOGBERT_UPDATE_API);
