@@ -128,6 +128,7 @@
             this.clmWebsite});
             this.lstComponents.FullRowSelect = true;
             this.lstComponents.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lstComponents.HideSelection = false;
             listViewItem1.UseItemStyleForSubItems = false;
             listViewItem2.UseItemStyleForSubItems = false;
             listViewItem3.UseItemStyleForSubItems = false;
