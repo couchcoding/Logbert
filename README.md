@@ -29,4 +29,4 @@ Logbert is an advanced log message viewer for log4net, log4j and others.
 
 ### Copyright & License
 
-Copyright (c) 2020 Couchcoding - Released under the [MIT license](LICENSE).
+Copyright (c) 2021 Couchcoding - Released under the [MIT license](LICENSE).
