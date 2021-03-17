@@ -48,6 +48,7 @@ using Couchcoding.Logbert.Receiver.Log4NetDirReceiver;
 using Couchcoding.Logbert.Receiver.NLogDirReceiver;
 using Couchcoding.Logbert.Receiver.WinDebugReceiver;
 using Couchcoding.Logbert.Receiver.CustomReceiver.CustomUdpReceiver;
+using Couchcoding.Logbert.Receiver.CustomReceiver.CustomHttpReceiver;
 
 namespace Couchcoding.Logbert.Dialogs
 {
@@ -140,6 +141,7 @@ namespace Couchcoding.Logbert.Dialogs
       lstLogger.AddSeperator();
       lstLogger.Items.Add(new CustomUdpReceiver());
       lstLogger.Items.Add(new CustomTcpReceiver());
+      lstLogger.Items.Add(new CustomHttpReceiver());
       lstLogger.Items.Add(new CustomFileReceiver());
       lstLogger.Items.Add(new CustomDirReceiver());
     }

@@ -485,7 +485,7 @@ namespace Couchcoding.Logbert.Dialogs
       tsColumns.Renderer = new CustomToolStripSystemRenderer();
     }
 
-        #endregion
+    #endregion
 
-    }
+  }
 }

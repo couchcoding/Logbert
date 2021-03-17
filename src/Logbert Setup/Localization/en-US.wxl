@@ -50,7 +50,7 @@
   <String Id="ShortcutUninstall">Uninstall</String>
   <String Id="ShortcutDescUninstall">Uninstall Logbert.</String>
 
-  <String Id="ConditionInvalidOS">You need Windows XP SP3 or higher for Logbert.</String>
-  <String Id="ConditionNoDotNet35">Logbert needs the .NET Framework 4.0 or higher.</String>
+  <String Id="ConditionInvalidOS">You need at least Windows 7 for Logbert.</String>
+  <String Id="ConditionNoDotNet48">Logbert needs the .NET Framework 4.8 or higher.</String>
 
 </WixLocalization>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -28,7 +28,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -54,6 +54,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -63,6 +64,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Logbert.Program</StartupObject>
@@ -75,6 +77,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <OutputPath>bin\Release\</OutputPath>
@@ -82,6 +85,27 @@
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
@@ -100,7 +124,9 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Messaging" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -300,7 +326,9 @@
     <Compile Include="Dialogs\FrmTimestamps.Designer.cs">
       <DependentUpon>FrmTimestamps.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logging\LogError.cs" />
     <Compile Include="Helper\Browser.cs" />
+    <Compile Include="Helper\DataProtection.cs" />
     <Compile Include="Helper\EncodingWrapper.cs" />
     <Compile Include="Helper\FixedSizedQueue.cs" />
     <Compile Include="Helper\FontCache.cs" />
@@ -363,6 +391,14 @@
     </Compile>
     <Compile Include="Receiver\CustomReceiver\CustomFileReceiver\CustomFileReceiverSettings.Designer.cs">
       <DependentUpon>CustomFileReceiverSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Receiver\CustomReceiver\CustomHttpReceiver\BasicHttpAuthentication.cs" />
+    <Compile Include="Receiver\CustomReceiver\CustomHttpReceiver\CustomHttpReceiver.cs" />
+    <Compile Include="Receiver\CustomReceiver\CustomHttpReceiver\CustomHttpReceiverSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Receiver\CustomReceiver\CustomHttpReceiver\CustomHttpReceiverSettings.Designer.cs">
+      <DependentUpon>CustomHttpReceiverSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Receiver\CustomReceiver\CustomTcpReceiver\CustomTcpReceiver.cs" />
     <Compile Include="Receiver\CustomReceiver\CustomTcpReceiver\CustomTcpReceiverSettings.cs">
@@ -563,6 +599,9 @@
       <DependentUpon>CustomFileReceiverSettings.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Receiver\CustomReceiver\CustomHttpReceiver\CustomHttpReceiverSettings.resx">
+      <DependentUpon>CustomHttpReceiverSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Receiver\CustomReceiver\CustomTcpReceiver\CustomTcpReceiverSettings.resx">
       <DependentUpon>CustomTcpReceiverSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -619,6 +658,7 @@
     <BaseApplicationManifest Include="Properties\app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\log_error.png" />
     <None Include="Resources\Info_Light.png" />
     <None Include="Resources\Trace_Light.png" />
     <None Include="Resources\Warn_Light.png" />

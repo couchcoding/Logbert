@@ -73,6 +73,9 @@ namespace Couchcoding.Logbert.Gui.Controls
       }
     }
 
+    /// <summary>
+    /// Handles the OnPaint event.
+    /// </summary>
     protected override void OnPaint(PaintEventArgs e)
     {
       base.OnPaint(e);
@@ -102,6 +105,7 @@ namespace Couchcoding.Logbert.Gui.Controls
     public void ApplyTheme(BaseTheme theme)
     {
       BackColor = theme.ColorPalette.ContentBackground;
+      ColumnHeadersDefaultCellStyle.SelectionBackColor = ColumnHeadersDefaultCellStyle.BackColor;
 
       foreach (Control ctrl in Controls)
       {

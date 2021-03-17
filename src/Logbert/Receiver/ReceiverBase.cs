@@ -243,7 +243,8 @@ namespace Couchcoding.Logbert.Receiver
     /// </summary>
     public virtual void Reset()
     {
-      
+      Shutdown();
+      Initialize(mLogHandler);
     }
 
     /// <summary>

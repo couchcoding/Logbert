@@ -59,6 +59,7 @@ using Couchcoding.Logbert.Theme;
 using Couchcoding.Logbert.Theme.Themes;
 using Couchcoding.Logbert.Gui.Helper;
 using Couchcoding.Logbert.Controls;
+using Couchcoding.Logbert.Receiver.CustomReceiver.CustomHttpReceiver;
 
 namespace Couchcoding.Logbert.Dialogs.Docking
 {
@@ -97,6 +98,7 @@ namespace Couchcoding.Logbert.Dialogs.Docking
       lstLogger.AddSeperator();
       lstLogger.Items.Add(new CustomUdpReceiver());
       lstLogger.Items.Add(new CustomTcpReceiver());
+      lstLogger.Items.Add(new CustomHttpReceiver());
       lstLogger.Items.Add(new CustomFileReceiver());
       lstLogger.Items.Add(new CustomDirReceiver());
     }

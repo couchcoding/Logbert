@@ -53,6 +53,12 @@ namespace Couchcoding.Logbert.Interfaces
     /// <param name="logMsg">The <see cref="LogMessage"/> to handle.</param>
     void HandleMessage(LogMessage logMsg);
 
+    /// <summary>
+    /// Handle the specified <paramref name="error"/> message.
+    /// </summary>
+    /// <param name="error">The error message to handle.</param>
+    void HandleError(LogError error);
+
     #endregion
   }
 }

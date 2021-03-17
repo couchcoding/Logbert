@@ -469,7 +469,22 @@ namespace Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
 
       if (cmbColumnizer.Items.Count > 0)
       {
-        cmbColumnizer.SelectedIndex = 0;
+        if (ModifierKeys != Keys.Shift)
+        {
+          foreach (var columnizer in cmbColumnizer.Items)
+          {
+            if (Equals(columnizer.ToString(), Settings.Default.PnlCustomUdpSettingsColumnizer))
+            {
+              cmbColumnizer.SelectedItem = columnizer;
+              break;
+            }
+          }
+        }
+
+        if (cmbColumnizer.SelectedItem == null)
+        {
+          cmbColumnizer.SelectedIndex = 0;
+        }
       }
 
       if (ModifierKeys != Keys.Shift)
@@ -569,6 +584,12 @@ namespace Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
                 Settings.Default.PnlCustomUdpSettingsJoinMulticast    = chkMulticastGroup.Checked;
                 Settings.Default.PnlCustomUdpSettingsMulticastAddress = txtMulticastIp.Text;
                 Settings.Default.PnlCustomUdpSettingsEncoding         = ((EncodingWrapper)cmbEncoding.SelectedItem).Codepage;
+
+                if (cmbColumnizer.SelectedItem != null)
+                {
+                  Settings.Default.PnlCustomUdpSettingsColumnizer = cmbColumnizer.SelectedItem.ToString();
+                }
+
 
                 Settings.Default.SaveSettings();
               }

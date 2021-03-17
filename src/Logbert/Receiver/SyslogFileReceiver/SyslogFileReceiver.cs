@@ -301,7 +301,7 @@ namespace Couchcoding.Logbert.Receiver.SyslogFileReceiver
         }
         catch (Exception ex)
         {
-          Logger.Warn(ex.Message);
+          mLogHandler.HandleError(LogError.Warn(ex.Message));
         }
       }
 
@@ -367,15 +367,6 @@ namespace Couchcoding.Logbert.Receiver.SyslogFileReceiver
     public override void Clear()
     {
       mLogNumber = 0;
-    }
-
-    /// <summary>
-    /// Resets the <see cref="ILogProvider"/> instance.
-    /// </summary>
-    public override void Reset()
-    {
-      Shutdown();
-      Initialize(mLogHandler);
     }
 
     /// <summary>

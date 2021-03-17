@@ -281,7 +281,7 @@ namespace Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
         }
         catch (Exception ex)
         {
-          Logger.Warn(ex.Message);
+          mLogHandler.HandleError(LogError.Warn(ex.Message));
         }
       }
 
@@ -333,7 +333,7 @@ namespace Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
           }
           catch (Exception ex)
           {
-            Logger.Warn(ex.Message);
+            mLogHandler.HandleError(LogError.Error(ex.Message));
           }
         }
 
@@ -347,7 +347,7 @@ namespace Couchcoding.Logbert.Receiver.Log4NetUdpReceiver
       }
       catch (Exception ex)
       {
-        Logger.Warn(ex.Message);
+        mLogHandler.HandleError(LogError.Error(ex.Message));
       }
     }
 

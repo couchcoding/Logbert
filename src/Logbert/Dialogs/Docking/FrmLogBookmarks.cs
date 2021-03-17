@@ -408,8 +408,9 @@ namespace Couchcoding.Logbert.Dialogs.Docking
       dgvBookmarks.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
       dgvBookmarks.GridColor                = theme.ColorPalette.DividerColor;
 
-      dgvBookmarks.ColumnHeadersDefaultCellStyle.BackColor = theme.ColorPalette.ContentBackground;
-      dgvBookmarks.ColumnHeadersDefaultCellStyle.ForeColor = theme.ColorPalette.ContentForeground;
+      dgvBookmarks.ColumnHeadersDefaultCellStyle.BackColor          = theme.ColorPalette.ContentBackground;
+      dgvBookmarks.ColumnHeadersDefaultCellStyle.ForeColor          = theme.ColorPalette.ContentForeground;
+      dgvBookmarks.ColumnHeadersDefaultCellStyle.SelectionBackColor = theme.ColorPalette.ContentBackground;
 
       dgvBookmarks.CellBorderStyle            = DataGridViewCellBorderStyle.Single;
       dgvBookmarks.DefaultCellStyle.BackColor = theme.ColorPalette.ContentBackground;

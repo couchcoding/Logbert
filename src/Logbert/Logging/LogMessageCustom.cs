@@ -274,7 +274,7 @@ namespace Couchcoding.Logbert.Logging
 
       if (!ParseData(rawData))
       {
-        throw new ApplicationException("Unable to parse the logger data.");
+        throw new ApplicationException($"Unable to parse the following logger data: \"{rawData}\".");
       }
     }
 
