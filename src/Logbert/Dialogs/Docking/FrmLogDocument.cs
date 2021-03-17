@@ -379,7 +379,7 @@ namespace Couchcoding.Logbert.Dialogs.Docking
           mLogMessageLock.ExitReadLock();
         }
 
-        // Update the log presenter windows.
+        // Update the log presenter window.
         ((ILogPresenter)mLogWindow).LogMessagesChanged(logMessageCopy,    delta);
 
         if (mLoggerTree != null)
@@ -498,13 +498,15 @@ namespace Couchcoding.Logbert.Dialogs.Docking
     /// </summary>
     private void TsbReloadClick(object sender, EventArgs e)
     {
+      errorPanel.Visible = false;
+      lnkClose.Visible   = false;
+
       if (mLogProvider != null)
       {
         tsbClearMessages.PerformClick();
         
-        mLogProvider.Shutdown();
+        mLogProvider.Reset();
         mLastLogMessageIndex = 0;
-        mLogProvider.Initialize(this);
       }
     }
 
@@ -1100,7 +1102,7 @@ namespace Couchcoding.Logbert.Dialogs.Docking
 
         if (Settings.Default.MaxLogMessages > 0 && mLogMessages.Count > Settings.Default.MaxLogMessages)
         {
-          // Remove from the first posotion on.
+          // Remove from the first position on.
           mLogMessages.RemoveRange(
               0
             , mLogMessages.Count - Settings.Default.MaxLogMessages);
@@ -1139,6 +1141,30 @@ namespace Couchcoding.Logbert.Dialogs.Docking
       {
         mLogMessageLock.ExitWriteLock();
       }
+    }
+
+    public void HandleError(LogError error)
+    {
+      if (InvokeRequired)
+      {
+        BeginInvoke(new Action(() => HandleError(error)));
+        return;
+      }
+
+      errorPanel.Title = error.Title;
+      errorPanel.Text  = $"{error.Message}{(error.Message.EndsWith(".") ? string.Empty : ".")}";
+
+      errorPanelBack.BackColor = error.BackColor;
+      errorPanel.BackColor     = error.BackColor;
+      errorPanel.ForeColor     = error.ForeColor;
+
+      lnkClose.ForeColor        = ControlPaint.Dark(error.BackColor);
+      lnkClose.ActiveLinkColor  = ControlPaint.Dark(error.BackColor);
+      lnkClose.VisitedLinkColor = ControlPaint.Dark(error.BackColor);
+
+      errorPanel.Visible     = true;
+      lnkClose.Visible       = true;
+      errorPanelBack.Visible = true;
     }
 
     /// <summary>
@@ -1213,6 +1239,10 @@ namespace Couchcoding.Logbert.Dialogs.Docking
 
       // Apply the current application theme to the control.
       ThemeManager.ApplyTo(this);
+      Font = SystemFonts.MessageBoxFont;
+
+      tblInnerLayout.BackColor   = ThemeManager.CurrentApplicationTheme.DockingTheme.ColorPalette.MainWindowActive.Background;
+      errorPanelBack.BorderColor = ThemeManager.CurrentApplicationTheme.ColorPalette.DividerColor;
       
       mLogProvider = logProvider;
       
@@ -1344,6 +1374,11 @@ namespace Couchcoding.Logbert.Dialogs.Docking
       }
 
       SetTimeshiftValue();
+    }
+
+    private void LnkCloseLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+      errorPanelBack.Visible = false;
     }
   }
 }

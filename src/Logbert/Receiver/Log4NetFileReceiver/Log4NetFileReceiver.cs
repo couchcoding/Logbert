@@ -288,7 +288,7 @@ namespace Couchcoding.Logbert.Receiver.Log4NetFileReceiver
           }
           catch (Exception ex)
           {
-            Logger.Warn(ex.Message);
+            mLogHandler.HandleError(LogError.Warn(ex.Message));
             continue;
           }
 
@@ -362,15 +362,6 @@ namespace Couchcoding.Logbert.Receiver.Log4NetFileReceiver
     public override void Clear()
     {
       mLogNumber = 0;
-    }
-
-    /// <summary>
-    /// Resets the <see cref="ILogProvider"/> instance.
-    /// </summary>
-    public override void Reset()
-    {
-      Shutdown();
-      Initialize(mLogHandler);
     }
 
     /// <summary>

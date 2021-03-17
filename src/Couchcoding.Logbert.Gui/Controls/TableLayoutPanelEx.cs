@@ -34,6 +34,9 @@ using System.Windows.Forms;
 
 namespace Couchcoding.Logbert.Gui.Controls
 {
+  /// <summary>
+  /// Implements a more performant <see cref="TableLayoutPanel"/>.
+  /// </summary>
   public class TableLayoutPanelEx : TableLayoutPanel
   {
     #region Public Properties

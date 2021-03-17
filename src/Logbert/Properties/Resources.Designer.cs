@@ -163,6 +163,16 @@ namespace Couchcoding.Logbert.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap log_error {
+            get {
+                object obj = ResourceManager.GetObject("log_error", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logbert_about {
             get {
                 object obj = ResourceManager.GetObject("logbert_about", resourceCulture);
@@ -523,6 +533,24 @@ namespace Couchcoding.Logbert.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error:.
+        /// </summary>
+        internal static string strDocumentErrorTitle {
+            get {
+                return ResourceManager.GetString("strDocumentErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information:.
+        /// </summary>
+        internal static string strDocumentInfoTitle {
+            get {
+                return ResourceManager.GetString("strDocumentInfoTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to all.
         /// </summary>
         internal static string strDocumentMessageAllDisplayed {
@@ -555,6 +583,15 @@ namespace Couchcoding.Logbert.Properties {
         internal static string strDocumentStatusStopped {
             get {
                 return ResourceManager.GetString("strDocumentStatusStopped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning:.
+        /// </summary>
+        internal static string strDocumentWarnTitle {
+            get {
+                return ResourceManager.GetString("strDocumentWarnTitle", resourceCulture);
             }
         }
         

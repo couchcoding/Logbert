@@ -69,12 +69,12 @@
     <?include Includes\ArpProperties.wxi ?>
 
     <Condition Message="!(loc.ConditionInvalidOS)">
-      <![CDATA[(VersionNT > 501) OR ((VersionNT = 501) AND (ServicePackLevel >= 2))]]>
+      <![CDATA[Installed OR VersionNT >= 601]]>
     </Condition>
 
-    <PropertyRef Id="NETFRAMEWORK35"/>
-    <Condition Message="!(loc.ConditionNoDotNet35)">
-      <![CDATA[Installed OR NETFRAMEWORK35]]>
+    <PropertyRef Id='WIXNETFX4RELEASEINSTALLED'/>
+    <Condition Message="!(loc.ConditionNoDotNet48)">
+        <![CDATA[Installed OR (WIXNETFX4RELEASEINSTALLED >= "#528040")]]>
     </Condition>
 
     <Property Id="INSTALLDIR">

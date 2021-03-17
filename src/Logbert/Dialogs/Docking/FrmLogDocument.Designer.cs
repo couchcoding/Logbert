@@ -62,18 +62,31 @@
             this.stBar = new System.Windows.Forms.StatusStrip();
             this.stbStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.stbMessageCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tblInnerLayout = new Couchcoding.Logbert.Gui.Controls.TableLayoutPanelEx();
+            this.errorPanelBack = new Couchcoding.Logbert.Gui.Controls.InfoPanel();
+            this.tblErrorPanel = new Couchcoding.Logbert.Gui.Controls.TableLayoutPanelEx();
+            this.errorPanel = new Couchcoding.Logbert.Gui.Controls.InfoPanel();
+            this.lnkClose = new Couchcoding.Logbert.Gui.Controls.LinkLabelEx();
+            ((System.ComponentModel.ISupportInitialize)(this.LogDockPanel)).BeginInit();
             this.tsMessages.SuspendLayout();
             this.stBar.SuspendLayout();
+            this.tblInnerLayout.SuspendLayout();
+            this.errorPanelBack.SuspendLayout();
+            this.tblErrorPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // LogDockPanel
             // 
             this.LogDockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LogDockPanel.Theme = new WeifenLuo.WinFormsUI.Docking.VS2015LightTheme();
+            this.LogDockPanel.DockBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
             this.LogDockPanel.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingWindow;
-            this.LogDockPanel.Location = new System.Drawing.Point(0, 26);
+            this.LogDockPanel.Location = new System.Drawing.Point(0, 51);
+            this.LogDockPanel.Margin = new System.Windows.Forms.Padding(0);
             this.LogDockPanel.Name = "LogDockPanel";
-            this.LogDockPanel.Size = new System.Drawing.Size(784, 511);
+            this.LogDockPanel.Padding = new System.Windows.Forms.Padding(6);
+            this.LogDockPanel.ShowAutoHideContentOnHover = false;
+            this.LogDockPanel.Size = new System.Drawing.Size(784, 460);
             this.LogDockPanel.SupportDeeplyNestedContent = true;
             this.LogDockPanel.TabIndex = 1;
             // 
@@ -423,6 +436,7 @@
             // 
             this.txtTimeShift.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTimeShift.Enabled = false;
+            this.txtTimeShift.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtTimeShift.Margin = new System.Windows.Forms.Padding(1, 1, 1, 2);
             this.txtTimeShift.Name = "txtTimeShift";
             this.txtTimeShift.Size = new System.Drawing.Size(60, 23);
@@ -511,12 +525,94 @@
             this.stbMessageCount.Text = "0 Messages";
             this.stbMessageCount.ToolTipText = "Count of received Messages";
             // 
+            // tblInnerLayout
+            // 
+            this.tblInnerLayout.ColumnCount = 1;
+            this.tblInnerLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblInnerLayout.Controls.Add(this.errorPanelBack, 0, 0);
+            this.tblInnerLayout.Controls.Add(this.LogDockPanel, 0, 1);
+            this.tblInnerLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblInnerLayout.Location = new System.Drawing.Point(0, 26);
+            this.tblInnerLayout.Margin = new System.Windows.Forms.Padding(0);
+            this.tblInnerLayout.Name = "tblInnerLayout";
+            this.tblInnerLayout.RowCount = 2;
+            this.tblInnerLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tblInnerLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblInnerLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblInnerLayout.Size = new System.Drawing.Size(784, 511);
+            this.tblInnerLayout.TabIndex = 4;
+            // 
+            // errorPanelBack
+            // 
+            this.errorPanelBack.BackColor = System.Drawing.Color.LightCoral;
+            this.errorPanelBack.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.errorPanelBack.Controls.Add(this.tblErrorPanel);
+            this.errorPanelBack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.errorPanelBack.Location = new System.Drawing.Point(3, 0);
+            this.errorPanelBack.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.errorPanelBack.Name = "errorPanelBack";
+            this.errorPanelBack.Padding = new System.Windows.Forms.Padding(1);
+            this.errorPanelBack.Size = new System.Drawing.Size(778, 48);
+            this.errorPanelBack.TabIndex = 5;
+            this.errorPanelBack.TextPadding = new System.Windows.Forms.Padding(0);
+            this.errorPanelBack.Title = null;
+            this.errorPanelBack.Visible = false;
+            // 
+            // tblErrorPanel
+            // 
+            this.tblErrorPanel.ColumnCount = 2;
+            this.tblErrorPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblErrorPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblErrorPanel.Controls.Add(this.errorPanel, 0, 0);
+            this.tblErrorPanel.Controls.Add(this.lnkClose, 1, 0);
+            this.tblErrorPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblErrorPanel.Location = new System.Drawing.Point(1, 1);
+            this.tblErrorPanel.Name = "tblErrorPanel";
+            this.tblErrorPanel.RowCount = 1;
+            this.tblErrorPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblErrorPanel.Size = new System.Drawing.Size(776, 46);
+            this.tblErrorPanel.TabIndex = 4;
+            // 
+            // errorPanel
+            // 
+            this.errorPanel.BackColor = System.Drawing.Color.LightCoral;
+            this.errorPanel.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.errorPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.errorPanel.InfoIcon = global::Couchcoding.Logbert.Properties.Resources.log_error;
+            this.errorPanel.Location = new System.Drawing.Point(1, 0);
+            this.errorPanel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.errorPanel.Name = "errorPanel";
+            this.errorPanel.ShowBorder = false;
+            this.errorPanel.ShowInfoIcon = true;
+            this.errorPanel.Size = new System.Drawing.Size(735, 46);
+            this.errorPanel.TabIndex = 2;
+            this.errorPanel.Text = "Message";
+            this.errorPanel.TextPadding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.errorPanel.Title = "An error occured";
+            // 
+            // lnkClose
+            // 
+            this.lnkClose.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lnkClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lnkClose.AutoSize = true;
+            this.lnkClose.ForeColor = System.Drawing.Color.Maroon;
+            this.lnkClose.LinkColor = System.Drawing.Color.Maroon;
+            this.lnkClose.Location = new System.Drawing.Point(740, 3);
+            this.lnkClose.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.lnkClose.Name = "lnkClose";
+            this.lnkClose.Size = new System.Drawing.Size(33, 13);
+            this.lnkClose.TabIndex = 3;
+            this.lnkClose.TabStop = true;
+            this.lnkClose.Text = "Close";
+            this.lnkClose.VisitedLinkColor = System.Drawing.Color.Maroon;
+            this.lnkClose.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkCloseLinkClicked);
+            // 
             // FrmLogDocument
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.LogDockPanel);
+            this.Controls.Add(this.tblInnerLayout);
             this.Controls.Add(this.stBar);
             this.Controls.Add(this.tsMessages);
             this.DockAreas = ((WeifenLuo.WinFormsUI.Docking.DockAreas)((WeifenLuo.WinFormsUI.Docking.DockAreas.Float | WeifenLuo.WinFormsUI.Docking.DockAreas.Document)));
@@ -526,10 +622,15 @@
             this.ShowHint = WeifenLuo.WinFormsUI.Docking.DockState.Document;
             this.TabText = "Log Document";
             this.Text = "Log Document";
+            ((System.ComponentModel.ISupportInitialize)(this.LogDockPanel)).EndInit();
             this.tsMessages.ResumeLayout(false);
             this.tsMessages.PerformLayout();
             this.stBar.ResumeLayout(false);
             this.stBar.PerformLayout();
+            this.tblInnerLayout.ResumeLayout(false);
+            this.errorPanelBack.ResumeLayout(false);
+            this.tblErrorPanel.ResumeLayout(false);
+            this.tblErrorPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -582,5 +683,10 @@
     private System.Windows.Forms.ToolStripMenuItem tsbTimeShiftUnitMinute;
     private System.Windows.Forms.ToolStripMenuItem tsbTimeShiftUnitHour;
     private System.Windows.Forms.ToolStripMenuItem tsbTimeShiftUnitDay;
+    private Gui.Controls.TableLayoutPanelEx tblInnerLayout;
+    private Gui.Controls.InfoPanel errorPanel;
+    private Gui.Controls.LinkLabelEx lnkClose;
+    private Gui.Controls.TableLayoutPanelEx tblErrorPanel;
+    private Gui.Controls.InfoPanel errorPanelBack;
   }
 }

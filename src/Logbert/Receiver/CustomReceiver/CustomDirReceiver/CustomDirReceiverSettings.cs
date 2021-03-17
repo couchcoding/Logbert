@@ -362,7 +362,22 @@ namespace Couchcoding.Logbert.Receiver.Log4NetDirReceiver
 
       if (cmbColumnizer.Items.Count > 0)
       {
-        cmbColumnizer.SelectedIndex = 0;
+        if (ModifierKeys != Keys.Shift)
+        {
+          foreach (var columnizer in cmbColumnizer.Items)
+          {
+            if (Equals(columnizer.ToString(), Settings.Default.PnlCustomDirSettingsColumnizer))
+            {
+              cmbColumnizer.SelectedItem = columnizer;
+              break;
+            }
+          }
+        }
+
+        if (cmbColumnizer.SelectedItem == null)
+        {
+          cmbColumnizer.SelectedIndex = 0;
+        }
       }
 
       if (ModifierKeys != Keys.Shift)
@@ -440,6 +455,12 @@ namespace Couchcoding.Logbert.Receiver.Log4NetDirReceiver
         Settings.Default.PnlCustomDirectorySettingsPattern         = txtLogFilePattern.Text;
         Settings.Default.PnlCustomDirectorySettingsReadAllExisting = chkInitialReadAll.Checked;
         Settings.Default.PnlCustomDirectorySettingsEncoding        = ((EncodingWrapper)cmbEncoding.SelectedItem).Codepage;
+
+        if (cmbColumnizer.SelectedItem != null)
+        {
+          Settings.Default.PnlCustomDirSettingsColumnizer = cmbColumnizer.SelectedItem.ToString();
+        }
+
 
         Settings.Default.SaveSettings();
       }

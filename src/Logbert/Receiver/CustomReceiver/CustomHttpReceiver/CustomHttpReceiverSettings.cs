@@ -34,23 +34,20 @@ using System.Windows.Forms;
 
 using Couchcoding.Logbert.Interfaces;
 using Couchcoding.Logbert.Properties;
-using System.Net.Sockets;
 
 using Couchcoding.Logbert.Helper;
-using System.Net;
 using System.Collections.Generic;
-using Couchcoding.Logbert.Receiver.CustomReceiver;
 using System.IO;
 using System.Xml;
 using System.Text;
 using Couchcoding.Logbert.Dialogs;
 
-namespace Couchcoding.Logbert.Receiver.NlogTcpReceiver
+namespace Couchcoding.Logbert.Receiver.CustomReceiver.CustomHttpReceiver
 {
   /// <summary>
   /// Implements the <see cref="ILogSettingsCtrl"/> control for the custom TCP receiver.
   /// </summary>
-  public partial class CustomTcpReceiverSettings : UserControl, ILogSettingsCtrl
+  public partial class CustomHttpReceiverSettings : UserControl, ILogSettingsCtrl
   {
     #region Private Types
 
@@ -348,99 +345,16 @@ namespace Couchcoding.Logbert.Receiver.NlogTcpReceiver
       SaveColumnizer(columnizerToSave);
     }
 
-    /// <summary>
-    /// Gets all available network interfaces and adds them to the <see cref="ComboBox"/>.
-    /// </summary>
-    private void EnumerateAndAddNetworkInterfaces()
+    private void ChkAuthenticationCheckedChanged(object sender, EventArgs e)
     {
-      NetworkInterface[] adapters = null;
+      lblUsername.Enabled = chkAuthentication.Checked;
+      txtUsername.Enabled = chkAuthentication.Checked;
+      lblPassword.Enabled = chkAuthentication.Checked;
+      txtPassword.Enabled = chkAuthentication.Checked;
 
-      try
+      if (chkAuthentication.Checked)
       {
-        adapters = NetworkInterface.GetAllNetworkInterfaces();
-      }
-      catch
-      {
-        cmbNetworkInterface.SelectedItem = null;
-        cmbNetworkInterface.Enabled      = false;
-        nudPort.Enabled                  = false;
-      }
-
-      if (adapters != null && adapters.Length > 0)
-      {
-        // Add all found netwoek interfaces to the combo box.
-        foreach (NetworkInterface adapter in adapters)
-        {
-          // Add only 'working' network interfaces.
-          if (adapter.OperationalStatus != OperationalStatus.Up)
-          {
-            continue;
-          }
-
-          switch (adapter.NetworkInterfaceType)
-          {
-            case NetworkInterfaceType.Ethernet:
-            case NetworkInterfaceType.Ethernet3Megabit:
-            case NetworkInterfaceType.FastEthernetFx:
-            case NetworkInterfaceType.FastEthernetT:
-            case NetworkInterfaceType.GigabitEthernet:
-            case NetworkInterfaceType.Loopback:
-            case NetworkInterfaceType.Wireless80211:
-              cmbNetworkInterface.Items.Add(new NetworkInterfaceWrapper(adapter));
-              break;
-          }
-        }
-
-        // Select the very first found network interface.
-        cmbNetworkInterface.SelectedIndex = 0;
-      }
-      else
-      {
-        cmbNetworkInterface.SelectedItem = null;
-        cmbNetworkInterface.Enabled      = false;
-        nudPort.Enabled                  = false;
-      }
-    }
-
-    /// <summary>
-    /// Handles the SelectedIndexChanged event of the network interface <see cref="ComboBox"/>.
-    /// </summary>
-    private void CmbNetworkInterfaceSelectedIndexChanged(object sender, EventArgs e)
-    {
-      NetworkInterfaceWrapper adapter = cmbNetworkInterface.SelectedItem as NetworkInterfaceWrapper;
-
-      if (adapter != null)
-      {
-        IPInterfaceProperties ipInfo = adapter.Adapter.GetIPProperties();
-
-        if (ipInfo != null)
-        {
-          nfoPanel.Text = string.Format(
-              Resources.strCustomTcpReceiverNetworkDescription
-            , '\t'
-            , adapter.Adapter.Description
-            , Environment.NewLine);
-
-          foreach (UnicastIPAddressInformation ipAddress in ipInfo.UnicastAddresses)
-          {
-            if (ipAddress.Address != null && ipAddress.Address.AddressFamily == AddressFamily.InterNetwork)
-            {
-              nfoPanel.Text += string.Format(
-                  Resources.strCustomTcpReceiverNetworkIPAddress
-                , '\t'
-                , ipAddress.Address
-                , Environment.NewLine);
-
-              break;
-            }
-          }
-
-          nfoPanel.Text += string.Format(
-              Resources.strCustomTcpReceiverNetworkSpeed
-            , '\t'
-            , adapter.Adapter.Speed / 1024 / 1024
-            , Environment.NewLine);
-        }
+        txtUsername.Focus();
       }
     }
 
@@ -460,7 +374,7 @@ namespace Couchcoding.Logbert.Receiver.NlogTcpReceiver
         {
           foreach (var columnizer in cmbColumnizer.Items)
           {
-            if (Equals(columnizer.ToString(), Settings.Default.PnlCustomTcpSettingsColumnizer))
+            if (Equals(columnizer.ToString(), Settings.Default.PnlCustomHttpSettingsColumnizer))
             {
               cmbColumnizer.SelectedItem = columnizer;
               break;
@@ -476,19 +390,11 @@ namespace Couchcoding.Logbert.Receiver.NlogTcpReceiver
 
       if (ModifierKeys != Keys.Shift)
       {
-        if (!string.IsNullOrEmpty(Settings.Default.PnlCustomTcpSettingsInterface))
-        {
-          foreach (NetworkInterfaceWrapper netInterface in cmbNetworkInterface.Items)
-          {
-            if (Equals(netInterface.ToString(), Settings.Default.PnlCustomTcpSettingsInterface))
-            {
-              cmbNetworkInterface.SelectedItem = netInterface;
-              break;
-            }
-          }
-        }
-
-        nudPort.Value = Settings.Default.PnlNLogTcpSettingsPort;
+        txtUrl.Text               = Settings.Default.PnlCustomHttpSettingsUrl;
+        txtUsername.Text          = DataProtection.DecryptString(Settings.Default.PnlCustomHttpSettingsUsername);
+        txtPassword.Text          = DataProtection.DecryptString(Settings.Default.PnlCustomHttpSettingsPassword);
+        chkAuthentication.Checked = Settings.Default.PnlCustomHttpSettingsAuthentication;
+        nudPollingTime.Value      = Settings.Default.PnlCustomHttpSettingsPollTime;
       }
 
       foreach (EncodingInfo encoding in Encoding.GetEncodings())
@@ -521,11 +427,6 @@ namespace Couchcoding.Logbert.Receiver.NlogTcpReceiver
     /// <returns>The <see cref="ValidationResult"/> of the validation.</returns>
     public ValidationResult ValidateSettings()
     {
-      if (cmbNetworkInterface.SelectedItem == null)
-      {
-        return ValidationResult.Error(Resources.strCustomTcpReceiverNoNetworkInterfaceAvailable);
-      }
-
       return cmbColumnizer.SelectedItem == null 
         ? ValidationResult.Error(Resources.strCustomTcpReceiverNoColumnizerSelected) 
         : ValidationResult.Success;
@@ -537,41 +438,32 @@ namespace Couchcoding.Logbert.Receiver.NlogTcpReceiver
     /// <returns>A fully configured <see cref="ILogProvider"/> instance.</returns>
     public ILogProvider GetConfiguredInstance()
     {
-      NetworkInterfaceWrapper adapter = cmbNetworkInterface.SelectedItem as NetworkInterfaceWrapper;
-
-      if (adapter != null)
+      if (!string.IsNullOrEmpty(txtUrl.Text))
       {
-        IPInterfaceProperties ipInfo = adapter.Adapter.GetIPProperties();
-
-        if (ipInfo != null)
+        if (ModifierKeys != Keys.Shift)
         {
-          foreach (UnicastIPAddressInformation ipAddress in ipInfo.UnicastAddresses)
+          // Save the current settings as new default values.
+          Settings.Default.PnlCustomHttpSettingsUrl            = txtUrl.Text;
+          Settings.Default.PnlCustomHttpSettingsAuthentication = chkAuthentication.Checked;
+          Settings.Default.PnlCustomHttpSettingsUsername       = DataProtection.EncryptString(txtUsername.Text);
+          Settings.Default.PnlCustomHttpSettingsPassword       = DataProtection.EncryptString(txtPassword.Text);
+          Settings.Default.PnlCustomHttpSettingsPollTime       = (int)nudPollingTime.Value;
+          Settings.Default.PnlCustomTcpSettingsEncoding        = ((EncodingWrapper)cmbEncoding.SelectedItem).Codepage;
+
+          if (cmbColumnizer.SelectedItem != null)
           {
-            if (ipAddress.Address != null && ipAddress.Address.AddressFamily == AddressFamily.InterNetwork)
-            {
-              if (ModifierKeys != Keys.Shift)
-              {
-                // Save the current settings as new default values.
-                Settings.Default.PnlCustomTcpSettingsInterface = cmbNetworkInterface.SelectedItem.ToString();
-                Settings.Default.PnlCustomTcpSettingsPort      = (int)nudPort.Value;
-                Settings.Default.PnlCustomTcpSettingsEncoding  = ((EncodingWrapper)cmbEncoding.SelectedItem).Codepage;
-
-                if (cmbColumnizer.SelectedItem != null)
-                {
-                  Settings.Default.PnlCustomTcpSettingsColumnizer = cmbColumnizer.SelectedItem.ToString();
-                }
-
-                Settings.Default.SaveSettings();
-              }
-
-              return new CustomTcpReceiver(
-                  (int)nudPort.Value
-                , new IPEndPoint(ipAddress.Address, (int)nudPort.Value)
-                , cmbColumnizer.SelectedItem as Columnizer
-                , Settings.Default.PnlCustomTcpSettingsEncoding);
-            }
+            Settings.Default.PnlCustomHttpSettingsColumnizer = cmbColumnizer.SelectedItem.ToString();
           }
+
+          Settings.Default.SaveSettings();
         }
+
+        return new CustomHttpReceiver(
+            txtUrl.Text
+          , chkAuthentication.Checked ? new BasicHttpAuthentication(txtUsername.Text, txtPassword.Text) : null
+          , (int)nudPollingTime.Value
+          , cmbColumnizer.SelectedItem as Columnizer
+          , Settings.Default.PnlCustomHttpSettingsEncoding);
       }
 
       return null;
@@ -584,12 +476,9 @@ namespace Couchcoding.Logbert.Receiver.NlogTcpReceiver
     /// <summary>
     /// Creates a new instance of the <see cref="CustomTcpReceiverSettings"/> <see cref="Control"/>.
     /// </summary>
-    public CustomTcpReceiverSettings()
+    public CustomHttpReceiverSettings()
     {
       InitializeComponent();
-      
-      // Initialize the controls.
-      EnumerateAndAddNetworkInterfaces();
     }
 
     #endregion

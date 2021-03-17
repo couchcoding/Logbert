@@ -324,7 +324,22 @@ namespace Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
 
       if (cmbColumnizer.Items.Count > 0)
       {
-        cmbColumnizer.SelectedIndex = 0;
+        if (ModifierKeys != Keys.Shift)
+        {
+          foreach (var columnizer in cmbColumnizer.Items)
+          {
+            if (Equals(columnizer.ToString(), Settings.Default.PnlCustomFileSettingsColumnizer))
+            {
+              cmbColumnizer.SelectedItem = columnizer;
+              break;
+            }
+          }
+        }
+
+        if (cmbColumnizer.SelectedItem == null)
+        {
+          cmbColumnizer.SelectedIndex = 0;
+        }
       }
 
       if (ModifierKeys != Keys.Shift)
@@ -374,6 +389,11 @@ namespace Couchcoding.Logbert.Receiver.CustomReceiver.CustomFileReceiver
         Settings.Default.PnlCustomFileSettingsFile               = txtLogFile.Text;
         Settings.Default.PnlCustomFileSettingsStartFromBeginning = chkStartFromBeginning.Checked;
         Settings.Default.PnlCustomFileSettingsEncoding           = ((EncodingWrapper)cmbEncoding.SelectedItem).Codepage;
+
+        if (cmbColumnizer.SelectedItem != null)
+        {
+          Settings.Default.PnlCustomFileSettingsColumnizer = cmbColumnizer.SelectedItem.ToString();
+        }
 
         Settings.Default.SaveSettings();
       }

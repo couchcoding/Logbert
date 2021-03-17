@@ -484,8 +484,9 @@ namespace Couchcoding.Logbert.Dialogs.Docking
       dgvFilter.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
       dgvFilter.GridColor                = theme.ColorPalette.DividerColor;
 
-      dgvFilter.ColumnHeadersDefaultCellStyle.BackColor = theme.ColorPalette.ContentBackground;
-      dgvFilter.ColumnHeadersDefaultCellStyle.ForeColor = theme.ColorPalette.ContentForeground;
+      dgvFilter.ColumnHeadersDefaultCellStyle.BackColor          = theme.ColorPalette.ContentBackground;
+      dgvFilter.ColumnHeadersDefaultCellStyle.ForeColor          = theme.ColorPalette.ContentForeground;
+      dgvFilter.ColumnHeadersDefaultCellStyle.SelectionBackColor = theme.ColorPalette.ContentBackground;
 
       dgvFilter.CellBorderStyle            = DataGridViewCellBorderStyle.Single;
       dgvFilter.DefaultCellStyle.BackColor = theme.ColorPalette.ContentBackground;

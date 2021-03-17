@@ -554,5 +554,41 @@
     <Setting Name="Log4NetLevelFatal" Type="System.String" Scope="Application">
       <Value Profile="(Default)">FATAL</Value>
     </Setting>
+    <Setting Name="DockLayoutCustomHttpReceiver" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlCustomHttpSettingsEncoding" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1252</Value>
+    </Setting>
+    <Setting Name="PnlCustomHttpSettingsUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlCustomHttpSettingsUsername" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlCustomHttpSettingsPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlCustomHttpSettingsAuthentication" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="PnlCustomHttpSettingsPollTime" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="PnlCustomHttpSettingsTimeout" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10000</Value>
+    </Setting>
+    <Setting Name="PnlCustomHttpSettingsColumnizer" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlCustomTcpSettingsColumnizer" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlCustomUdpSettingsColumnizer" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PnlCustomDirSettingsColumnizer" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

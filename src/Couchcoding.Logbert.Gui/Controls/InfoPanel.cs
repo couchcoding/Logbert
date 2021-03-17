@@ -328,33 +328,33 @@ namespace Couchcoding.Logbert.Gui.Controls
 
       if (mShowInfoIcon && mInfoImage != null)
       {
-        Rectangle imageRect = new Rectangle(0, 0, 
+        Rectangle imageRect = new Rectangle(4, 4, 
           mInfoImage.Width, mInfoImage.Height);
 
         if (mShowBorder)
         {
           imageRect.Offset(
-            RescaleByDpiX(4), 
-            RescaleByDpiY(6));
+            RescaleByDpiX(2), 
+            RescaleByDpiY(2));
         }
 
         e.Graphics.DrawImage(mInfoImage, imageRect, new Rectangle(
           0, 0, imageRect.Width, imageRect.Height), GraphicsUnit.Pixel);
       }
 
-      int textOffsetLeft = (mShowBorder ? RescaleByDpiX(6) : 
-        RescaleByDpiX(3)) + (mInfoImage != null ? mShowInfoIcon ? mInfoImage.Width : 0 : 0);
+      int textOffsetLeft = (mShowBorder ? RescaleByDpiX(10) : 
+        RescaleByDpiX(6)) + (mInfoImage != null ? mShowInfoIcon ? mInfoImage.Width : 0 : 0);
       
       int textOffsetTop = mShowTitle ? 
-        RescaleByDpiX(18) : 0;
+        RescaleByDpiX(24) : 0;
 
       if (mShowTitle && !string.IsNullOrEmpty(mTitle))
       {
         Rectangle titleRect = new Rectangle(
           textOffsetLeft + mTextPadding.Left, 
-          mTextPadding.Top + RescaleByDpiY(3),
-          ClientRectangle.Width - (RescaleByDpiX(6) + mTextPadding.Right + mTextPadding.Left), 
-          RescaleByDpiY(20));
+          mTextPadding.Top + RescaleByDpiY(6),
+          ClientRectangle.Width - (RescaleByDpiX(12) + mTextPadding.Right + mTextPadding.Left), 
+          RescaleByDpiY(24));
 
         using (Font boldFont = new Font(Font, FontStyle.Bold))
         {

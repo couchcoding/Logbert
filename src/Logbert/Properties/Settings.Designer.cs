@@ -12,7 +12,7 @@ namespace Couchcoding.Logbert.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -2205,6 +2205,150 @@ namespace Couchcoding.Logbert.Properties {
         public string Log4NetLevelFatal {
             get {
                 return ((string)(this["Log4NetLevelFatal"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DockLayoutCustomHttpReceiver {
+            get {
+                return ((string)(this["DockLayoutCustomHttpReceiver"]));
+            }
+            set {
+                this["DockLayoutCustomHttpReceiver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1252")]
+        public int PnlCustomHttpSettingsEncoding {
+            get {
+                return ((int)(this["PnlCustomHttpSettingsEncoding"]));
+            }
+            set {
+                this["PnlCustomHttpSettingsEncoding"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PnlCustomHttpSettingsUrl {
+            get {
+                return ((string)(this["PnlCustomHttpSettingsUrl"]));
+            }
+            set {
+                this["PnlCustomHttpSettingsUrl"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PnlCustomHttpSettingsUsername {
+            get {
+                return ((string)(this["PnlCustomHttpSettingsUsername"]));
+            }
+            set {
+                this["PnlCustomHttpSettingsUsername"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PnlCustomHttpSettingsPassword {
+            get {
+                return ((string)(this["PnlCustomHttpSettingsPassword"]));
+            }
+            set {
+                this["PnlCustomHttpSettingsPassword"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PnlCustomHttpSettingsAuthentication {
+            get {
+                return ((bool)(this["PnlCustomHttpSettingsAuthentication"]));
+            }
+            set {
+                this["PnlCustomHttpSettingsAuthentication"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int PnlCustomHttpSettingsPollTime {
+            get {
+                return ((int)(this["PnlCustomHttpSettingsPollTime"]));
+            }
+            set {
+                this["PnlCustomHttpSettingsPollTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10000")]
+        public int PnlCustomHttpSettingsTimeout {
+            get {
+                return ((int)(this["PnlCustomHttpSettingsTimeout"]));
+            }
+            set {
+                this["PnlCustomHttpSettingsTimeout"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PnlCustomHttpSettingsColumnizer {
+            get {
+                return ((string)(this["PnlCustomHttpSettingsColumnizer"]));
+            }
+            set {
+                this["PnlCustomHttpSettingsColumnizer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PnlCustomTcpSettingsColumnizer {
+            get {
+                return ((string)(this["PnlCustomTcpSettingsColumnizer"]));
+            }
+            set {
+                this["PnlCustomTcpSettingsColumnizer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PnlCustomUdpSettingsColumnizer {
+            get {
+                return ((string)(this["PnlCustomUdpSettingsColumnizer"]));
+            }
+            set {
+                this["PnlCustomUdpSettingsColumnizer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PnlCustomDirSettingsColumnizer {
+            get {
+                return ((string)(this["PnlCustomDirSettingsColumnizer"]));
+            }
+            set {
+                this["PnlCustomDirSettingsColumnizer"] = value;
             }
         }
     }
