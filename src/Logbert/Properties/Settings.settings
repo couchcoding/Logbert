@@ -573,7 +573,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="PnlCustomHttpSettingsPollTime" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="PnlCustomHttpSettingsTimeout" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10000</Value>
