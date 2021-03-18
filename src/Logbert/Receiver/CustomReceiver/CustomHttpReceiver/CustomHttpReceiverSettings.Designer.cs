@@ -256,7 +256,7 @@
             this.Controls.Add(this.lblColumnizer);
             this.Controls.Add(this.lblUrl);
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.MinimumSize = new System.Drawing.Size(0, 276);
+            this.MinimumSize = new System.Drawing.Size(0, 300);
             this.Name = "CustomHttpReceiverSettings";
             this.Size = new System.Drawing.Size(400, 300);
             ((System.ComponentModel.ISupportInitialize)(this.nudPollingTime)).EndInit();
