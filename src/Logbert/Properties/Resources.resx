@@ -125,7 +125,7 @@
     <value>..\Resources\action_add_16xMD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="strAboutDlgCopyright" xml:space="preserve">
-    <value>Copyright 2021 Couchcoding. All Right Reserved.</value>
+    <value>Copyright 2022 Couchcoding. All Right Reserved.</value>
   </data>
   <data name="strColumnizerConfigurationEnterColumnNameAndExpression" xml:space="preserve">
     <value>Please enter a name and an expression for each configure column.</value>

@@ -42,7 +42,6 @@ using WeifenLuo.WinFormsUI.Docking;
 using System.Drawing;
 
 using Couchcoding.Logbert.Logging.Filter;
-using Couchcoding.Logbert.Theme.Palettes;
 using Couchcoding.Logbert.Theme.Interfaces;
 using Couchcoding.Logbert.Theme;
 using Couchcoding.Logbert.Theme.Themes;
@@ -160,7 +159,7 @@ namespace Couchcoding.Logbert.Dialogs.Docking
 
           if (lastNode.Parent != null)
           {
-            lastNode.ForeColor = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForeground;
+            lastNode.ForeColor = ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed;
             lastNode.Parent.Expand();
           }
         }
@@ -178,11 +177,13 @@ namespace Couchcoding.Logbert.Dialogs.Docking
           treeView.SelectedNode = treeView.Nodes[0];
         }
 
-        SetNodeColor(treeView.Nodes[0]
-          , ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForeground
-          , ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionForeground
-          , ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionForegroundFocused
-          , false);
+        //ReColorNodes(treeView.Nodes[0], treeView.SelectedNode, false);
+
+        //SetNodeColor(treeView.Nodes[0]
+        //  , ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForeground
+        //  , ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionForeground
+        //  , ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionForegroundFocused
+        //  , false);
       }
     }
 
@@ -223,6 +224,24 @@ namespace Couchcoding.Logbert.Dialogs.Docking
       }
     }
 
+    private static void ReColorNodes(TreeNode rootNode, TreeNode node, bool recursive)
+    {
+      SetNodeColor(rootNode
+        , ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed
+          , ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionForeground
+          , ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionForegroundFocused
+        , true);
+
+      if (node != null)
+      {
+        SetNodeColor(node
+          , ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForeground
+          , ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionForeground
+          , ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionForegroundFocused
+          , recursive);
+      }
+    }
+
     private void TvLoggerTreeAfterSelect(object sender, TreeViewEventArgs e)
     {
       if (tvLoggerTree.Nodes.Count == 0)
@@ -232,20 +251,7 @@ namespace Couchcoding.Logbert.Dialogs.Docking
 
       try
       {
-        SetNodeColor(tvLoggerTree.Nodes[0]
-          , ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForegroundDimmed
-            , ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionForeground
-            , ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionForegroundFocused
-          , true);
-
-        if (e.Node != null)
-        {
-          SetNodeColor(e.Node
-            , ThemeManager.CurrentApplicationTheme.ColorPalette.ContentForeground
-            , ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionForeground
-            , ThemeManager.CurrentApplicationTheme.ColorPalette.SelectionForegroundFocused
-            , tsbFilterRecursive.Checked);
-        }
+        ReColorNodes(tvLoggerTree.Nodes[0], e.Node, tsbFilterRecursive.Checked);
       }
       finally
       {
@@ -366,6 +372,10 @@ namespace Couchcoding.Logbert.Dialogs.Docking
       finally
       {
         tvLoggerTree.AfterSelect += TvLoggerTreeAfterSelect;
+
+        ReColorNodes(tvLoggerTree.Nodes[0]
+        , tvLoggerTree.SelectedNode
+        , tsbFilterRecursive.Checked);
       }
     }
 
@@ -486,15 +496,12 @@ namespace Couchcoding.Logbert.Dialogs.Docking
         return;
       }
 
-      int indent   = (e.Node.Level * tvLoggerTree.Indent) + tvLoggerTree.Margin.Size.Width;
-      int iconLeft = indent + tvLoggerTree.Indent;
-
       Image img = e.Node.IsExpanded 
         ? ThemeManager.CurrentApplicationTheme.Resources.Images["FrmLogTreeNodeExpanded"]
         : ThemeManager.CurrentApplicationTheme.Resources.Images["FrmLogTreeNodeCollapsed"];
 
       e.Graphics.DrawImage(img
-        , iconLeft - img.Width - 2
+        , e.Node.Bounds.X - img.Width - 2
         , (e.Bounds.Y + (e.Bounds.Height >> 1)) - (img.Height >> 1) - 1);
     }
 

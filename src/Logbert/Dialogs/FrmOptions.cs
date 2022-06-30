@@ -95,9 +95,11 @@ namespace Couchcoding.Logbert.Dialogs
         {
           // Show the new option panel control.
           pnlOptionPanel.Controls.Add((Control)lstSettings.SelectedItem);
-          pnlOptionPanel.AutoScrollMinSize = pnlOptionPanel.Controls[0].MinimumSize;
-          grpSettings.Text       = ((IOptionPanel)lstSettings.SelectedItem).PanelName;
-          grpSettings.GroupImage = ((IOptionPanel)lstSettings.SelectedItem).Image;
+
+          pnlOptionPanel.AutoScrollMinSize  = pnlOptionPanel.Controls[0].MinimumSize;
+          pnlOptionPanel.AutoScrollPosition = new Point(0, 0);
+          grpSettings.Text                  = ((IOptionPanel)lstSettings.SelectedItem).PanelName;
+          grpSettings.GroupImage            = ((IOptionPanel)lstSettings.SelectedItem).Image;
 
           // Initialize the new option panel control.
           ((IOptionPanel)lstSettings.SelectedItem).AdjustSizeAndLocation(grpSettings);

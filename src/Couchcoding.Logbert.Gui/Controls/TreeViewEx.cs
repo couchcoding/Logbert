@@ -163,8 +163,6 @@ namespace Couchcoding.Logbert.Gui.Controls
         {
           CreateHandle();
         }
-
-        //Win32.SetWindowTheme(Handle, "Explorer", null);
       }
     }
 
